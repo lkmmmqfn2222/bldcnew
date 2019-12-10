@@ -55,21 +55,21 @@ void hallSwitch(void)
     hallTree.hallUVW[1] = HALL_V_STATUS & 0x01;
     hallTree.hallUVW[2] = HALL_W_STATUS & 0x01;
     hallTree.filterEdge = uHALLEdge(hallTree.hallUVW[0]);
-    // if (hallTree.filterEdge == 1)
-    // {
-    //     FIRSTORDER_LPF_CACL(hallTree.filterCount, hallTree.filterCountF, 0.1379);
-    //     hallTree.speedRPM = hallTree.speedCoeff / hallTree.filterCountF;
-    //     FIRSTORDER_LPF_CACL(hallTree.speedRPM, hallTree.speedRPMF, 0.2379);
-    //     hallTree.filterCount = 0;
-    // }
-    // if (hallTree.filterEdge == 0)
-    // {
-    //     hallTree.filterCount = 0;
-    // }
-    // if (hallTree.filterEdge == 2)
-    // {
-    //     hallTree.filterCount++;
-    // }
+    if (hallTree.filterEdge == 1)
+    {
+        FIRSTORDER_LPF_CACL(hallTree.filterCount, hallTree.filterCountF, 0.1379);
+        hallTree.speedRPM = hallTree.speedCoeff / hallTree.filterCountF;
+        FIRSTORDER_LPF_CACL(hallTree.speedRPM, hallTree.speedRPMF, 0.2379);
+        hallTree.filterCount = 0;
+    }
+    if (hallTree.filterEdge == 0)
+    {
+        hallTree.filterCount = 0;
+    }
+    if (hallTree.filterEdge == 2)
+    {
+        hallTree.filterCount++;
+    }
     hallTree.hallState = hallTree.hallUVW[0] + (hallTree.hallUVW[1] << 1) + (hallTree.hallUVW[2] << 2);
     if (!stateContr.INVERSION)
     {

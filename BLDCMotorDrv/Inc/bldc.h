@@ -217,7 +217,7 @@ typedef struct
     } while (0)
 
 #define TEST_MANUELL 0
-#define LOOP 1                          //1:open loop 2:speed loop 3:speed and current loop
+#define LOOP 3                          //1:open loop 2:speed loop 3:speed and current loop
 #define PWM_FREQ ((uint16_t)18)
 #define TORQUE 0x00ff
 #define FILTER_LONG 0xffff

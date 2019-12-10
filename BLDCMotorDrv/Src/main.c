@@ -153,7 +153,7 @@ int main(void)
   while (1)
   {
     /* USER CODE END WHILE */
-  
+
     /* USER CODE BEGIN 3 */
   #if 1
     HAL_Delay(20);
@@ -164,16 +164,12 @@ int main(void)
     ad5 = ADC_DualConvertValTab[4];
     //__HAL_TIM_SetCompare(&htim1,TIM_CHANNEL_1,ad1);
     //__HAL_TIM_SetCompare(&htim1,TIM_CHANNEL_2,ad2);
-    myPrint("ADC VALUE IS: %d mV| %d mV| %d mV| %d mV| %d mV;\
-            TIM CCR VALUE IS %d %d %d \
-            hallState is: %d \
-            Hall status is %d %d %d ctrl mode :%d\r\n",
-            ad1 * 3300 / 4096, ad2 * 3300 / 4096, ad3 * 3300 / 4096, ad4 * 3300 / 4096, ad5 * 3300 / 4096,
+    myPrint("ADC VALUE IS: %d mV| %d mV| %d mV| %d mV| %d mV TIM1 CCR IS: %d %d %d hallstate is: %d controlmode is: %d \r\n",\
+            ad1 * 3300 / 4096, ad2 * 3300 / 4096, ad3 * 3300 / 4096, ad4 * 3300 / 4096, ad5 * 3300 / 4096,\
             TIM1->CCR1, TIM1->CCR2, TIM1->CCR3,\
-            hallTree.hallState,\
-            hallTree.hallUVW[0], hallTree.hallUVW[1], hallTree.hallUVW[2], stateContr.controlMode);
+            hallTree.hallState,stateContr.controlMode);
     keyScan();
-  #endif
+#endif
   //motorTestProgram();
   // myPrint("HALL TABLE IS %d %d %d \r\n",HALL_U_STATUS,HALL_V_STATUS,HALL_W_STATUS);
   // HAL_Delay(20);

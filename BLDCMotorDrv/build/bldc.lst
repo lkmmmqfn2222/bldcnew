@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccDkQJKw.s 			page 1
+ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccLvKMjm.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccDkQJKw.s 			page 1
   15:Src/bldc.c    ****     piSpd.ki = SPEED_KI;
   42              		.loc 1 15 0
   43 0008 0C4A     		ldr	r2, .L3+8
-ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccDkQJKw.s 			page 2
+ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccLvKMjm.s 			page 2
 
 
   44 000a 1A63     		str	r2, [r3, #48]	@ float
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccDkQJKw.s 			page 1
   87 004c CDCC4C3E 		.word	1045220557
   88              		.cfi_endproc
   89              	.LFE133:
-ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccDkQJKw.s 			page 3
+ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccLvKMjm.s 			page 3
 
 
   91              		.section	.text.threeHallPara_Init,"ax",%progbits
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccDkQJKw.s 			page 1
   37:Src/bldc.c    ****     if (oldVal != val)
  138              		.loc 1 37 0
  139 0000 054B     		ldr	r3, .L13
-ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccDkQJKw.s 			page 4
+ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccLvKMjm.s 			page 4
 
 
  140 0002 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
@@ -222,163 +222,269 @@ ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccDkQJKw.s 			page 1
  164 0018 00000000 		.word	.LANCHOR2
  165              		.cfi_endproc
  166              	.LFE135:
- 168              		.section	.text.hallSwitch,"ax",%progbits
- 169              		.align	1
- 170              		.global	hallSwitch
- 171              		.syntax unified
- 172              		.thumb
- 173              		.thumb_func
- 174              		.fpu fpv4-sp-d16
- 176              	hallSwitch:
- 177              	.LFB136:
+ 168              		.global	__aeabi_i2d
+ 169              		.global	__aeabi_dmul
+ 170              		.global	__aeabi_dadd
+ 171              		.global	__aeabi_d2uiz
+ 172              		.section	.text.hallSwitch,"ax",%progbits
+ 173              		.align	1
+ 174              		.global	hallSwitch
+ 175              		.syntax unified
+ 176              		.thumb
+ 177              		.thumb_func
+ 178              		.fpu fpv4-sp-d16
+ 180              	hallSwitch:
+ 181              	.LFB136:
   51:Src/bldc.c    **** 
   52:Src/bldc.c    **** void hallSwitch(void)
   53:Src/bldc.c    **** {
- 178              		.loc 1 53 0
- 179              		.cfi_startproc
- 180              		@ args = 0, pretend = 0, frame = 0
- 181              		@ frame_needed = 0, uses_anonymous_args = 0
-ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccDkQJKw.s 			page 5
+ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccLvKMjm.s 			page 5
 
 
- 182 0000 38B5     		push	{r3, r4, r5, lr}
- 183              	.LCFI2:
- 184              		.cfi_def_cfa_offset 16
- 185              		.cfi_offset 3, -16
- 186              		.cfi_offset 4, -12
- 187              		.cfi_offset 5, -8
- 188              		.cfi_offset 14, -4
+ 182              		.loc 1 53 0
+ 183              		.cfi_startproc
+ 184              		@ args = 0, pretend = 0, frame = 0
+ 185              		@ frame_needed = 0, uses_anonymous_args = 0
+ 186 0000 2DE9F843 		push	{r3, r4, r5, r6, r7, r8, r9, lr}
+ 187              	.LCFI2:
+ 188              		.cfi_def_cfa_offset 32
+ 189              		.cfi_offset 3, -32
+ 190              		.cfi_offset 4, -28
+ 191              		.cfi_offset 5, -24
+ 192              		.cfi_offset 6, -20
+ 193              		.cfi_offset 7, -16
+ 194              		.cfi_offset 8, -12
+ 195              		.cfi_offset 9, -8
+ 196              		.cfi_offset 14, -4
   54:Src/bldc.c    ****     hallTree.hallUVW[0] = HALL_U_STATUS & 0x01;
- 189              		.loc 1 54 0
- 190 0002 AF4D     		ldr	r5, .L37
- 191 0004 4021     		movs	r1, #64
- 192 0006 2846     		mov	r0, r5
- 193 0008 FFF7FEFF 		bl	HAL_GPIO_ReadPin
- 194              	.LVL4:
- 195 000c 00F00100 		and	r0, r0, #1
- 196 0010 AC4C     		ldr	r4, .L37+4
- 197 0012 2070     		strb	r0, [r4]
+ 197              		.loc 1 54 0
+ 198 0004 B64D     		ldr	r5, .L42+32
+ 199 0006 4021     		movs	r1, #64
+ 200 0008 2846     		mov	r0, r5
+ 201 000a FFF7FEFF 		bl	HAL_GPIO_ReadPin
+ 202              	.LVL4:
+ 203 000e 00F00100 		and	r0, r0, #1
+ 204 0012 B44C     		ldr	r4, .L42+36
+ 205 0014 2070     		strb	r0, [r4]
   55:Src/bldc.c    ****     hallTree.hallUVW[1] = HALL_V_STATUS & 0x01;
- 198              		.loc 1 55 0
- 199 0014 8021     		movs	r1, #128
- 200 0016 2846     		mov	r0, r5
- 201 0018 FFF7FEFF 		bl	HAL_GPIO_ReadPin
- 202              	.LVL5:
- 203 001c 00F00100 		and	r0, r0, #1
- 204 0020 6070     		strb	r0, [r4, #1]
+ 206              		.loc 1 55 0
+ 207 0016 8021     		movs	r1, #128
+ 208 0018 2846     		mov	r0, r5
+ 209 001a FFF7FEFF 		bl	HAL_GPIO_ReadPin
+ 210              	.LVL5:
+ 211 001e 00F00100 		and	r0, r0, #1
+ 212 0022 6070     		strb	r0, [r4, #1]
   56:Src/bldc.c    ****     hallTree.hallUVW[2] = HALL_W_STATUS & 0x01;
- 205              		.loc 1 56 0
- 206 0022 4FF48071 		mov	r1, #256
- 207 0026 2846     		mov	r0, r5
- 208 0028 FFF7FEFF 		bl	HAL_GPIO_ReadPin
- 209              	.LVL6:
- 210 002c 00F00100 		and	r0, r0, #1
- 211 0030 A070     		strb	r0, [r4, #2]
+ 213              		.loc 1 56 0
+ 214 0024 4FF48071 		mov	r1, #256
+ 215 0028 2846     		mov	r0, r5
+ 216 002a FFF7FEFF 		bl	HAL_GPIO_ReadPin
+ 217              	.LVL6:
+ 218 002e 00F00100 		and	r0, r0, #1
+ 219 0032 A070     		strb	r0, [r4, #2]
   57:Src/bldc.c    ****     hallTree.filterEdge = uHALLEdge(hallTree.hallUVW[0]);
- 212              		.loc 1 57 0
- 213 0032 2078     		ldrb	r0, [r4]	@ zero_extendqisi2
- 214 0034 FFF7FEFF 		bl	uHALLEdge
- 215              	.LVL7:
- 216 0038 E084     		strh	r0, [r4, #38]	@ movhi
-  58:Src/bldc.c    ****     // if (hallTree.filterEdge == 1)
-  59:Src/bldc.c    ****     // {
-  60:Src/bldc.c    ****     //     FIRSTORDER_LPF_CACL(hallTree.filterCount, hallTree.filterCountF, 0.1379);
-  61:Src/bldc.c    ****     //     hallTree.speedRPM = hallTree.speedCoeff / hallTree.filterCountF;
-  62:Src/bldc.c    ****     //     FIRSTORDER_LPF_CACL(hallTree.speedRPM, hallTree.speedRPMF, 0.2379);
-  63:Src/bldc.c    ****     //     hallTree.filterCount = 0;
-  64:Src/bldc.c    ****     // }
-  65:Src/bldc.c    ****     // if (hallTree.filterEdge == 0)
-  66:Src/bldc.c    ****     // {
-  67:Src/bldc.c    ****     //     hallTree.filterCount = 0;
-  68:Src/bldc.c    ****     // }
-  69:Src/bldc.c    ****     // if (hallTree.filterEdge == 2)
-  70:Src/bldc.c    ****     // {
-  71:Src/bldc.c    ****     //     hallTree.filterCount++;
-  72:Src/bldc.c    ****     // }
+ 220              		.loc 1 57 0
+ 221 0034 2078     		ldrb	r0, [r4]	@ zero_extendqisi2
+ 222 0036 FFF7FEFF 		bl	uHALLEdge
+ 223              	.LVL7:
+ 224 003a 85B2     		uxth	r5, r0
+ 225 003c E584     		strh	r5, [r4, #38]	@ movhi
+  58:Src/bldc.c    ****     if (hallTree.filterEdge == 1)
+ 226              		.loc 1 58 0
+ 227 003e 012D     		cmp	r5, #1
+ 228 0040 29D0     		beq	.L39
+ 229              	.L16:
+  59:Src/bldc.c    ****     {
+  60:Src/bldc.c    ****         FIRSTORDER_LPF_CACL(hallTree.filterCount, hallTree.filterCountF, 0.1379);
+  61:Src/bldc.c    ****         hallTree.speedRPM = hallTree.speedCoeff / hallTree.filterCountF;
+  62:Src/bldc.c    ****         FIRSTORDER_LPF_CACL(hallTree.speedRPM, hallTree.speedRPMF, 0.2379);
+ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccLvKMjm.s 			page 6
+
+
+  63:Src/bldc.c    ****         hallTree.filterCount = 0;
+  64:Src/bldc.c    ****     }
+  65:Src/bldc.c    ****     if (hallTree.filterEdge == 0)
+ 230              		.loc 1 65 0
+ 231 0042 15B9     		cbnz	r5, .L17
+  66:Src/bldc.c    ****     {
+  67:Src/bldc.c    ****         hallTree.filterCount = 0;
+ 232              		.loc 1 67 0
+ 233 0044 A74B     		ldr	r3, .L42+36
+ 234 0046 0022     		movs	r2, #0
+ 235 0048 1A85     		strh	r2, [r3, #40]	@ movhi
+ 236              	.L17:
+  68:Src/bldc.c    ****     }
+  69:Src/bldc.c    ****     if (hallTree.filterEdge == 2)
+ 237              		.loc 1 69 0
+ 238 004a 022D     		cmp	r5, #2
+ 239 004c 62D0     		beq	.L40
+ 240              	.L18:
+  70:Src/bldc.c    ****     {
+  71:Src/bldc.c    ****         hallTree.filterCount++;
+  72:Src/bldc.c    ****     }
   73:Src/bldc.c    ****     hallTree.hallState = hallTree.hallUVW[0] + (hallTree.hallUVW[1] << 1) + (hallTree.hallUVW[2] <<
- 217              		.loc 1 73 0
- 218 003a 2378     		ldrb	r3, [r4]	@ zero_extendqisi2
-ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccDkQJKw.s 			page 6
-
-
- 219 003c 6278     		ldrb	r2, [r4, #1]	@ zero_extendqisi2
- 220 003e 5200     		lsls	r2, r2, #1
- 221 0040 D2B2     		uxtb	r2, r2
- 222 0042 1344     		add	r3, r3, r2
- 223 0044 A278     		ldrb	r2, [r4, #2]	@ zero_extendqisi2
- 224 0046 9200     		lsls	r2, r2, #2
- 225 0048 D2B2     		uxtb	r2, r2
- 226 004a 52FA83F3 		uxtab	r3, r2, r3
- 227 004e DBB2     		uxtb	r3, r3
- 228 0050 E370     		strb	r3, [r4, #3]
+ 241              		.loc 1 73 0
+ 242 004e A549     		ldr	r1, .L42+36
+ 243 0050 0B78     		ldrb	r3, [r1]	@ zero_extendqisi2
+ 244 0052 4A78     		ldrb	r2, [r1, #1]	@ zero_extendqisi2
+ 245 0054 5200     		lsls	r2, r2, #1
+ 246 0056 D2B2     		uxtb	r2, r2
+ 247 0058 1344     		add	r3, r3, r2
+ 248 005a 8A78     		ldrb	r2, [r1, #2]	@ zero_extendqisi2
+ 249 005c 9200     		lsls	r2, r2, #2
+ 250 005e D2B2     		uxtb	r2, r2
+ 251 0060 52FA83F3 		uxtab	r3, r2, r3
+ 252 0064 DBB2     		uxtb	r3, r3
+ 253 0066 CB70     		strb	r3, [r1, #3]
   74:Src/bldc.c    ****     if (!stateContr.INVERSION)
- 229              		.loc 1 74 0
- 230 0052 9D4A     		ldr	r2, .L37+8
- 231 0054 9269     		ldr	r2, [r2, #24]
- 232 0056 12B9     		cbnz	r2, .L16
+ 254              		.loc 1 74 0
+ 255 0068 9F4A     		ldr	r2, .L42+40
+ 256 006a 9269     		ldr	r2, [r2, #24]
+ 257 006c 12B9     		cbnz	r2, .L19
   75:Src/bldc.c    ****     {
   76:Src/bldc.c    ****         hallTree.hallState = 7 - hallTree.hallState;
- 233              		.loc 1 76 0
- 234 0058 C3F10703 		rsb	r3, r3, #7
- 235 005c E370     		strb	r3, [r4, #3]
- 236              	.L16:
+ 258              		.loc 1 76 0
+ 259 006e C3F10703 		rsb	r3, r3, #7
+ 260 0072 CB70     		strb	r3, [r1, #3]
+ 261              	.L19:
   77:Src/bldc.c    ****     }
   78:Src/bldc.c    ****     if (hallTree.hallState != hallTree.oldHallState)
- 237              		.loc 1 78 0
- 238 005e 994A     		ldr	r2, .L37+4
- 239 0060 D378     		ldrb	r3, [r2, #3]	@ zero_extendqisi2
- 240 0062 1279     		ldrb	r2, [r2, #4]	@ zero_extendqisi2
- 241 0064 9342     		cmp	r3, r2
- 242 0066 23D0     		beq	.L17
+ 262              		.loc 1 78 0
+ 263 0074 9B4A     		ldr	r2, .L42+36
+ 264 0076 D378     		ldrb	r3, [r2, #3]	@ zero_extendqisi2
+ 265 0078 1279     		ldrb	r2, [r2, #4]	@ zero_extendqisi2
+ 266 007a 9342     		cmp	r3, r2
+ 267 007c 6AD0     		beq	.L20
   79:Src/bldc.c    ****     {
   80:Src/bldc.c    ****         switch (hallTree.hallState)
- 243              		.loc 1 80 0
- 244 0068 013B     		subs	r3, r3, #1
- 245 006a 052B     		cmp	r3, #5
- 246 006c 00F2B680 		bhi	.L18
- 247 0070 DFE803F0 		tbb	[pc, r3]
- 248              	.L20:
- 249 0074 28       		.byte	(.L19-.L20)/2
- 250 0075 60       		.byte	(.L21-.L20)/2
- 251 0076 44       		.byte	(.L22-.L20)/2
- 252 0077 98       		.byte	(.L23-.L20)/2
- 253 0078 03       		.byte	(.L24-.L20)/2
- 254 0079 7C       		.byte	(.L25-.L20)/2
- 255              		.p2align 1
- 256              	.L24:
+ 268              		.loc 1 80 0
+ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccLvKMjm.s 			page 7
+
+
+ 269 007e 013B     		subs	r3, r3, #1
+ 270 0080 052B     		cmp	r3, #5
+ 271 0082 00F2FE80 		bhi	.L21
+ 272 0086 DFE813F0 		tbh	[pc, r3, lsl #1]
+ 273              	.L23:
+ 274 008a 7000     		.2byte	(.L22-.L23)/2
+ 275 008c A800     		.2byte	(.L24-.L23)/2
+ 276 008e 8C00     		.2byte	(.L25-.L23)/2
+ 277 0090 E000     		.2byte	(.L26-.L23)/2
+ 278 0092 4A00     		.2byte	(.L27-.L23)/2
+ 279 0094 C400     		.2byte	(.L28-.L23)/2
+ 280              		.p2align 1
+ 281              	.L39:
+  60:Src/bldc.c    ****         hallTree.speedRPM = hallTree.speedCoeff / hallTree.filterCountF;
+ 282              		.loc 1 60 0
+ 283 0096 608D     		ldrh	r0, [r4, #42]
+ 284 0098 FFF7FEFF 		bl	__aeabi_i2d
+ 285              	.LVL8:
+ 286 009c 88A3     		adr	r3, .L42
+ 287 009e D3E90023 		ldrd	r2, [r3]
+ 288 00a2 FFF7FEFF 		bl	__aeabi_dmul
+ 289              	.LVL9:
+ 290 00a6 0646     		mov	r6, r0
+ 291 00a8 0F46     		mov	r7, r1
+ 292 00aa 208D     		ldrh	r0, [r4, #40]
+ 293 00ac FFF7FEFF 		bl	__aeabi_i2d
+ 294              	.LVL10:
+ 295 00b0 85A3     		adr	r3, .L42+8
+ 296 00b2 D3E90023 		ldrd	r2, [r3]
+ 297 00b6 FFF7FEFF 		bl	__aeabi_dmul
+ 298              	.LVL11:
+ 299 00ba 0246     		mov	r2, r0
+ 300 00bc 0B46     		mov	r3, r1
+ 301 00be 3046     		mov	r0, r6
+ 302 00c0 3946     		mov	r1, r7
+ 303 00c2 FFF7FEFF 		bl	__aeabi_dadd
+ 304              	.LVL12:
+ 305 00c6 FFF7FEFF 		bl	__aeabi_d2uiz
+ 306              	.LVL13:
+ 307 00ca 80B2     		uxth	r0, r0
+ 308 00cc 6085     		strh	r0, [r4, #42]	@ movhi
+  61:Src/bldc.c    ****         FIRSTORDER_LPF_CACL(hallTree.speedRPM, hallTree.speedRPMF, 0.2379);
+ 309              		.loc 1 61 0
+ 310 00ce E669     		ldr	r6, [r4, #28]
+ 311 00d0 B6FBF0F6 		udiv	r6, r6, r0
+ 312 00d4 B6B2     		uxth	r6, r6
+ 313 00d6 A684     		strh	r6, [r4, #36]	@ movhi
+  62:Src/bldc.c    ****         hallTree.filterCount = 0;
+ 314              		.loc 1 62 0
+ 315 00d8 608C     		ldrh	r0, [r4, #34]
+ 316 00da FFF7FEFF 		bl	__aeabi_i2d
+ 317              	.LVL14:
+ 318 00de 7CA3     		adr	r3, .L42+16
+ 319 00e0 D3E90023 		ldrd	r2, [r3]
+ 320 00e4 FFF7FEFF 		bl	__aeabi_dmul
+ 321              	.LVL15:
+ 322 00e8 8046     		mov	r8, r0
+ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccLvKMjm.s 			page 8
+
+
+ 323 00ea 8946     		mov	r9, r1
+ 324 00ec 3046     		mov	r0, r6
+ 325 00ee FFF7FEFF 		bl	__aeabi_i2d
+ 326              	.LVL16:
+ 327 00f2 79A3     		adr	r3, .L42+24
+ 328 00f4 D3E90023 		ldrd	r2, [r3]
+ 329 00f8 FFF7FEFF 		bl	__aeabi_dmul
+ 330              	.LVL17:
+ 331 00fc 0246     		mov	r2, r0
+ 332 00fe 0B46     		mov	r3, r1
+ 333 0100 4046     		mov	r0, r8
+ 334 0102 4946     		mov	r1, r9
+ 335 0104 FFF7FEFF 		bl	__aeabi_dadd
+ 336              	.LVL18:
+ 337 0108 FFF7FEFF 		bl	__aeabi_d2uiz
+ 338              	.LVL19:
+ 339 010c 6084     		strh	r0, [r4, #34]	@ movhi
+  63:Src/bldc.c    ****     }
+ 340              		.loc 1 63 0
+ 341 010e 0023     		movs	r3, #0
+ 342 0110 2385     		strh	r3, [r4, #40]	@ movhi
+ 343 0112 96E7     		b	.L16
+ 344              	.L40:
+  71:Src/bldc.c    ****     }
+ 345              		.loc 1 71 0
+ 346 0114 734A     		ldr	r2, .L42+36
+ 347 0116 138D     		ldrh	r3, [r2, #40]
+ 348 0118 0133     		adds	r3, r3, #1
+ 349 011a 1385     		strh	r3, [r2, #40]	@ movhi
+ 350 011c 97E7     		b	.L18
+ 351              	.L27:
   81:Src/bldc.c    ****         {
   82:Src/bldc.c    ****         case 0x05:
   83:Src/bldc.c    ****         {
   84:Src/bldc.c    ****             MOS_Q32PWM;
- 257              		.loc 1 84 0
- 258 007a 944B     		ldr	r3, .L37+12
- 259 007c 1B68     		ldr	r3, [r3]
- 260 007e 0024     		movs	r4, #0
- 261 0080 5C63     		str	r4, [r3, #52]
- 262 0082 914A     		ldr	r2, .L37+8
- 263 0084 5289     		ldrh	r2, [r2, #10]
- 264 0086 9A63     		str	r2, [r3, #56]
-ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccDkQJKw.s 			page 7
+ 352              		.loc 1 84 0
+ 353 011e 734B     		ldr	r3, .L42+44
+ 354 0120 1B68     		ldr	r3, [r3]
+ 355 0122 0024     		movs	r4, #0
+ 356 0124 5C63     		str	r4, [r3, #52]
+ 357 0126 704A     		ldr	r2, .L42+40
+ 358 0128 5289     		ldrh	r2, [r2, #10]
+ 359 012a 9A63     		str	r2, [r3, #56]
+ 360 012c DC63     		str	r4, [r3, #60]
+ 361 012e 704D     		ldr	r5, .L42+48
+ 362 0130 2246     		mov	r2, r4
+ 363 0132 4FF48041 		mov	r1, #16384
+ 364 0136 2846     		mov	r0, r5
+ 365 0138 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 366              	.LVL20:
+ 367 013c 2246     		mov	r2, r4
+ 368 013e 4FF40041 		mov	r1, #32768
+ 369 0142 2846     		mov	r0, r5
+ 370 0144 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 371              	.LVL21:
+ 372 0148 0122     		movs	r2, #1
+ 373 014a 4FF40051 		mov	r1, #8192
+ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccLvKMjm.s 			page 9
 
 
- 265 0088 DC63     		str	r4, [r3, #60]
- 266 008a 914D     		ldr	r5, .L37+16
- 267 008c 2246     		mov	r2, r4
- 268 008e 4FF48041 		mov	r1, #16384
- 269 0092 2846     		mov	r0, r5
- 270 0094 FFF7FEFF 		bl	HAL_GPIO_WritePin
- 271              	.LVL8:
- 272 0098 2246     		mov	r2, r4
- 273 009a 4FF40041 		mov	r1, #32768
- 274 009e 2846     		mov	r0, r5
- 275 00a0 FFF7FEFF 		bl	HAL_GPIO_WritePin
- 276              	.LVL9:
- 277 00a4 0122     		movs	r2, #1
- 278 00a6 4FF40051 		mov	r1, #8192
- 279 00aa 2846     		mov	r0, r5
- 280 00ac FFF7FEFF 		bl	HAL_GPIO_WritePin
- 281              	.LVL10:
- 282              	.L17:
+ 374 014e 2846     		mov	r0, r5
+ 375 0150 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 376              	.LVL22:
+ 377              	.L20:
   85:Src/bldc.c    ****         }
   86:Src/bldc.c    ****         break;
   87:Src/bldc.c    ****         case 0x01:
@@ -415,16 +521,13 @@ ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccDkQJKw.s 			page 1
  118:Src/bldc.c    ****         }
  119:Src/bldc.c    ****     }
  120:Src/bldc.c    ****     if (hallTree.oldHallState == hallTree.hallState)
- 283              		.loc 1 120 0
- 284 00b0 844B     		ldr	r3, .L37+4
- 285 00b2 1A79     		ldrb	r2, [r3, #4]	@ zero_extendqisi2
-ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccDkQJKw.s 			page 8
-
-
- 286 00b4 DB78     		ldrb	r3, [r3, #3]	@ zero_extendqisi2
- 287 00b6 9A42     		cmp	r2, r3
- 288 00b8 00F0A480 		beq	.L36
- 289              	.L26:
+ 378              		.loc 1 120 0
+ 379 0154 634B     		ldr	r3, .L42+36
+ 380 0156 1A79     		ldrb	r2, [r3, #4]	@ zero_extendqisi2
+ 381 0158 DB78     		ldrb	r3, [r3, #3]	@ zero_extendqisi2
+ 382 015a 9A42     		cmp	r2, r3
+ 383 015c 00F0A580 		beq	.L41
+ 384              	.L29:
  121:Src/bldc.c    ****     {
  122:Src/bldc.c    ****         switch (hallTree.hallState)
  123:Src/bldc.c    ****         {
@@ -435,6 +538,9 @@ ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccDkQJKw.s 			page 1
  128:Src/bldc.c    ****         break;
  129:Src/bldc.c    ****         case 0x01:
  130:Src/bldc.c    ****         {
+ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccLvKMjm.s 			page 10
+
+
  131:Src/bldc.c    ****             MOS_Q63PWM;
  132:Src/bldc.c    ****         }
  133:Src/bldc.c    ****         break;
@@ -467,691 +573,699 @@ ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccDkQJKw.s 			page 1
  160:Src/bldc.c    ****         }
  161:Src/bldc.c    ****     }
  162:Src/bldc.c    ****     hallTree.oldHallState = hallTree.hallState;
- 290              		.loc 1 162 0
- 291 00bc 814B     		ldr	r3, .L37+4
- 292 00be DA78     		ldrb	r2, [r3, #3]	@ zero_extendqisi2
- 293 00c0 1A71     		strb	r2, [r3, #4]
+ 385              		.loc 1 162 0
+ 386 0160 604B     		ldr	r3, .L42+36
+ 387 0162 DA78     		ldrb	r2, [r3, #3]	@ zero_extendqisi2
+ 388 0164 1A71     		strb	r2, [r3, #4]
  163:Src/bldc.c    **** }
- 294              		.loc 1 163 0
- 295 00c2 38BD     		pop	{r3, r4, r5, pc}
- 296              	.L19:
+ 389              		.loc 1 163 0
+ 390 0166 BDE8F883 		pop	{r3, r4, r5, r6, r7, r8, r9, pc}
+ 391              	.L22:
   89:Src/bldc.c    ****         }
- 297              		.loc 1 89 0
- 298 00c4 814B     		ldr	r3, .L37+12
-ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccDkQJKw.s 			page 9
+ 392              		.loc 1 89 0
+ 393 016a 604B     		ldr	r3, .L42+44
+ 394 016c 1B68     		ldr	r3, [r3]
+ 395 016e 0024     		movs	r4, #0
+ 396 0170 5C63     		str	r4, [r3, #52]
+ 397 0172 5D4A     		ldr	r2, .L42+40
+ 398 0174 5289     		ldrh	r2, [r2, #10]
+ 399 0176 9A63     		str	r2, [r3, #56]
+ 400 0178 DC63     		str	r4, [r3, #60]
+ 401 017a 5D4D     		ldr	r5, .L42+48
+ 402 017c 2246     		mov	r2, r4
+ 403 017e 4FF40051 		mov	r1, #8192
+ 404 0182 2846     		mov	r0, r5
+ 405 0184 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 406              	.LVL23:
+ 407 0188 2246     		mov	r2, r4
+ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccLvKMjm.s 			page 11
 
 
- 299 00c6 1B68     		ldr	r3, [r3]
- 300 00c8 0024     		movs	r4, #0
- 301 00ca 5C63     		str	r4, [r3, #52]
- 302 00cc 7E4A     		ldr	r2, .L37+8
- 303 00ce 5289     		ldrh	r2, [r2, #10]
- 304 00d0 9A63     		str	r2, [r3, #56]
- 305 00d2 DC63     		str	r4, [r3, #60]
- 306 00d4 7E4D     		ldr	r5, .L37+16
- 307 00d6 2246     		mov	r2, r4
- 308 00d8 4FF40051 		mov	r1, #8192
- 309 00dc 2846     		mov	r0, r5
- 310 00de FFF7FEFF 		bl	HAL_GPIO_WritePin
- 311              	.LVL11:
- 312 00e2 2246     		mov	r2, r4
- 313 00e4 4FF48041 		mov	r1, #16384
- 314 00e8 2846     		mov	r0, r5
- 315 00ea FFF7FEFF 		bl	HAL_GPIO_WritePin
- 316              	.LVL12:
- 317 00ee 0122     		movs	r2, #1
- 318 00f0 4FF40041 		mov	r1, #32768
- 319 00f4 2846     		mov	r0, r5
- 320 00f6 FFF7FEFF 		bl	HAL_GPIO_WritePin
- 321              	.LVL13:
+ 408 018a 4FF48041 		mov	r1, #16384
+ 409 018e 2846     		mov	r0, r5
+ 410 0190 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 411              	.LVL24:
+ 412 0194 0122     		movs	r2, #1
+ 413 0196 4FF40041 		mov	r1, #32768
+ 414 019a 2846     		mov	r0, r5
+ 415 019c FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 416              	.LVL25:
   91:Src/bldc.c    ****         case 0x03:
- 322              		.loc 1 91 0
- 323 00fa D9E7     		b	.L17
- 324              	.L22:
+ 417              		.loc 1 91 0
+ 418 01a0 D8E7     		b	.L20
+ 419              	.L25:
   94:Src/bldc.c    ****         }
- 325              		.loc 1 94 0
- 326 00fc 734B     		ldr	r3, .L37+12
- 327 00fe 1B68     		ldr	r3, [r3]
- 328 0100 714A     		ldr	r2, .L37+8
- 329 0102 5289     		ldrh	r2, [r2, #10]
- 330 0104 5A63     		str	r2, [r3, #52]
- 331 0106 0024     		movs	r4, #0
- 332 0108 9C63     		str	r4, [r3, #56]
- 333 010a DC63     		str	r4, [r3, #60]
- 334 010c 704D     		ldr	r5, .L37+16
- 335 010e 2246     		mov	r2, r4
- 336 0110 4FF40051 		mov	r1, #8192
- 337 0114 2846     		mov	r0, r5
- 338 0116 FFF7FEFF 		bl	HAL_GPIO_WritePin
- 339              	.LVL14:
- 340 011a 2246     		mov	r2, r4
- 341 011c 4FF48041 		mov	r1, #16384
- 342 0120 2846     		mov	r0, r5
- 343 0122 FFF7FEFF 		bl	HAL_GPIO_WritePin
- 344              	.LVL15:
- 345 0126 0122     		movs	r2, #1
- 346 0128 4FF40041 		mov	r1, #32768
- 347 012c 2846     		mov	r0, r5
- 348 012e FFF7FEFF 		bl	HAL_GPIO_WritePin
- 349              	.LVL16:
+ 420              		.loc 1 94 0
+ 421 01a2 524B     		ldr	r3, .L42+44
+ 422 01a4 1B68     		ldr	r3, [r3]
+ 423 01a6 504A     		ldr	r2, .L42+40
+ 424 01a8 5289     		ldrh	r2, [r2, #10]
+ 425 01aa 5A63     		str	r2, [r3, #52]
+ 426 01ac 0024     		movs	r4, #0
+ 427 01ae 9C63     		str	r4, [r3, #56]
+ 428 01b0 DC63     		str	r4, [r3, #60]
+ 429 01b2 4F4D     		ldr	r5, .L42+48
+ 430 01b4 2246     		mov	r2, r4
+ 431 01b6 4FF40051 		mov	r1, #8192
+ 432 01ba 2846     		mov	r0, r5
+ 433 01bc FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 434              	.LVL26:
+ 435 01c0 2246     		mov	r2, r4
+ 436 01c2 4FF48041 		mov	r1, #16384
+ 437 01c6 2846     		mov	r0, r5
+ 438 01c8 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 439              	.LVL27:
+ 440 01cc 0122     		movs	r2, #1
+ 441 01ce 4FF40041 		mov	r1, #32768
+ 442 01d2 2846     		mov	r0, r5
+ 443 01d4 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 444              	.LVL28:
   96:Src/bldc.c    ****         case 0x02:
- 350              		.loc 1 96 0
- 351 0132 BDE7     		b	.L17
- 352              	.L21:
-ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccDkQJKw.s 			page 10
-
-
+ 445              		.loc 1 96 0
+ 446 01d8 BCE7     		b	.L20
+ 447              	.L24:
   99:Src/bldc.c    ****         }
- 353              		.loc 1 99 0
- 354 0134 654B     		ldr	r3, .L37+12
- 355 0136 1B68     		ldr	r3, [r3]
- 356 0138 634A     		ldr	r2, .L37+8
- 357 013a 5289     		ldrh	r2, [r2, #10]
- 358 013c 5A63     		str	r2, [r3, #52]
- 359 013e 0024     		movs	r4, #0
- 360 0140 9C63     		str	r4, [r3, #56]
- 361 0142 DC63     		str	r4, [r3, #60]
- 362 0144 624D     		ldr	r5, .L37+16
- 363 0146 2246     		mov	r2, r4
- 364 0148 4FF40051 		mov	r1, #8192
- 365 014c 2846     		mov	r0, r5
- 366 014e FFF7FEFF 		bl	HAL_GPIO_WritePin
- 367              	.LVL17:
- 368 0152 2246     		mov	r2, r4
- 369 0154 4FF40041 		mov	r1, #32768
- 370 0158 2846     		mov	r0, r5
- 371 015a FFF7FEFF 		bl	HAL_GPIO_WritePin
- 372              	.LVL18:
- 373 015e 0122     		movs	r2, #1
- 374 0160 4FF48041 		mov	r1, #16384
- 375 0164 2846     		mov	r0, r5
- 376 0166 FFF7FEFF 		bl	HAL_GPIO_WritePin
- 377              	.LVL19:
+ 448              		.loc 1 99 0
+ 449 01da 444B     		ldr	r3, .L42+44
+ 450 01dc 1B68     		ldr	r3, [r3]
+ 451 01de 424A     		ldr	r2, .L42+40
+ 452 01e0 5289     		ldrh	r2, [r2, #10]
+ 453 01e2 5A63     		str	r2, [r3, #52]
+ 454 01e4 0024     		movs	r4, #0
+ 455 01e6 9C63     		str	r4, [r3, #56]
+ 456 01e8 DC63     		str	r4, [r3, #60]
+ 457 01ea 414D     		ldr	r5, .L42+48
+ 458 01ec 2246     		mov	r2, r4
+ 459 01ee 4FF40051 		mov	r1, #8192
+ 460 01f2 2846     		mov	r0, r5
+ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccLvKMjm.s 			page 12
+
+
+ 461 01f4 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 462              	.LVL29:
+ 463 01f8 2246     		mov	r2, r4
+ 464 01fa 4FF40041 		mov	r1, #32768
+ 465 01fe 2846     		mov	r0, r5
+ 466 0200 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 467              	.LVL30:
+ 468 0204 0122     		movs	r2, #1
+ 469 0206 4FF48041 		mov	r1, #16384
+ 470 020a 2846     		mov	r0, r5
+ 471 020c FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 472              	.LVL31:
  101:Src/bldc.c    ****         case 0x06:
- 378              		.loc 1 101 0
- 379 016a A1E7     		b	.L17
- 380              	.L25:
+ 473              		.loc 1 101 0
+ 474 0210 A0E7     		b	.L20
+ 475              	.L28:
  104:Src/bldc.c    ****         }
- 381              		.loc 1 104 0
- 382 016c 574B     		ldr	r3, .L37+12
- 383 016e 1B68     		ldr	r3, [r3]
- 384 0170 0024     		movs	r4, #0
- 385 0172 5C63     		str	r4, [r3, #52]
- 386 0174 9C63     		str	r4, [r3, #56]
- 387 0176 544A     		ldr	r2, .L37+8
- 388 0178 5289     		ldrh	r2, [r2, #10]
- 389 017a DA63     		str	r2, [r3, #60]
- 390 017c 544D     		ldr	r5, .L37+16
- 391 017e 2246     		mov	r2, r4
- 392 0180 4FF40051 		mov	r1, #8192
- 393 0184 2846     		mov	r0, r5
- 394 0186 FFF7FEFF 		bl	HAL_GPIO_WritePin
- 395              	.LVL20:
- 396 018a 2246     		mov	r2, r4
- 397 018c 4FF40041 		mov	r1, #32768
- 398 0190 2846     		mov	r0, r5
- 399 0192 FFF7FEFF 		bl	HAL_GPIO_WritePin
- 400              	.LVL21:
- 401 0196 0122     		movs	r2, #1
- 402 0198 4FF48041 		mov	r1, #16384
- 403 019c 2846     		mov	r0, r5
- 404 019e FFF7FEFF 		bl	HAL_GPIO_WritePin
- 405              	.LVL22:
+ 476              		.loc 1 104 0
+ 477 0212 364B     		ldr	r3, .L42+44
+ 478 0214 1B68     		ldr	r3, [r3]
+ 479 0216 0024     		movs	r4, #0
+ 480 0218 5C63     		str	r4, [r3, #52]
+ 481 021a 9C63     		str	r4, [r3, #56]
+ 482 021c 324A     		ldr	r2, .L42+40
+ 483 021e 5289     		ldrh	r2, [r2, #10]
+ 484 0220 DA63     		str	r2, [r3, #60]
+ 485 0222 334D     		ldr	r5, .L42+48
+ 486 0224 2246     		mov	r2, r4
+ 487 0226 4FF40051 		mov	r1, #8192
+ 488 022a 2846     		mov	r0, r5
+ 489 022c FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 490              	.LVL32:
+ 491 0230 2246     		mov	r2, r4
+ 492 0232 4FF40041 		mov	r1, #32768
+ 493 0236 2846     		mov	r0, r5
+ 494 0238 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 495              	.LVL33:
+ 496 023c 0122     		movs	r2, #1
+ 497 023e 4FF48041 		mov	r1, #16384
+ 498 0242 2846     		mov	r0, r5
+ 499 0244 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 500              	.LVL34:
  106:Src/bldc.c    ****         case 0x04:
-ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccDkQJKw.s 			page 11
-
-
- 406              		.loc 1 106 0
- 407 01a2 85E7     		b	.L17
- 408              	.L23:
+ 501              		.loc 1 106 0
+ 502 0248 84E7     		b	.L20
+ 503              	.L26:
  109:Src/bldc.c    ****         }
- 409              		.loc 1 109 0
- 410 01a4 494B     		ldr	r3, .L37+12
- 411 01a6 1B68     		ldr	r3, [r3]
- 412 01a8 0024     		movs	r4, #0
- 413 01aa 5C63     		str	r4, [r3, #52]
- 414 01ac 9C63     		str	r4, [r3, #56]
- 415 01ae 464A     		ldr	r2, .L37+8
- 416 01b0 5289     		ldrh	r2, [r2, #10]
- 417 01b2 DA63     		str	r2, [r3, #60]
- 418 01b4 464D     		ldr	r5, .L37+16
- 419 01b6 2246     		mov	r2, r4
- 420 01b8 4FF48041 		mov	r1, #16384
- 421 01bc 2846     		mov	r0, r5
- 422 01be FFF7FEFF 		bl	HAL_GPIO_WritePin
- 423              	.LVL23:
- 424 01c2 2246     		mov	r2, r4
- 425 01c4 4FF40041 		mov	r1, #32768
- 426 01c8 2846     		mov	r0, r5
- 427 01ca FFF7FEFF 		bl	HAL_GPIO_WritePin
- 428              	.LVL24:
- 429 01ce 0122     		movs	r2, #1
- 430 01d0 4FF40051 		mov	r1, #8192
- 431 01d4 2846     		mov	r0, r5
- 432 01d6 FFF7FEFF 		bl	HAL_GPIO_WritePin
- 433              	.LVL25:
+ 504              		.loc 1 109 0
+ 505 024a 284B     		ldr	r3, .L42+44
+ 506 024c 1B68     		ldr	r3, [r3]
+ 507 024e 0024     		movs	r4, #0
+ 508 0250 5C63     		str	r4, [r3, #52]
+ 509 0252 9C63     		str	r4, [r3, #56]
+ 510 0254 244A     		ldr	r2, .L42+40
+ 511 0256 5289     		ldrh	r2, [r2, #10]
+ 512 0258 DA63     		str	r2, [r3, #60]
+ 513 025a 254D     		ldr	r5, .L42+48
+ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccLvKMjm.s 			page 13
+
+
+ 514 025c 2246     		mov	r2, r4
+ 515 025e 4FF48041 		mov	r1, #16384
+ 516 0262 2846     		mov	r0, r5
+ 517 0264 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 518              	.LVL35:
+ 519 0268 2246     		mov	r2, r4
+ 520 026a 4FF40041 		mov	r1, #32768
+ 521 026e 2846     		mov	r0, r5
+ 522 0270 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 523              	.LVL36:
+ 524 0274 0122     		movs	r2, #1
+ 525 0276 4FF40051 		mov	r1, #8192
+ 526 027a 2846     		mov	r0, r5
+ 527 027c FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 528              	.LVL37:
  111:Src/bldc.c    ****         default:
- 434              		.loc 1 111 0
- 435 01da 69E7     		b	.L17
- 436              	.L18:
+ 529              		.loc 1 111 0
+ 530 0280 68E7     		b	.L20
+ 531              	.L21:
  114:Src/bldc.c    ****             hallTree.speedRPM = 0;
- 437              		.loc 1 114 0
- 438 01dc 3D4C     		ldr	r4, .L37+20
- 439 01de 0022     		movs	r2, #0
- 440 01e0 1146     		mov	r1, r2
- 441 01e2 2046     		mov	r0, r4
- 442 01e4 FFF7FEFF 		bl	TIM_CCxChannelCmd
- 443              	.LVL26:
- 444 01e8 0022     		movs	r2, #0
- 445 01ea 0421     		movs	r1, #4
- 446 01ec 2046     		mov	r0, r4
- 447 01ee FFF7FEFF 		bl	TIM_CCxChannelCmd
- 448              	.LVL27:
- 449 01f2 0022     		movs	r2, #0
- 450 01f4 0821     		movs	r1, #8
- 451 01f6 2046     		mov	r0, r4
- 452 01f8 FFF7FEFF 		bl	TIM_CCxChannelCmd
- 453              	.LVL28:
+ 532              		.loc 1 114 0
+ 533 0282 1C4C     		ldr	r4, .L42+52
+ 534 0284 0022     		movs	r2, #0
+ 535 0286 1146     		mov	r1, r2
+ 536 0288 2046     		mov	r0, r4
+ 537 028a FFF7FEFF 		bl	TIM_CCxChannelCmd
+ 538              	.LVL38:
+ 539 028e 0022     		movs	r2, #0
+ 540 0290 0421     		movs	r1, #4
+ 541 0292 2046     		mov	r0, r4
+ 542 0294 FFF7FEFF 		bl	TIM_CCxChannelCmd
+ 543              	.LVL39:
+ 544 0298 0022     		movs	r2, #0
+ 545 029a 0821     		movs	r1, #8
+ 546 029c 2046     		mov	r0, r4
+ 547 029e FFF7FEFF 		bl	TIM_CCxChannelCmd
+ 548              	.LVL40:
  115:Src/bldc.c    ****         }
- 454              		.loc 1 115 0
- 455 01fc 314B     		ldr	r3, .L37+4
- 456 01fe 0022     		movs	r2, #0
- 457 0200 9A84     		strh	r2, [r3, #36]	@ movhi
+ 549              		.loc 1 115 0
+ 550 02a2 104B     		ldr	r3, .L42+36
+ 551 02a4 0022     		movs	r2, #0
+ 552 02a6 9A84     		strh	r2, [r3, #36]	@ movhi
  117:Src/bldc.c    ****         }
-ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccDkQJKw.s 			page 12
-
-
- 458              		.loc 1 117 0
- 459 0202 55E7     		b	.L17
- 460              	.L36:
+ 553              		.loc 1 117 0
+ 554 02a8 54E7     		b	.L20
+ 555              	.L41:
  122:Src/bldc.c    ****         {
- 461              		.loc 1 122 0
- 462 0204 013B     		subs	r3, r3, #1
- 463 0206 052B     		cmp	r3, #5
- 464 0208 00F2BA80 		bhi	.L27
- 465 020c DFE803F0 		tbb	[pc, r3]
- 466              	.L29:
- 467 0210 1F       		.byte	(.L28-.L29)/2
- 468 0211 64       		.byte	(.L30-.L29)/2
- 469 0212 3B       		.byte	(.L31-.L29)/2
- 470 0213 9C       		.byte	(.L32-.L29)/2
- 471 0214 03       		.byte	(.L33-.L29)/2
- 472 0215 80       		.byte	(.L34-.L29)/2
- 473              		.p2align 1
- 474              	.L33:
+ 556              		.loc 1 122 0
+ 557 02aa 013B     		subs	r3, r3, #1
+ 558 02ac 052B     		cmp	r3, #5
+ 559 02ae 00F2CB80 		bhi	.L30
+ 560 02b2 DFE803F0 		tbb	[pc, r3]
+ 561              	.L32:
+ 562 02b6 3D       		.byte	(.L31-.L32)/2
+ 563 02b7 75       		.byte	(.L33-.L32)/2
+ 564 02b8 59       		.byte	(.L34-.L32)/2
+ 565 02b9 AD       		.byte	(.L35-.L32)/2
+ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccLvKMjm.s 			page 14
+
+
+ 566 02ba 21       		.byte	(.L36-.L32)/2
+ 567 02bb 91       		.byte	(.L37-.L32)/2
+ 568              		.p2align 1
+ 569              	.L43:
+ 570 02bc AFF30080 		.align	3
+ 571              	.L42:
+ 572 02c0 11363CBD 		.word	-1120127471
+ 573 02c4 5296EB3F 		.word	1072404050
+ 574 02c8 BB270F0B 		.word	185542587
+ 575 02cc B5A6C13F 		.word	1069655733
+ 576 02d0 DE02098A 		.word	-1979120930
+ 577 02d4 1F63E83F 		.word	1072194335
+ 578 02d8 88F4DBD7 		.word	-673450872
+ 579 02dc 8173CE3F 		.word	1070494593
+ 580 02e0 00080240 		.word	1073874944
+ 581 02e4 00000000 		.word	hallTree
+ 582 02e8 00000000 		.word	stateContr
+ 583 02ec 00000000 		.word	htim1
+ 584 02f0 00040240 		.word	1073873920
+ 585 02f4 00000140 		.word	1073807360
+ 586              	.L36:
  126:Src/bldc.c    ****         }
- 475              		.loc 1 126 0
- 476 0216 2D4B     		ldr	r3, .L37+12
- 477 0218 1B68     		ldr	r3, [r3]
- 478 021a 0024     		movs	r4, #0
- 479 021c 5C63     		str	r4, [r3, #52]
- 480 021e 2A4A     		ldr	r2, .L37+8
- 481 0220 5289     		ldrh	r2, [r2, #10]
- 482 0222 9A63     		str	r2, [r3, #56]
- 483 0224 DC63     		str	r4, [r3, #60]
- 484 0226 2A4D     		ldr	r5, .L37+16
- 485 0228 2246     		mov	r2, r4
- 486 022a 4FF48041 		mov	r1, #16384
- 487 022e 2846     		mov	r0, r5
- 488 0230 FFF7FEFF 		bl	HAL_GPIO_WritePin
- 489              	.LVL29:
- 490 0234 2246     		mov	r2, r4
- 491 0236 4FF40041 		mov	r1, #32768
- 492 023a 2846     		mov	r0, r5
- 493 023c FFF7FEFF 		bl	HAL_GPIO_WritePin
- 494              	.LVL30:
- 495 0240 0122     		movs	r2, #1
- 496 0242 4FF40051 		mov	r1, #8192
- 497 0246 2846     		mov	r0, r5
- 498 0248 FFF7FEFF 		bl	HAL_GPIO_WritePin
- 499              	.LVL31:
+ 587              		.loc 1 126 0
+ 588 02f8 5D4B     		ldr	r3, .L44
+ 589 02fa 1B68     		ldr	r3, [r3]
+ 590 02fc 0024     		movs	r4, #0
+ 591 02fe 5C63     		str	r4, [r3, #52]
+ 592 0300 5C4A     		ldr	r2, .L44+4
+ 593 0302 5289     		ldrh	r2, [r2, #10]
+ 594 0304 9A63     		str	r2, [r3, #56]
+ 595 0306 DC63     		str	r4, [r3, #60]
+ 596 0308 5B4D     		ldr	r5, .L44+8
+ 597 030a 2246     		mov	r2, r4
+ 598 030c 4FF48041 		mov	r1, #16384
+ 599 0310 2846     		mov	r0, r5
+ 600 0312 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 601              	.LVL41:
+ 602 0316 2246     		mov	r2, r4
+ 603 0318 4FF40041 		mov	r1, #32768
+ 604 031c 2846     		mov	r0, r5
+ 605 031e FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 606              	.LVL42:
+ 607 0322 0122     		movs	r2, #1
+ 608 0324 4FF40051 		mov	r1, #8192
+ 609 0328 2846     		mov	r0, r5
+ 610 032a FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 611              	.LVL43:
  128:Src/bldc.c    ****         case 0x01:
- 500              		.loc 1 128 0
- 501 024c 36E7     		b	.L26
- 502              	.L28:
+ 612              		.loc 1 128 0
+ 613 032e 17E7     		b	.L29
+ 614              	.L31:
  131:Src/bldc.c    ****         }
- 503              		.loc 1 131 0
- 504 024e 1F4B     		ldr	r3, .L37+12
- 505 0250 1B68     		ldr	r3, [r3]
- 506 0252 0024     		movs	r4, #0
- 507 0254 5C63     		str	r4, [r3, #52]
- 508 0256 1C4A     		ldr	r2, .L37+8
- 509 0258 5289     		ldrh	r2, [r2, #10]
- 510 025a 9A63     		str	r2, [r3, #56]
-ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccDkQJKw.s 			page 13
+ 615              		.loc 1 131 0
+ 616 0330 4F4B     		ldr	r3, .L44
+ 617 0332 1B68     		ldr	r3, [r3]
+ 618 0334 0024     		movs	r4, #0
+ 619 0336 5C63     		str	r4, [r3, #52]
+ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccLvKMjm.s 			page 15
 
 
- 511 025c DC63     		str	r4, [r3, #60]
- 512 025e 1C4D     		ldr	r5, .L37+16
- 513 0260 2246     		mov	r2, r4
- 514 0262 4FF40051 		mov	r1, #8192
- 515 0266 2846     		mov	r0, r5
- 516 0268 FFF7FEFF 		bl	HAL_GPIO_WritePin
- 517              	.LVL32:
- 518 026c 2246     		mov	r2, r4
- 519 026e 4FF48041 		mov	r1, #16384
- 520 0272 2846     		mov	r0, r5
- 521 0274 FFF7FEFF 		bl	HAL_GPIO_WritePin
- 522              	.LVL33:
- 523 0278 0122     		movs	r2, #1
- 524 027a 4FF40041 		mov	r1, #32768
- 525 027e 2846     		mov	r0, r5
- 526 0280 FFF7FEFF 		bl	HAL_GPIO_WritePin
- 527              	.LVL34:
+ 620 0338 4E4A     		ldr	r2, .L44+4
+ 621 033a 5289     		ldrh	r2, [r2, #10]
+ 622 033c 9A63     		str	r2, [r3, #56]
+ 623 033e DC63     		str	r4, [r3, #60]
+ 624 0340 4D4D     		ldr	r5, .L44+8
+ 625 0342 2246     		mov	r2, r4
+ 626 0344 4FF40051 		mov	r1, #8192
+ 627 0348 2846     		mov	r0, r5
+ 628 034a FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 629              	.LVL44:
+ 630 034e 2246     		mov	r2, r4
+ 631 0350 4FF48041 		mov	r1, #16384
+ 632 0354 2846     		mov	r0, r5
+ 633 0356 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 634              	.LVL45:
+ 635 035a 0122     		movs	r2, #1
+ 636 035c 4FF40041 		mov	r1, #32768
+ 637 0360 2846     		mov	r0, r5
+ 638 0362 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 639              	.LVL46:
  133:Src/bldc.c    ****         case 0x03:
- 528              		.loc 1 133 0
- 529 0284 1AE7     		b	.L26
- 530              	.L31:
+ 640              		.loc 1 133 0
+ 641 0366 FBE6     		b	.L29
+ 642              	.L34:
  136:Src/bldc.c    ****         }
- 531              		.loc 1 136 0
- 532 0286 114B     		ldr	r3, .L37+12
- 533 0288 1B68     		ldr	r3, [r3]
- 534 028a 0F4A     		ldr	r2, .L37+8
- 535 028c 5289     		ldrh	r2, [r2, #10]
- 536 028e 5A63     		str	r2, [r3, #52]
- 537 0290 0024     		movs	r4, #0
- 538 0292 9C63     		str	r4, [r3, #56]
- 539 0294 DC63     		str	r4, [r3, #60]
- 540 0296 0E4D     		ldr	r5, .L37+16
- 541 0298 2246     		mov	r2, r4
- 542 029a 4FF40051 		mov	r1, #8192
- 543 029e 2846     		mov	r0, r5
- 544 02a0 FFF7FEFF 		bl	HAL_GPIO_WritePin
- 545              	.LVL35:
- 546 02a4 2246     		mov	r2, r4
- 547 02a6 4FF48041 		mov	r1, #16384
- 548 02aa 2846     		mov	r0, r5
- 549 02ac FFF7FEFF 		bl	HAL_GPIO_WritePin
- 550              	.LVL36:
- 551 02b0 0122     		movs	r2, #1
- 552 02b2 4FF40041 		mov	r1, #32768
- 553 02b6 2846     		mov	r0, r5
- 554 02b8 FFF7FEFF 		bl	HAL_GPIO_WritePin
- 555              	.LVL37:
+ 643              		.loc 1 136 0
+ 644 0368 414B     		ldr	r3, .L44
+ 645 036a 1B68     		ldr	r3, [r3]
+ 646 036c 414A     		ldr	r2, .L44+4
+ 647 036e 5289     		ldrh	r2, [r2, #10]
+ 648 0370 5A63     		str	r2, [r3, #52]
+ 649 0372 0024     		movs	r4, #0
+ 650 0374 9C63     		str	r4, [r3, #56]
+ 651 0376 DC63     		str	r4, [r3, #60]
+ 652 0378 3F4D     		ldr	r5, .L44+8
+ 653 037a 2246     		mov	r2, r4
+ 654 037c 4FF40051 		mov	r1, #8192
+ 655 0380 2846     		mov	r0, r5
+ 656 0382 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 657              	.LVL47:
+ 658 0386 2246     		mov	r2, r4
+ 659 0388 4FF48041 		mov	r1, #16384
+ 660 038c 2846     		mov	r0, r5
+ 661 038e FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 662              	.LVL48:
+ 663 0392 0122     		movs	r2, #1
+ 664 0394 4FF40041 		mov	r1, #32768
+ 665 0398 2846     		mov	r0, r5
+ 666 039a FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 667              	.LVL49:
  138:Src/bldc.c    ****         case 0x02:
- 556              		.loc 1 138 0
- 557 02bc FEE6     		b	.L26
- 558              	.L38:
- 559 02be 00BF     		.align	2
- 560              	.L37:
- 561 02c0 00080240 		.word	1073874944
- 562 02c4 00000000 		.word	hallTree
- 563 02c8 00000000 		.word	stateContr
- 564 02cc 00000000 		.word	htim1
-ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccDkQJKw.s 			page 14
-
-
- 565 02d0 00040240 		.word	1073873920
- 566 02d4 00000140 		.word	1073807360
- 567              	.L30:
+ 668              		.loc 1 138 0
+ 669 039e DFE6     		b	.L29
+ 670              	.L33:
  141:Src/bldc.c    ****         }
- 568              		.loc 1 141 0
- 569 02d8 334B     		ldr	r3, .L39
- 570 02da 1B68     		ldr	r3, [r3]
- 571 02dc 334A     		ldr	r2, .L39+4
- 572 02de 5289     		ldrh	r2, [r2, #10]
- 573 02e0 5A63     		str	r2, [r3, #52]
- 574 02e2 0024     		movs	r4, #0
- 575 02e4 9C63     		str	r4, [r3, #56]
- 576 02e6 DC63     		str	r4, [r3, #60]
- 577 02e8 314D     		ldr	r5, .L39+8
- 578 02ea 2246     		mov	r2, r4
- 579 02ec 4FF40051 		mov	r1, #8192
- 580 02f0 2846     		mov	r0, r5
- 581 02f2 FFF7FEFF 		bl	HAL_GPIO_WritePin
- 582              	.LVL38:
- 583 02f6 2246     		mov	r2, r4
- 584 02f8 4FF40041 		mov	r1, #32768
- 585 02fc 2846     		mov	r0, r5
- 586 02fe FFF7FEFF 		bl	HAL_GPIO_WritePin
- 587              	.LVL39:
- 588 0302 0122     		movs	r2, #1
- 589 0304 4FF48041 		mov	r1, #16384
- 590 0308 2846     		mov	r0, r5
- 591 030a FFF7FEFF 		bl	HAL_GPIO_WritePin
- 592              	.LVL40:
+ 671              		.loc 1 141 0
+ 672 03a0 334B     		ldr	r3, .L44
+ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccLvKMjm.s 			page 16
+
+
+ 673 03a2 1B68     		ldr	r3, [r3]
+ 674 03a4 334A     		ldr	r2, .L44+4
+ 675 03a6 5289     		ldrh	r2, [r2, #10]
+ 676 03a8 5A63     		str	r2, [r3, #52]
+ 677 03aa 0024     		movs	r4, #0
+ 678 03ac 9C63     		str	r4, [r3, #56]
+ 679 03ae DC63     		str	r4, [r3, #60]
+ 680 03b0 314D     		ldr	r5, .L44+8
+ 681 03b2 2246     		mov	r2, r4
+ 682 03b4 4FF40051 		mov	r1, #8192
+ 683 03b8 2846     		mov	r0, r5
+ 684 03ba FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 685              	.LVL50:
+ 686 03be 2246     		mov	r2, r4
+ 687 03c0 4FF40041 		mov	r1, #32768
+ 688 03c4 2846     		mov	r0, r5
+ 689 03c6 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 690              	.LVL51:
+ 691 03ca 0122     		movs	r2, #1
+ 692 03cc 4FF48041 		mov	r1, #16384
+ 693 03d0 2846     		mov	r0, r5
+ 694 03d2 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 695              	.LVL52:
  143:Src/bldc.c    ****         case 0x06:
- 593              		.loc 1 143 0
- 594 030e D5E6     		b	.L26
- 595              	.L34:
+ 696              		.loc 1 143 0
+ 697 03d6 C3E6     		b	.L29
+ 698              	.L37:
  146:Src/bldc.c    ****         }
- 596              		.loc 1 146 0
- 597 0310 254B     		ldr	r3, .L39
- 598 0312 1B68     		ldr	r3, [r3]
- 599 0314 0024     		movs	r4, #0
- 600 0316 5C63     		str	r4, [r3, #52]
- 601 0318 9C63     		str	r4, [r3, #56]
- 602 031a 244A     		ldr	r2, .L39+4
- 603 031c 5289     		ldrh	r2, [r2, #10]
- 604 031e DA63     		str	r2, [r3, #60]
- 605 0320 234D     		ldr	r5, .L39+8
- 606 0322 2246     		mov	r2, r4
- 607 0324 4FF40051 		mov	r1, #8192
- 608 0328 2846     		mov	r0, r5
- 609 032a FFF7FEFF 		bl	HAL_GPIO_WritePin
- 610              	.LVL41:
- 611 032e 2246     		mov	r2, r4
- 612 0330 4FF40041 		mov	r1, #32768
- 613 0334 2846     		mov	r0, r5
- 614 0336 FFF7FEFF 		bl	HAL_GPIO_WritePin
- 615              	.LVL42:
- 616 033a 0122     		movs	r2, #1
- 617 033c 4FF48041 		mov	r1, #16384
- 618 0340 2846     		mov	r0, r5
-ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccDkQJKw.s 			page 15
-
-
- 619 0342 FFF7FEFF 		bl	HAL_GPIO_WritePin
- 620              	.LVL43:
+ 699              		.loc 1 146 0
+ 700 03d8 254B     		ldr	r3, .L44
+ 701 03da 1B68     		ldr	r3, [r3]
+ 702 03dc 0024     		movs	r4, #0
+ 703 03de 5C63     		str	r4, [r3, #52]
+ 704 03e0 9C63     		str	r4, [r3, #56]
+ 705 03e2 244A     		ldr	r2, .L44+4
+ 706 03e4 5289     		ldrh	r2, [r2, #10]
+ 707 03e6 DA63     		str	r2, [r3, #60]
+ 708 03e8 234D     		ldr	r5, .L44+8
+ 709 03ea 2246     		mov	r2, r4
+ 710 03ec 4FF40051 		mov	r1, #8192
+ 711 03f0 2846     		mov	r0, r5
+ 712 03f2 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 713              	.LVL53:
+ 714 03f6 2246     		mov	r2, r4
+ 715 03f8 4FF40041 		mov	r1, #32768
+ 716 03fc 2846     		mov	r0, r5
+ 717 03fe FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 718              	.LVL54:
+ 719 0402 0122     		movs	r2, #1
+ 720 0404 4FF48041 		mov	r1, #16384
+ 721 0408 2846     		mov	r0, r5
+ 722 040a FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 723              	.LVL55:
  148:Src/bldc.c    ****         case 0x04:
- 621              		.loc 1 148 0
- 622 0346 B9E6     		b	.L26
- 623              	.L32:
+ 724              		.loc 1 148 0
+ 725 040e A7E6     		b	.L29
+ 726              	.L35:
+ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccLvKMjm.s 			page 17
+
+
  151:Src/bldc.c    ****         }
- 624              		.loc 1 151 0
- 625 0348 174B     		ldr	r3, .L39
- 626 034a 1B68     		ldr	r3, [r3]
- 627 034c 0024     		movs	r4, #0
- 628 034e 5C63     		str	r4, [r3, #52]
- 629 0350 9C63     		str	r4, [r3, #56]
- 630 0352 164A     		ldr	r2, .L39+4
- 631 0354 5289     		ldrh	r2, [r2, #10]
- 632 0356 DA63     		str	r2, [r3, #60]
- 633 0358 154D     		ldr	r5, .L39+8
- 634 035a 2246     		mov	r2, r4
- 635 035c 4FF48041 		mov	r1, #16384
- 636 0360 2846     		mov	r0, r5
- 637 0362 FFF7FEFF 		bl	HAL_GPIO_WritePin
- 638              	.LVL44:
- 639 0366 2246     		mov	r2, r4
- 640 0368 4FF40041 		mov	r1, #32768
- 641 036c 2846     		mov	r0, r5
- 642 036e FFF7FEFF 		bl	HAL_GPIO_WritePin
- 643              	.LVL45:
- 644 0372 0122     		movs	r2, #1
- 645 0374 4FF40051 		mov	r1, #8192
- 646 0378 2846     		mov	r0, r5
- 647 037a FFF7FEFF 		bl	HAL_GPIO_WritePin
- 648              	.LVL46:
+ 727              		.loc 1 151 0
+ 728 0410 174B     		ldr	r3, .L44
+ 729 0412 1B68     		ldr	r3, [r3]
+ 730 0414 0024     		movs	r4, #0
+ 731 0416 5C63     		str	r4, [r3, #52]
+ 732 0418 9C63     		str	r4, [r3, #56]
+ 733 041a 164A     		ldr	r2, .L44+4
+ 734 041c 5289     		ldrh	r2, [r2, #10]
+ 735 041e DA63     		str	r2, [r3, #60]
+ 736 0420 154D     		ldr	r5, .L44+8
+ 737 0422 2246     		mov	r2, r4
+ 738 0424 4FF48041 		mov	r1, #16384
+ 739 0428 2846     		mov	r0, r5
+ 740 042a FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 741              	.LVL56:
+ 742 042e 2246     		mov	r2, r4
+ 743 0430 4FF40041 		mov	r1, #32768
+ 744 0434 2846     		mov	r0, r5
+ 745 0436 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 746              	.LVL57:
+ 747 043a 0122     		movs	r2, #1
+ 748 043c 4FF40051 		mov	r1, #8192
+ 749 0440 2846     		mov	r0, r5
+ 750 0442 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 751              	.LVL58:
  153:Src/bldc.c    ****         default:
- 649              		.loc 1 153 0
- 650 037e 9DE6     		b	.L26
- 651              	.L27:
+ 752              		.loc 1 153 0
+ 753 0446 8BE6     		b	.L29
+ 754              	.L30:
  156:Src/bldc.c    ****             hallTree.speedRPM = 0;
- 652              		.loc 1 156 0
- 653 0380 0C4C     		ldr	r4, .L39+12
- 654 0382 0022     		movs	r2, #0
- 655 0384 1146     		mov	r1, r2
- 656 0386 2046     		mov	r0, r4
- 657 0388 FFF7FEFF 		bl	TIM_CCxChannelCmd
- 658              	.LVL47:
- 659 038c 0022     		movs	r2, #0
- 660 038e 0421     		movs	r1, #4
- 661 0390 2046     		mov	r0, r4
- 662 0392 FFF7FEFF 		bl	TIM_CCxChannelCmd
- 663              	.LVL48:
- 664 0396 0022     		movs	r2, #0
- 665 0398 0821     		movs	r1, #8
- 666 039a 2046     		mov	r0, r4
- 667 039c FFF7FEFF 		bl	TIM_CCxChannelCmd
- 668              	.LVL49:
+ 755              		.loc 1 156 0
+ 756 0448 0C4C     		ldr	r4, .L44+12
+ 757 044a 0022     		movs	r2, #0
+ 758 044c 1146     		mov	r1, r2
+ 759 044e 2046     		mov	r0, r4
+ 760 0450 FFF7FEFF 		bl	TIM_CCxChannelCmd
+ 761              	.LVL59:
+ 762 0454 0022     		movs	r2, #0
+ 763 0456 0421     		movs	r1, #4
+ 764 0458 2046     		mov	r0, r4
+ 765 045a FFF7FEFF 		bl	TIM_CCxChannelCmd
+ 766              	.LVL60:
+ 767 045e 0022     		movs	r2, #0
+ 768 0460 0821     		movs	r1, #8
+ 769 0462 2046     		mov	r0, r4
+ 770 0464 FFF7FEFF 		bl	TIM_CCxChannelCmd
+ 771              	.LVL61:
  157:Src/bldc.c    ****         }
- 669              		.loc 1 157 0
- 670 03a0 054B     		ldr	r3, .L39+16
-ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccDkQJKw.s 			page 16
-
-
- 671 03a2 0022     		movs	r2, #0
- 672 03a4 9A84     		strh	r2, [r3, #36]	@ movhi
+ 772              		.loc 1 157 0
+ 773 0468 054B     		ldr	r3, .L44+16
+ 774 046a 0022     		movs	r2, #0
+ 775 046c 9A84     		strh	r2, [r3, #36]	@ movhi
  159:Src/bldc.c    ****         }
- 673              		.loc 1 159 0
- 674 03a6 89E6     		b	.L26
- 675              	.L40:
- 676              		.align	2
- 677              	.L39:
- 678 03a8 00000000 		.word	htim1
- 679 03ac 00000000 		.word	stateContr
- 680 03b0 00040240 		.word	1073873920
- 681 03b4 00000140 		.word	1073807360
- 682 03b8 00000000 		.word	hallTree
- 683              		.cfi_endproc
- 684              	.LFE136:
- 686              		.section	.text.offsetCurrentRead,"ax",%progbits
- 687              		.align	1
- 688              		.global	offsetCurrentRead
- 689              		.syntax unified
- 690              		.thumb
- 691              		.thumb_func
- 692              		.fpu fpv4-sp-d16
- 694              	offsetCurrentRead:
- 695              	.LFB137:
+ 776              		.loc 1 159 0
+ 777 046e 77E6     		b	.L29
+ 778              	.L45:
+ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccLvKMjm.s 			page 18
+
+
+ 779              		.align	2
+ 780              	.L44:
+ 781 0470 00000000 		.word	htim1
+ 782 0474 00000000 		.word	stateContr
+ 783 0478 00040240 		.word	1073873920
+ 784 047c 00000140 		.word	1073807360
+ 785 0480 00000000 		.word	hallTree
+ 786              		.cfi_endproc
+ 787              	.LFE136:
+ 789              		.section	.text.offsetCurrentRead,"ax",%progbits
+ 790              		.align	1
+ 791              		.global	offsetCurrentRead
+ 792              		.syntax unified
+ 793              		.thumb
+ 794              		.thumb_func
+ 795              		.fpu fpv4-sp-d16
+ 797              	offsetCurrentRead:
+ 798              	.LFB137:
  164:Src/bldc.c    **** 
  165:Src/bldc.c    **** void offsetCurrentRead(void)
  166:Src/bldc.c    **** {
- 696              		.loc 1 166 0
- 697              		.cfi_startproc
- 698              		@ args = 0, pretend = 0, frame = 0
- 699              		@ frame_needed = 0, uses_anonymous_args = 0
- 700              		@ link register save eliminated.
- 701              	.LVL50:
+ 799              		.loc 1 166 0
+ 800              		.cfi_startproc
+ 801              		@ args = 0, pretend = 0, frame = 0
+ 802              		@ frame_needed = 0, uses_anonymous_args = 0
+ 803              		@ link register save eliminated.
+ 804              	.LVL62:
  167:Src/bldc.c    ****     static uint16_t ADC_PhaseU_Curr[64];
  168:Src/bldc.c    ****     static uint16_t ADC_PhaseV_Curr[64];
  169:Src/bldc.c    ****     static uint16_t ADC_PhaseW_Curr[64];
  170:Src/bldc.c    ****     uint8_t i = 0;
  171:Src/bldc.c    **** 
  172:Src/bldc.c    ****     ADC_PhaseU_Curr[i] = ADC_DualConvertValTab[0];
- 702              		.loc 1 172 0
- 703 0000 164B     		ldr	r3, .L50
- 704 0002 1988     		ldrh	r1, [r3]
- 705 0004 164A     		ldr	r2, .L50+4
- 706 0006 1180     		strh	r1, [r2]	@ movhi
+ 805              		.loc 1 172 0
+ 806 0000 164B     		ldr	r3, .L55
+ 807 0002 1988     		ldrh	r1, [r3]
+ 808 0004 164A     		ldr	r2, .L55+4
+ 809 0006 1180     		strh	r1, [r2]	@ movhi
  173:Src/bldc.c    ****     ADC_PhaseV_Curr[i] = ADC_DualConvertValTab[1];
- 707              		.loc 1 173 0
- 708 0008 5988     		ldrh	r1, [r3, #2]
- 709 000a 164A     		ldr	r2, .L50+8
- 710 000c 1180     		strh	r1, [r2]	@ movhi
+ 810              		.loc 1 173 0
+ 811 0008 5988     		ldrh	r1, [r3, #2]
+ 812 000a 164A     		ldr	r2, .L55+8
+ 813 000c 1180     		strh	r1, [r2]	@ movhi
  174:Src/bldc.c    ****     ADC_PhaseW_Curr[i] = ADC_DualConvertValTab[4];
- 711              		.loc 1 174 0
- 712 000e 1A89     		ldrh	r2, [r3, #8]
- 713 0010 154B     		ldr	r3, .L50+12
- 714 0012 1A80     		strh	r2, [r3]	@ movhi
- 715              	.LVL51:
+ 814              		.loc 1 174 0
+ 815 000e 1A89     		ldrh	r2, [r3, #8]
+ 816 0010 154B     		ldr	r3, .L55+12
+ 817 0012 1A80     		strh	r2, [r3]	@ movhi
+ 818              	.LVL63:
  175:Src/bldc.c    **** 
  176:Src/bldc.c    ****     i++;
-ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccDkQJKw.s 			page 17
-
-
  177:Src/bldc.c    ****     if (i >= 64)
  178:Src/bldc.c    ****     {
  179:Src/bldc.c    ****         i = 0;
  180:Src/bldc.c    ****     }
  181:Src/bldc.c    ****     if (stateContr.driveCar == 0)
- 716              		.loc 1 181 0
- 717 0014 154B     		ldr	r3, .L50+16
- 718 0016 9B78     		ldrb	r3, [r3, #2]	@ zero_extendqisi2
- 719 0018 23B9     		cbnz	r3, .L49
+ 819              		.loc 1 181 0
+ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccLvKMjm.s 			page 19
+
+
+ 820 0014 154B     		ldr	r3, .L55+16
+ 821 0016 9B78     		ldrb	r3, [r3, #2]	@ zero_extendqisi2
+ 822 0018 23B9     		cbnz	r3, .L54
  166:Src/bldc.c    ****     static uint16_t ADC_PhaseU_Curr[64];
- 720              		.loc 1 166 0
- 721 001a 10B4     		push	{r4}
- 722              	.LCFI3:
- 723              		.cfi_def_cfa_offset 4
- 724              		.cfi_offset 4, -4
- 725              	.LBB2:
+ 823              		.loc 1 166 0
+ 824 001a 10B4     		push	{r4}
+ 825              	.LCFI3:
+ 826              		.cfi_def_cfa_offset 4
+ 827              		.cfi_offset 4, -4
+ 828              	.LBB2:
  182:Src/bldc.c    ****     {
  183:Src/bldc.c    ****         uint32_t sum_U = 0;
  184:Src/bldc.c    ****         uint32_t sum_V = 0;
  185:Src/bldc.c    ****         uint32_t sum_W = 0;
- 726              		.loc 1 185 0
- 727 001c 0022     		movs	r2, #0
+ 829              		.loc 1 185 0
+ 830 001c 0022     		movs	r2, #0
  184:Src/bldc.c    ****         uint32_t sum_W = 0;
- 728              		.loc 1 184 0
- 729 001e 1146     		mov	r1, r2
+ 831              		.loc 1 184 0
+ 832 001e 1146     		mov	r1, r2
  183:Src/bldc.c    ****         uint32_t sum_V = 0;
- 730              		.loc 1 183 0
- 731 0020 1046     		mov	r0, r2
- 732 0022 0EE0     		b	.L42
- 733              	.L49:
- 734              	.LCFI4:
- 735              		.cfi_def_cfa_offset 0
- 736              		.cfi_restore 4
- 737              	.LBE2:
- 738 0024 7047     		bx	lr
- 739              	.LVL52:
- 740              	.L44:
- 741              	.LCFI5:
- 742              		.cfi_def_cfa_offset 4
- 743              		.cfi_offset 4, -4
- 744              	.LBB3:
+ 833              		.loc 1 183 0
+ 834 0020 1046     		mov	r0, r2
+ 835 0022 0EE0     		b	.L47
+ 836              	.L54:
+ 837              	.LCFI4:
+ 838              		.cfi_def_cfa_offset 0
+ 839              		.cfi_restore 4
+ 840              	.LBE2:
+ 841 0024 7047     		bx	lr
+ 842              	.LVL64:
+ 843              	.L49:
+ 844              	.LCFI5:
+ 845              		.cfi_def_cfa_offset 4
+ 846              		.cfi_offset 4, -4
+ 847              	.LBB3:
  186:Src/bldc.c    ****         for (i = 0; i < 64; i++)
  187:Src/bldc.c    ****         {
  188:Src/bldc.c    ****             sum_U += ADC_PhaseU_Curr[i];
- 745              		.loc 1 188 0 discriminator 3
- 746 0026 0E4C     		ldr	r4, .L50+4
- 747 0028 34F81340 		ldrh	r4, [r4, r3, lsl #1]
- 748 002c 2044     		add	r0, r0, r4
- 749              	.LVL53:
+ 848              		.loc 1 188 0 discriminator 3
+ 849 0026 0E4C     		ldr	r4, .L55+4
+ 850 0028 34F81340 		ldrh	r4, [r4, r3, lsl #1]
+ 851 002c 2044     		add	r0, r0, r4
+ 852              	.LVL65:
  189:Src/bldc.c    ****             sum_V += ADC_PhaseV_Curr[i];
- 750              		.loc 1 189 0 discriminator 3
- 751 002e 0D4C     		ldr	r4, .L50+8
- 752 0030 34F81340 		ldrh	r4, [r4, r3, lsl #1]
- 753 0034 2144     		add	r1, r1, r4
- 754              	.LVL54:
+ 853              		.loc 1 189 0 discriminator 3
+ 854 002e 0D4C     		ldr	r4, .L55+8
+ 855 0030 34F81340 		ldrh	r4, [r4, r3, lsl #1]
+ 856 0034 2144     		add	r1, r1, r4
+ 857              	.LVL66:
  190:Src/bldc.c    ****             sum_W += ADC_PhaseW_Curr[i];
- 755              		.loc 1 190 0 discriminator 3
-ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccDkQJKw.s 			page 18
+ 858              		.loc 1 190 0 discriminator 3
+ 859 0036 0C4C     		ldr	r4, .L55+12
+ 860 0038 34F81340 		ldrh	r4, [r4, r3, lsl #1]
+ 861 003c 2244     		add	r2, r2, r4
+ 862              	.LVL67:
+ 186:Src/bldc.c    ****         for (i = 0; i < 64; i++)
+ 863              		.loc 1 186 0 discriminator 3
+ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccLvKMjm.s 			page 20
 
 
- 756 0036 0C4C     		ldr	r4, .L50+12
- 757 0038 34F81340 		ldrh	r4, [r4, r3, lsl #1]
- 758 003c 2244     		add	r2, r2, r4
- 759              	.LVL55:
+ 864 003e 0133     		adds	r3, r3, #1
+ 865              	.LVL68:
+ 866 0040 DBB2     		uxtb	r3, r3
+ 867              	.LVL69:
+ 868              	.L47:
  186:Src/bldc.c    ****         for (i = 0; i < 64; i++)
- 760              		.loc 1 186 0 discriminator 3
- 761 003e 0133     		adds	r3, r3, #1
- 762              	.LVL56:
- 763 0040 DBB2     		uxtb	r3, r3
- 764              	.LVL57:
- 765              	.L42:
- 186:Src/bldc.c    ****         for (i = 0; i < 64; i++)
- 766              		.loc 1 186 0 is_stmt 0 discriminator 1
- 767 0042 3F2B     		cmp	r3, #63
- 768 0044 EFD9     		bls	.L44
+ 869              		.loc 1 186 0 is_stmt 0 discriminator 1
+ 870 0042 3F2B     		cmp	r3, #63
+ 871 0044 EFD9     		bls	.L49
  191:Src/bldc.c    ****         }
  192:Src/bldc.c    ****         ADCSampPare.offsetPhaseU_Curr = sum_U / 64;
- 769              		.loc 1 192 0 is_stmt 1
- 770 0046 8009     		lsrs	r0, r0, #6
- 771              	.LVL58:
- 772 0048 094B     		ldr	r3, .L50+20
- 773              	.LVL59:
- 774 004a D861     		str	r0, [r3, #28]
+ 872              		.loc 1 192 0 is_stmt 1
+ 873 0046 8009     		lsrs	r0, r0, #6
+ 874              	.LVL70:
+ 875 0048 094B     		ldr	r3, .L55+20
+ 876              	.LVL71:
+ 877 004a D861     		str	r0, [r3, #28]
  193:Src/bldc.c    ****         ADCSampPare.offsetPhaseV_Curr = sum_V / 64;
- 775              		.loc 1 193 0
- 776 004c 8909     		lsrs	r1, r1, #6
- 777              	.LVL60:
- 778 004e 1962     		str	r1, [r3, #32]
+ 878              		.loc 1 193 0
+ 879 004c 8909     		lsrs	r1, r1, #6
+ 880              	.LVL72:
+ 881 004e 1962     		str	r1, [r3, #32]
  194:Src/bldc.c    ****         ADCSampPare.offsetPhaseW_Curr = sum_W / 64;
- 779              		.loc 1 194 0
- 780 0050 9209     		lsrs	r2, r2, #6
- 781              	.LVL61:
- 782 0052 5A62     		str	r2, [r3, #36]
- 783              	.LBE3:
+ 882              		.loc 1 194 0
+ 883 0050 9209     		lsrs	r2, r2, #6
+ 884              	.LVL73:
+ 885 0052 5A62     		str	r2, [r3, #36]
+ 886              	.LBE3:
  195:Src/bldc.c    ****     }
  196:Src/bldc.c    **** }
- 784              		.loc 1 196 0
- 785 0054 5DF8044B 		ldr	r4, [sp], #4
- 786              	.LCFI6:
- 787              		.cfi_restore 4
- 788              		.cfi_def_cfa_offset 0
- 789 0058 7047     		bx	lr
- 790              	.L51:
- 791 005a 00BF     		.align	2
- 792              	.L50:
- 793 005c 00000000 		.word	ADC_DualConvertValTab
- 794 0060 00000000 		.word	.LANCHOR3
- 795 0064 00000000 		.word	.LANCHOR4
- 796 0068 00000000 		.word	.LANCHOR5
- 797 006c 00000000 		.word	stateContr
- 798 0070 00000000 		.word	.LANCHOR6
- 799              		.cfi_endproc
- 800              	.LFE137:
- 802              		.section	.text.HALL_ADCSample,"ax",%progbits
- 803              		.align	1
- 804              		.global	HALL_ADCSample
- 805              		.syntax unified
-ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccDkQJKw.s 			page 19
-
-
- 806              		.thumb
- 807              		.thumb_func
- 808              		.fpu fpv4-sp-d16
- 810              	HALL_ADCSample:
- 811              	.LFB138:
+ 887              		.loc 1 196 0
+ 888 0054 5DF8044B 		ldr	r4, [sp], #4
+ 889              	.LCFI6:
+ 890              		.cfi_restore 4
+ 891              		.cfi_def_cfa_offset 0
+ 892 0058 7047     		bx	lr
+ 893              	.L56:
+ 894 005a 00BF     		.align	2
+ 895              	.L55:
+ 896 005c 00000000 		.word	ADC_DualConvertValTab
+ 897 0060 00000000 		.word	.LANCHOR3
+ 898 0064 00000000 		.word	.LANCHOR4
+ 899 0068 00000000 		.word	.LANCHOR5
+ 900 006c 00000000 		.word	stateContr
+ 901 0070 00000000 		.word	.LANCHOR6
+ 902              		.cfi_endproc
+ 903              	.LFE137:
+ 905              		.section	.text.HALL_ADCSample,"ax",%progbits
+ 906              		.align	1
+ 907              		.global	HALL_ADCSample
+ 908              		.syntax unified
+ 909              		.thumb
+ 910              		.thumb_func
+ 911              		.fpu fpv4-sp-d16
+ 913              	HALL_ADCSample:
+ 914              	.LFB138:
  197:Src/bldc.c    **** 
+ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccLvKMjm.s 			page 21
+
+
  198:Src/bldc.c    **** void HALL_ADCSample(void)
  199:Src/bldc.c    **** {
- 812              		.loc 1 199 0
- 813              		.cfi_startproc
- 814              		@ args = 0, pretend = 0, frame = 0
- 815              		@ frame_needed = 0, uses_anonymous_args = 0
- 816              		@ link register save eliminated.
- 817 0000 30B4     		push	{r4, r5}
- 818              	.LCFI7:
- 819              		.cfi_def_cfa_offset 8
- 820              		.cfi_offset 4, -8
- 821              		.cfi_offset 5, -4
+ 915              		.loc 1 199 0
+ 916              		.cfi_startproc
+ 917              		@ args = 0, pretend = 0, frame = 0
+ 918              		@ frame_needed = 0, uses_anonymous_args = 0
+ 919              		@ link register save eliminated.
+ 920 0000 30B4     		push	{r4, r5}
+ 921              	.LCFI7:
+ 922              		.cfi_def_cfa_offset 8
+ 923              		.cfi_offset 4, -8
+ 924              		.cfi_offset 5, -4
  200:Src/bldc.c    ****     ADCSampPare.phaseUCurr = ADC_DualConvertValTab[0] - ADCSampPare.offsetPhaseU_Curr;
- 822              		.loc 1 200 0
- 823 0002 1948     		ldr	r0, .L62
- 824 0004 0188     		ldrh	r1, [r0]
- 825 0006 194B     		ldr	r3, .L62+4
- 826 0008 DA69     		ldr	r2, [r3, #28]
- 827 000a 891A     		subs	r1, r1, r2
- 828 000c D960     		str	r1, [r3, #12]
+ 925              		.loc 1 200 0
+ 926 0002 1948     		ldr	r0, .L67
+ 927 0004 0188     		ldrh	r1, [r0]
+ 928 0006 194B     		ldr	r3, .L67+4
+ 929 0008 DA69     		ldr	r2, [r3, #28]
+ 930 000a 891A     		subs	r1, r1, r2
+ 931 000c D960     		str	r1, [r3, #12]
  201:Src/bldc.c    ****     ADCSampPare.phaseVCurr = ADC_DualConvertValTab[1] - ADCSampPare.offsetPhaseV_Curr;
- 829              		.loc 1 201 0
- 830 000e 4288     		ldrh	r2, [r0, #2]
- 831 0010 1C6A     		ldr	r4, [r3, #32]
- 832 0012 121B     		subs	r2, r2, r4
- 833 0014 1A61     		str	r2, [r3, #16]
+ 932              		.loc 1 201 0
+ 933 000e 4288     		ldrh	r2, [r0, #2]
+ 934 0010 1C6A     		ldr	r4, [r3, #32]
+ 935 0012 121B     		subs	r2, r2, r4
+ 936 0014 1A61     		str	r2, [r3, #16]
  202:Src/bldc.c    ****     ADCSampPare.phaseWCurr = ADC_DualConvertValTab[2] - ADCSampPare.offsetPhaseW_Curr;
- 834              		.loc 1 202 0
- 835 0016 8488     		ldrh	r4, [r0, #4]
- 836 0018 5D6A     		ldr	r5, [r3, #36]
- 837 001a 641B     		subs	r4, r4, r5
- 838 001c 9C60     		str	r4, [r3, #8]
+ 937              		.loc 1 202 0
+ 938 0016 8488     		ldrh	r4, [r0, #4]
+ 939 0018 5D6A     		ldr	r5, [r3, #36]
+ 940 001a 641B     		subs	r4, r4, r5
+ 941 001c 9C60     		str	r4, [r3, #8]
  203:Src/bldc.c    ****     ADCSampPare.busVoltage = ADC_DualConvertValTab[3];
- 839              		.loc 1 203 0
- 840 001e C088     		ldrh	r0, [r0, #6]
- 841 0020 5861     		str	r0, [r3, #20]
+ 942              		.loc 1 203 0
+ 943 001e C088     		ldrh	r0, [r0, #6]
+ 944 0020 5861     		str	r0, [r3, #20]
  204:Src/bldc.c    ****     switch (hallTree.hallState)
- 842              		.loc 1 204 0
- 843 0022 134B     		ldr	r3, .L62+8
- 844 0024 DB78     		ldrb	r3, [r3, #3]	@ zero_extendqisi2
- 845 0026 013B     		subs	r3, r3, #1
- 846 0028 052B     		cmp	r3, #5
- 847 002a 07D8     		bhi	.L52
- 848 002c DFE803F0 		tbb	[pc, r3]
- 849              	.L55:
- 850 0030 08       		.byte	(.L54-.L55)/2
- 851 0031 10       		.byte	(.L56-.L55)/2
- 852 0032 0C       		.byte	(.L57-.L55)/2
- 853 0033 18       		.byte	(.L58-.L55)/2
- 854 0034 03       		.byte	(.L59-.L55)/2
- 855 0035 14       		.byte	(.L60-.L55)/2
-ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccDkQJKw.s 			page 20
-
-
- 856              		.p2align 1
- 857              	.L59:
+ 945              		.loc 1 204 0
+ 946 0022 134B     		ldr	r3, .L67+8
+ 947 0024 DB78     		ldrb	r3, [r3, #3]	@ zero_extendqisi2
+ 948 0026 013B     		subs	r3, r3, #1
+ 949 0028 052B     		cmp	r3, #5
+ 950 002a 07D8     		bhi	.L57
+ 951 002c DFE803F0 		tbb	[pc, r3]
+ 952              	.L60:
+ 953 0030 08       		.byte	(.L59-.L60)/2
+ 954 0031 10       		.byte	(.L61-.L60)/2
+ 955 0032 0C       		.byte	(.L62-.L60)/2
+ 956 0033 18       		.byte	(.L63-.L60)/2
+ 957 0034 03       		.byte	(.L64-.L60)/2
+ 958 0035 14       		.byte	(.L65-.L60)/2
+ 959              		.p2align 1
+ 960              	.L64:
  205:Src/bldc.c    ****     {
  206:Src/bldc.c    ****     case 0x05:
  207:Src/bldc.c    ****     {
  208:Src/bldc.c    ****         ADCSampPare.busCurr = ADCSampPare.phaseVCurr + ADCSampPare.phaseWCurr;
- 858              		.loc 1 208 0
- 859 0036 2244     		add	r2, r2, r4
- 860 0038 0C4B     		ldr	r3, .L62+4
- 861 003a 5A60     		str	r2, [r3, #4]
- 862              	.L52:
+ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccLvKMjm.s 			page 22
+
+
+ 961              		.loc 1 208 0
+ 962 0036 2244     		add	r2, r2, r4
+ 963 0038 0C4B     		ldr	r3, .L67+4
+ 964 003a 5A60     		str	r2, [r3, #4]
+ 965              	.L57:
  209:Src/bldc.c    ****     }
  210:Src/bldc.c    ****     break;
  211:Src/bldc.c    ****     case 0x01:
@@ -1186,674 +1300,678 @@ ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccDkQJKw.s 			page 1
  240:Src/bldc.c    ****     break;
  241:Src/bldc.c    ****     }
  242:Src/bldc.c    **** }
- 863              		.loc 1 242 0
- 864 003c 30BC     		pop	{r4, r5}
- 865              	.LCFI8:
- 866              		.cfi_remember_state
- 867              		.cfi_restore 5
- 868              		.cfi_restore 4
- 869              		.cfi_def_cfa_offset 0
- 870 003e 7047     		bx	lr
- 871              	.L54:
- 872              	.LCFI9:
- 873              		.cfi_restore_state
+ 966              		.loc 1 242 0
+ 967 003c 30BC     		pop	{r4, r5}
+ 968              	.LCFI8:
+ 969              		.cfi_remember_state
+ 970              		.cfi_restore 5
+ 971              		.cfi_restore 4
+ 972              		.cfi_def_cfa_offset 0
+ 973 003e 7047     		bx	lr
+ 974              	.L59:
+ 975              	.LCFI9:
+ 976              		.cfi_restore_state
  213:Src/bldc.c    ****     }
-ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccDkQJKw.s 			page 21
-
-
- 874              		.loc 1 213 0
- 875 0040 2144     		add	r1, r1, r4
- 876 0042 0A4B     		ldr	r3, .L62+4
- 877 0044 5960     		str	r1, [r3, #4]
+ 977              		.loc 1 213 0
+ 978 0040 2144     		add	r1, r1, r4
+ 979 0042 0A4B     		ldr	r3, .L67+4
+ 980 0044 5960     		str	r1, [r3, #4]
  215:Src/bldc.c    ****     case 0x03:
- 878              		.loc 1 215 0
- 879 0046 F9E7     		b	.L52
- 880              	.L57:
+ 981              		.loc 1 215 0
+ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccLvKMjm.s 			page 23
+
+
+ 982 0046 F9E7     		b	.L57
+ 983              	.L62:
  218:Src/bldc.c    ****     }
- 881              		.loc 1 218 0
- 882 0048 2244     		add	r2, r2, r4
- 883 004a 084B     		ldr	r3, .L62+4
- 884 004c 5A60     		str	r2, [r3, #4]
+ 984              		.loc 1 218 0
+ 985 0048 2244     		add	r2, r2, r4
+ 986 004a 084B     		ldr	r3, .L67+4
+ 987 004c 5A60     		str	r2, [r3, #4]
  220:Src/bldc.c    ****     case 0x02:
- 885              		.loc 1 220 0
- 886 004e F5E7     		b	.L52
- 887              	.L56:
+ 988              		.loc 1 220 0
+ 989 004e F5E7     		b	.L57
+ 990              	.L61:
  223:Src/bldc.c    ****     }
- 888              		.loc 1 223 0
- 889 0050 0A44     		add	r2, r2, r1
- 890 0052 064B     		ldr	r3, .L62+4
- 891 0054 5A60     		str	r2, [r3, #4]
+ 991              		.loc 1 223 0
+ 992 0050 0A44     		add	r2, r2, r1
+ 993 0052 064B     		ldr	r3, .L67+4
+ 994 0054 5A60     		str	r2, [r3, #4]
  225:Src/bldc.c    ****     case 0x06:
- 892              		.loc 1 225 0
- 893 0056 F1E7     		b	.L52
- 894              	.L60:
+ 995              		.loc 1 225 0
+ 996 0056 F1E7     		b	.L57
+ 997              	.L65:
  228:Src/bldc.c    ****     }
- 895              		.loc 1 228 0
- 896 0058 0A44     		add	r2, r2, r1
- 897 005a 044B     		ldr	r3, .L62+4
- 898 005c 5A60     		str	r2, [r3, #4]
+ 998              		.loc 1 228 0
+ 999 0058 0A44     		add	r2, r2, r1
+ 1000 005a 044B     		ldr	r3, .L67+4
+ 1001 005c 5A60     		str	r2, [r3, #4]
  230:Src/bldc.c    ****     case 0x04:
- 899              		.loc 1 230 0
- 900 005e EDE7     		b	.L52
- 901              	.L58:
+ 1002              		.loc 1 230 0
+ 1003 005e EDE7     		b	.L57
+ 1004              	.L63:
  233:Src/bldc.c    ****     }
- 902              		.loc 1 233 0
- 903 0060 2244     		add	r2, r2, r4
- 904 0062 024B     		ldr	r3, .L62+4
- 905 0064 5A60     		str	r2, [r3, #4]
- 906              		.loc 1 242 0
- 907 0066 E9E7     		b	.L52
- 908              	.L63:
- 909              		.align	2
- 910              	.L62:
- 911 0068 00000000 		.word	ADC_DualConvertValTab
- 912 006c 00000000 		.word	.LANCHOR6
- 913 0070 00000000 		.word	hallTree
- 914              		.cfi_endproc
- 915              	.LFE138:
- 917              		.section	.text.motorTestProgram,"ax",%progbits
- 918              		.align	1
- 919              		.global	motorTestProgram
- 920              		.syntax unified
- 921              		.thumb
- 922              		.thumb_func
- 923              		.fpu fpv4-sp-d16
-ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccDkQJKw.s 			page 22
-
-
- 925              	motorTestProgram:
- 926              	.LFB139:
+ 1005              		.loc 1 233 0
+ 1006 0060 2244     		add	r2, r2, r4
+ 1007 0062 024B     		ldr	r3, .L67+4
+ 1008 0064 5A60     		str	r2, [r3, #4]
+ 1009              		.loc 1 242 0
+ 1010 0066 E9E7     		b	.L57
+ 1011              	.L68:
+ 1012              		.align	2
+ 1013              	.L67:
+ 1014 0068 00000000 		.word	ADC_DualConvertValTab
+ 1015 006c 00000000 		.word	.LANCHOR6
+ 1016 0070 00000000 		.word	hallTree
+ 1017              		.cfi_endproc
+ 1018              	.LFE138:
+ 1020              		.section	.text.motorTestProgram,"ax",%progbits
+ 1021              		.align	1
+ 1022              		.global	motorTestProgram
+ 1023              		.syntax unified
+ 1024              		.thumb
+ 1025              		.thumb_func
+ 1026              		.fpu fpv4-sp-d16
+ 1028              	motorTestProgram:
+ 1029              	.LFB139:
  243:Src/bldc.c    **** 
  244:Src/bldc.c    **** void motorTestProgram(void)
  245:Src/bldc.c    **** {
- 927              		.loc 1 245 0
- 928              		.cfi_startproc
- 929              		@ args = 0, pretend = 0, frame = 0
- 930              		@ frame_needed = 0, uses_anonymous_args = 0
- 931 0000 2DE9F047 		push	{r4, r5, r6, r7, r8, r9, r10, lr}
- 932              	.LCFI10:
- 933              		.cfi_def_cfa_offset 32
- 934              		.cfi_offset 4, -32
- 935              		.cfi_offset 5, -28
- 936              		.cfi_offset 6, -24
- 937              		.cfi_offset 7, -20
- 938              		.cfi_offset 8, -16
- 939              		.cfi_offset 9, -12
- 940              		.cfi_offset 10, -8
- 941              		.cfi_offset 14, -4
+ 1030              		.loc 1 245 0
+ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccLvKMjm.s 			page 24
+
+
+ 1031              		.cfi_startproc
+ 1032              		@ args = 0, pretend = 0, frame = 0
+ 1033              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1034 0000 2DE9F047 		push	{r4, r5, r6, r7, r8, r9, r10, lr}
+ 1035              	.LCFI10:
+ 1036              		.cfi_def_cfa_offset 32
+ 1037              		.cfi_offset 4, -32
+ 1038              		.cfi_offset 5, -28
+ 1039              		.cfi_offset 6, -24
+ 1040              		.cfi_offset 7, -20
+ 1041              		.cfi_offset 8, -16
+ 1042              		.cfi_offset 9, -12
+ 1043              		.cfi_offset 10, -8
+ 1044              		.cfi_offset 14, -4
  246:Src/bldc.c    ****     stateContr.duty = 1399;
- 942              		.loc 1 246 0
- 943 0004 A44F     		ldr	r7, .L66
- 944 0006 40F27753 		movw	r3, #1399
- 945 000a 7B81     		strh	r3, [r7, #10]	@ movhi
+ 1045              		.loc 1 246 0
+ 1046 0004 A44F     		ldr	r7, .L71
+ 1047 0006 40F27753 		movw	r3, #1399
+ 1048 000a 7B81     		strh	r3, [r7, #10]	@ movhi
  247:Src/bldc.c    ****     HAL_Delay(300);
- 946              		.loc 1 247 0
- 947 000c 4FF49670 		mov	r0, #300
- 948 0010 FFF7FEFF 		bl	HAL_Delay
- 949              	.LVL62:
+ 1049              		.loc 1 247 0
+ 1050 000c 4FF49670 		mov	r0, #300
+ 1051 0010 FFF7FEFF 		bl	HAL_Delay
+ 1052              	.LVL74:
  248:Src/bldc.c    ****     MOS_Q16PWM;
- 950              		.loc 1 248 0
- 951 0014 DFF8A482 		ldr	r8, .L66+36
- 952 0018 D8F80030 		ldr	r3, [r8]
- 953 001c 7A89     		ldrh	r2, [r7, #10]
- 954 001e 5A63     		str	r2, [r3, #52]
- 955 0020 0024     		movs	r4, #0
- 956 0022 9C63     		str	r4, [r3, #56]
- 957 0024 DC63     		str	r4, [r3, #60]
- 958 0026 9D4E     		ldr	r6, .L66+4
- 959 0028 2246     		mov	r2, r4
- 960 002a 4FF40051 		mov	r1, #8192
- 961 002e 3046     		mov	r0, r6
- 962 0030 FFF7FEFF 		bl	HAL_GPIO_WritePin
- 963              	.LVL63:
- 964 0034 2246     		mov	r2, r4
- 965 0036 4FF48041 		mov	r1, #16384
- 966 003a 3046     		mov	r0, r6
- 967 003c FFF7FEFF 		bl	HAL_GPIO_WritePin
- 968              	.LVL64:
- 969 0040 0122     		movs	r2, #1
- 970 0042 4FF40041 		mov	r1, #32768
- 971 0046 3046     		mov	r0, r6
- 972 0048 FFF7FEFF 		bl	HAL_GPIO_WritePin
- 973              	.LVL65:
+ 1053              		.loc 1 248 0
+ 1054 0014 DFF8A482 		ldr	r8, .L71+36
+ 1055 0018 D8F80030 		ldr	r3, [r8]
+ 1056 001c 7A89     		ldrh	r2, [r7, #10]
+ 1057 001e 5A63     		str	r2, [r3, #52]
+ 1058 0020 0024     		movs	r4, #0
+ 1059 0022 9C63     		str	r4, [r3, #56]
+ 1060 0024 DC63     		str	r4, [r3, #60]
+ 1061 0026 9D4E     		ldr	r6, .L71+4
+ 1062 0028 2246     		mov	r2, r4
+ 1063 002a 4FF40051 		mov	r1, #8192
+ 1064 002e 3046     		mov	r0, r6
+ 1065 0030 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 1066              	.LVL75:
+ 1067 0034 2246     		mov	r2, r4
+ 1068 0036 4FF48041 		mov	r1, #16384
+ 1069 003a 3046     		mov	r0, r6
+ 1070 003c FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 1071              	.LVL76:
+ 1072 0040 0122     		movs	r2, #1
+ 1073 0042 4FF40041 		mov	r1, #32768
+ 1074 0046 3046     		mov	r0, r6
+ 1075 0048 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 1076              	.LVL77:
  249:Src/bldc.c    ****     HAL_Delay(300);
- 974              		.loc 1 249 0
-ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccDkQJKw.s 			page 23
-
-
- 975 004c 4FF49670 		mov	r0, #300
- 976 0050 FFF7FEFF 		bl	HAL_Delay
- 977              	.LVL66:
+ 1077              		.loc 1 249 0
+ 1078 004c 4FF49670 		mov	r0, #300
+ 1079 0050 FFF7FEFF 		bl	HAL_Delay
+ 1080              	.LVL78:
  250:Src/bldc.c    ****     myPrint("Q16PWM HALL TABLE IS %d %d %d \r\n",HALL_U_STATUS,HALL_V_STATUS,HALL_W_STATUS);
- 978              		.loc 1 250 0
- 979 0054 924D     		ldr	r5, .L66+8
- 980 0056 4021     		movs	r1, #64
- 981 0058 2846     		mov	r0, r5
- 982 005a FFF7FEFF 		bl	HAL_GPIO_ReadPin
- 983              	.LVL67:
- 984 005e 8146     		mov	r9, r0
- 985 0060 8021     		movs	r1, #128
- 986 0062 2846     		mov	r0, r5
- 987 0064 FFF7FEFF 		bl	HAL_GPIO_ReadPin
- 988              	.LVL68:
- 989 0068 8246     		mov	r10, r0
- 990 006a 4FF48071 		mov	r1, #256
- 991 006e 2846     		mov	r0, r5
- 992 0070 FFF7FEFF 		bl	HAL_GPIO_ReadPin
- 993              	.LVL69:
- 994 0074 0346     		mov	r3, r0
- 995 0076 5246     		mov	r2, r10
- 996 0078 4946     		mov	r1, r9
- 997 007a 8A48     		ldr	r0, .L66+12
- 998 007c FFF7FEFF 		bl	myPrint
- 999              	.LVL70:
+ 1081              		.loc 1 250 0
+ 1082 0054 924D     		ldr	r5, .L71+8
+ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccLvKMjm.s 			page 25
+
+
+ 1083 0056 4021     		movs	r1, #64
+ 1084 0058 2846     		mov	r0, r5
+ 1085 005a FFF7FEFF 		bl	HAL_GPIO_ReadPin
+ 1086              	.LVL79:
+ 1087 005e 8146     		mov	r9, r0
+ 1088 0060 8021     		movs	r1, #128
+ 1089 0062 2846     		mov	r0, r5
+ 1090 0064 FFF7FEFF 		bl	HAL_GPIO_ReadPin
+ 1091              	.LVL80:
+ 1092 0068 8246     		mov	r10, r0
+ 1093 006a 4FF48071 		mov	r1, #256
+ 1094 006e 2846     		mov	r0, r5
+ 1095 0070 FFF7FEFF 		bl	HAL_GPIO_ReadPin
+ 1096              	.LVL81:
+ 1097 0074 0346     		mov	r3, r0
+ 1098 0076 5246     		mov	r2, r10
+ 1099 0078 4946     		mov	r1, r9
+ 1100 007a 8A48     		ldr	r0, .L71+12
+ 1101 007c FFF7FEFF 		bl	myPrint
+ 1102              	.LVL82:
  251:Src/bldc.c    ****     HAL_Delay(300);
- 1000              		.loc 1 251 0
- 1001 0080 4FF49670 		mov	r0, #300
- 1002 0084 FFF7FEFF 		bl	HAL_Delay
- 1003              	.LVL71:
+ 1103              		.loc 1 251 0
+ 1104 0080 4FF49670 		mov	r0, #300
+ 1105 0084 FFF7FEFF 		bl	HAL_Delay
+ 1106              	.LVL83:
  252:Src/bldc.c    ****     MOS_Q63PWM;
- 1004              		.loc 1 252 0
- 1005 0088 D8F80030 		ldr	r3, [r8]
- 1006 008c 5C63     		str	r4, [r3, #52]
- 1007 008e 7A89     		ldrh	r2, [r7, #10]
- 1008 0090 9A63     		str	r2, [r3, #56]
- 1009 0092 DC63     		str	r4, [r3, #60]
- 1010 0094 2246     		mov	r2, r4
- 1011 0096 4FF40051 		mov	r1, #8192
- 1012 009a 3046     		mov	r0, r6
- 1013 009c FFF7FEFF 		bl	HAL_GPIO_WritePin
- 1014              	.LVL72:
- 1015 00a0 2246     		mov	r2, r4
- 1016 00a2 4FF48041 		mov	r1, #16384
- 1017 00a6 3046     		mov	r0, r6
- 1018 00a8 FFF7FEFF 		bl	HAL_GPIO_WritePin
- 1019              	.LVL73:
- 1020 00ac 0122     		movs	r2, #1
- 1021 00ae 4FF40041 		mov	r1, #32768
- 1022 00b2 3046     		mov	r0, r6
- 1023 00b4 FFF7FEFF 		bl	HAL_GPIO_WritePin
- 1024              	.LVL74:
+ 1107              		.loc 1 252 0
+ 1108 0088 D8F80030 		ldr	r3, [r8]
+ 1109 008c 5C63     		str	r4, [r3, #52]
+ 1110 008e 7A89     		ldrh	r2, [r7, #10]
+ 1111 0090 9A63     		str	r2, [r3, #56]
+ 1112 0092 DC63     		str	r4, [r3, #60]
+ 1113 0094 2246     		mov	r2, r4
+ 1114 0096 4FF40051 		mov	r1, #8192
+ 1115 009a 3046     		mov	r0, r6
+ 1116 009c FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 1117              	.LVL84:
+ 1118 00a0 2246     		mov	r2, r4
+ 1119 00a2 4FF48041 		mov	r1, #16384
+ 1120 00a6 3046     		mov	r0, r6
+ 1121 00a8 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 1122              	.LVL85:
+ 1123 00ac 0122     		movs	r2, #1
+ 1124 00ae 4FF40041 		mov	r1, #32768
+ 1125 00b2 3046     		mov	r0, r6
+ 1126 00b4 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 1127              	.LVL86:
  253:Src/bldc.c    ****     HAL_Delay(300);
- 1025              		.loc 1 253 0
- 1026 00b8 4FF49670 		mov	r0, #300
- 1027 00bc FFF7FEFF 		bl	HAL_Delay
-ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccDkQJKw.s 			page 24
-
-
- 1028              	.LVL75:
+ 1128              		.loc 1 253 0
+ 1129 00b8 4FF49670 		mov	r0, #300
+ 1130 00bc FFF7FEFF 		bl	HAL_Delay
+ 1131              	.LVL87:
  254:Src/bldc.c    ****     myPrint("Q63PWM HALL TABLE IS %d %d %d \r\n",HALL_U_STATUS,HALL_V_STATUS,HALL_W_STATUS);
- 1029              		.loc 1 254 0
- 1030 00c0 4021     		movs	r1, #64
- 1031 00c2 2846     		mov	r0, r5
- 1032 00c4 FFF7FEFF 		bl	HAL_GPIO_ReadPin
- 1033              	.LVL76:
- 1034 00c8 8146     		mov	r9, r0
- 1035 00ca 8021     		movs	r1, #128
- 1036 00cc 2846     		mov	r0, r5
- 1037 00ce FFF7FEFF 		bl	HAL_GPIO_ReadPin
- 1038              	.LVL77:
- 1039 00d2 8246     		mov	r10, r0
- 1040 00d4 4FF48071 		mov	r1, #256
- 1041 00d8 2846     		mov	r0, r5
- 1042 00da FFF7FEFF 		bl	HAL_GPIO_ReadPin
- 1043              	.LVL78:
- 1044 00de 0346     		mov	r3, r0
- 1045 00e0 5246     		mov	r2, r10
- 1046 00e2 4946     		mov	r1, r9
- 1047 00e4 7048     		ldr	r0, .L66+16
- 1048 00e6 FFF7FEFF 		bl	myPrint
- 1049              	.LVL79:
+ 1132              		.loc 1 254 0
+ 1133 00c0 4021     		movs	r1, #64
+ 1134 00c2 2846     		mov	r0, r5
+ 1135 00c4 FFF7FEFF 		bl	HAL_GPIO_ReadPin
+ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccLvKMjm.s 			page 26
+
+
+ 1136              	.LVL88:
+ 1137 00c8 8146     		mov	r9, r0
+ 1138 00ca 8021     		movs	r1, #128
+ 1139 00cc 2846     		mov	r0, r5
+ 1140 00ce FFF7FEFF 		bl	HAL_GPIO_ReadPin
+ 1141              	.LVL89:
+ 1142 00d2 8246     		mov	r10, r0
+ 1143 00d4 4FF48071 		mov	r1, #256
+ 1144 00d8 2846     		mov	r0, r5
+ 1145 00da FFF7FEFF 		bl	HAL_GPIO_ReadPin
+ 1146              	.LVL90:
+ 1147 00de 0346     		mov	r3, r0
+ 1148 00e0 5246     		mov	r2, r10
+ 1149 00e2 4946     		mov	r1, r9
+ 1150 00e4 7048     		ldr	r0, .L71+16
+ 1151 00e6 FFF7FEFF 		bl	myPrint
+ 1152              	.LVL91:
  255:Src/bldc.c    ****     HAL_Delay(300);
- 1050              		.loc 1 255 0
- 1051 00ea 4FF49670 		mov	r0, #300
- 1052 00ee FFF7FEFF 		bl	HAL_Delay
- 1053              	.LVL80:
+ 1153              		.loc 1 255 0
+ 1154 00ea 4FF49670 		mov	r0, #300
+ 1155 00ee FFF7FEFF 		bl	HAL_Delay
+ 1156              	.LVL92:
  256:Src/bldc.c    ****     MOS_Q32PWM;
- 1054              		.loc 1 256 0
- 1055 00f2 D8F80030 		ldr	r3, [r8]
- 1056 00f6 5C63     		str	r4, [r3, #52]
- 1057 00f8 7A89     		ldrh	r2, [r7, #10]
- 1058 00fa 9A63     		str	r2, [r3, #56]
- 1059 00fc DC63     		str	r4, [r3, #60]
- 1060 00fe 2246     		mov	r2, r4
- 1061 0100 4FF48041 		mov	r1, #16384
- 1062 0104 3046     		mov	r0, r6
- 1063 0106 FFF7FEFF 		bl	HAL_GPIO_WritePin
- 1064              	.LVL81:
- 1065 010a 2246     		mov	r2, r4
- 1066 010c 4FF40041 		mov	r1, #32768
- 1067 0110 3046     		mov	r0, r6
- 1068 0112 FFF7FEFF 		bl	HAL_GPIO_WritePin
- 1069              	.LVL82:
- 1070 0116 0122     		movs	r2, #1
- 1071 0118 4FF40051 		mov	r1, #8192
- 1072 011c 3046     		mov	r0, r6
- 1073 011e FFF7FEFF 		bl	HAL_GPIO_WritePin
- 1074              	.LVL83:
+ 1157              		.loc 1 256 0
+ 1158 00f2 D8F80030 		ldr	r3, [r8]
+ 1159 00f6 5C63     		str	r4, [r3, #52]
+ 1160 00f8 7A89     		ldrh	r2, [r7, #10]
+ 1161 00fa 9A63     		str	r2, [r3, #56]
+ 1162 00fc DC63     		str	r4, [r3, #60]
+ 1163 00fe 2246     		mov	r2, r4
+ 1164 0100 4FF48041 		mov	r1, #16384
+ 1165 0104 3046     		mov	r0, r6
+ 1166 0106 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 1167              	.LVL93:
+ 1168 010a 2246     		mov	r2, r4
+ 1169 010c 4FF40041 		mov	r1, #32768
+ 1170 0110 3046     		mov	r0, r6
+ 1171 0112 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 1172              	.LVL94:
+ 1173 0116 0122     		movs	r2, #1
+ 1174 0118 4FF40051 		mov	r1, #8192
+ 1175 011c 3046     		mov	r0, r6
+ 1176 011e FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 1177              	.LVL95:
  257:Src/bldc.c    ****     HAL_Delay(300);
- 1075              		.loc 1 257 0
- 1076 0122 4FF49670 		mov	r0, #300
- 1077 0126 FFF7FEFF 		bl	HAL_Delay
- 1078              	.LVL84:
+ 1178              		.loc 1 257 0
+ 1179 0122 4FF49670 		mov	r0, #300
+ 1180 0126 FFF7FEFF 		bl	HAL_Delay
+ 1181              	.LVL96:
  258:Src/bldc.c    ****     myPrint("Q32PWM HALL TABLE IS %d %d %d \r\n",HALL_U_STATUS,HALL_V_STATUS,HALL_W_STATUS);
- 1079              		.loc 1 258 0
-ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccDkQJKw.s 			page 25
+ 1182              		.loc 1 258 0
+ 1183 012a 4021     		movs	r1, #64
+ 1184 012c 2846     		mov	r0, r5
+ 1185 012e FFF7FEFF 		bl	HAL_GPIO_ReadPin
+ 1186              	.LVL97:
+ 1187 0132 8146     		mov	r9, r0
+ 1188 0134 8021     		movs	r1, #128
+ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccLvKMjm.s 			page 27
 
 
- 1080 012a 4021     		movs	r1, #64
- 1081 012c 2846     		mov	r0, r5
- 1082 012e FFF7FEFF 		bl	HAL_GPIO_ReadPin
- 1083              	.LVL85:
- 1084 0132 8146     		mov	r9, r0
- 1085 0134 8021     		movs	r1, #128
- 1086 0136 2846     		mov	r0, r5
- 1087 0138 FFF7FEFF 		bl	HAL_GPIO_ReadPin
- 1088              	.LVL86:
- 1089 013c 8246     		mov	r10, r0
- 1090 013e 4FF48071 		mov	r1, #256
- 1091 0142 2846     		mov	r0, r5
- 1092 0144 FFF7FEFF 		bl	HAL_GPIO_ReadPin
- 1093              	.LVL87:
- 1094 0148 0346     		mov	r3, r0
- 1095 014a 5246     		mov	r2, r10
- 1096 014c 4946     		mov	r1, r9
- 1097 014e 5748     		ldr	r0, .L66+20
- 1098 0150 FFF7FEFF 		bl	myPrint
- 1099              	.LVL88:
+ 1189 0136 2846     		mov	r0, r5
+ 1190 0138 FFF7FEFF 		bl	HAL_GPIO_ReadPin
+ 1191              	.LVL98:
+ 1192 013c 8246     		mov	r10, r0
+ 1193 013e 4FF48071 		mov	r1, #256
+ 1194 0142 2846     		mov	r0, r5
+ 1195 0144 FFF7FEFF 		bl	HAL_GPIO_ReadPin
+ 1196              	.LVL99:
+ 1197 0148 0346     		mov	r3, r0
+ 1198 014a 5246     		mov	r2, r10
+ 1199 014c 4946     		mov	r1, r9
+ 1200 014e 5748     		ldr	r0, .L71+20
+ 1201 0150 FFF7FEFF 		bl	myPrint
+ 1202              	.LVL100:
  259:Src/bldc.c    ****     HAL_Delay(300);
- 1100              		.loc 1 259 0
- 1101 0154 4FF49670 		mov	r0, #300
- 1102 0158 FFF7FEFF 		bl	HAL_Delay
- 1103              	.LVL89:
+ 1203              		.loc 1 259 0
+ 1204 0154 4FF49670 		mov	r0, #300
+ 1205 0158 FFF7FEFF 		bl	HAL_Delay
+ 1206              	.LVL101:
  260:Src/bldc.c    ****     MOS_Q25PWM;
- 1104              		.loc 1 260 0
- 1105 015c D8F80030 		ldr	r3, [r8]
- 1106 0160 5C63     		str	r4, [r3, #52]
- 1107 0162 9C63     		str	r4, [r3, #56]
- 1108 0164 7A89     		ldrh	r2, [r7, #10]
- 1109 0166 DA63     		str	r2, [r3, #60]
- 1110 0168 2246     		mov	r2, r4
- 1111 016a 4FF48041 		mov	r1, #16384
- 1112 016e 3046     		mov	r0, r6
- 1113 0170 FFF7FEFF 		bl	HAL_GPIO_WritePin
- 1114              	.LVL90:
- 1115 0174 2246     		mov	r2, r4
- 1116 0176 4FF40041 		mov	r1, #32768
- 1117 017a 3046     		mov	r0, r6
- 1118 017c FFF7FEFF 		bl	HAL_GPIO_WritePin
- 1119              	.LVL91:
- 1120 0180 0122     		movs	r2, #1
- 1121 0182 4FF40051 		mov	r1, #8192
- 1122 0186 3046     		mov	r0, r6
- 1123 0188 FFF7FEFF 		bl	HAL_GPIO_WritePin
- 1124              	.LVL92:
+ 1207              		.loc 1 260 0
+ 1208 015c D8F80030 		ldr	r3, [r8]
+ 1209 0160 5C63     		str	r4, [r3, #52]
+ 1210 0162 9C63     		str	r4, [r3, #56]
+ 1211 0164 7A89     		ldrh	r2, [r7, #10]
+ 1212 0166 DA63     		str	r2, [r3, #60]
+ 1213 0168 2246     		mov	r2, r4
+ 1214 016a 4FF48041 		mov	r1, #16384
+ 1215 016e 3046     		mov	r0, r6
+ 1216 0170 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 1217              	.LVL102:
+ 1218 0174 2246     		mov	r2, r4
+ 1219 0176 4FF40041 		mov	r1, #32768
+ 1220 017a 3046     		mov	r0, r6
+ 1221 017c FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 1222              	.LVL103:
+ 1223 0180 0122     		movs	r2, #1
+ 1224 0182 4FF40051 		mov	r1, #8192
+ 1225 0186 3046     		mov	r0, r6
+ 1226 0188 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 1227              	.LVL104:
  261:Src/bldc.c    ****     HAL_Delay(300);
- 1125              		.loc 1 261 0
- 1126 018c 4FF49670 		mov	r0, #300
- 1127 0190 FFF7FEFF 		bl	HAL_Delay
- 1128              	.LVL93:
+ 1228              		.loc 1 261 0
+ 1229 018c 4FF49670 		mov	r0, #300
+ 1230 0190 FFF7FEFF 		bl	HAL_Delay
+ 1231              	.LVL105:
  262:Src/bldc.c    ****     myPrint("Q25PWM HALL TABLE IS %d %d %d \r\n",HALL_U_STATUS,HALL_V_STATUS,HALL_W_STATUS);
- 1129              		.loc 1 262 0
- 1130 0194 4021     		movs	r1, #64
- 1131 0196 2846     		mov	r0, r5
- 1132 0198 FFF7FEFF 		bl	HAL_GPIO_ReadPin
-ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccDkQJKw.s 			page 26
+ 1232              		.loc 1 262 0
+ 1233 0194 4021     		movs	r1, #64
+ 1234 0196 2846     		mov	r0, r5
+ 1235 0198 FFF7FEFF 		bl	HAL_GPIO_ReadPin
+ 1236              	.LVL106:
+ 1237 019c 8146     		mov	r9, r0
+ 1238 019e 8021     		movs	r1, #128
+ 1239 01a0 2846     		mov	r0, r5
+ 1240 01a2 FFF7FEFF 		bl	HAL_GPIO_ReadPin
+ 1241              	.LVL107:
+ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccLvKMjm.s 			page 28
 
 
- 1133              	.LVL94:
- 1134 019c 8146     		mov	r9, r0
- 1135 019e 8021     		movs	r1, #128
- 1136 01a0 2846     		mov	r0, r5
- 1137 01a2 FFF7FEFF 		bl	HAL_GPIO_ReadPin
- 1138              	.LVL95:
- 1139 01a6 8246     		mov	r10, r0
- 1140 01a8 4FF48071 		mov	r1, #256
- 1141 01ac 2846     		mov	r0, r5
- 1142 01ae FFF7FEFF 		bl	HAL_GPIO_ReadPin
- 1143              	.LVL96:
- 1144 01b2 0346     		mov	r3, r0
- 1145 01b4 5246     		mov	r2, r10
- 1146 01b6 4946     		mov	r1, r9
- 1147 01b8 3D48     		ldr	r0, .L66+24
- 1148 01ba FFF7FEFF 		bl	myPrint
- 1149              	.LVL97:
+ 1242 01a6 8246     		mov	r10, r0
+ 1243 01a8 4FF48071 		mov	r1, #256
+ 1244 01ac 2846     		mov	r0, r5
+ 1245 01ae FFF7FEFF 		bl	HAL_GPIO_ReadPin
+ 1246              	.LVL108:
+ 1247 01b2 0346     		mov	r3, r0
+ 1248 01b4 5246     		mov	r2, r10
+ 1249 01b6 4946     		mov	r1, r9
+ 1250 01b8 3D48     		ldr	r0, .L71+24
+ 1251 01ba FFF7FEFF 		bl	myPrint
+ 1252              	.LVL109:
  263:Src/bldc.c    ****     HAL_Delay(300);
- 1150              		.loc 1 263 0
- 1151 01be 4FF49670 		mov	r0, #300
- 1152 01c2 FFF7FEFF 		bl	HAL_Delay
- 1153              	.LVL98:
+ 1253              		.loc 1 263 0
+ 1254 01be 4FF49670 		mov	r0, #300
+ 1255 01c2 FFF7FEFF 		bl	HAL_Delay
+ 1256              	.LVL110:
  264:Src/bldc.c    ****     MOS_Q54PWM;
- 1154              		.loc 1 264 0
- 1155 01c6 D8F80030 		ldr	r3, [r8]
- 1156 01ca 5C63     		str	r4, [r3, #52]
- 1157 01cc 9C63     		str	r4, [r3, #56]
- 1158 01ce 7A89     		ldrh	r2, [r7, #10]
- 1159 01d0 DA63     		str	r2, [r3, #60]
- 1160 01d2 2246     		mov	r2, r4
- 1161 01d4 4FF40051 		mov	r1, #8192
- 1162 01d8 3046     		mov	r0, r6
- 1163 01da FFF7FEFF 		bl	HAL_GPIO_WritePin
- 1164              	.LVL99:
- 1165 01de 2246     		mov	r2, r4
- 1166 01e0 4FF40041 		mov	r1, #32768
- 1167 01e4 3046     		mov	r0, r6
- 1168 01e6 FFF7FEFF 		bl	HAL_GPIO_WritePin
- 1169              	.LVL100:
- 1170 01ea 0122     		movs	r2, #1
- 1171 01ec 4FF48041 		mov	r1, #16384
- 1172 01f0 3046     		mov	r0, r6
- 1173 01f2 FFF7FEFF 		bl	HAL_GPIO_WritePin
- 1174              	.LVL101:
+ 1257              		.loc 1 264 0
+ 1258 01c6 D8F80030 		ldr	r3, [r8]
+ 1259 01ca 5C63     		str	r4, [r3, #52]
+ 1260 01cc 9C63     		str	r4, [r3, #56]
+ 1261 01ce 7A89     		ldrh	r2, [r7, #10]
+ 1262 01d0 DA63     		str	r2, [r3, #60]
+ 1263 01d2 2246     		mov	r2, r4
+ 1264 01d4 4FF40051 		mov	r1, #8192
+ 1265 01d8 3046     		mov	r0, r6
+ 1266 01da FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 1267              	.LVL111:
+ 1268 01de 2246     		mov	r2, r4
+ 1269 01e0 4FF40041 		mov	r1, #32768
+ 1270 01e4 3046     		mov	r0, r6
+ 1271 01e6 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 1272              	.LVL112:
+ 1273 01ea 0122     		movs	r2, #1
+ 1274 01ec 4FF48041 		mov	r1, #16384
+ 1275 01f0 3046     		mov	r0, r6
+ 1276 01f2 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 1277              	.LVL113:
  265:Src/bldc.c    ****     HAL_Delay(300);
- 1175              		.loc 1 265 0
- 1176 01f6 4FF49670 		mov	r0, #300
- 1177 01fa FFF7FEFF 		bl	HAL_Delay
- 1178              	.LVL102:
+ 1278              		.loc 1 265 0
+ 1279 01f6 4FF49670 		mov	r0, #300
+ 1280 01fa FFF7FEFF 		bl	HAL_Delay
+ 1281              	.LVL114:
  266:Src/bldc.c    ****     myPrint("Q54PWM HALL TABLE IS %d %d %d \r\n",HALL_U_STATUS,HALL_V_STATUS,HALL_W_STATUS);
- 1179              		.loc 1 266 0
- 1180 01fe 4021     		movs	r1, #64
- 1181 0200 2846     		mov	r0, r5
- 1182 0202 FFF7FEFF 		bl	HAL_GPIO_ReadPin
- 1183              	.LVL103:
- 1184 0206 8146     		mov	r9, r0
- 1185 0208 8021     		movs	r1, #128
-ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccDkQJKw.s 			page 27
+ 1282              		.loc 1 266 0
+ 1283 01fe 4021     		movs	r1, #64
+ 1284 0200 2846     		mov	r0, r5
+ 1285 0202 FFF7FEFF 		bl	HAL_GPIO_ReadPin
+ 1286              	.LVL115:
+ 1287 0206 8146     		mov	r9, r0
+ 1288 0208 8021     		movs	r1, #128
+ 1289 020a 2846     		mov	r0, r5
+ 1290 020c FFF7FEFF 		bl	HAL_GPIO_ReadPin
+ 1291              	.LVL116:
+ 1292 0210 8246     		mov	r10, r0
+ 1293 0212 4FF48071 		mov	r1, #256
+ 1294 0216 2846     		mov	r0, r5
+ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccLvKMjm.s 			page 29
 
 
- 1186 020a 2846     		mov	r0, r5
- 1187 020c FFF7FEFF 		bl	HAL_GPIO_ReadPin
- 1188              	.LVL104:
- 1189 0210 8246     		mov	r10, r0
- 1190 0212 4FF48071 		mov	r1, #256
- 1191 0216 2846     		mov	r0, r5
- 1192 0218 FFF7FEFF 		bl	HAL_GPIO_ReadPin
- 1193              	.LVL105:
- 1194 021c 0346     		mov	r3, r0
- 1195 021e 5246     		mov	r2, r10
- 1196 0220 4946     		mov	r1, r9
- 1197 0222 2448     		ldr	r0, .L66+28
- 1198 0224 FFF7FEFF 		bl	myPrint
- 1199              	.LVL106:
+ 1295 0218 FFF7FEFF 		bl	HAL_GPIO_ReadPin
+ 1296              	.LVL117:
+ 1297 021c 0346     		mov	r3, r0
+ 1298 021e 5246     		mov	r2, r10
+ 1299 0220 4946     		mov	r1, r9
+ 1300 0222 2448     		ldr	r0, .L71+28
+ 1301 0224 FFF7FEFF 		bl	myPrint
+ 1302              	.LVL118:
  267:Src/bldc.c    ****     HAL_Delay(300);
- 1200              		.loc 1 267 0
- 1201 0228 4FF49670 		mov	r0, #300
- 1202 022c FFF7FEFF 		bl	HAL_Delay
- 1203              	.LVL107:
+ 1303              		.loc 1 267 0
+ 1304 0228 4FF49670 		mov	r0, #300
+ 1305 022c FFF7FEFF 		bl	HAL_Delay
+ 1306              	.LVL119:
  268:Src/bldc.c    ****     MOS_Q41PWM;
- 1204              		.loc 1 268 0
- 1205 0230 D8F80030 		ldr	r3, [r8]
- 1206 0234 7A89     		ldrh	r2, [r7, #10]
- 1207 0236 5A63     		str	r2, [r3, #52]
- 1208 0238 9C63     		str	r4, [r3, #56]
- 1209 023a DC63     		str	r4, [r3, #60]
- 1210 023c 2246     		mov	r2, r4
- 1211 023e 4FF40051 		mov	r1, #8192
- 1212 0242 3046     		mov	r0, r6
- 1213 0244 FFF7FEFF 		bl	HAL_GPIO_WritePin
- 1214              	.LVL108:
- 1215 0248 2246     		mov	r2, r4
- 1216 024a 4FF40041 		mov	r1, #32768
- 1217 024e 3046     		mov	r0, r6
- 1218 0250 FFF7FEFF 		bl	HAL_GPIO_WritePin
- 1219              	.LVL109:
- 1220 0254 0122     		movs	r2, #1
- 1221 0256 4FF48041 		mov	r1, #16384
- 1222 025a 3046     		mov	r0, r6
- 1223 025c FFF7FEFF 		bl	HAL_GPIO_WritePin
- 1224              	.LVL110:
+ 1307              		.loc 1 268 0
+ 1308 0230 D8F80030 		ldr	r3, [r8]
+ 1309 0234 7A89     		ldrh	r2, [r7, #10]
+ 1310 0236 5A63     		str	r2, [r3, #52]
+ 1311 0238 9C63     		str	r4, [r3, #56]
+ 1312 023a DC63     		str	r4, [r3, #60]
+ 1313 023c 2246     		mov	r2, r4
+ 1314 023e 4FF40051 		mov	r1, #8192
+ 1315 0242 3046     		mov	r0, r6
+ 1316 0244 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 1317              	.LVL120:
+ 1318 0248 2246     		mov	r2, r4
+ 1319 024a 4FF40041 		mov	r1, #32768
+ 1320 024e 3046     		mov	r0, r6
+ 1321 0250 FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 1322              	.LVL121:
+ 1323 0254 0122     		movs	r2, #1
+ 1324 0256 4FF48041 		mov	r1, #16384
+ 1325 025a 3046     		mov	r0, r6
+ 1326 025c FFF7FEFF 		bl	HAL_GPIO_WritePin
+ 1327              	.LVL122:
  269:Src/bldc.c    ****     HAL_Delay(300);
- 1225              		.loc 1 269 0
- 1226 0260 4FF49670 		mov	r0, #300
- 1227 0264 FFF7FEFF 		bl	HAL_Delay
- 1228              	.LVL111:
+ 1328              		.loc 1 269 0
+ 1329 0260 4FF49670 		mov	r0, #300
+ 1330 0264 FFF7FEFF 		bl	HAL_Delay
+ 1331              	.LVL123:
  270:Src/bldc.c    ****     myPrint("Q41PWM HALL TABLE IS %d %d %d \r\n",HALL_U_STATUS,HALL_V_STATUS,HALL_W_STATUS);
- 1229              		.loc 1 270 0
- 1230 0268 4021     		movs	r1, #64
- 1231 026a 2846     		mov	r0, r5
- 1232 026c FFF7FEFF 		bl	HAL_GPIO_ReadPin
- 1233              	.LVL112:
- 1234 0270 0446     		mov	r4, r0
- 1235 0272 8021     		movs	r1, #128
- 1236 0274 2846     		mov	r0, r5
- 1237 0276 FFF7FEFF 		bl	HAL_GPIO_ReadPin
- 1238              	.LVL113:
-ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccDkQJKw.s 			page 28
+ 1332              		.loc 1 270 0
+ 1333 0268 4021     		movs	r1, #64
+ 1334 026a 2846     		mov	r0, r5
+ 1335 026c FFF7FEFF 		bl	HAL_GPIO_ReadPin
+ 1336              	.LVL124:
+ 1337 0270 0446     		mov	r4, r0
+ 1338 0272 8021     		movs	r1, #128
+ 1339 0274 2846     		mov	r0, r5
+ 1340 0276 FFF7FEFF 		bl	HAL_GPIO_ReadPin
+ 1341              	.LVL125:
+ 1342 027a 0646     		mov	r6, r0
+ 1343 027c 4FF48071 		mov	r1, #256
+ 1344 0280 2846     		mov	r0, r5
+ 1345 0282 FFF7FEFF 		bl	HAL_GPIO_ReadPin
+ 1346              	.LVL126:
+ 1347 0286 0346     		mov	r3, r0
+ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccLvKMjm.s 			page 30
 
 
- 1239 027a 0646     		mov	r6, r0
- 1240 027c 4FF48071 		mov	r1, #256
- 1241 0280 2846     		mov	r0, r5
- 1242 0282 FFF7FEFF 		bl	HAL_GPIO_ReadPin
- 1243              	.LVL114:
- 1244 0286 0346     		mov	r3, r0
- 1245 0288 3246     		mov	r2, r6
- 1246 028a 2146     		mov	r1, r4
- 1247 028c 0A48     		ldr	r0, .L66+32
- 1248 028e FFF7FEFF 		bl	myPrint
- 1249              	.LVL115:
+ 1348 0288 3246     		mov	r2, r6
+ 1349 028a 2146     		mov	r1, r4
+ 1350 028c 0A48     		ldr	r0, .L71+32
+ 1351 028e FFF7FEFF 		bl	myPrint
+ 1352              	.LVL127:
  271:Src/bldc.c    **** }
- 1250              		.loc 1 271 0
- 1251 0292 BDE8F087 		pop	{r4, r5, r6, r7, r8, r9, r10, pc}
- 1252              	.L67:
- 1253 0296 00BF     		.align	2
- 1254              	.L66:
- 1255 0298 00000000 		.word	stateContr
- 1256 029c 00040240 		.word	1073873920
- 1257 02a0 00080240 		.word	1073874944
- 1258 02a4 00000000 		.word	.LC0
- 1259 02a8 24000000 		.word	.LC1
- 1260 02ac 48000000 		.word	.LC2
- 1261 02b0 6C000000 		.word	.LC3
- 1262 02b4 90000000 		.word	.LC4
- 1263 02b8 B4000000 		.word	.LC5
- 1264 02bc 00000000 		.word	htim1
- 1265              		.cfi_endproc
- 1266              	.LFE139:
- 1268              		.global	ADCSampPare
- 1269              		.global	piICurr
- 1270              		.global	piSpd
- 1271              		.comm	stateContr,32,4
- 1272              		.comm	hallTree,52,4
- 1273              		.comm	ADC_DualConvertValTab,10,4
- 1274              		.section	.bss.ADC_PhaseU_Curr.9216,"aw",%nobits
- 1275              		.align	2
- 1276              		.set	.LANCHOR3,. + 0
- 1279              	ADC_PhaseU_Curr.9216:
- 1280 0000 00000000 		.space	128
- 1280      00000000 
- 1280      00000000 
- 1280      00000000 
- 1280      00000000 
- 1281              		.section	.bss.ADC_PhaseV_Curr.9217,"aw",%nobits
- 1282              		.align	2
- 1283              		.set	.LANCHOR4,. + 0
- 1286              	ADC_PhaseV_Curr.9217:
- 1287 0000 00000000 		.space	128
- 1287      00000000 
- 1287      00000000 
- 1287      00000000 
- 1287      00000000 
- 1288              		.section	.bss.ADC_PhaseW_Curr.9218,"aw",%nobits
- 1289              		.align	2
- 1290              		.set	.LANCHOR5,. + 0
- 1293              	ADC_PhaseW_Curr.9218:
-ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccDkQJKw.s 			page 29
+ 1353              		.loc 1 271 0
+ 1354 0292 BDE8F087 		pop	{r4, r5, r6, r7, r8, r9, r10, pc}
+ 1355              	.L72:
+ 1356 0296 00BF     		.align	2
+ 1357              	.L71:
+ 1358 0298 00000000 		.word	stateContr
+ 1359 029c 00040240 		.word	1073873920
+ 1360 02a0 00080240 		.word	1073874944
+ 1361 02a4 00000000 		.word	.LC0
+ 1362 02a8 24000000 		.word	.LC1
+ 1363 02ac 48000000 		.word	.LC2
+ 1364 02b0 6C000000 		.word	.LC3
+ 1365 02b4 90000000 		.word	.LC4
+ 1366 02b8 B4000000 		.word	.LC5
+ 1367 02bc 00000000 		.word	htim1
+ 1368              		.cfi_endproc
+ 1369              	.LFE139:
+ 1371              		.global	ADCSampPare
+ 1372              		.global	piICurr
+ 1373              		.global	piSpd
+ 1374              		.comm	stateContr,32,4
+ 1375              		.comm	hallTree,52,4
+ 1376              		.comm	ADC_DualConvertValTab,10,4
+ 1377              		.section	.bss.ADC_PhaseU_Curr.9216,"aw",%nobits
+ 1378              		.align	2
+ 1379              		.set	.LANCHOR3,. + 0
+ 1382              	ADC_PhaseU_Curr.9216:
+ 1383 0000 00000000 		.space	128
+ 1383      00000000 
+ 1383      00000000 
+ 1383      00000000 
+ 1383      00000000 
+ 1384              		.section	.bss.ADC_PhaseV_Curr.9217,"aw",%nobits
+ 1385              		.align	2
+ 1386              		.set	.LANCHOR4,. + 0
+ 1389              	ADC_PhaseV_Curr.9217:
+ 1390 0000 00000000 		.space	128
+ 1390      00000000 
+ 1390      00000000 
+ 1390      00000000 
+ 1390      00000000 
+ 1391              		.section	.bss.ADC_PhaseW_Curr.9218,"aw",%nobits
+ 1392              		.align	2
+ 1393              		.set	.LANCHOR5,. + 0
+ 1396              	ADC_PhaseW_Curr.9218:
+ 1397 0000 00000000 		.space	128
+ 1397      00000000 
+ 1397      00000000 
+ 1397      00000000 
+ 1397      00000000 
+ 1398              		.section	.bss.oldVal.9193,"aw",%nobits
+ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccLvKMjm.s 			page 31
 
 
- 1294 0000 00000000 		.space	128
- 1294      00000000 
- 1294      00000000 
- 1294      00000000 
- 1294      00000000 
- 1295              		.section	.bss.oldVal.9193,"aw",%nobits
- 1296              		.set	.LANCHOR2,. + 0
- 1299              	oldVal.9193:
- 1300 0000 00       		.space	1
- 1301              		.section	.bss.piICurr,"aw",%nobits
- 1302              		.align	2
- 1303              		.set	.LANCHOR1,. + 0
- 1306              	piICurr:
- 1307 0000 00000000 		.space	72
- 1307      00000000 
- 1307      00000000 
- 1307      00000000 
- 1307      00000000 
- 1308              		.section	.bss.piSpd,"aw",%nobits
- 1309              		.align	2
- 1310              		.set	.LANCHOR0,. + 0
- 1313              	piSpd:
- 1314 0000 00000000 		.space	72
- 1314      00000000 
- 1314      00000000 
- 1314      00000000 
- 1314      00000000 
- 1315              		.section	.data.ADCSampPare,"aw",%progbits
- 1316              		.align	2
- 1317              		.set	.LANCHOR6,. + 0
- 1320              	ADCSampPare:
- 1321 0000 00000000 		.word	0
- 1322 0004 00000000 		.word	0
- 1323 0008 00000000 		.word	0
- 1324 000c 00000000 		.word	0
- 1325 0010 00000000 		.word	0
- 1326 0014 00000000 		.word	0
- 1327 0018 00000000 		.word	0
- 1328 001c 00000000 		.word	0
- 1329 0020 00000000 		.word	0
- 1330 0024 E8030000 		.word	1000
- 1331 0028 18000000 		.word	24
- 1332 002c 00000000 		.space	4
- 1333              		.section	.rodata.motorTestProgram.str1.4,"aMS",%progbits,1
- 1334              		.align	2
- 1335              	.LC0:
- 1336 0000 51313650 		.ascii	"Q16PWM HALL TABLE IS %d %d %d \015\012\000"
- 1336      574D2048 
- 1336      414C4C20 
- 1336      5441424C 
- 1336      45204953 
- 1337 0021 000000   		.space	3
- 1338              	.LC1:
- 1339 0024 51363350 		.ascii	"Q63PWM HALL TABLE IS %d %d %d \015\012\000"
- 1339      574D2048 
- 1339      414C4C20 
- 1339      5441424C 
-ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccDkQJKw.s 			page 30
+ 1399              		.set	.LANCHOR2,. + 0
+ 1402              	oldVal.9193:
+ 1403 0000 00       		.space	1
+ 1404              		.section	.bss.piICurr,"aw",%nobits
+ 1405              		.align	2
+ 1406              		.set	.LANCHOR1,. + 0
+ 1409              	piICurr:
+ 1410 0000 00000000 		.space	72
+ 1410      00000000 
+ 1410      00000000 
+ 1410      00000000 
+ 1410      00000000 
+ 1411              		.section	.bss.piSpd,"aw",%nobits
+ 1412              		.align	2
+ 1413              		.set	.LANCHOR0,. + 0
+ 1416              	piSpd:
+ 1417 0000 00000000 		.space	72
+ 1417      00000000 
+ 1417      00000000 
+ 1417      00000000 
+ 1417      00000000 
+ 1418              		.section	.data.ADCSampPare,"aw",%progbits
+ 1419              		.align	2
+ 1420              		.set	.LANCHOR6,. + 0
+ 1423              	ADCSampPare:
+ 1424 0000 00000000 		.word	0
+ 1425 0004 00000000 		.word	0
+ 1426 0008 00000000 		.word	0
+ 1427 000c 00000000 		.word	0
+ 1428 0010 00000000 		.word	0
+ 1429 0014 00000000 		.word	0
+ 1430 0018 00000000 		.word	0
+ 1431 001c 00000000 		.word	0
+ 1432 0020 00000000 		.word	0
+ 1433 0024 E8030000 		.word	1000
+ 1434 0028 18000000 		.word	24
+ 1435 002c 00000000 		.space	4
+ 1436              		.section	.rodata.motorTestProgram.str1.4,"aMS",%progbits,1
+ 1437              		.align	2
+ 1438              	.LC0:
+ 1439 0000 51313650 		.ascii	"Q16PWM HALL TABLE IS %d %d %d \015\012\000"
+ 1439      574D2048 
+ 1439      414C4C20 
+ 1439      5441424C 
+ 1439      45204953 
+ 1440 0021 000000   		.space	3
+ 1441              	.LC1:
+ 1442 0024 51363350 		.ascii	"Q63PWM HALL TABLE IS %d %d %d \015\012\000"
+ 1442      574D2048 
+ 1442      414C4C20 
+ 1442      5441424C 
+ 1442      45204953 
+ 1443 0045 000000   		.space	3
+ 1444              	.LC2:
+ 1445 0048 51333250 		.ascii	"Q32PWM HALL TABLE IS %d %d %d \015\012\000"
+ 1445      574D2048 
+ 1445      414C4C20 
+ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccLvKMjm.s 			page 32
 
 
- 1339      45204953 
- 1340 0045 000000   		.space	3
- 1341              	.LC2:
- 1342 0048 51333250 		.ascii	"Q32PWM HALL TABLE IS %d %d %d \015\012\000"
- 1342      574D2048 
- 1342      414C4C20 
- 1342      5441424C 
- 1342      45204953 
- 1343 0069 000000   		.space	3
- 1344              	.LC3:
- 1345 006c 51323550 		.ascii	"Q25PWM HALL TABLE IS %d %d %d \015\012\000"
- 1345      574D2048 
- 1345      414C4C20 
- 1345      5441424C 
- 1345      45204953 
- 1346 008d 000000   		.space	3
- 1347              	.LC4:
- 1348 0090 51353450 		.ascii	"Q54PWM HALL TABLE IS %d %d %d \015\012\000"
- 1348      574D2048 
- 1348      414C4C20 
- 1348      5441424C 
- 1348      45204953 
- 1349 00b1 000000   		.space	3
- 1350              	.LC5:
- 1351 00b4 51343150 		.ascii	"Q41PWM HALL TABLE IS %d %d %d \015\012\000"
- 1351      574D2048 
- 1351      414C4C20 
- 1351      5441424C 
- 1351      45204953 
- 1352              		.text
- 1353              	.Letext0:
- 1354              		.file 2 "c:\\program files (x86)\\gnu tools arm embedded\\7 2018-q2-update\\arm-none-eabi\\include
- 1355              		.file 3 "c:\\program files (x86)\\gnu tools arm embedded\\7 2018-q2-update\\arm-none-eabi\\include
- 1356              		.file 4 "Drivers/CMSIS/Include/core_cm4.h"
- 1357              		.file 5 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/system_stm32f4xx.h"
- 1358              		.file 6 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f405xx.h"
- 1359              		.file 7 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h"
- 1360              		.file 8 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h"
- 1361              		.file 9 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio.h"
- 1362              		.file 10 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h"
- 1363              		.file 11 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc.h"
- 1364              		.file 12 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h"
- 1365              		.file 13 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h"
- 1366              		.file 14 "Inc/tim.h"
- 1367              		.file 15 "Inc/adc.h"
- 1368              		.file 16 "Inc/bldc.h"
- 1369              		.file 17 "Inc/usart.h"
- 1370              		.file 18 "c:\\program files (x86)\\gnu tools arm embedded\\7 2018-q2-update\\arm-none-eabi\\includ
- 1371              		.file 19 "c:\\program files (x86)\\gnu tools arm embedded\\7 2018-q2-update\\arm-none-eabi\\includ
- 1372              		.file 20 "c:\\program files (x86)\\gnu tools arm embedded\\7 2018-q2-update\\lib\\gcc\\arm-none-ea
- 1373              		.file 21 "c:\\program files (x86)\\gnu tools arm embedded\\7 2018-q2-update\\arm-none-eabi\\includ
- 1374              		.file 22 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h"
- 1375              		.file 23 "Inc/myprint.h"
-ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccDkQJKw.s 			page 31
+ 1445      5441424C 
+ 1445      45204953 
+ 1446 0069 000000   		.space	3
+ 1447              	.LC3:
+ 1448 006c 51323550 		.ascii	"Q25PWM HALL TABLE IS %d %d %d \015\012\000"
+ 1448      574D2048 
+ 1448      414C4C20 
+ 1448      5441424C 
+ 1448      45204953 
+ 1449 008d 000000   		.space	3
+ 1450              	.LC4:
+ 1451 0090 51353450 		.ascii	"Q54PWM HALL TABLE IS %d %d %d \015\012\000"
+ 1451      574D2048 
+ 1451      414C4C20 
+ 1451      5441424C 
+ 1451      45204953 
+ 1452 00b1 000000   		.space	3
+ 1453              	.LC5:
+ 1454 00b4 51343150 		.ascii	"Q41PWM HALL TABLE IS %d %d %d \015\012\000"
+ 1454      574D2048 
+ 1454      414C4C20 
+ 1454      5441424C 
+ 1454      45204953 
+ 1455              		.text
+ 1456              	.Letext0:
+ 1457              		.file 2 "c:\\program files (x86)\\gnu tools arm embedded\\7 2018-q2-update\\arm-none-eabi\\include
+ 1458              		.file 3 "c:\\program files (x86)\\gnu tools arm embedded\\7 2018-q2-update\\arm-none-eabi\\include
+ 1459              		.file 4 "Drivers/CMSIS/Include/core_cm4.h"
+ 1460              		.file 5 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/system_stm32f4xx.h"
+ 1461              		.file 6 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f405xx.h"
+ 1462              		.file 7 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h"
+ 1463              		.file 8 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h"
+ 1464              		.file 9 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio.h"
+ 1465              		.file 10 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h"
+ 1466              		.file 11 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc.h"
+ 1467              		.file 12 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h"
+ 1468              		.file 13 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h"
+ 1469              		.file 14 "Inc/tim.h"
+ 1470              		.file 15 "Inc/adc.h"
+ 1471              		.file 16 "Inc/bldc.h"
+ 1472              		.file 17 "Inc/usart.h"
+ 1473              		.file 18 "c:\\program files (x86)\\gnu tools arm embedded\\7 2018-q2-update\\arm-none-eabi\\includ
+ 1474              		.file 19 "c:\\program files (x86)\\gnu tools arm embedded\\7 2018-q2-update\\arm-none-eabi\\includ
+ 1475              		.file 20 "c:\\program files (x86)\\gnu tools arm embedded\\7 2018-q2-update\\lib\\gcc\\arm-none-ea
+ 1476              		.file 21 "c:\\program files (x86)\\gnu tools arm embedded\\7 2018-q2-update\\arm-none-eabi\\includ
+ 1477              		.file 22 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h"
+ 1478              		.file 23 "Inc/myprint.h"
+ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccLvKMjm.s 			page 33
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 bldc.c
-C:\Users\Cairne\AppData\Local\Temp\ccDkQJKw.s:18     .text.PID_Init:00000000 $t
-C:\Users\Cairne\AppData\Local\Temp\ccDkQJKw.s:25     .text.PID_Init:00000000 PID_Init
-C:\Users\Cairne\AppData\Local\Temp\ccDkQJKw.s:81     .text.PID_Init:00000034 $d
-C:\Users\Cairne\AppData\Local\Temp\ccDkQJKw.s:92     .text.threeHallPara_Init:00000000 $t
-C:\Users\Cairne\AppData\Local\Temp\ccDkQJKw.s:99     .text.threeHallPara_Init:00000000 threeHallPara_Init
-C:\Users\Cairne\AppData\Local\Temp\ccDkQJKw.s:118    .text.threeHallPara_Init:00000010 $d
+C:\Users\Cairne\AppData\Local\Temp\ccLvKMjm.s:18     .text.PID_Init:00000000 $t
+C:\Users\Cairne\AppData\Local\Temp\ccLvKMjm.s:25     .text.PID_Init:00000000 PID_Init
+C:\Users\Cairne\AppData\Local\Temp\ccLvKMjm.s:81     .text.PID_Init:00000034 $d
+C:\Users\Cairne\AppData\Local\Temp\ccLvKMjm.s:92     .text.threeHallPara_Init:00000000 $t
+C:\Users\Cairne\AppData\Local\Temp\ccLvKMjm.s:99     .text.threeHallPara_Init:00000000 threeHallPara_Init
+C:\Users\Cairne\AppData\Local\Temp\ccLvKMjm.s:118    .text.threeHallPara_Init:00000010 $d
                             *COM*:00000034 hallTree
-C:\Users\Cairne\AppData\Local\Temp\ccDkQJKw.s:123    .text.uHALLEdge:00000000 $t
-C:\Users\Cairne\AppData\Local\Temp\ccDkQJKw.s:130    .text.uHALLEdge:00000000 uHALLEdge
-C:\Users\Cairne\AppData\Local\Temp\ccDkQJKw.s:164    .text.uHALLEdge:00000018 $d
-C:\Users\Cairne\AppData\Local\Temp\ccDkQJKw.s:169    .text.hallSwitch:00000000 $t
-C:\Users\Cairne\AppData\Local\Temp\ccDkQJKw.s:176    .text.hallSwitch:00000000 hallSwitch
-C:\Users\Cairne\AppData\Local\Temp\ccDkQJKw.s:249    .text.hallSwitch:00000074 $d
-C:\Users\Cairne\AppData\Local\Temp\ccDkQJKw.s:255    .text.hallSwitch:0000007a $t
-C:\Users\Cairne\AppData\Local\Temp\ccDkQJKw.s:467    .text.hallSwitch:00000210 $d
-C:\Users\Cairne\AppData\Local\Temp\ccDkQJKw.s:473    .text.hallSwitch:00000216 $t
-C:\Users\Cairne\AppData\Local\Temp\ccDkQJKw.s:561    .text.hallSwitch:000002c0 $d
+C:\Users\Cairne\AppData\Local\Temp\ccLvKMjm.s:123    .text.uHALLEdge:00000000 $t
+C:\Users\Cairne\AppData\Local\Temp\ccLvKMjm.s:130    .text.uHALLEdge:00000000 uHALLEdge
+C:\Users\Cairne\AppData\Local\Temp\ccLvKMjm.s:164    .text.uHALLEdge:00000018 $d
+C:\Users\Cairne\AppData\Local\Temp\ccLvKMjm.s:173    .text.hallSwitch:00000000 $t
+C:\Users\Cairne\AppData\Local\Temp\ccLvKMjm.s:180    .text.hallSwitch:00000000 hallSwitch
+C:\Users\Cairne\AppData\Local\Temp\ccLvKMjm.s:274    .text.hallSwitch:0000008a $d
+C:\Users\Cairne\AppData\Local\Temp\ccLvKMjm.s:280    .text.hallSwitch:00000096 $t
+C:\Users\Cairne\AppData\Local\Temp\ccLvKMjm.s:562    .text.hallSwitch:000002b6 $d
+C:\Users\Cairne\AppData\Local\Temp\ccLvKMjm.s:568    .text.hallSwitch:000002bc $t
+C:\Users\Cairne\AppData\Local\Temp\ccLvKMjm.s:572    .text.hallSwitch:000002c0 $d
                             *COM*:00000020 stateContr
-C:\Users\Cairne\AppData\Local\Temp\ccDkQJKw.s:569    .text.hallSwitch:000002d8 $t
-C:\Users\Cairne\AppData\Local\Temp\ccDkQJKw.s:678    .text.hallSwitch:000003a8 $d
-C:\Users\Cairne\AppData\Local\Temp\ccDkQJKw.s:687    .text.offsetCurrentRead:00000000 $t
-C:\Users\Cairne\AppData\Local\Temp\ccDkQJKw.s:694    .text.offsetCurrentRead:00000000 offsetCurrentRead
-C:\Users\Cairne\AppData\Local\Temp\ccDkQJKw.s:793    .text.offsetCurrentRead:0000005c $d
+C:\Users\Cairne\AppData\Local\Temp\ccLvKMjm.s:588    .text.hallSwitch:000002f8 $t
+C:\Users\Cairne\AppData\Local\Temp\ccLvKMjm.s:781    .text.hallSwitch:00000470 $d
+C:\Users\Cairne\AppData\Local\Temp\ccLvKMjm.s:790    .text.offsetCurrentRead:00000000 $t
+C:\Users\Cairne\AppData\Local\Temp\ccLvKMjm.s:797    .text.offsetCurrentRead:00000000 offsetCurrentRead
+C:\Users\Cairne\AppData\Local\Temp\ccLvKMjm.s:896    .text.offsetCurrentRead:0000005c $d
                             *COM*:0000000a ADC_DualConvertValTab
-C:\Users\Cairne\AppData\Local\Temp\ccDkQJKw.s:803    .text.HALL_ADCSample:00000000 $t
-C:\Users\Cairne\AppData\Local\Temp\ccDkQJKw.s:810    .text.HALL_ADCSample:00000000 HALL_ADCSample
-C:\Users\Cairne\AppData\Local\Temp\ccDkQJKw.s:850    .text.HALL_ADCSample:00000030 $d
-C:\Users\Cairne\AppData\Local\Temp\ccDkQJKw.s:856    .text.HALL_ADCSample:00000036 $t
-C:\Users\Cairne\AppData\Local\Temp\ccDkQJKw.s:911    .text.HALL_ADCSample:00000068 $d
-C:\Users\Cairne\AppData\Local\Temp\ccDkQJKw.s:918    .text.motorTestProgram:00000000 $t
-C:\Users\Cairne\AppData\Local\Temp\ccDkQJKw.s:925    .text.motorTestProgram:00000000 motorTestProgram
-C:\Users\Cairne\AppData\Local\Temp\ccDkQJKw.s:1255   .text.motorTestProgram:00000298 $d
-C:\Users\Cairne\AppData\Local\Temp\ccDkQJKw.s:1320   .data.ADCSampPare:00000000 ADCSampPare
-C:\Users\Cairne\AppData\Local\Temp\ccDkQJKw.s:1306   .bss.piICurr:00000000 piICurr
-C:\Users\Cairne\AppData\Local\Temp\ccDkQJKw.s:1313   .bss.piSpd:00000000 piSpd
-C:\Users\Cairne\AppData\Local\Temp\ccDkQJKw.s:1275   .bss.ADC_PhaseU_Curr.9216:00000000 $d
-C:\Users\Cairne\AppData\Local\Temp\ccDkQJKw.s:1279   .bss.ADC_PhaseU_Curr.9216:00000000 ADC_PhaseU_Curr.9216
-C:\Users\Cairne\AppData\Local\Temp\ccDkQJKw.s:1282   .bss.ADC_PhaseV_Curr.9217:00000000 $d
-C:\Users\Cairne\AppData\Local\Temp\ccDkQJKw.s:1286   .bss.ADC_PhaseV_Curr.9217:00000000 ADC_PhaseV_Curr.9217
-C:\Users\Cairne\AppData\Local\Temp\ccDkQJKw.s:1289   .bss.ADC_PhaseW_Curr.9218:00000000 $d
-C:\Users\Cairne\AppData\Local\Temp\ccDkQJKw.s:1293   .bss.ADC_PhaseW_Curr.9218:00000000 ADC_PhaseW_Curr.9218
-C:\Users\Cairne\AppData\Local\Temp\ccDkQJKw.s:1299   .bss.oldVal.9193:00000000 oldVal.9193
-C:\Users\Cairne\AppData\Local\Temp\ccDkQJKw.s:1300   .bss.oldVal.9193:00000000 $d
-C:\Users\Cairne\AppData\Local\Temp\ccDkQJKw.s:1302   .bss.piICurr:00000000 $d
-C:\Users\Cairne\AppData\Local\Temp\ccDkQJKw.s:1309   .bss.piSpd:00000000 $d
-C:\Users\Cairne\AppData\Local\Temp\ccDkQJKw.s:1316   .data.ADCSampPare:00000000 $d
-C:\Users\Cairne\AppData\Local\Temp\ccDkQJKw.s:1334   .rodata.motorTestProgram.str1.4:00000000 $d
+C:\Users\Cairne\AppData\Local\Temp\ccLvKMjm.s:906    .text.HALL_ADCSample:00000000 $t
+C:\Users\Cairne\AppData\Local\Temp\ccLvKMjm.s:913    .text.HALL_ADCSample:00000000 HALL_ADCSample
+C:\Users\Cairne\AppData\Local\Temp\ccLvKMjm.s:953    .text.HALL_ADCSample:00000030 $d
+C:\Users\Cairne\AppData\Local\Temp\ccLvKMjm.s:959    .text.HALL_ADCSample:00000036 $t
+C:\Users\Cairne\AppData\Local\Temp\ccLvKMjm.s:1014   .text.HALL_ADCSample:00000068 $d
+C:\Users\Cairne\AppData\Local\Temp\ccLvKMjm.s:1021   .text.motorTestProgram:00000000 $t
+C:\Users\Cairne\AppData\Local\Temp\ccLvKMjm.s:1028   .text.motorTestProgram:00000000 motorTestProgram
+C:\Users\Cairne\AppData\Local\Temp\ccLvKMjm.s:1358   .text.motorTestProgram:00000298 $d
+C:\Users\Cairne\AppData\Local\Temp\ccLvKMjm.s:1423   .data.ADCSampPare:00000000 ADCSampPare
+C:\Users\Cairne\AppData\Local\Temp\ccLvKMjm.s:1409   .bss.piICurr:00000000 piICurr
+C:\Users\Cairne\AppData\Local\Temp\ccLvKMjm.s:1416   .bss.piSpd:00000000 piSpd
+C:\Users\Cairne\AppData\Local\Temp\ccLvKMjm.s:1378   .bss.ADC_PhaseU_Curr.9216:00000000 $d
+C:\Users\Cairne\AppData\Local\Temp\ccLvKMjm.s:1382   .bss.ADC_PhaseU_Curr.9216:00000000 ADC_PhaseU_Curr.9216
+C:\Users\Cairne\AppData\Local\Temp\ccLvKMjm.s:1385   .bss.ADC_PhaseV_Curr.9217:00000000 $d
+C:\Users\Cairne\AppData\Local\Temp\ccLvKMjm.s:1389   .bss.ADC_PhaseV_Curr.9217:00000000 ADC_PhaseV_Curr.9217
+C:\Users\Cairne\AppData\Local\Temp\ccLvKMjm.s:1392   .bss.ADC_PhaseW_Curr.9218:00000000 $d
+C:\Users\Cairne\AppData\Local\Temp\ccLvKMjm.s:1396   .bss.ADC_PhaseW_Curr.9218:00000000 ADC_PhaseW_Curr.9218
+C:\Users\Cairne\AppData\Local\Temp\ccLvKMjm.s:1402   .bss.oldVal.9193:00000000 oldVal.9193
+C:\Users\Cairne\AppData\Local\Temp\ccLvKMjm.s:1403   .bss.oldVal.9193:00000000 $d
+C:\Users\Cairne\AppData\Local\Temp\ccLvKMjm.s:1405   .bss.piICurr:00000000 $d
+C:\Users\Cairne\AppData\Local\Temp\ccLvKMjm.s:1412   .bss.piSpd:00000000 $d
+C:\Users\Cairne\AppData\Local\Temp\ccLvKMjm.s:1419   .data.ADCSampPare:00000000 $d
+C:\Users\Cairne\AppData\Local\Temp\ccLvKMjm.s:1437   .rodata.motorTestProgram.str1.4:00000000 $d
 
 UNDEFINED SYMBOLS
+__aeabi_i2d
+__aeabi_dmul
+__aeabi_dadd
+__aeabi_d2uiz
 HAL_GPIO_ReadPin
 HAL_GPIO_WritePin
+ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccLvKMjm.s 			page 34
+
+
 TIM_CCxChannelCmd
 htim1
 HAL_Delay
 myPrint
-ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccDkQJKw.s 			page 32
-
-
