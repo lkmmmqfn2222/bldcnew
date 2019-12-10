@@ -1,0 +1,890 @@
+ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccp9cZ9M.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"keyscan.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.run,"ax",%progbits
+  18              		.align	1
+  19              		.global	run
+  20              		.syntax unified
+  21              		.thumb
+  22              		.thumb_func
+  23              		.fpu fpv4-sp-d16
+  25              	run:
+  26              	.LFB133:
+  27              		.file 1 "Src/keyscan.c"
+   1:Src/keyscan.c **** #include "keyscan.h"
+   2:Src/keyscan.c **** 
+   3:Src/keyscan.c **** extern HALL hallTree;
+   4:Src/keyscan.c **** extern STATE stateContr;
+   5:Src/keyscan.c **** extern PIDREG_T piSpd;
+   6:Src/keyscan.c **** extern PIDREG_T piICurr;
+   7:Src/keyscan.c **** 
+   8:Src/keyscan.c **** void run(void)
+   9:Src/keyscan.c **** {
+  28              		.loc 1 9 0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 0
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32 0000 10B5     		push	{r4, lr}
+  33              	.LCFI0:
+  34              		.cfi_def_cfa_offset 8
+  35              		.cfi_offset 4, -8
+  36              		.cfi_offset 14, -4
+  10:Src/keyscan.c ****     START_MOTOR;
+  37              		.loc 1 10 0
+  38 0002 124C     		ldr	r4, .L7
+  39 0004 0122     		movs	r2, #1
+  40 0006 0021     		movs	r1, #0
+  41 0008 2046     		mov	r0, r4
+  42 000a FFF7FEFF 		bl	TIM_CCxChannelCmd
+  43              	.LVL0:
+  44 000e 0122     		movs	r2, #1
+  45 0010 0421     		movs	r1, #4
+  46 0012 2046     		mov	r0, r4
+  47 0014 FFF7FEFF 		bl	TIM_CCxChannelCmd
+  48              	.LVL1:
+ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccp9cZ9M.s 			page 2
+
+
+  49 0018 0122     		movs	r2, #1
+  50 001a 0821     		movs	r1, #8
+  51 001c 2046     		mov	r0, r4
+  52 001e FFF7FEFF 		bl	TIM_CCxChannelCmd
+  53              	.LVL2:
+  11:Src/keyscan.c ****     stateContr.driveCar = 1;
+  54              		.loc 1 11 0
+  55 0022 0B4B     		ldr	r3, .L7+4
+  56 0024 0122     		movs	r2, #1
+  57 0026 9A70     		strb	r2, [r3, #2]
+  12:Src/keyscan.c ****     if (stateContr.controlMode == 1)
+  58              		.loc 1 12 0
+  59 0028 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+  60 002a 9342     		cmp	r3, r2
+  61 002c 04D0     		beq	.L5
+  62              	.L2:
+  13:Src/keyscan.c ****     {
+  14:Src/keyscan.c ****         stateContr.aimSpeed = 20;
+  15:Src/keyscan.c ****         stateContr.aimDuty = 7200 / PWM_FREQ * stateContr.aimSpeed / 100;
+  16:Src/keyscan.c ****     }
+  17:Src/keyscan.c ****     if (stateContr.controlMode == 2 || stateContr.controlMode == 3)
+  63              		.loc 1 17 0
+  64 002e 023B     		subs	r3, r3, #2
+  65 0030 DBB2     		uxtb	r3, r3
+  66 0032 012B     		cmp	r3, #1
+  67 0034 06D9     		bls	.L6
+  68              	.L1:
+  18:Src/keyscan.c ****     {
+  19:Src/keyscan.c ****         piSpd.ref = 500;
+  20:Src/keyscan.c ****     }
+  21:Src/keyscan.c **** }
+  69              		.loc 1 21 0
+  70 0036 10BD     		pop	{r4, pc}
+  71              	.L5:
+  14:Src/keyscan.c ****         stateContr.aimDuty = 7200 / PWM_FREQ * stateContr.aimSpeed / 100;
+  72              		.loc 1 14 0
+  73 0038 054A     		ldr	r2, .L7+4
+  74 003a 1421     		movs	r1, #20
+  75 003c 1182     		strh	r1, [r2, #16]	@ movhi
+  15:Src/keyscan.c ****     }
+  76              		.loc 1 15 0
+  77 003e 5021     		movs	r1, #80
+  78 0040 5161     		str	r1, [r2, #20]
+  79 0042 F4E7     		b	.L2
+  80              	.L6:
+  19:Src/keyscan.c ****     }
+  81              		.loc 1 19 0
+  82 0044 034B     		ldr	r3, .L7+8
+  83 0046 044A     		ldr	r2, .L7+12
+  84 0048 1A60     		str	r2, [r3]	@ float
+  85              		.loc 1 21 0
+  86 004a F4E7     		b	.L1
+  87              	.L8:
+  88              		.align	2
+  89              	.L7:
+  90 004c 00000140 		.word	1073807360
+  91 0050 00000000 		.word	stateContr
+ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccp9cZ9M.s 			page 3
+
+
+  92 0054 00000000 		.word	piSpd
+  93 0058 0000FA43 		.word	1140457472
+  94              		.cfi_endproc
+  95              	.LFE133:
+  97              		.section	.text.stop,"ax",%progbits
+  98              		.align	1
+  99              		.global	stop
+ 100              		.syntax unified
+ 101              		.thumb
+ 102              		.thumb_func
+ 103              		.fpu fpv4-sp-d16
+ 105              	stop:
+ 106              	.LFB134:
+  22:Src/keyscan.c **** 
+  23:Src/keyscan.c **** void stop(void)
+  24:Src/keyscan.c **** {
+ 107              		.loc 1 24 0
+ 108              		.cfi_startproc
+ 109              		@ args = 0, pretend = 0, frame = 0
+ 110              		@ frame_needed = 0, uses_anonymous_args = 0
+ 111 0000 70B5     		push	{r4, r5, r6, lr}
+ 112              	.LCFI1:
+ 113              		.cfi_def_cfa_offset 16
+ 114              		.cfi_offset 4, -16
+ 115              		.cfi_offset 5, -12
+ 116              		.cfi_offset 6, -8
+ 117              		.cfi_offset 14, -4
+  25:Src/keyscan.c ****     stateContr.duty = 0;
+ 118              		.loc 1 25 0
+ 119 0002 194D     		ldr	r5, .L11
+ 120 0004 0024     		movs	r4, #0
+ 121 0006 6C81     		strh	r4, [r5, #10]	@ movhi
+  26:Src/keyscan.c ****     __HAL_TIM_SetCompare(&htim1, TIM_CHANNEL_1, 0);
+ 122              		.loc 1 26 0
+ 123 0008 184B     		ldr	r3, .L11+4
+ 124 000a 1B68     		ldr	r3, [r3]
+ 125 000c 5C63     		str	r4, [r3, #52]
+  27:Src/keyscan.c ****     __HAL_TIM_SetCompare(&htim1, TIM_CHANNEL_2, 0);
+ 126              		.loc 1 27 0
+ 127 000e 9C63     		str	r4, [r3, #56]
+  28:Src/keyscan.c ****     __HAL_TIM_SetCompare(&htim1, TIM_CHANNEL_3, 0);
+ 128              		.loc 1 28 0
+ 129 0010 DC63     		str	r4, [r3, #60]
+  29:Src/keyscan.c ****     STOP_MOTOR;
+ 130              		.loc 1 29 0
+ 131 0012 174E     		ldr	r6, .L11+8
+ 132 0014 2246     		mov	r2, r4
+ 133 0016 2146     		mov	r1, r4
+ 134 0018 3046     		mov	r0, r6
+ 135 001a FFF7FEFF 		bl	TIM_CCxChannelCmd
+ 136              	.LVL3:
+ 137 001e 2246     		mov	r2, r4
+ 138 0020 0421     		movs	r1, #4
+ 139 0022 3046     		mov	r0, r6
+ 140 0024 FFF7FEFF 		bl	TIM_CCxChannelCmd
+ 141              	.LVL4:
+ 142 0028 2246     		mov	r2, r4
+ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccp9cZ9M.s 			page 4
+
+
+ 143 002a 0821     		movs	r1, #8
+ 144 002c 3046     		mov	r0, r6
+ 145 002e FFF7FEFF 		bl	TIM_CCxChannelCmd
+ 146              	.LVL5:
+  30:Src/keyscan.c ****     stateContr.aimSpeed = 0;
+ 147              		.loc 1 30 0
+ 148 0032 2C82     		strh	r4, [r5, #16]	@ movhi
+  31:Src/keyscan.c ****     stateContr.aimDuty = 0;
+ 149              		.loc 1 31 0
+ 150 0034 6C61     		str	r4, [r5, #20]
+  32:Src/keyscan.c ****     stateContr.driveCar = 0;
+ 151              		.loc 1 32 0
+ 152 0036 AC70     		strb	r4, [r5, #2]
+  33:Src/keyscan.c ****     stateContr.startOrder = 1;
+ 153              		.loc 1 33 0
+ 154 0038 0123     		movs	r3, #1
+ 155 003a 2B72     		strb	r3, [r5, #8]
+  34:Src/keyscan.c ****     stateContr.currentCount = 0;
+ 156              		.loc 1 34 0
+ 157 003c EC81     		strh	r4, [r5, #14]	@ movhi
+  35:Src/keyscan.c ****     stateContr.speedCount = 0;
+ 158              		.loc 1 35 0
+ 159 003e AC81     		strh	r4, [r5, #12]	@ movhi
+  36:Src/keyscan.c **** 
+  37:Src/keyscan.c ****     hallTree.filterCount = 0;
+ 160              		.loc 1 37 0
+ 161 0040 0C4B     		ldr	r3, .L11+12
+ 162 0042 1C85     		strh	r4, [r3, #40]	@ movhi
+  38:Src/keyscan.c ****     hallTree.filterCountF = 0;
+ 163              		.loc 1 38 0
+ 164 0044 5C85     		strh	r4, [r3, #42]	@ movhi
+  39:Src/keyscan.c ****     hallTree.speedRPM = 0;
+ 165              		.loc 1 39 0
+ 166 0046 9C84     		strh	r4, [r3, #36]	@ movhi
+  40:Src/keyscan.c ****     hallTree.speedRPMF = 0;
+ 167              		.loc 1 40 0
+ 168 0048 5C84     		strh	r4, [r3, #34]	@ movhi
+  41:Src/keyscan.c **** 
+  42:Src/keyscan.c ****     piSpd.err = 0;
+ 169              		.loc 1 42 0
+ 170 004a 0B4B     		ldr	r3, .L11+16
+ 171 004c 0022     		movs	r2, #0
+ 172 004e 9A60     		str	r2, [r3, #8]	@ float
+  43:Src/keyscan.c ****     piSpd.fdb = 0;
+ 173              		.loc 1 43 0
+ 174 0050 5A60     		str	r2, [r3, #4]	@ float
+  44:Src/keyscan.c ****     piSpd.out = 0;
+ 175              		.loc 1 44 0
+ 176 0052 9A62     		str	r2, [r3, #40]	@ float
+  45:Src/keyscan.c ****     piSpd.outF = 0;
+ 177              		.loc 1 45 0
+ 178 0054 5A64     		str	r2, [r3, #68]	@ float
+  46:Src/keyscan.c ****     piSpd.outPreSat = 0;
+ 179              		.loc 1 46 0
+ 180 0056 DA61     		str	r2, [r3, #28]	@ float
+  47:Src/keyscan.c ****     piSpd.ref = 0;
+ 181              		.loc 1 47 0
+ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccp9cZ9M.s 			page 5
+
+
+ 182 0058 1A60     		str	r2, [r3]	@ float
+  48:Src/keyscan.c ****     piSpd.satErr = 0;
+ 183              		.loc 1 48 0
+ 184 005a DA62     		str	r2, [r3, #44]	@ float
+  49:Src/keyscan.c ****     piSpd.ud = 0;
+ 185              		.loc 1 49 0
+ 186 005c 9A61     		str	r2, [r3, #24]	@ float
+  50:Src/keyscan.c ****     piSpd.ui = 0;
+ 187              		.loc 1 50 0
+ 188 005e 5A61     		str	r2, [r3, #20]	@ float
+  51:Src/keyscan.c ****     piSpd.ui_1 = 0;
+ 189              		.loc 1 51 0
+ 190 0060 1A64     		str	r2, [r3, #64]	@ float
+  52:Src/keyscan.c ****     piSpd.up = 0;
+ 191              		.loc 1 52 0
+ 192 0062 1A61     		str	r2, [r3, #16]	@ float
+  53:Src/keyscan.c ****     piSpd.up1 = 0;
+ 193              		.loc 1 53 0
+ 194 0064 DA63     		str	r2, [r3, #60]	@ float
+  54:Src/keyscan.c **** }
+ 195              		.loc 1 54 0
+ 196 0066 70BD     		pop	{r4, r5, r6, pc}
+ 197              	.L12:
+ 198              		.align	2
+ 199              	.L11:
+ 200 0068 00000000 		.word	stateContr
+ 201 006c 00000000 		.word	htim1
+ 202 0070 00000140 		.word	1073807360
+ 203 0074 00000000 		.word	hallTree
+ 204 0078 00000000 		.word	piSpd
+ 205              		.cfi_endproc
+ 206              	.LFE134:
+ 208              		.section	.text.up,"ax",%progbits
+ 209              		.align	1
+ 210              		.global	up
+ 211              		.syntax unified
+ 212              		.thumb
+ 213              		.thumb_func
+ 214              		.fpu fpv4-sp-d16
+ 216              	up:
+ 217              	.LFB135:
+  55:Src/keyscan.c **** 
+  56:Src/keyscan.c **** void up(void)
+  57:Src/keyscan.c **** {
+ 218              		.loc 1 57 0
+ 219              		.cfi_startproc
+ 220              		@ args = 0, pretend = 0, frame = 0
+ 221              		@ frame_needed = 0, uses_anonymous_args = 0
+ 222              		@ link register save eliminated.
+  58:Src/keyscan.c ****     if (stateContr.controlMode == 2 || stateContr.controlMode == 3)
+ 223              		.loc 1 58 0
+ 224 0000 1A4B     		ldr	r3, .L22
+ 225 0002 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
+ 226 0004 931E     		subs	r3, r2, #2
+ 227 0006 DBB2     		uxtb	r3, r3
+ 228 0008 012B     		cmp	r3, #1
+ 229 000a 15D9     		bls	.L20
+ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccp9cZ9M.s 			page 6
+
+
+ 230              	.L14:
+  59:Src/keyscan.c ****     {
+  60:Src/keyscan.c ****         piSpd.ref += 10;
+  61:Src/keyscan.c ****     }
+  62:Src/keyscan.c ****     if (stateContr.controlMode == 1)
+ 231              		.loc 1 62 0
+ 232 000c 012A     		cmp	r2, #1
+ 233 000e 1DD0     		beq	.L21
+ 234              	.L15:
+  63:Src/keyscan.c ****     {
+  64:Src/keyscan.c ****         stateContr.aimSpeed += 1;
+  65:Src/keyscan.c ****         stateContr.aimDuty = 4500 * stateContr.aimSpeed / 100;
+  66:Src/keyscan.c ****     }
+  67:Src/keyscan.c ****     if (stateContr.aimSpeed > 80)
+ 235              		.loc 1 67 0
+ 236 0010 164B     		ldr	r3, .L22
+ 237 0012 1B8A     		ldrh	r3, [r3, #16]
+ 238 0014 502B     		cmp	r3, #80
+ 239 0016 02D9     		bls	.L16
+  68:Src/keyscan.c ****     {
+  69:Src/keyscan.c ****         stateContr.aimSpeed = 80;
+ 240              		.loc 1 69 0
+ 241 0018 144B     		ldr	r3, .L22
+ 242 001a 5022     		movs	r2, #80
+ 243 001c 1A82     		strh	r2, [r3, #16]	@ movhi
+ 244              	.L16:
+  70:Src/keyscan.c ****     }
+  71:Src/keyscan.c ****     if (piSpd.ref > 2500)
+ 245              		.loc 1 71 0
+ 246 001e 144B     		ldr	r3, .L22+4
+ 247 0020 93ED007A 		vldr.32	s14, [r3]
+ 248 0024 DFED137A 		vldr.32	s15, .L22+8
+ 249 0028 B4EEE77A 		vcmpe.f32	s14, s15
+ 250 002c F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 251 0030 01DD     		ble	.L13
+  72:Src/keyscan.c ****     {
+  73:Src/keyscan.c ****         piSpd.ref = 2500;
+ 252              		.loc 1 73 0
+ 253 0032 C3ED007A 		vstr.32	s15, [r3]
+ 254              	.L13:
+  74:Src/keyscan.c ****     }
+  75:Src/keyscan.c **** }
+ 255              		.loc 1 75 0
+ 256 0036 7047     		bx	lr
+ 257              	.L20:
+  60:Src/keyscan.c ****     }
+ 258              		.loc 1 60 0
+ 259 0038 0D4B     		ldr	r3, .L22+4
+ 260 003a D3ED007A 		vldr.32	s15, [r3]
+ 261 003e B2EE047A 		vmov.f32	s14, #1.0e+1
+ 262 0042 77EE877A 		vadd.f32	s15, s15, s14
+ 263 0046 C3ED007A 		vstr.32	s15, [r3]
+ 264 004a DFE7     		b	.L14
+ 265              	.L21:
+  64:Src/keyscan.c ****         stateContr.aimDuty = 4500 * stateContr.aimSpeed / 100;
+ 266              		.loc 1 64 0
+ 267 004c 0749     		ldr	r1, .L22
+ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccp9cZ9M.s 			page 7
+
+
+ 268 004e 0B8A     		ldrh	r3, [r1, #16]
+ 269 0050 0133     		adds	r3, r3, #1
+ 270 0052 9AB2     		uxth	r2, r3
+ 271 0054 0A82     		strh	r2, [r1, #16]	@ movhi
+  65:Src/keyscan.c ****     }
+ 272              		.loc 1 65 0
+ 273 0056 41F29413 		movw	r3, #4500
+ 274 005a 03FB02F3 		mul	r3, r3, r2
+ 275 005e 064A     		ldr	r2, .L22+12
+ 276 0060 82FB0323 		smull	r2, r3, r2, r3
+ 277 0064 5B11     		asrs	r3, r3, #5
+ 278 0066 4B61     		str	r3, [r1, #20]
+ 279 0068 D2E7     		b	.L15
+ 280              	.L23:
+ 281 006a 00BF     		.align	2
+ 282              	.L22:
+ 283 006c 00000000 		.word	stateContr
+ 284 0070 00000000 		.word	piSpd
+ 285 0074 00401C45 		.word	1159479296
+ 286 0078 1F85EB51 		.word	1374389535
+ 287              		.cfi_endproc
+ 288              	.LFE135:
+ 290              		.section	.text.down,"ax",%progbits
+ 291              		.align	1
+ 292              		.global	down
+ 293              		.syntax unified
+ 294              		.thumb
+ 295              		.thumb_func
+ 296              		.fpu fpv4-sp-d16
+ 298              	down:
+ 299              	.LFB136:
+  76:Src/keyscan.c **** 
+  77:Src/keyscan.c **** void down(void)
+  78:Src/keyscan.c **** {
+ 300              		.loc 1 78 0
+ 301              		.cfi_startproc
+ 302              		@ args = 0, pretend = 0, frame = 0
+ 303              		@ frame_needed = 0, uses_anonymous_args = 0
+ 304              		@ link register save eliminated.
+  79:Src/keyscan.c ****     if (stateContr.controlMode == 2 || stateContr.controlMode == 3)
+ 305              		.loc 1 79 0
+ 306 0000 1A4B     		ldr	r3, .L33
+ 307 0002 1A78     		ldrb	r2, [r3]	@ zero_extendqisi2
+ 308 0004 931E     		subs	r3, r2, #2
+ 309 0006 DBB2     		uxtb	r3, r3
+ 310 0008 012B     		cmp	r3, #1
+ 311 000a 15D9     		bls	.L31
+ 312              	.L25:
+  80:Src/keyscan.c ****     {
+  81:Src/keyscan.c ****         piSpd.ref -= 10;
+  82:Src/keyscan.c ****     }
+  83:Src/keyscan.c ****     if (stateContr.controlMode == 1)
+ 313              		.loc 1 83 0
+ 314 000c 012A     		cmp	r2, #1
+ 315 000e 1DD0     		beq	.L32
+ 316              	.L26:
+  84:Src/keyscan.c ****     {
+ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccp9cZ9M.s 			page 8
+
+
+  85:Src/keyscan.c ****         stateContr.aimSpeed -= 1;
+  86:Src/keyscan.c ****         stateContr.aimDuty = 4500 * stateContr.aimSpeed / 100;
+  87:Src/keyscan.c ****     }
+  88:Src/keyscan.c ****     if (stateContr.aimSpeed < 10)
+ 317              		.loc 1 88 0
+ 318 0010 164B     		ldr	r3, .L33
+ 319 0012 1B8A     		ldrh	r3, [r3, #16]
+ 320 0014 092B     		cmp	r3, #9
+ 321 0016 02D8     		bhi	.L27
+  89:Src/keyscan.c ****     {
+  90:Src/keyscan.c ****         stateContr.aimSpeed = 10;
+ 322              		.loc 1 90 0
+ 323 0018 144B     		ldr	r3, .L33
+ 324 001a 0A22     		movs	r2, #10
+ 325 001c 1A82     		strh	r2, [r3, #16]	@ movhi
+ 326              	.L27:
+  91:Src/keyscan.c ****     }
+  92:Src/keyscan.c ****     if (piSpd.ref < 300)
+ 327              		.loc 1 92 0
+ 328 001e 144B     		ldr	r3, .L33+4
+ 329 0020 93ED007A 		vldr.32	s14, [r3]
+ 330 0024 DFED137A 		vldr.32	s15, .L33+8
+ 331 0028 B4EEE77A 		vcmpe.f32	s14, s15
+ 332 002c F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 333 0030 01D5     		bpl	.L24
+  93:Src/keyscan.c ****     {
+  94:Src/keyscan.c ****         piSpd.ref = 300;
+ 334              		.loc 1 94 0
+ 335 0032 C3ED007A 		vstr.32	s15, [r3]
+ 336              	.L24:
+  95:Src/keyscan.c ****     }
+  96:Src/keyscan.c **** }
+ 337              		.loc 1 96 0
+ 338 0036 7047     		bx	lr
+ 339              	.L31:
+  81:Src/keyscan.c ****     }
+ 340              		.loc 1 81 0
+ 341 0038 0D4B     		ldr	r3, .L33+4
+ 342 003a D3ED007A 		vldr.32	s15, [r3]
+ 343 003e B2EE047A 		vmov.f32	s14, #1.0e+1
+ 344 0042 77EEC77A 		vsub.f32	s15, s15, s14
+ 345 0046 C3ED007A 		vstr.32	s15, [r3]
+ 346 004a DFE7     		b	.L25
+ 347              	.L32:
+  85:Src/keyscan.c ****         stateContr.aimDuty = 4500 * stateContr.aimSpeed / 100;
+ 348              		.loc 1 85 0
+ 349 004c 0749     		ldr	r1, .L33
+ 350 004e 0B8A     		ldrh	r3, [r1, #16]
+ 351 0050 013B     		subs	r3, r3, #1
+ 352 0052 9AB2     		uxth	r2, r3
+ 353 0054 0A82     		strh	r2, [r1, #16]	@ movhi
+  86:Src/keyscan.c ****     }
+ 354              		.loc 1 86 0
+ 355 0056 41F29413 		movw	r3, #4500
+ 356 005a 03FB02F3 		mul	r3, r3, r2
+ 357 005e 064A     		ldr	r2, .L33+12
+ 358 0060 82FB0323 		smull	r2, r3, r2, r3
+ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccp9cZ9M.s 			page 9
+
+
+ 359 0064 5B11     		asrs	r3, r3, #5
+ 360 0066 4B61     		str	r3, [r1, #20]
+ 361 0068 D2E7     		b	.L26
+ 362              	.L34:
+ 363 006a 00BF     		.align	2
+ 364              	.L33:
+ 365 006c 00000000 		.word	stateContr
+ 366 0070 00000000 		.word	piSpd
+ 367 0074 00009643 		.word	1133903872
+ 368 0078 1F85EB51 		.word	1374389535
+ 369              		.cfi_endproc
+ 370              	.LFE136:
+ 372              		.section	.text.dir,"ax",%progbits
+ 373              		.align	1
+ 374              		.global	dir
+ 375              		.syntax unified
+ 376              		.thumb
+ 377              		.thumb_func
+ 378              		.fpu fpv4-sp-d16
+ 380              	dir:
+ 381              	.LFB137:
+  97:Src/keyscan.c **** 
+  98:Src/keyscan.c **** void dir(void)
+  99:Src/keyscan.c **** {
+ 382              		.loc 1 99 0
+ 383              		.cfi_startproc
+ 384              		@ args = 0, pretend = 0, frame = 0
+ 385              		@ frame_needed = 0, uses_anonymous_args = 0
+ 386              		@ link register save eliminated.
+ 100:Src/keyscan.c ****     if (stateContr.INVERSION == 1)
+ 387              		.loc 1 100 0
+ 388 0000 064B     		ldr	r3, .L39
+ 389 0002 9B69     		ldr	r3, [r3, #24]
+ 390 0004 012B     		cmp	r3, #1
+ 391 0006 04D0     		beq	.L38
+ 101:Src/keyscan.c ****     {
+ 102:Src/keyscan.c ****         stateContr.INVERSION = 0;
+ 103:Src/keyscan.c ****         stateContr.temp = 0;
+ 104:Src/keyscan.c ****     }
+ 105:Src/keyscan.c ****     else
+ 106:Src/keyscan.c ****     {
+ 107:Src/keyscan.c ****         stateContr.INVERSION = 1;
+ 392              		.loc 1 107 0
+ 393 0008 044B     		ldr	r3, .L39
+ 394 000a 0122     		movs	r2, #1
+ 395 000c 9A61     		str	r2, [r3, #24]
+ 108:Src/keyscan.c ****         stateContr.temp = 1;
+ 396              		.loc 1 108 0
+ 397 000e DA61     		str	r2, [r3, #28]
+ 109:Src/keyscan.c ****     }
+ 110:Src/keyscan.c **** }
+ 398              		.loc 1 110 0
+ 399 0010 7047     		bx	lr
+ 400              	.L38:
+ 102:Src/keyscan.c ****         stateContr.temp = 0;
+ 401              		.loc 1 102 0
+ 402 0012 024B     		ldr	r3, .L39
+ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccp9cZ9M.s 			page 10
+
+
+ 403 0014 0022     		movs	r2, #0
+ 404 0016 9A61     		str	r2, [r3, #24]
+ 103:Src/keyscan.c ****     }
+ 405              		.loc 1 103 0
+ 406 0018 DA61     		str	r2, [r3, #28]
+ 407 001a 7047     		bx	lr
+ 408              	.L40:
+ 409              		.align	2
+ 410              	.L39:
+ 411 001c 00000000 		.word	stateContr
+ 412              		.cfi_endproc
+ 413              	.LFE137:
+ 415              		.section	.text.keyScan,"ax",%progbits
+ 416              		.align	1
+ 417              		.global	keyScan
+ 418              		.syntax unified
+ 419              		.thumb
+ 420              		.thumb_func
+ 421              		.fpu fpv4-sp-d16
+ 423              	keyScan:
+ 424              	.LFB138:
+ 111:Src/keyscan.c **** 
+ 112:Src/keyscan.c **** void keyScan(void)
+ 113:Src/keyscan.c **** {
+ 425              		.loc 1 113 0
+ 426              		.cfi_startproc
+ 427              		@ args = 0, pretend = 0, frame = 0
+ 428              		@ frame_needed = 0, uses_anonymous_args = 0
+ 429 0000 08B5     		push	{r3, lr}
+ 430              	.LCFI2:
+ 431              		.cfi_def_cfa_offset 8
+ 432              		.cfi_offset 3, -8
+ 433              		.cfi_offset 14, -4
+ 114:Src/keyscan.c ****     static uint16_t count = 0;
+ 115:Src/keyscan.c ****     if (RUN_STATUS == 0 && (count == 0))
+ 434              		.loc 1 115 0
+ 435 0002 2021     		movs	r1, #32
+ 436 0004 2F48     		ldr	r0, .L54
+ 437 0006 FFF7FEFF 		bl	HAL_GPIO_ReadPin
+ 438              	.LVL6:
+ 439 000a 10B9     		cbnz	r0, .L42
+ 440              		.loc 1 115 0 is_stmt 0 discriminator 1
+ 441 000c 2E4B     		ldr	r3, .L54+4
+ 442 000e 1B88     		ldrh	r3, [r3]
+ 443 0010 4BB3     		cbz	r3, .L49
+ 444              	.L42:
+ 116:Src/keyscan.c ****     {
+ 117:Src/keyscan.c ****         myPrint("run**************************!\r\n");
+ 118:Src/keyscan.c ****         run();
+ 119:Src/keyscan.c ****         count = 20;
+ 120:Src/keyscan.c ****     }
+ 121:Src/keyscan.c ****     if (STOP_STATUS == 0 && (count == 0))
+ 445              		.loc 1 121 0 is_stmt 1
+ 446 0012 0221     		movs	r1, #2
+ 447 0014 2D48     		ldr	r0, .L54+8
+ 448 0016 FFF7FEFF 		bl	HAL_GPIO_ReadPin
+ 449              	.LVL7:
+ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccp9cZ9M.s 			page 11
+
+
+ 450 001a 10B9     		cbnz	r0, .L43
+ 451              		.loc 1 121 0 is_stmt 0 discriminator 1
+ 452 001c 2A4B     		ldr	r3, .L54+4
+ 453 001e 1B88     		ldrh	r3, [r3]
+ 454 0020 53B3     		cbz	r3, .L50
+ 455              	.L43:
+ 122:Src/keyscan.c ****     {
+ 123:Src/keyscan.c ****         myPrint("stop!!!!!!!!!!!!!!!!!!!!!!!!!!!\r\n");
+ 124:Src/keyscan.c ****         stop();
+ 125:Src/keyscan.c ****         count = 20;
+ 126:Src/keyscan.c ****     }
+ 127:Src/keyscan.c ****     if (UP_STATUS == 0 && (count == 0))
+ 456              		.loc 1 127 0 is_stmt 1
+ 457 0022 4FF48061 		mov	r1, #1024
+ 458 0026 2948     		ldr	r0, .L54+8
+ 459 0028 FFF7FEFF 		bl	HAL_GPIO_ReadPin
+ 460              	.LVL8:
+ 461 002c 10B9     		cbnz	r0, .L44
+ 462              		.loc 1 127 0 is_stmt 0 discriminator 1
+ 463 002e 264B     		ldr	r3, .L54+4
+ 464 0030 1B88     		ldrh	r3, [r3]
+ 465 0032 53B3     		cbz	r3, .L51
+ 466              	.L44:
+ 128:Src/keyscan.c ****     {
+ 129:Src/keyscan.c ****         myPrint("up!+++++++++++++++++++++++++++\r\n");
+ 130:Src/keyscan.c ****         up();
+ 131:Src/keyscan.c ****         count = 20;
+ 132:Src/keyscan.c ****     }
+ 133:Src/keyscan.c ****     if (DOWN_STATUS == 0 && (count == 0))
+ 467              		.loc 1 133 0 is_stmt 1
+ 468 0034 4FF40061 		mov	r1, #2048
+ 469 0038 2448     		ldr	r0, .L54+8
+ 470 003a FFF7FEFF 		bl	HAL_GPIO_ReadPin
+ 471              	.LVL9:
+ 472 003e 10B9     		cbnz	r0, .L45
+ 473              		.loc 1 133 0 is_stmt 0 discriminator 1
+ 474 0040 214B     		ldr	r3, .L54+4
+ 475 0042 1B88     		ldrh	r3, [r3]
+ 476 0044 53B3     		cbz	r3, .L52
+ 477              	.L45:
+ 134:Src/keyscan.c ****     {
+ 135:Src/keyscan.c ****         myPrint("down!---------------------------\r\n");
+ 136:Src/keyscan.c ****         down();
+ 137:Src/keyscan.c ****         count = 20;
+ 138:Src/keyscan.c ****     }
+ 139:Src/keyscan.c ****     if (DIR_STATUS == 0 && (count == 0))
+ 478              		.loc 1 139 0 is_stmt 1
+ 479 0046 4FF48051 		mov	r1, #4096
+ 480 004a 2048     		ldr	r0, .L54+8
+ 481 004c FFF7FEFF 		bl	HAL_GPIO_ReadPin
+ 482              	.LVL10:
+ 483 0050 10B9     		cbnz	r0, .L46
+ 484              		.loc 1 139 0 is_stmt 0 discriminator 1
+ 485 0052 1D4B     		ldr	r3, .L54+4
+ 486 0054 1B88     		ldrh	r3, [r3]
+ 487 0056 53B3     		cbz	r3, .L53
+ 488              	.L46:
+ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccp9cZ9M.s 			page 12
+
+
+ 140:Src/keyscan.c ****     {
+ 141:Src/keyscan.c ****         myPrint("dir!|||||||||||||||||||||||||||||||\r\n");
+ 142:Src/keyscan.c ****         stop();
+ 143:Src/keyscan.c ****         dir();
+ 144:Src/keyscan.c ****         count = 20;
+ 145:Src/keyscan.c ****     }
+ 146:Src/keyscan.c ****     if (count > 0)
+ 489              		.loc 1 146 0 is_stmt 1
+ 490 0058 1B4B     		ldr	r3, .L54+4
+ 491 005a 1B88     		ldrh	r3, [r3]
+ 492 005c 13B1     		cbz	r3, .L41
+ 147:Src/keyscan.c ****     {
+ 148:Src/keyscan.c ****         count--;
+ 493              		.loc 1 148 0
+ 494 005e 013B     		subs	r3, r3, #1
+ 495 0060 194A     		ldr	r2, .L54+4
+ 496 0062 1380     		strh	r3, [r2]	@ movhi
+ 497              	.L41:
+ 149:Src/keyscan.c ****     }
+ 150:Src/keyscan.c **** }...
+ 498              		.loc 1 150 0
+ 499 0064 08BD     		pop	{r3, pc}
+ 500              	.L49:
+ 117:Src/keyscan.c ****         myPrint("run**************************!\r\n");
+ 501              		.loc 1 117 0
+ 502 0066 1A48     		ldr	r0, .L54+12
+ 503 0068 FFF7FEFF 		bl	myPrint
+ 504              	.LVL11:
+ 118:Src/keyscan.c ****         run();
+ 505              		.loc 1 118 0
+ 506 006c FFF7FEFF 		bl	run
+ 507              	.LVL12:
+ 119:Src/keyscan.c ****         count = 20;
+ 508              		.loc 1 119 0
+ 509 0070 154B     		ldr	r3, .L54+4
+ 510 0072 1422     		movs	r2, #20
+ 511 0074 1A80     		strh	r2, [r3]	@ movhi
+ 512 0076 CCE7     		b	.L42
+ 513              	.L50:
+ 123:Src/keyscan.c ****         myPrint("stop!!!!!!!!!!!!!!!!!!!!!!!!!!!\r\n");
+ 514              		.loc 1 123 0
+ 515 0078 1648     		ldr	r0, .L54+16
+ 516 007a FFF7FEFF 		bl	myPrint
+ 517              	.LVL13:
+ 124:Src/keyscan.c ****         stop();
+ 518              		.loc 1 124 0
+ 519 007e FFF7FEFF 		bl	stop
+ 520              	.LVL14:
+ 125:Src/keyscan.c ****         count = 20;
+ 521              		.loc 1 125 0
+ 522 0082 114B     		ldr	r3, .L54+4
+ 523 0084 1422     		movs	r2, #20
+ 524 0086 1A80     		strh	r2, [r3]	@ movhi
+ 525 0088 CBE7     		b	.L43
+ 526              	.L51:
+ 129:Src/keyscan.c ****         myPrint("up!+++++++++++++++++++++++++++\r\n");
+ 527              		.loc 1 129 0
+ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccp9cZ9M.s 			page 13
+
+
+ 528 008a 1348     		ldr	r0, .L54+20
+ 529 008c FFF7FEFF 		bl	myPrint
+ 530              	.LVL15:
+ 130:Src/keyscan.c ****         up();
+ 531              		.loc 1 130 0
+ 532 0090 FFF7FEFF 		bl	up
+ 533              	.LVL16:
+ 131:Src/keyscan.c ****         count = 20;
+ 534              		.loc 1 131 0
+ 535 0094 0C4B     		ldr	r3, .L54+4
+ 536 0096 1422     		movs	r2, #20
+ 537 0098 1A80     		strh	r2, [r3]	@ movhi
+ 538 009a CBE7     		b	.L44
+ 539              	.L52:
+ 135:Src/keyscan.c ****         myPrint("down!---------------------------\r\n");
+ 540              		.loc 1 135 0
+ 541 009c 0F48     		ldr	r0, .L54+24
+ 542 009e FFF7FEFF 		bl	myPrint
+ 543              	.LVL17:
+ 136:Src/keyscan.c ****         down();
+ 544              		.loc 1 136 0
+ 545 00a2 FFF7FEFF 		bl	down
+ 546              	.LVL18:
+ 137:Src/keyscan.c ****         count = 20;
+ 547              		.loc 1 137 0
+ 548 00a6 084B     		ldr	r3, .L54+4
+ 549 00a8 1422     		movs	r2, #20
+ 550 00aa 1A80     		strh	r2, [r3]	@ movhi
+ 551 00ac CBE7     		b	.L45
+ 552              	.L53:
+ 141:Src/keyscan.c ****         myPrint("dir!|||||||||||||||||||||||||||||||\r\n");
+ 553              		.loc 1 141 0
+ 554 00ae 0C48     		ldr	r0, .L54+28
+ 555 00b0 FFF7FEFF 		bl	myPrint
+ 556              	.LVL19:
+ 142:Src/keyscan.c ****         stop();
+ 557              		.loc 1 142 0
+ 558 00b4 FFF7FEFF 		bl	stop
+ 559              	.LVL20:
+ 143:Src/keyscan.c ****         dir();
+ 560              		.loc 1 143 0
+ 561 00b8 FFF7FEFF 		bl	dir
+ 562              	.LVL21:
+ 144:Src/keyscan.c ****         count = 20;
+ 563              		.loc 1 144 0
+ 564 00bc 024B     		ldr	r3, .L54+4
+ 565 00be 1422     		movs	r2, #20
+ 566 00c0 1A80     		strh	r2, [r3]	@ movhi
+ 567 00c2 C9E7     		b	.L46
+ 568              	.L55:
+ 569              		.align	2
+ 570              	.L54:
+ 571 00c4 00080240 		.word	1073874944
+ 572 00c8 00000000 		.word	.LANCHOR0
+ 573 00cc 00040240 		.word	1073873920
+ 574 00d0 00000000 		.word	.LC0
+ 575 00d4 24000000 		.word	.LC1
+ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccp9cZ9M.s 			page 14
+
+
+ 576 00d8 48000000 		.word	.LC2
+ 577 00dc 6C000000 		.word	.LC3
+ 578 00e0 90000000 		.word	.LC4
+ 579              		.cfi_endproc
+ 580              	.LFE138:
+ 582              		.section	.bss.count.9210,"aw",%nobits
+ 583              		.align	1
+ 584              		.set	.LANCHOR0,. + 0
+ 587              	count.9210:
+ 588 0000 0000     		.space	2
+ 589              		.section	.rodata.keyScan.str1.4,"aMS",%progbits,1
+ 590              		.align	2
+ 591              	.LC0:
+ 592 0000 72756E2A 		.ascii	"run**************************!\015\012\000"
+ 592      2A2A2A2A 
+ 592      2A2A2A2A 
+ 592      2A2A2A2A 
+ 592      2A2A2A2A 
+ 593 0021 000000   		.space	3
+ 594              	.LC1:
+ 595 0024 73746F70 		.ascii	"stop!!!!!!!!!!!!!!!!!!!!!!!!!!!\015\012\000"
+ 595      21212121 
+ 595      21212121 
+ 595      21212121 
+ 595      21212121 
+ 596 0046 0000     		.space	2
+ 597              	.LC2:
+ 598 0048 7570212B 		.ascii	"up!+++++++++++++++++++++++++++\015\012\000"
+ 598      2B2B2B2B 
+ 598      2B2B2B2B 
+ 598      2B2B2B2B 
+ 598      2B2B2B2B 
+ 599 0069 000000   		.space	3
+ 600              	.LC3:
+ 601 006c 646F776E 		.ascii	"down!---------------------------\015\012\000"
+ 601      212D2D2D 
+ 601      2D2D2D2D 
+ 601      2D2D2D2D 
+ 601      2D2D2D2D 
+ 602 008f 00       		.space	1
+ 603              	.LC4:
+ 604 0090 64697221 		.ascii	"dir!|||||||||||||||||||||||||||||||\015\012\000"
+ 604      7C7C7C7C 
+ 604      7C7C7C7C 
+ 604      7C7C7C7C 
+ 604      7C7C7C7C 
+ 605              		.text
+ 606              	.Letext0:
+ 607              		.file 2 "c:\\program files (x86)\\gnu tools arm embedded\\7 2018-q2-update\\arm-none-eabi\\include
+ 608              		.file 3 "c:\\program files (x86)\\gnu tools arm embedded\\7 2018-q2-update\\arm-none-eabi\\include
+ 609              		.file 4 "Drivers/CMSIS/Include/core_cm4.h"
+ 610              		.file 5 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/system_stm32f4xx.h"
+ 611              		.file 6 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f405xx.h"
+ 612              		.file 7 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h"
+ 613              		.file 8 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h"
+ 614              		.file 9 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h"
+ 615              		.file 10 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc.h"
+ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccp9cZ9M.s 			page 15
+
+
+ 616              		.file 11 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h"
+ 617              		.file 12 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h"
+ 618              		.file 13 "Inc/tim.h"
+ 619              		.file 14 "Inc/adc.h"
+ 620              		.file 15 "Inc/bldc.h"
+ 621              		.file 16 "Inc/usart.h"
+ 622              		.file 17 "c:\\program files (x86)\\gnu tools arm embedded\\7 2018-q2-update\\arm-none-eabi\\includ
+ 623              		.file 18 "c:\\program files (x86)\\gnu tools arm embedded\\7 2018-q2-update\\arm-none-eabi\\includ
+ 624              		.file 19 "c:\\program files (x86)\\gnu tools arm embedded\\7 2018-q2-update\\lib\\gcc\\arm-none-ea
+ 625              		.file 20 "c:\\program files (x86)\\gnu tools arm embedded\\7 2018-q2-update\\arm-none-eabi\\includ
+ 626              		.file 21 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_gpio.h"
+ 627              		.file 22 "Inc/myprint.h"
+ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccp9cZ9M.s 			page 16
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 keyscan.c
+C:\Users\Cairne\AppData\Local\Temp\ccp9cZ9M.s:18     .text.run:00000000 $t
+C:\Users\Cairne\AppData\Local\Temp\ccp9cZ9M.s:25     .text.run:00000000 run
+C:\Users\Cairne\AppData\Local\Temp\ccp9cZ9M.s:90     .text.run:0000004c $d
+C:\Users\Cairne\AppData\Local\Temp\ccp9cZ9M.s:98     .text.stop:00000000 $t
+C:\Users\Cairne\AppData\Local\Temp\ccp9cZ9M.s:105    .text.stop:00000000 stop
+C:\Users\Cairne\AppData\Local\Temp\ccp9cZ9M.s:200    .text.stop:00000068 $d
+C:\Users\Cairne\AppData\Local\Temp\ccp9cZ9M.s:209    .text.up:00000000 $t
+C:\Users\Cairne\AppData\Local\Temp\ccp9cZ9M.s:216    .text.up:00000000 up
+C:\Users\Cairne\AppData\Local\Temp\ccp9cZ9M.s:283    .text.up:0000006c $d
+C:\Users\Cairne\AppData\Local\Temp\ccp9cZ9M.s:291    .text.down:00000000 $t
+C:\Users\Cairne\AppData\Local\Temp\ccp9cZ9M.s:298    .text.down:00000000 down
+C:\Users\Cairne\AppData\Local\Temp\ccp9cZ9M.s:365    .text.down:0000006c $d
+C:\Users\Cairne\AppData\Local\Temp\ccp9cZ9M.s:373    .text.dir:00000000 $t
+C:\Users\Cairne\AppData\Local\Temp\ccp9cZ9M.s:380    .text.dir:00000000 dir
+C:\Users\Cairne\AppData\Local\Temp\ccp9cZ9M.s:411    .text.dir:0000001c $d
+C:\Users\Cairne\AppData\Local\Temp\ccp9cZ9M.s:416    .text.keyScan:00000000 $t
+C:\Users\Cairne\AppData\Local\Temp\ccp9cZ9M.s:423    .text.keyScan:00000000 keyScan
+C:\Users\Cairne\AppData\Local\Temp\ccp9cZ9M.s:571    .text.keyScan:000000c4 $d
+C:\Users\Cairne\AppData\Local\Temp\ccp9cZ9M.s:583    .bss.count.9210:00000000 $d
+C:\Users\Cairne\AppData\Local\Temp\ccp9cZ9M.s:587    .bss.count.9210:00000000 count.9210
+C:\Users\Cairne\AppData\Local\Temp\ccp9cZ9M.s:590    .rodata.keyScan.str1.4:00000000 $d
+
+UNDEFINED SYMBOLS
+TIM_CCxChannelCmd
+stateContr
+piSpd
+htim1
+hallTree
+HAL_GPIO_ReadPin
+myPrint

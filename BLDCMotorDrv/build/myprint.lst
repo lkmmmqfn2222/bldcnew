@@ -1,0 +1,1009 @@
+ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccNr5cNc.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"myprint.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.printCh,"ax",%progbits
+  18              		.align	1
+  19              		.global	printCh
+  20              		.syntax unified
+  21              		.thumb
+  22              		.thumb_func
+  23              		.fpu fpv4-sp-d16
+  25              	printCh:
+  26              	.LFB134:
+  27              		.file 1 "Src/myprint.c"
+   1:Src/myprint.c **** #include "myprint.h"
+   2:Src/myprint.c **** 
+   3:Src/myprint.c **** UART_HandleTypeDef huart1;
+   4:Src/myprint.c **** 
+   5:Src/myprint.c **** void myPrint(char* fmt, ...)
+   6:Src/myprint.c **** {
+   7:Src/myprint.c **** 	double vargflt = 0;
+   8:Src/myprint.c **** 	int  vargint = 0;
+   9:Src/myprint.c **** 	char* vargpch = NULL;
+  10:Src/myprint.c **** 	char vargch = 0;
+  11:Src/myprint.c **** 	char* pfmt = NULL;
+  12:Src/myprint.c **** 	va_list vp;
+  13:Src/myprint.c **** 
+  14:Src/myprint.c **** 	va_start(vp, fmt);
+  15:Src/myprint.c **** 	pfmt = fmt;
+  16:Src/myprint.c **** 
+  17:Src/myprint.c **** 	while (*pfmt)
+  18:Src/myprint.c **** 	{
+  19:Src/myprint.c **** 		if (*pfmt == '%')
+  20:Src/myprint.c **** 		{
+  21:Src/myprint.c **** 			switch (*(++pfmt))
+  22:Src/myprint.c **** 			{
+  23:Src/myprint.c **** 
+  24:Src/myprint.c **** 			case 'c':
+  25:Src/myprint.c **** 				vargch = va_arg(vp, int);
+  26:Src/myprint.c **** 				/*    va_arg(ap, type), if type is narrow type (char, short, float) an error is given in strict
+  27:Src/myprint.c **** 				mode, or a warning otherwise.In non-strict ANSI mode, 'type' is allowed to be any expression. *
+  28:Src/myprint.c **** 				printCh(vargch);
+  29:Src/myprint.c **** 				break;
+  30:Src/myprint.c **** 			case 'd':
+  31:Src/myprint.c **** 			case 'i':
+ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccNr5cNc.s 			page 2
+
+
+  32:Src/myprint.c **** 				vargint = va_arg(vp, int);
+  33:Src/myprint.c **** 				printDec(vargint);
+  34:Src/myprint.c **** 				break;
+  35:Src/myprint.c **** 			case 'f':
+  36:Src/myprint.c **** 				vargflt = va_arg(vp, double);
+  37:Src/myprint.c **** 				/*    va_arg(ap, type), if type is narrow type (char, short, float) an error is given in strict
+  38:Src/myprint.c **** 				mode, or a warning otherwise.In non-strict ANSI mode, 'type' is allowed to be any expression. *
+  39:Src/myprint.c **** 				printFlt(vargflt);
+  40:Src/myprint.c **** 				break;
+  41:Src/myprint.c **** 			case 's':
+  42:Src/myprint.c **** 				vargpch = va_arg(vp, char*);
+  43:Src/myprint.c **** 				printStr(vargpch);
+  44:Src/myprint.c **** 				break;
+  45:Src/myprint.c **** 			case 'b':
+  46:Src/myprint.c **** 			case 'B':
+  47:Src/myprint.c **** 				vargint = va_arg(vp, int);
+  48:Src/myprint.c **** 				printBin(vargint);
+  49:Src/myprint.c **** 				break;
+  50:Src/myprint.c **** 			case 'x':
+  51:Src/myprint.c **** 			case 'X':
+  52:Src/myprint.c **** 				vargint = va_arg(vp, int);
+  53:Src/myprint.c **** 				printHex(vargint);
+  54:Src/myprint.c **** 				break;
+  55:Src/myprint.c **** 			case '%':
+  56:Src/myprint.c **** 				printCh('%');
+  57:Src/myprint.c **** 				break;
+  58:Src/myprint.c **** 			default:
+  59:Src/myprint.c **** 				break;
+  60:Src/myprint.c **** 			}
+  61:Src/myprint.c **** 			pfmt++;
+  62:Src/myprint.c **** 		}
+  63:Src/myprint.c **** 		else
+  64:Src/myprint.c **** 		{
+  65:Src/myprint.c **** 			printCh(*pfmt++);
+  66:Src/myprint.c **** 		}
+  67:Src/myprint.c **** 	}
+  68:Src/myprint.c **** 	va_end(vp);
+  69:Src/myprint.c **** }
+  70:Src/myprint.c **** 
+  71:Src/myprint.c **** void printCh(char ch)
+  72:Src/myprint.c **** {
+  28              		.loc 1 72 0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 8
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32              	.LVL0:
+  33 0000 00B5     		push	{lr}
+  34              	.LCFI0:
+  35              		.cfi_def_cfa_offset 4
+  36              		.cfi_offset 14, -4
+  37 0002 83B0     		sub	sp, sp, #12
+  38              	.LCFI1:
+  39              		.cfi_def_cfa_offset 16
+  40 0004 02A9     		add	r1, sp, #8
+  41 0006 01F8010D 		strb	r0, [r1, #-1]!
+  73:Src/myprint.c **** 	//	return;
+  74:Src/myprint.c **** 	//USART_ClearFlag(USART1, USART_FLAG_TC);
+ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccNr5cNc.s 			page 3
+
+
+  75:Src/myprint.c ****     HAL_UART_Transmit(&huart1,(__uint8_t*)&ch,1,0x0ff);
+  42              		.loc 1 75 0
+  43 000a FF23     		movs	r3, #255
+  44 000c 0122     		movs	r2, #1
+  45 000e 0348     		ldr	r0, .L3
+  46              	.LVL1:
+  47 0010 FFF7FEFF 		bl	HAL_UART_Transmit
+  48              	.LVL2:
+  76:Src/myprint.c **** }
+  49              		.loc 1 76 0
+  50 0014 03B0     		add	sp, sp, #12
+  51              	.LCFI2:
+  52              		.cfi_def_cfa_offset 4
+  53              		@ sp needed
+  54 0016 5DF804FB 		ldr	pc, [sp], #4
+  55              	.L4:
+  56 001a 00BF     		.align	2
+  57              	.L3:
+  58 001c 00000000 		.word	huart1
+  59              		.cfi_endproc
+  60              	.LFE134:
+  62              		.section	.text.printDec,"ax",%progbits
+  63              		.align	1
+  64              		.global	printDec
+  65              		.syntax unified
+  66              		.thumb
+  67              		.thumb_func
+  68              		.fpu fpv4-sp-d16
+  70              	printDec:
+  71              	.LFB135:
+  77:Src/myprint.c **** 
+  78:Src/myprint.c **** void printDec(int dec)
+  79:Src/myprint.c **** {
+  72              		.loc 1 79 0
+  73              		.cfi_startproc
+  74              		@ args = 0, pretend = 0, frame = 0
+  75              		@ frame_needed = 0, uses_anonymous_args = 0
+  76              	.LVL3:
+  77 0000 38B5     		push	{r3, r4, r5, lr}
+  78              	.LCFI3:
+  79              		.cfi_def_cfa_offset 16
+  80              		.cfi_offset 3, -16
+  81              		.cfi_offset 4, -12
+  82              		.cfi_offset 5, -8
+  83              		.cfi_offset 14, -4
+  80:Src/myprint.c **** 	if (dec == 0)
+  84              		.loc 1 80 0
+  85 0002 28B1     		cbz	r0, .L16
+  86 0004 0546     		mov	r5, r0
+  81:Src/myprint.c **** 	{
+  82:Src/myprint.c **** 		printCh('0');
+  83:Src/myprint.c **** 		return;
+  84:Src/myprint.c **** 	}
+  85:Src/myprint.c **** 	if (dec < 0)
+  87              		.loc 1 85 0
+  88 0006 0028     		cmp	r0, #0
+  89 0008 06DB     		blt	.L17
+ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccNr5cNc.s 			page 4
+
+
+  90              	.LVL4:
+  91              	.L8:
+  86:Src/myprint.c **** 	{
+  87:Src/myprint.c **** 		dec = -dec;
+  88:Src/myprint.c **** 		printCh('-');
+  89:Src/myprint.c **** 	}
+  90:Src/myprint.c **** 
+  91:Src/myprint.c **** 	int num = 0;
+  92:Src/myprint.c **** 	int tmp = dec;
+  92              		.loc 1 92 0
+  93 000a 2B46     		mov	r3, r5
+  91:Src/myprint.c **** 	int tmp = dec;
+  94              		.loc 1 91 0
+  95 000c 0024     		movs	r4, #0
+  93:Src/myprint.c **** 	while (tmp >= 10)
+  96              		.loc 1 93 0
+  97 000e 0FE0     		b	.L9
+  98              	.LVL5:
+  99              	.L16:
+  82:Src/myprint.c **** 		return;
+ 100              		.loc 1 82 0
+ 101 0010 3020     		movs	r0, #48
+ 102              	.LVL6:
+ 103 0012 FFF7FEFF 		bl	printCh
+ 104              	.LVL7:
+ 105              	.L5:
+  94:Src/myprint.c **** 	{
+  95:Src/myprint.c **** 		num += 1;
+  96:Src/myprint.c **** 		tmp /= 10;
+  97:Src/myprint.c **** 	}
+  98:Src/myprint.c **** 
+  99:Src/myprint.c **** 	for (int i = num; i >= 0; i--)
+ 100:Src/myprint.c **** 	{
+ 101:Src/myprint.c **** 		int tmp = dec;
+ 102:Src/myprint.c **** 		for (int j = 0; j < i; j++)
+ 103:Src/myprint.c **** 			tmp /= 10;
+ 104:Src/myprint.c **** 		tmp = tmp % 10;
+ 105:Src/myprint.c **** 		printCh((char)(tmp + '0'));
+ 106:Src/myprint.c **** 	}
+ 107:Src/myprint.c **** 	
+ 108:Src/myprint.c **** }
+ 106              		.loc 1 108 0
+ 107 0016 38BD     		pop	{r3, r4, r5, pc}
+ 108              	.LVL8:
+ 109              	.L17:
+  87:Src/myprint.c **** 		printCh('-');
+ 110              		.loc 1 87 0
+ 111 0018 4542     		negs	r5, r0
+ 112              	.LVL9:
+  88:Src/myprint.c **** 	}
+ 113              		.loc 1 88 0
+ 114 001a 2D20     		movs	r0, #45
+ 115 001c FFF7FEFF 		bl	printCh
+ 116              	.LVL10:
+ 117 0020 F3E7     		b	.L8
+ 118              	.LVL11:
+ 119              	.L10:
+ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccNr5cNc.s 			page 5
+
+
+  95:Src/myprint.c **** 		tmp /= 10;
+ 120              		.loc 1 95 0
+ 121 0022 0134     		adds	r4, r4, #1
+ 122              	.LVL12:
+  96:Src/myprint.c **** 	}
+ 123              		.loc 1 96 0
+ 124 0024 124A     		ldr	r2, .L18
+ 125 0026 82FB0312 		smull	r1, r2, r2, r3
+ 126 002a DB17     		asrs	r3, r3, #31
+ 127              	.LVL13:
+ 128 002c C3EBA203 		rsb	r3, r3, r2, asr #2
+ 129              	.LVL14:
+ 130              	.L9:
+  93:Src/myprint.c **** 	{
+ 131              		.loc 1 93 0
+ 132 0030 092B     		cmp	r3, #9
+ 133 0032 F6DC     		bgt	.L10
+ 134 0034 17E0     		b	.L11
+ 135              	.LVL15:
+ 136              	.L12:
+ 137              	.LBB2:
+ 138              	.LBB3:
+ 139              	.LBB4:
+ 103:Src/myprint.c **** 		tmp = tmp % 10;
+ 140              		.loc 1 103 0 discriminator 3
+ 141 0036 0E4A     		ldr	r2, .L18
+ 142 0038 82FB0302 		smull	r0, r2, r2, r3
+ 143 003c DB17     		asrs	r3, r3, #31
+ 144              	.LVL16:
+ 145 003e C3EBA203 		rsb	r3, r3, r2, asr #2
+ 146              	.LVL17:
+ 102:Src/myprint.c **** 			tmp /= 10;
+ 147              		.loc 1 102 0 discriminator 3
+ 148 0042 0131     		adds	r1, r1, #1
+ 149              	.LVL18:
+ 150              	.L13:
+ 102:Src/myprint.c **** 			tmp /= 10;
+ 151              		.loc 1 102 0 is_stmt 0 discriminator 1
+ 152 0044 8C42     		cmp	r4, r1
+ 153 0046 F6DC     		bgt	.L12
+ 154              	.LBE4:
+ 104:Src/myprint.c **** 		printCh((char)(tmp + '0'));
+ 155              		.loc 1 104 0 is_stmt 1 discriminator 2
+ 156 0048 094A     		ldr	r2, .L18
+ 157 004a 82FB0312 		smull	r1, r2, r2, r3
+ 158              	.LVL19:
+ 159 004e D817     		asrs	r0, r3, #31
+ 160 0050 C0EBA200 		rsb	r0, r0, r2, asr #2
+ 161 0054 00EB8000 		add	r0, r0, r0, lsl #2
+ 162 0058 4200     		lsls	r2, r0, #1
+ 163 005a 981A     		subs	r0, r3, r2
+ 164              	.LVL20:
+ 105:Src/myprint.c **** 	}
+ 165              		.loc 1 105 0 discriminator 2
+ 166 005c 3030     		adds	r0, r0, #48
+ 167              	.LVL21:
+ 168 005e C0B2     		uxtb	r0, r0
+ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccNr5cNc.s 			page 6
+
+
+ 169              	.LVL22:
+ 170 0060 FFF7FEFF 		bl	printCh
+ 171              	.LVL23:
+ 172              	.LBE3:
+  99:Src/myprint.c **** 	{
+ 173              		.loc 1 99 0 discriminator 2
+ 174 0064 013C     		subs	r4, r4, #1
+ 175              	.LVL24:
+ 176              	.L11:
+  99:Src/myprint.c **** 	{
+ 177              		.loc 1 99 0 is_stmt 0 discriminator 1
+ 178 0066 002C     		cmp	r4, #0
+ 179 0068 D5DB     		blt	.L5
+ 180              	.LBB6:
+ 101:Src/myprint.c **** 		for (int j = 0; j < i; j++)
+ 181              		.loc 1 101 0 is_stmt 1
+ 182 006a 2B46     		mov	r3, r5
+ 183              	.LBB5:
+ 102:Src/myprint.c **** 			tmp /= 10;
+ 184              		.loc 1 102 0
+ 185 006c 0021     		movs	r1, #0
+ 186 006e E9E7     		b	.L13
+ 187              	.L19:
+ 188              		.align	2
+ 189              	.L18:
+ 190 0070 67666666 		.word	1717986919
+ 191              	.LBE5:
+ 192              	.LBE6:
+ 193              	.LBE2:
+ 194              		.cfi_endproc
+ 195              	.LFE135:
+ 197              		.global	__aeabi_d2iz
+ 198              		.global	__aeabi_i2d
+ 199              		.global	__aeabi_dsub
+ 200              		.global	__aeabi_dmul
+ 201              		.section	.text.printFlt,"ax",%progbits
+ 202              		.align	1
+ 203              		.global	printFlt
+ 204              		.syntax unified
+ 205              		.thumb
+ 206              		.thumb_func
+ 207              		.fpu fpv4-sp-d16
+ 209              	printFlt:
+ 210              	.LFB136:
+ 109:Src/myprint.c **** 
+ 110:Src/myprint.c **** void printFlt(double flt)
+ 111:Src/myprint.c **** {
+ 211              		.loc 1 111 0
+ 212              		.cfi_startproc
+ 213              		@ args = 0, pretend = 0, frame = 0
+ 214              		@ frame_needed = 0, uses_anonymous_args = 0
+ 215              	.LVL25:
+ 216 0000 70B5     		push	{r4, r5, r6, lr}
+ 217              	.LCFI4:
+ 218              		.cfi_def_cfa_offset 16
+ 219              		.cfi_offset 4, -16
+ 220              		.cfi_offset 5, -12
+ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccNr5cNc.s 			page 7
+
+
+ 221              		.cfi_offset 6, -8
+ 222              		.cfi_offset 14, -4
+ 223 0002 55EC104B 		vmov	r4, r5, d0
+ 224              	.LVL26:
+ 112:Src/myprint.c **** //	int icnt = 0;
+ 113:Src/myprint.c **** 	int tmpint = 0;
+ 114:Src/myprint.c **** 
+ 115:Src/myprint.c **** 	tmpint = (int)flt;
+ 225              		.loc 1 115 0
+ 226 0006 10EE100A 		vmov	r0, s0	@ int
+ 227 000a 2946     		mov	r1, r5
+ 228 000c FFF7FEFF 		bl	__aeabi_d2iz
+ 229              	.LVL27:
+ 230 0010 0646     		mov	r6, r0
+ 231              	.LVL28:
+ 116:Src/myprint.c **** 	printDec(tmpint);
+ 232              		.loc 1 116 0
+ 233 0012 FFF7FEFF 		bl	printDec
+ 234              	.LVL29:
+ 117:Src/myprint.c **** 	printCh('.');
+ 235              		.loc 1 117 0
+ 236 0016 2E20     		movs	r0, #46
+ 237 0018 FFF7FEFF 		bl	printCh
+ 238              	.LVL30:
+ 118:Src/myprint.c **** 	flt = flt - tmpint;
+ 239              		.loc 1 118 0
+ 240 001c 3046     		mov	r0, r6
+ 241 001e FFF7FEFF 		bl	__aeabi_i2d
+ 242              	.LVL31:
+ 243 0022 0246     		mov	r2, r0
+ 244 0024 0B46     		mov	r3, r1
+ 245 0026 2046     		mov	r0, r4
+ 246 0028 2946     		mov	r1, r5
+ 247 002a FFF7FEFF 		bl	__aeabi_dsub
+ 248              	.LVL32:
+ 119:Src/myprint.c **** 	tmpint = (int)(flt * 1000000);
+ 249              		.loc 1 119 0
+ 250 002e 06A3     		adr	r3, .L22
+ 251 0030 D3E90023 		ldrd	r2, [r3]
+ 252 0034 FFF7FEFF 		bl	__aeabi_dmul
+ 253              	.LVL33:
+ 254 0038 FFF7FEFF 		bl	__aeabi_d2iz
+ 255              	.LVL34:
+ 120:Src/myprint.c **** 	printDec(tmpint);
+ 256              		.loc 1 120 0
+ 257 003c FFF7FEFF 		bl	printDec
+ 258              	.LVL35:
+ 121:Src/myprint.c **** }
+ 259              		.loc 1 121 0
+ 260 0040 70BD     		pop	{r4, r5, r6, pc}
+ 261              	.L23:
+ 262 0042 00BFAFF3 		.align	3
+ 262      0080
+ 263              	.L22:
+ 264 0048 00000000 		.word	0
+ 265 004c 80842E41 		.word	1093567616
+ 266              		.cfi_endproc
+ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccNr5cNc.s 			page 8
+
+
+ 267              	.LFE136:
+ 269              		.section	.text.printStr,"ax",%progbits
+ 270              		.align	1
+ 271              		.global	printStr
+ 272              		.syntax unified
+ 273              		.thumb
+ 274              		.thumb_func
+ 275              		.fpu fpv4-sp-d16
+ 277              	printStr:
+ 278              	.LFB137:
+ 122:Src/myprint.c **** 
+ 123:Src/myprint.c **** void printStr(char* str)
+ 124:Src/myprint.c **** {
+ 279              		.loc 1 124 0
+ 280              		.cfi_startproc
+ 281              		@ args = 0, pretend = 0, frame = 0
+ 282              		@ frame_needed = 0, uses_anonymous_args = 0
+ 283              	.LVL36:
+ 284 0000 10B5     		push	{r4, lr}
+ 285              	.LCFI5:
+ 286              		.cfi_def_cfa_offset 8
+ 287              		.cfi_offset 4, -8
+ 288              		.cfi_offset 14, -4
+ 289 0002 0446     		mov	r4, r0
+ 125:Src/myprint.c **** 	while (*str)
+ 290              		.loc 1 125 0
+ 291 0004 02E0     		b	.L25
+ 292              	.LVL37:
+ 293              	.L26:
+ 126:Src/myprint.c **** 	{
+ 127:Src/myprint.c **** 		printCh(*str++);
+ 294              		.loc 1 127 0
+ 295 0006 0134     		adds	r4, r4, #1
+ 296              	.LVL38:
+ 297 0008 FFF7FEFF 		bl	printCh
+ 298              	.LVL39:
+ 299              	.L25:
+ 125:Src/myprint.c **** 	while (*str)
+ 300              		.loc 1 125 0
+ 301 000c 2078     		ldrb	r0, [r4]	@ zero_extendqisi2
+ 302 000e 0028     		cmp	r0, #0
+ 303 0010 F9D1     		bne	.L26
+ 128:Src/myprint.c **** 	}
+ 129:Src/myprint.c **** }
+ 304              		.loc 1 129 0
+ 305 0012 10BD     		pop	{r4, pc}
+ 306              		.cfi_endproc
+ 307              	.LFE137:
+ 309              		.section	.text.printBin,"ax",%progbits
+ 310              		.align	1
+ 311              		.global	printBin
+ 312              		.syntax unified
+ 313              		.thumb
+ 314              		.thumb_func
+ 315              		.fpu fpv4-sp-d16
+ 317              	printBin:
+ 318              	.LFB138:
+ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccNr5cNc.s 			page 9
+
+
+ 130:Src/myprint.c **** 
+ 131:Src/myprint.c **** void printBin(int bin)
+ 132:Src/myprint.c **** {
+ 319              		.loc 1 132 0
+ 320              		.cfi_startproc
+ 321              		@ args = 0, pretend = 0, frame = 0
+ 322              		@ frame_needed = 0, uses_anonymous_args = 0
+ 323              	.LVL40:
+ 324 0000 10B5     		push	{r4, lr}
+ 325              	.LCFI6:
+ 326              		.cfi_def_cfa_offset 8
+ 327              		.cfi_offset 4, -8
+ 328              		.cfi_offset 14, -4
+ 133:Src/myprint.c **** 	if (bin == 0)
+ 329              		.loc 1 133 0
+ 330 0002 18B9     		cbnz	r0, .L29
+ 134:Src/myprint.c **** 	{
+ 135:Src/myprint.c **** 		printStr("0b");
+ 331              		.loc 1 135 0
+ 332 0004 0A48     		ldr	r0, .L32
+ 333              	.LVL41:
+ 334 0006 FFF7FEFF 		bl	printStr
+ 335              	.LVL42:
+ 336              	.L28:
+ 136:Src/myprint.c **** 		return;
+ 137:Src/myprint.c **** 	}
+ 138:Src/myprint.c **** 	printBin(bin / 2);
+ 139:Src/myprint.c **** 	printCh((char)(bin % 2 + '0'));
+ 140:Src/myprint.c **** }
+ 337              		.loc 1 140 0
+ 338 000a 10BD     		pop	{r4, pc}
+ 339              	.LVL43:
+ 340              	.L29:
+ 341 000c 0446     		mov	r4, r0
+ 138:Src/myprint.c **** 	printCh((char)(bin % 2 + '0'));
+ 342              		.loc 1 138 0
+ 343 000e 00EBD070 		add	r0, r0, r0, lsr #31
+ 344              	.LVL44:
+ 345 0012 4010     		asrs	r0, r0, #1
+ 346 0014 FFF7FEFF 		bl	printBin
+ 347              	.LVL45:
+ 139:Src/myprint.c **** }
+ 348              		.loc 1 139 0
+ 349 0018 002C     		cmp	r4, #0
+ 350 001a 04F00104 		and	r4, r4, #1
+ 351              	.LVL46:
+ 352 001e B8BF     		it	lt
+ 353 0020 6442     		rsblt	r4, r4, #0
+ 354 0022 04F13000 		add	r0, r4, #48
+ 355 0026 C0B2     		uxtb	r0, r0
+ 356 0028 FFF7FEFF 		bl	printCh
+ 357              	.LVL47:
+ 358 002c EDE7     		b	.L28
+ 359              	.L33:
+ 360 002e 00BF     		.align	2
+ 361              	.L32:
+ 362 0030 00000000 		.word	.LC0
+ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccNr5cNc.s 			page 10
+
+
+ 363              		.cfi_endproc
+ 364              	.LFE138:
+ 366              		.section	.text.printHex,"ax",%progbits
+ 367              		.align	1
+ 368              		.global	printHex
+ 369              		.syntax unified
+ 370              		.thumb
+ 371              		.thumb_func
+ 372              		.fpu fpv4-sp-d16
+ 374              	printHex:
+ 375              	.LFB139:
+ 141:Src/myprint.c **** 
+ 142:Src/myprint.c **** void printHex(int hex)
+ 143:Src/myprint.c **** {
+ 376              		.loc 1 143 0
+ 377              		.cfi_startproc
+ 378              		@ args = 0, pretend = 0, frame = 0
+ 379              		@ frame_needed = 0, uses_anonymous_args = 0
+ 380              	.LVL48:
+ 381 0000 10B5     		push	{r4, lr}
+ 382              	.LCFI7:
+ 383              		.cfi_def_cfa_offset 8
+ 384              		.cfi_offset 4, -8
+ 385              		.cfi_offset 14, -4
+ 144:Src/myprint.c **** 	if (hex == 0)
+ 386              		.loc 1 144 0
+ 387 0002 18B9     		cbnz	r0, .L35
+ 145:Src/myprint.c **** 	{
+ 146:Src/myprint.c **** 		printStr("0x");
+ 388              		.loc 1 146 0
+ 389 0004 1248     		ldr	r0, .L42
+ 390              	.LVL49:
+ 391 0006 FFF7FEFF 		bl	printStr
+ 392              	.LVL50:
+ 393              	.L34:
+ 147:Src/myprint.c **** 		return;
+ 148:Src/myprint.c **** 	}
+ 149:Src/myprint.c **** 	printHex(hex / 16);
+ 150:Src/myprint.c **** 	if (hex < 10)
+ 151:Src/myprint.c **** 	{
+ 152:Src/myprint.c **** 		printCh((char)(hex % 16 + '0'));
+ 153:Src/myprint.c **** 	}
+ 154:Src/myprint.c **** 	else
+ 155:Src/myprint.c **** 	{
+ 156:Src/myprint.c **** 		printCh((char)(hex % 16 - 10 + 'a'));
+ 157:Src/myprint.c **** 	}
+ 158:Src/myprint.c **** }
+ 394              		.loc 1 158 0
+ 395 000a 10BD     		pop	{r4, pc}
+ 396              	.LVL51:
+ 397              	.L35:
+ 398 000c 0446     		mov	r4, r0
+ 149:Src/myprint.c **** 	if (hex < 10)
+ 399              		.loc 1 149 0
+ 400 000e 0028     		cmp	r0, #0
+ 401 0010 10DB     		blt	.L40
+ 402              	.LVL52:
+ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccNr5cNc.s 			page 11
+
+
+ 403              	.L37:
+ 404 0012 0011     		asrs	r0, r0, #4
+ 405 0014 FFF7FEFF 		bl	printHex
+ 406              	.LVL53:
+ 150:Src/myprint.c **** 	{
+ 407              		.loc 1 150 0
+ 408 0018 092C     		cmp	r4, #9
+ 409 001a 0DDD     		ble	.L41
+ 156:Src/myprint.c **** 	}
+ 410              		.loc 1 156 0
+ 411 001c 6342     		rsbs	r3, r4, #0
+ 412 001e 04F00F04 		and	r4, r4, #15
+ 413              	.LVL54:
+ 414 0022 03F00F03 		and	r3, r3, #15
+ 415 0026 58BF     		it	pl
+ 416 0028 5C42     		rsbpl	r4, r3, #0
+ 417 002a 5734     		adds	r4, r4, #87
+ 418 002c E0B2     		uxtb	r0, r4
+ 419 002e FFF7FEFF 		bl	printCh
+ 420              	.LVL55:
+ 421 0032 EAE7     		b	.L34
+ 422              	.LVL56:
+ 423              	.L40:
+ 149:Src/myprint.c **** 	if (hex < 10)
+ 424              		.loc 1 149 0
+ 425 0034 0F30     		adds	r0, r0, #15
+ 426              	.LVL57:
+ 427 0036 ECE7     		b	.L37
+ 428              	.L41:
+ 152:Src/myprint.c **** 	}
+ 429              		.loc 1 152 0
+ 430 0038 6342     		rsbs	r3, r4, #0
+ 431 003a 04F00F04 		and	r4, r4, #15
+ 432              	.LVL58:
+ 433 003e 03F00F03 		and	r3, r3, #15
+ 434 0042 58BF     		it	pl
+ 435 0044 5C42     		rsbpl	r4, r3, #0
+ 436 0046 3034     		adds	r4, r4, #48
+ 437 0048 E0B2     		uxtb	r0, r4
+ 438 004a FFF7FEFF 		bl	printCh
+ 439              	.LVL59:
+ 440 004e DCE7     		b	.L34
+ 441              	.L43:
+ 442              		.align	2
+ 443              	.L42:
+ 444 0050 00000000 		.word	.LC1
+ 445              		.cfi_endproc
+ 446              	.LFE139:
+ 448              		.section	.text.myPrint,"ax",%progbits
+ 449              		.align	1
+ 450              		.global	myPrint
+ 451              		.syntax unified
+ 452              		.thumb
+ 453              		.thumb_func
+ 454              		.fpu fpv4-sp-d16
+ 456              	myPrint:
+ 457              	.LFB133:
+ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccNr5cNc.s 			page 12
+
+
+   6:Src/myprint.c **** 	double vargflt = 0;
+ 458              		.loc 1 6 0
+ 459              		.cfi_startproc
+ 460              		@ args = 4, pretend = 16, frame = 8
+ 461              		@ frame_needed = 0, uses_anonymous_args = 1
+ 462              	.LVL60:
+ 463 0000 0FB4     		push	{r0, r1, r2, r3}
+ 464              	.LCFI8:
+ 465              		.cfi_def_cfa_offset 16
+ 466              		.cfi_offset 0, -16
+ 467              		.cfi_offset 1, -12
+ 468              		.cfi_offset 2, -8
+ 469              		.cfi_offset 3, -4
+ 470 0002 10B5     		push	{r4, lr}
+ 471              	.LCFI9:
+ 472              		.cfi_def_cfa_offset 24
+ 473              		.cfi_offset 4, -24
+ 474              		.cfi_offset 14, -20
+ 475 0004 82B0     		sub	sp, sp, #8
+ 476              	.LCFI10:
+ 477              		.cfi_def_cfa_offset 32
+ 478 0006 04AB     		add	r3, sp, #16
+ 479 0008 53F8044B 		ldr	r4, [r3], #4
+ 480              	.LVL61:
+  14:Src/myprint.c **** 	pfmt = fmt;
+ 481              		.loc 1 14 0
+ 482 000c 0193     		str	r3, [sp, #4]
+ 483              	.LVL62:
+  17:Src/myprint.c **** 	{
+ 484              		.loc 1 17 0
+ 485 000e 06E0     		b	.L45
+ 486              	.LVL63:
+ 487              	.L52:
+  25:Src/myprint.c **** 				/*    va_arg(ap, type), if type is narrow type (char, short, float) an error is given in strict
+ 488              		.loc 1 25 0
+ 489 0010 019B     		ldr	r3, [sp, #4]
+ 490 0012 1A1D     		adds	r2, r3, #4
+ 491 0014 0192     		str	r2, [sp, #4]
+ 492              	.LVL64:
+  28:Src/myprint.c **** 				break;
+ 493              		.loc 1 28 0
+ 494 0016 1878     		ldrb	r0, [r3]	@ zero_extendqisi2
+ 495 0018 FFF7FEFF 		bl	printCh
+ 496              	.LVL65:
+ 497              	.L47:
+  61:Src/myprint.c **** 		}
+ 498              		.loc 1 61 0
+ 499 001c 0234     		adds	r4, r4, #2
+ 500              	.LVL66:
+ 501              	.L45:
+  17:Src/myprint.c **** 	{
+ 502              		.loc 1 17 0
+ 503 001e 2078     		ldrb	r0, [r4]	@ zero_extendqisi2
+ 504 0020 0028     		cmp	r0, #0
+ 505 0022 00F0E380 		beq	.L59
+  19:Src/myprint.c **** 		{
+ 506              		.loc 1 19 0
+ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccNr5cNc.s 			page 13
+
+
+ 507 0026 2528     		cmp	r0, #37
+ 508 0028 40F0DC80 		bne	.L46
+ 509              	.LVL67:
+  21:Src/myprint.c **** 			{
+ 510              		.loc 1 21 0
+ 511 002c 6378     		ldrb	r3, [r4, #1]	@ zero_extendqisi2
+ 512 002e 253B     		subs	r3, r3, #37
+ 513 0030 532B     		cmp	r3, #83
+ 514 0032 F3D8     		bhi	.L47
+ 515 0034 01A2     		adr	r2, .L49
+ 516 0036 52F823F0 		ldr	pc, [r2, r3, lsl #2]
+ 517 003a 00BF     		.p2align 2
+ 518              	.L49:
+ 519 003c DD010000 		.word	.L48+1
+ 520 0040 1D000000 		.word	.L47+1
+ 521 0044 1D000000 		.word	.L47+1
+ 522 0048 1D000000 		.word	.L47+1
+ 523 004c 1D000000 		.word	.L47+1
+ 524 0050 1D000000 		.word	.L47+1
+ 525 0054 1D000000 		.word	.L47+1
+ 526 0058 1D000000 		.word	.L47+1
+ 527 005c 1D000000 		.word	.L47+1
+ 528 0060 1D000000 		.word	.L47+1
+ 529 0064 1D000000 		.word	.L47+1
+ 530 0068 1D000000 		.word	.L47+1
+ 531 006c 1D000000 		.word	.L47+1
+ 532 0070 1D000000 		.word	.L47+1
+ 533 0074 1D000000 		.word	.L47+1
+ 534 0078 1D000000 		.word	.L47+1
+ 535 007c 1D000000 		.word	.L47+1
+ 536 0080 1D000000 		.word	.L47+1
+ 537 0084 1D000000 		.word	.L47+1
+ 538 0088 1D000000 		.word	.L47+1
+ 539 008c 1D000000 		.word	.L47+1
+ 540 0090 1D000000 		.word	.L47+1
+ 541 0094 1D000000 		.word	.L47+1
+ 542 0098 1D000000 		.word	.L47+1
+ 543 009c 1D000000 		.word	.L47+1
+ 544 00a0 1D000000 		.word	.L47+1
+ 545 00a4 1D000000 		.word	.L47+1
+ 546 00a8 1D000000 		.word	.L47+1
+ 547 00ac 1D000000 		.word	.L47+1
+ 548 00b0 C1010000 		.word	.L50+1
+ 549 00b4 1D000000 		.word	.L47+1
+ 550 00b8 1D000000 		.word	.L47+1
+ 551 00bc 1D000000 		.word	.L47+1
+ 552 00c0 1D000000 		.word	.L47+1
+ 553 00c4 1D000000 		.word	.L47+1
+ 554 00c8 1D000000 		.word	.L47+1
+ 555 00cc 1D000000 		.word	.L47+1
+ 556 00d0 1D000000 		.word	.L47+1
+ 557 00d4 1D000000 		.word	.L47+1
+ 558 00d8 1D000000 		.word	.L47+1
+ 559 00dc 1D000000 		.word	.L47+1
+ 560 00e0 1D000000 		.word	.L47+1
+ 561 00e4 1D000000 		.word	.L47+1
+ 562 00e8 1D000000 		.word	.L47+1
+ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccNr5cNc.s 			page 14
+
+
+ 563 00ec 1D000000 		.word	.L47+1
+ 564 00f0 1D000000 		.word	.L47+1
+ 565 00f4 1D000000 		.word	.L47+1
+ 566 00f8 1D000000 		.word	.L47+1
+ 567 00fc 1D000000 		.word	.L47+1
+ 568 0100 1D000000 		.word	.L47+1
+ 569 0104 1D000000 		.word	.L47+1
+ 570 0108 CF010000 		.word	.L51+1
+ 571 010c 1D000000 		.word	.L47+1
+ 572 0110 1D000000 		.word	.L47+1
+ 573 0114 1D000000 		.word	.L47+1
+ 574 0118 1D000000 		.word	.L47+1
+ 575 011c 1D000000 		.word	.L47+1
+ 576 0120 1D000000 		.word	.L47+1
+ 577 0124 1D000000 		.word	.L47+1
+ 578 0128 1D000000 		.word	.L47+1
+ 579 012c 1D000000 		.word	.L47+1
+ 580 0130 C1010000 		.word	.L50+1
+ 581 0134 11000000 		.word	.L52+1
+ 582 0138 8D010000 		.word	.L53+1
+ 583 013c 1D000000 		.word	.L47+1
+ 584 0140 9B010000 		.word	.L54+1
+ 585 0144 1D000000 		.word	.L47+1
+ 586 0148 1D000000 		.word	.L47+1
+ 587 014c 8D010000 		.word	.L53+1
+ 588 0150 1D000000 		.word	.L47+1
+ 589 0154 1D000000 		.word	.L47+1
+ 590 0158 1D000000 		.word	.L47+1
+ 591 015c 1D000000 		.word	.L47+1
+ 592 0160 1D000000 		.word	.L47+1
+ 593 0164 1D000000 		.word	.L47+1
+ 594 0168 1D000000 		.word	.L47+1
+ 595 016c 1D000000 		.word	.L47+1
+ 596 0170 1D000000 		.word	.L47+1
+ 597 0174 B3010000 		.word	.L55+1
+ 598 0178 1D000000 		.word	.L47+1
+ 599 017c 1D000000 		.word	.L47+1
+ 600 0180 1D000000 		.word	.L47+1
+ 601 0184 1D000000 		.word	.L47+1
+ 602 0188 CF010000 		.word	.L51+1
+ 603              		.p2align 1
+ 604              	.L53:
+  32:Src/myprint.c **** 				printDec(vargint);
+ 605              		.loc 1 32 0
+ 606 018c 019B     		ldr	r3, [sp, #4]
+ 607 018e 1A1D     		adds	r2, r3, #4
+ 608 0190 0192     		str	r2, [sp, #4]
+  33:Src/myprint.c **** 				break;
+ 609              		.loc 1 33 0
+ 610 0192 1868     		ldr	r0, [r3]
+ 611 0194 FFF7FEFF 		bl	printDec
+ 612              	.LVL68:
+  34:Src/myprint.c **** 			case 'f':
+ 613              		.loc 1 34 0
+ 614 0198 40E7     		b	.L47
+ 615              	.L54:
+  36:Src/myprint.c **** 				/*    va_arg(ap, type), if type is narrow type (char, short, float) an error is given in strict
+ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccNr5cNc.s 			page 15
+
+
+ 616              		.loc 1 36 0
+ 617 019a 019B     		ldr	r3, [sp, #4]
+ 618 019c 0733     		adds	r3, r3, #7
+ 619 019e 23F00703 		bic	r3, r3, #7
+ 620 01a2 03F10802 		add	r2, r3, #8
+ 621 01a6 0192     		str	r2, [sp, #4]
+  39:Src/myprint.c **** 				break;
+ 622              		.loc 1 39 0
+ 623 01a8 93ED000B 		vldr.64	d0, [r3]
+ 624 01ac FFF7FEFF 		bl	printFlt
+ 625              	.LVL69:
+  40:Src/myprint.c **** 			case 's':
+ 626              		.loc 1 40 0
+ 627 01b0 34E7     		b	.L47
+ 628              	.L55:
+  42:Src/myprint.c **** 				printStr(vargpch);
+ 629              		.loc 1 42 0
+ 630 01b2 019B     		ldr	r3, [sp, #4]
+ 631 01b4 1A1D     		adds	r2, r3, #4
+ 632 01b6 0192     		str	r2, [sp, #4]
+  43:Src/myprint.c **** 				break;
+ 633              		.loc 1 43 0
+ 634 01b8 1868     		ldr	r0, [r3]
+ 635 01ba FFF7FEFF 		bl	printStr
+ 636              	.LVL70:
+  44:Src/myprint.c **** 			case 'b':
+ 637              		.loc 1 44 0
+ 638 01be 2DE7     		b	.L47
+ 639              	.L50:
+  47:Src/myprint.c **** 				printBin(vargint);
+ 640              		.loc 1 47 0
+ 641 01c0 019B     		ldr	r3, [sp, #4]
+ 642 01c2 1A1D     		adds	r2, r3, #4
+ 643 01c4 0192     		str	r2, [sp, #4]
+  48:Src/myprint.c **** 				break;
+ 644              		.loc 1 48 0
+ 645 01c6 1868     		ldr	r0, [r3]
+ 646 01c8 FFF7FEFF 		bl	printBin
+ 647              	.LVL71:
+  49:Src/myprint.c **** 			case 'x':
+ 648              		.loc 1 49 0
+ 649 01cc 26E7     		b	.L47
+ 650              	.L51:
+  52:Src/myprint.c **** 				printHex(vargint);
+ 651              		.loc 1 52 0
+ 652 01ce 019B     		ldr	r3, [sp, #4]
+ 653 01d0 1A1D     		adds	r2, r3, #4
+ 654 01d2 0192     		str	r2, [sp, #4]
+  53:Src/myprint.c **** 				break;
+ 655              		.loc 1 53 0
+ 656 01d4 1868     		ldr	r0, [r3]
+ 657 01d6 FFF7FEFF 		bl	printHex
+ 658              	.LVL72:
+  54:Src/myprint.c **** 			case '%':
+ 659              		.loc 1 54 0
+ 660 01da 1FE7     		b	.L47
+ 661              	.L48:
+ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccNr5cNc.s 			page 16
+
+
+  56:Src/myprint.c **** 				break;
+ 662              		.loc 1 56 0
+ 663 01dc 2520     		movs	r0, #37
+ 664 01de FFF7FEFF 		bl	printCh
+ 665              	.LVL73:
+  57:Src/myprint.c **** 			default:
+ 666              		.loc 1 57 0
+ 667 01e2 1BE7     		b	.L47
+ 668              	.LVL74:
+ 669              	.L46:
+  65:Src/myprint.c **** 		}
+ 670              		.loc 1 65 0
+ 671 01e4 0134     		adds	r4, r4, #1
+ 672              	.LVL75:
+ 673 01e6 FFF7FEFF 		bl	printCh
+ 674              	.LVL76:
+ 675 01ea 18E7     		b	.L45
+ 676              	.L59:
+  69:Src/myprint.c **** 
+ 677              		.loc 1 69 0
+ 678 01ec 02B0     		add	sp, sp, #8
+ 679              	.LCFI11:
+ 680              		.cfi_def_cfa_offset 24
+ 681              		@ sp needed
+ 682 01ee BDE81040 		pop	{r4, lr}
+ 683              	.LCFI12:
+ 684              		.cfi_restore 14
+ 685              		.cfi_restore 4
+ 686              		.cfi_def_cfa_offset 16
+ 687              	.LVL77:
+ 688 01f2 04B0     		add	sp, sp, #16
+ 689              	.LCFI13:
+ 690              		.cfi_restore 3
+ 691              		.cfi_restore 2
+ 692              		.cfi_restore 1
+ 693              		.cfi_restore 0
+ 694              		.cfi_def_cfa_offset 0
+ 695 01f4 7047     		bx	lr
+ 696              		.cfi_endproc
+ 697              	.LFE133:
+ 699              		.comm	huart1,64,4
+ 700 01f6 00BF     		.section	.rodata.printBin.str1.4,"aMS",%progbits,1
+ 701              		.align	2
+ 702              	.LC0:
+ 703 0000 306200   		.ascii	"0b\000"
+ 704              		.section	.rodata.printHex.str1.4,"aMS",%progbits,1
+ 705              		.align	2
+ 706              	.LC1:
+ 707 0000 307800   		.ascii	"0x\000"
+ 708              		.text
+ 709              	.Letext0:
+ 710              		.file 2 "c:\\program files (x86)\\gnu tools arm embedded\\7 2018-q2-update\\arm-none-eabi\\include
+ 711              		.file 3 "c:\\program files (x86)\\gnu tools arm embedded\\7 2018-q2-update\\arm-none-eabi\\include
+ 712              		.file 4 "Drivers/CMSIS/Include/core_cm4.h"
+ 713              		.file 5 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/system_stm32f4xx.h"
+ 714              		.file 6 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f405xx.h"
+ 715              		.file 7 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h"
+ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccNr5cNc.s 			page 17
+
+
+ 716              		.file 8 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h"
+ 717              		.file 9 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h"
+ 718              		.file 10 "Inc/usart.h"
+ 719              		.file 11 "c:\\program files (x86)\\gnu tools arm embedded\\7 2018-q2-update\\lib\\gcc\\arm-none-ea
+ 720              		.file 12 "<built-in>"
+ 721              		.file 13 "c:\\program files (x86)\\gnu tools arm embedded\\7 2018-q2-update\\arm-none-eabi\\includ
+ 722              		.file 14 "c:\\program files (x86)\\gnu tools arm embedded\\7 2018-q2-update\\arm-none-eabi\\includ
+ 723              		.file 15 "c:\\program files (x86)\\gnu tools arm embedded\\7 2018-q2-update\\arm-none-eabi\\includ
+ 724              		.file 16 "c:\\program files (x86)\\gnu tools arm embedded\\7 2018-q2-update\\lib\\gcc\\arm-none-ea
+ 725              		.file 17 "c:\\program files (x86)\\gnu tools arm embedded\\7 2018-q2-update\\arm-none-eabi\\includ
+ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccNr5cNc.s 			page 18
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 myprint.c
+C:\Users\Cairne\AppData\Local\Temp\ccNr5cNc.s:18     .text.printCh:00000000 $t
+C:\Users\Cairne\AppData\Local\Temp\ccNr5cNc.s:25     .text.printCh:00000000 printCh
+C:\Users\Cairne\AppData\Local\Temp\ccNr5cNc.s:58     .text.printCh:0000001c $d
+                            *COM*:00000040 huart1
+C:\Users\Cairne\AppData\Local\Temp\ccNr5cNc.s:63     .text.printDec:00000000 $t
+C:\Users\Cairne\AppData\Local\Temp\ccNr5cNc.s:70     .text.printDec:00000000 printDec
+C:\Users\Cairne\AppData\Local\Temp\ccNr5cNc.s:190    .text.printDec:00000070 $d
+C:\Users\Cairne\AppData\Local\Temp\ccNr5cNc.s:202    .text.printFlt:00000000 $t
+C:\Users\Cairne\AppData\Local\Temp\ccNr5cNc.s:209    .text.printFlt:00000000 printFlt
+C:\Users\Cairne\AppData\Local\Temp\ccNr5cNc.s:264    .text.printFlt:00000048 $d
+C:\Users\Cairne\AppData\Local\Temp\ccNr5cNc.s:270    .text.printStr:00000000 $t
+C:\Users\Cairne\AppData\Local\Temp\ccNr5cNc.s:277    .text.printStr:00000000 printStr
+C:\Users\Cairne\AppData\Local\Temp\ccNr5cNc.s:310    .text.printBin:00000000 $t
+C:\Users\Cairne\AppData\Local\Temp\ccNr5cNc.s:317    .text.printBin:00000000 printBin
+C:\Users\Cairne\AppData\Local\Temp\ccNr5cNc.s:362    .text.printBin:00000030 $d
+C:\Users\Cairne\AppData\Local\Temp\ccNr5cNc.s:367    .text.printHex:00000000 $t
+C:\Users\Cairne\AppData\Local\Temp\ccNr5cNc.s:374    .text.printHex:00000000 printHex
+C:\Users\Cairne\AppData\Local\Temp\ccNr5cNc.s:444    .text.printHex:00000050 $d
+C:\Users\Cairne\AppData\Local\Temp\ccNr5cNc.s:449    .text.myPrint:00000000 $t
+C:\Users\Cairne\AppData\Local\Temp\ccNr5cNc.s:456    .text.myPrint:00000000 myPrint
+C:\Users\Cairne\AppData\Local\Temp\ccNr5cNc.s:519    .text.myPrint:0000003c $d
+C:\Users\Cairne\AppData\Local\Temp\ccNr5cNc.s:603    .text.myPrint:0000018c $t
+C:\Users\Cairne\AppData\Local\Temp\ccNr5cNc.s:701    .rodata.printBin.str1.4:00000000 $d
+C:\Users\Cairne\AppData\Local\Temp\ccNr5cNc.s:705    .rodata.printHex.str1.4:00000000 $d
+
+UNDEFINED SYMBOLS
+HAL_UART_Transmit
+__aeabi_d2iz
+__aeabi_i2d
+__aeabi_dsub
+__aeabi_dmul

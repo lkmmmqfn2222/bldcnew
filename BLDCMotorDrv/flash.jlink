@@ -1,0 +1,5 @@
+r
+speed 4000
+loadfile ./build/BLDCMotorDrv.bin 0x08000000
+r
+exit

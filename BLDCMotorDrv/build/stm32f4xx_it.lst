@@ -1,0 +1,1118 @@
+ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccd53k3H.s 			page 1
+
+
+   1              		.cpu cortex-m4
+   2              		.eabi_attribute 27, 1
+   3              		.eabi_attribute 28, 1
+   4              		.eabi_attribute 20, 1
+   5              		.eabi_attribute 21, 1
+   6              		.eabi_attribute 23, 3
+   7              		.eabi_attribute 24, 1
+   8              		.eabi_attribute 25, 1
+   9              		.eabi_attribute 26, 1
+  10              		.eabi_attribute 30, 1
+  11              		.eabi_attribute 34, 1
+  12              		.eabi_attribute 18, 4
+  13              		.file	"stm32f4xx_it.c"
+  14              		.text
+  15              	.Ltext0:
+  16              		.cfi_sections	.debug_frame
+  17              		.section	.text.NMI_Handler,"ax",%progbits
+  18              		.align	1
+  19              		.global	NMI_Handler
+  20              		.syntax unified
+  21              		.thumb
+  22              		.thumb_func
+  23              		.fpu fpv4-sp-d16
+  25              	NMI_Handler:
+  26              	.LFB130:
+  27              		.file 1 "Src/stm32f4xx_it.c"
+   1:Src/stm32f4xx_it.c **** /* USER CODE BEGIN Header */
+   2:Src/stm32f4xx_it.c **** /**
+   3:Src/stm32f4xx_it.c ****   ******************************************************************************
+   4:Src/stm32f4xx_it.c ****   * @file    stm32f4xx_it.c
+   5:Src/stm32f4xx_it.c ****   * @brief   Interrupt Service Routines.
+   6:Src/stm32f4xx_it.c ****   ******************************************************************************
+   7:Src/stm32f4xx_it.c ****   * @attention
+   8:Src/stm32f4xx_it.c ****   *
+   9:Src/stm32f4xx_it.c ****   * <h2><center>&copy; Copyright (c) 2019 STMicroelectronics.
+  10:Src/stm32f4xx_it.c ****   * All rights reserved.</center></h2>
+  11:Src/stm32f4xx_it.c ****   *
+  12:Src/stm32f4xx_it.c ****   * This software component is licensed by ST under BSD 3-Clause license,
+  13:Src/stm32f4xx_it.c ****   * the "License"; You may not use this file except in compliance with the
+  14:Src/stm32f4xx_it.c ****   * License. You may obtain a copy of the License at:
+  15:Src/stm32f4xx_it.c ****   *                        opensource.org/licenses/BSD-3-Clause
+  16:Src/stm32f4xx_it.c ****   *
+  17:Src/stm32f4xx_it.c ****   ******************************************************************************
+  18:Src/stm32f4xx_it.c ****   */
+  19:Src/stm32f4xx_it.c **** /* USER CODE END Header */
+  20:Src/stm32f4xx_it.c **** 
+  21:Src/stm32f4xx_it.c **** /* Includes ------------------------------------------------------------------*/
+  22:Src/stm32f4xx_it.c **** #include "main.h"
+  23:Src/stm32f4xx_it.c **** #include "stm32f4xx_it.h"
+  24:Src/stm32f4xx_it.c **** /* Private includes ----------------------------------------------------------*/
+  25:Src/stm32f4xx_it.c **** /* USER CODE BEGIN Includes */
+  26:Src/stm32f4xx_it.c **** #include "bldc.h"
+  27:Src/stm32f4xx_it.c **** /* USER CODE END Includes */
+  28:Src/stm32f4xx_it.c **** 
+  29:Src/stm32f4xx_it.c **** /* Private typedef -----------------------------------------------------------*/
+  30:Src/stm32f4xx_it.c **** /* USER CODE BEGIN TD */
+  31:Src/stm32f4xx_it.c **** 
+ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccd53k3H.s 			page 2
+
+
+  32:Src/stm32f4xx_it.c **** /* USER CODE END TD */
+  33:Src/stm32f4xx_it.c **** 
+  34:Src/stm32f4xx_it.c **** /* Private define ------------------------------------------------------------*/
+  35:Src/stm32f4xx_it.c **** /* USER CODE BEGIN PD */
+  36:Src/stm32f4xx_it.c ****  
+  37:Src/stm32f4xx_it.c **** /* USER CODE END PD */
+  38:Src/stm32f4xx_it.c **** 
+  39:Src/stm32f4xx_it.c **** /* Private macro -------------------------------------------------------------*/
+  40:Src/stm32f4xx_it.c **** /* USER CODE BEGIN PM */
+  41:Src/stm32f4xx_it.c **** 
+  42:Src/stm32f4xx_it.c **** /* USER CODE END PM */
+  43:Src/stm32f4xx_it.c **** 
+  44:Src/stm32f4xx_it.c **** /* Private variables ---------------------------------------------------------*/
+  45:Src/stm32f4xx_it.c **** /* USER CODE BEGIN PV */
+  46:Src/stm32f4xx_it.c **** extern HALL hallTree;
+  47:Src/stm32f4xx_it.c **** extern STATE stateContr;
+  48:Src/stm32f4xx_it.c **** extern PIDREG_T piSpd;
+  49:Src/stm32f4xx_it.c **** extern PIDREG_T piICurr;
+  50:Src/stm32f4xx_it.c **** extern ADCSamp ADCSampPare;
+  51:Src/stm32f4xx_it.c **** /* USER CODE END PV */
+  52:Src/stm32f4xx_it.c **** 
+  53:Src/stm32f4xx_it.c **** /* Private function prototypes -----------------------------------------------*/
+  54:Src/stm32f4xx_it.c **** /* USER CODE BEGIN PFP */
+  55:Src/stm32f4xx_it.c **** 
+  56:Src/stm32f4xx_it.c **** /* USER CODE END PFP */
+  57:Src/stm32f4xx_it.c **** 
+  58:Src/stm32f4xx_it.c **** /* Private user code ---------------------------------------------------------*/
+  59:Src/stm32f4xx_it.c **** /* USER CODE BEGIN 0 */
+  60:Src/stm32f4xx_it.c **** 
+  61:Src/stm32f4xx_it.c **** /* USER CODE END 0 */
+  62:Src/stm32f4xx_it.c **** 
+  63:Src/stm32f4xx_it.c **** /* External variables --------------------------------------------------------*/
+  64:Src/stm32f4xx_it.c **** extern DMA_HandleTypeDef hdma_adc1;
+  65:Src/stm32f4xx_it.c **** extern ADC_HandleTypeDef hadc1;
+  66:Src/stm32f4xx_it.c **** extern TIM_HandleTypeDef htim1;
+  67:Src/stm32f4xx_it.c **** /* USER CODE BEGIN EV */
+  68:Src/stm32f4xx_it.c **** 
+  69:Src/stm32f4xx_it.c **** /* USER CODE END EV */
+  70:Src/stm32f4xx_it.c **** 
+  71:Src/stm32f4xx_it.c **** /******************************************************************************/
+  72:Src/stm32f4xx_it.c **** /*           Cortex-M4 Processor Interruption and Exception Handlers          */ 
+  73:Src/stm32f4xx_it.c **** /******************************************************************************/
+  74:Src/stm32f4xx_it.c **** /**
+  75:Src/stm32f4xx_it.c ****   * @brief This function handles Non maskable interrupt.
+  76:Src/stm32f4xx_it.c ****   */
+  77:Src/stm32f4xx_it.c **** void NMI_Handler(void)
+  78:Src/stm32f4xx_it.c **** {
+  28              		.loc 1 78 0
+  29              		.cfi_startproc
+  30              		@ args = 0, pretend = 0, frame = 0
+  31              		@ frame_needed = 0, uses_anonymous_args = 0
+  32 0000 08B5     		push	{r3, lr}
+  33              	.LCFI0:
+  34              		.cfi_def_cfa_offset 8
+  35              		.cfi_offset 3, -8
+  36              		.cfi_offset 14, -4
+  79:Src/stm32f4xx_it.c ****   /* USER CODE BEGIN NonMaskableInt_IRQn 0 */
+ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccd53k3H.s 			page 3
+
+
+  80:Src/stm32f4xx_it.c **** 
+  81:Src/stm32f4xx_it.c ****   /* USER CODE END NonMaskableInt_IRQn 0 */
+  82:Src/stm32f4xx_it.c ****   HAL_RCC_NMI_IRQHandler();
+  37              		.loc 1 82 0
+  38 0002 FFF7FEFF 		bl	HAL_RCC_NMI_IRQHandler
+  39              	.LVL0:
+  83:Src/stm32f4xx_it.c ****   /* USER CODE BEGIN NonMaskableInt_IRQn 1 */
+  84:Src/stm32f4xx_it.c **** 
+  85:Src/stm32f4xx_it.c ****   /* USER CODE END NonMaskableInt_IRQn 1 */
+  86:Src/stm32f4xx_it.c **** }
+  40              		.loc 1 86 0
+  41 0006 08BD     		pop	{r3, pc}
+  42              		.cfi_endproc
+  43              	.LFE130:
+  45              		.section	.text.HardFault_Handler,"ax",%progbits
+  46              		.align	1
+  47              		.global	HardFault_Handler
+  48              		.syntax unified
+  49              		.thumb
+  50              		.thumb_func
+  51              		.fpu fpv4-sp-d16
+  53              	HardFault_Handler:
+  54              	.LFB131:
+  87:Src/stm32f4xx_it.c **** 
+  88:Src/stm32f4xx_it.c **** /**
+  89:Src/stm32f4xx_it.c ****   * @brief This function handles Hard fault interrupt.
+  90:Src/stm32f4xx_it.c ****   */
+  91:Src/stm32f4xx_it.c **** void HardFault_Handler(void)
+  92:Src/stm32f4xx_it.c **** {
+  55              		.loc 1 92 0
+  56              		.cfi_startproc
+  57              		@ Volatile: function does not return.
+  58              		@ args = 0, pretend = 0, frame = 0
+  59              		@ frame_needed = 0, uses_anonymous_args = 0
+  60              		@ link register save eliminated.
+  61              	.L4:
+  62 0000 FEE7     		b	.L4
+  63              		.cfi_endproc
+  64              	.LFE131:
+  66              		.section	.text.MemManage_Handler,"ax",%progbits
+  67              		.align	1
+  68              		.global	MemManage_Handler
+  69              		.syntax unified
+  70              		.thumb
+  71              		.thumb_func
+  72              		.fpu fpv4-sp-d16
+  74              	MemManage_Handler:
+  75              	.LFB132:
+  93:Src/stm32f4xx_it.c ****   /* USER CODE BEGIN HardFault_IRQn 0 */
+  94:Src/stm32f4xx_it.c **** 
+  95:Src/stm32f4xx_it.c ****   /* USER CODE END HardFault_IRQn 0 */
+  96:Src/stm32f4xx_it.c ****   while (1)
+  97:Src/stm32f4xx_it.c ****   {
+  98:Src/stm32f4xx_it.c ****     /* USER CODE BEGIN W1_HardFault_IRQn 0 */
+  99:Src/stm32f4xx_it.c ****     /* USER CODE END W1_HardFault_IRQn 0 */
+ 100:Src/stm32f4xx_it.c ****   }
+ 101:Src/stm32f4xx_it.c **** }
+ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccd53k3H.s 			page 4
+
+
+ 102:Src/stm32f4xx_it.c **** 
+ 103:Src/stm32f4xx_it.c **** /**
+ 104:Src/stm32f4xx_it.c ****   * @brief This function handles Memory management fault.
+ 105:Src/stm32f4xx_it.c ****   */
+ 106:Src/stm32f4xx_it.c **** void MemManage_Handler(void)
+ 107:Src/stm32f4xx_it.c **** {
+  76              		.loc 1 107 0
+  77              		.cfi_startproc
+  78              		@ Volatile: function does not return.
+  79              		@ args = 0, pretend = 0, frame = 0
+  80              		@ frame_needed = 0, uses_anonymous_args = 0
+  81              		@ link register save eliminated.
+  82              	.L6:
+  83 0000 FEE7     		b	.L6
+  84              		.cfi_endproc
+  85              	.LFE132:
+  87              		.section	.text.BusFault_Handler,"ax",%progbits
+  88              		.align	1
+  89              		.global	BusFault_Handler
+  90              		.syntax unified
+  91              		.thumb
+  92              		.thumb_func
+  93              		.fpu fpv4-sp-d16
+  95              	BusFault_Handler:
+  96              	.LFB133:
+ 108:Src/stm32f4xx_it.c ****   /* USER CODE BEGIN MemoryManagement_IRQn 0 */
+ 109:Src/stm32f4xx_it.c **** 
+ 110:Src/stm32f4xx_it.c ****   /* USER CODE END MemoryManagement_IRQn 0 */
+ 111:Src/stm32f4xx_it.c ****   while (1)
+ 112:Src/stm32f4xx_it.c ****   {
+ 113:Src/stm32f4xx_it.c ****     /* USER CODE BEGIN W1_MemoryManagement_IRQn 0 */
+ 114:Src/stm32f4xx_it.c ****     /* USER CODE END W1_MemoryManagement_IRQn 0 */
+ 115:Src/stm32f4xx_it.c ****   }
+ 116:Src/stm32f4xx_it.c **** }
+ 117:Src/stm32f4xx_it.c **** 
+ 118:Src/stm32f4xx_it.c **** /**
+ 119:Src/stm32f4xx_it.c ****   * @brief This function handles Pre-fetch fault, memory access fault.
+ 120:Src/stm32f4xx_it.c ****   */
+ 121:Src/stm32f4xx_it.c **** void BusFault_Handler(void)
+ 122:Src/stm32f4xx_it.c **** {
+  97              		.loc 1 122 0
+  98              		.cfi_startproc
+  99              		@ Volatile: function does not return.
+ 100              		@ args = 0, pretend = 0, frame = 0
+ 101              		@ frame_needed = 0, uses_anonymous_args = 0
+ 102              		@ link register save eliminated.
+ 103              	.L8:
+ 104 0000 FEE7     		b	.L8
+ 105              		.cfi_endproc
+ 106              	.LFE133:
+ 108              		.section	.text.UsageFault_Handler,"ax",%progbits
+ 109              		.align	1
+ 110              		.global	UsageFault_Handler
+ 111              		.syntax unified
+ 112              		.thumb
+ 113              		.thumb_func
+ 114              		.fpu fpv4-sp-d16
+ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccd53k3H.s 			page 5
+
+
+ 116              	UsageFault_Handler:
+ 117              	.LFB134:
+ 123:Src/stm32f4xx_it.c ****   /* USER CODE BEGIN BusFault_IRQn 0 */
+ 124:Src/stm32f4xx_it.c **** 
+ 125:Src/stm32f4xx_it.c ****   /* USER CODE END BusFault_IRQn 0 */
+ 126:Src/stm32f4xx_it.c ****   while (1)
+ 127:Src/stm32f4xx_it.c ****   {
+ 128:Src/stm32f4xx_it.c ****     /* USER CODE BEGIN W1_BusFault_IRQn 0 */
+ 129:Src/stm32f4xx_it.c ****     /* USER CODE END W1_BusFault_IRQn 0 */
+ 130:Src/stm32f4xx_it.c ****   }
+ 131:Src/stm32f4xx_it.c **** }
+ 132:Src/stm32f4xx_it.c **** 
+ 133:Src/stm32f4xx_it.c **** /**
+ 134:Src/stm32f4xx_it.c ****   * @brief This function handles Undefined instruction or illegal state.
+ 135:Src/stm32f4xx_it.c ****   */
+ 136:Src/stm32f4xx_it.c **** void UsageFault_Handler(void)
+ 137:Src/stm32f4xx_it.c **** {
+ 118              		.loc 1 137 0
+ 119              		.cfi_startproc
+ 120              		@ Volatile: function does not return.
+ 121              		@ args = 0, pretend = 0, frame = 0
+ 122              		@ frame_needed = 0, uses_anonymous_args = 0
+ 123              		@ link register save eliminated.
+ 124              	.L10:
+ 125 0000 FEE7     		b	.L10
+ 126              		.cfi_endproc
+ 127              	.LFE134:
+ 129              		.section	.text.SVC_Handler,"ax",%progbits
+ 130              		.align	1
+ 131              		.global	SVC_Handler
+ 132              		.syntax unified
+ 133              		.thumb
+ 134              		.thumb_func
+ 135              		.fpu fpv4-sp-d16
+ 137              	SVC_Handler:
+ 138              	.LFB135:
+ 138:Src/stm32f4xx_it.c ****   /* USER CODE BEGIN UsageFault_IRQn 0 */
+ 139:Src/stm32f4xx_it.c **** 
+ 140:Src/stm32f4xx_it.c ****   /* USER CODE END UsageFault_IRQn 0 */
+ 141:Src/stm32f4xx_it.c ****   while (1)
+ 142:Src/stm32f4xx_it.c ****   {
+ 143:Src/stm32f4xx_it.c ****     /* USER CODE BEGIN W1_UsageFault_IRQn 0 */
+ 144:Src/stm32f4xx_it.c ****     /* USER CODE END W1_UsageFault_IRQn 0 */
+ 145:Src/stm32f4xx_it.c ****   }
+ 146:Src/stm32f4xx_it.c **** }
+ 147:Src/stm32f4xx_it.c **** 
+ 148:Src/stm32f4xx_it.c **** /**
+ 149:Src/stm32f4xx_it.c ****   * @brief This function handles System service call via SWI instruction.
+ 150:Src/stm32f4xx_it.c ****   */
+ 151:Src/stm32f4xx_it.c **** void SVC_Handler(void)
+ 152:Src/stm32f4xx_it.c **** {
+ 139              		.loc 1 152 0
+ 140              		.cfi_startproc
+ 141              		@ args = 0, pretend = 0, frame = 0
+ 142              		@ frame_needed = 0, uses_anonymous_args = 0
+ 143              		@ link register save eliminated.
+ 153:Src/stm32f4xx_it.c ****   /* USER CODE BEGIN SVCall_IRQn 0 */
+ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccd53k3H.s 			page 6
+
+
+ 154:Src/stm32f4xx_it.c **** 
+ 155:Src/stm32f4xx_it.c ****   /* USER CODE END SVCall_IRQn 0 */
+ 156:Src/stm32f4xx_it.c ****   /* USER CODE BEGIN SVCall_IRQn 1 */
+ 157:Src/stm32f4xx_it.c **** 
+ 158:Src/stm32f4xx_it.c ****   /* USER CODE END SVCall_IRQn 1 */
+ 159:Src/stm32f4xx_it.c **** }
+ 144              		.loc 1 159 0
+ 145 0000 7047     		bx	lr
+ 146              		.cfi_endproc
+ 147              	.LFE135:
+ 149              		.section	.text.DebugMon_Handler,"ax",%progbits
+ 150              		.align	1
+ 151              		.global	DebugMon_Handler
+ 152              		.syntax unified
+ 153              		.thumb
+ 154              		.thumb_func
+ 155              		.fpu fpv4-sp-d16
+ 157              	DebugMon_Handler:
+ 158              	.LFB136:
+ 160:Src/stm32f4xx_it.c **** 
+ 161:Src/stm32f4xx_it.c **** /**
+ 162:Src/stm32f4xx_it.c ****   * @brief This function handles Debug monitor.
+ 163:Src/stm32f4xx_it.c ****   */
+ 164:Src/stm32f4xx_it.c **** void DebugMon_Handler(void)
+ 165:Src/stm32f4xx_it.c **** {
+ 159              		.loc 1 165 0
+ 160              		.cfi_startproc
+ 161              		@ args = 0, pretend = 0, frame = 0
+ 162              		@ frame_needed = 0, uses_anonymous_args = 0
+ 163              		@ link register save eliminated.
+ 166:Src/stm32f4xx_it.c ****   /* USER CODE BEGIN DebugMonitor_IRQn 0 */
+ 167:Src/stm32f4xx_it.c **** 
+ 168:Src/stm32f4xx_it.c ****   /* USER CODE END DebugMonitor_IRQn 0 */
+ 169:Src/stm32f4xx_it.c ****   /* USER CODE BEGIN DebugMonitor_IRQn 1 */
+ 170:Src/stm32f4xx_it.c **** 
+ 171:Src/stm32f4xx_it.c ****   /* USER CODE END DebugMonitor_IRQn 1 */
+ 172:Src/stm32f4xx_it.c **** }
+ 164              		.loc 1 172 0
+ 165 0000 7047     		bx	lr
+ 166              		.cfi_endproc
+ 167              	.LFE136:
+ 169              		.section	.text.PendSV_Handler,"ax",%progbits
+ 170              		.align	1
+ 171              		.global	PendSV_Handler
+ 172              		.syntax unified
+ 173              		.thumb
+ 174              		.thumb_func
+ 175              		.fpu fpv4-sp-d16
+ 177              	PendSV_Handler:
+ 178              	.LFB137:
+ 173:Src/stm32f4xx_it.c **** 
+ 174:Src/stm32f4xx_it.c **** /**
+ 175:Src/stm32f4xx_it.c ****   * @brief This function handles Pendable request for system service.
+ 176:Src/stm32f4xx_it.c ****   */
+ 177:Src/stm32f4xx_it.c **** void PendSV_Handler(void)
+ 178:Src/stm32f4xx_it.c **** {
+ 179              		.loc 1 178 0
+ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccd53k3H.s 			page 7
+
+
+ 180              		.cfi_startproc
+ 181              		@ args = 0, pretend = 0, frame = 0
+ 182              		@ frame_needed = 0, uses_anonymous_args = 0
+ 183              		@ link register save eliminated.
+ 179:Src/stm32f4xx_it.c ****   /* USER CODE BEGIN PendSV_IRQn 0 */
+ 180:Src/stm32f4xx_it.c **** 
+ 181:Src/stm32f4xx_it.c ****   /* USER CODE END PendSV_IRQn 0 */
+ 182:Src/stm32f4xx_it.c ****   /* USER CODE BEGIN PendSV_IRQn 1 */
+ 183:Src/stm32f4xx_it.c **** 
+ 184:Src/stm32f4xx_it.c ****   /* USER CODE END PendSV_IRQn 1 */
+ 185:Src/stm32f4xx_it.c **** }
+ 184              		.loc 1 185 0
+ 185 0000 7047     		bx	lr
+ 186              		.cfi_endproc
+ 187              	.LFE137:
+ 189              		.section	.text.SysTick_Handler,"ax",%progbits
+ 190              		.align	1
+ 191              		.global	SysTick_Handler
+ 192              		.syntax unified
+ 193              		.thumb
+ 194              		.thumb_func
+ 195              		.fpu fpv4-sp-d16
+ 197              	SysTick_Handler:
+ 198              	.LFB138:
+ 186:Src/stm32f4xx_it.c **** 
+ 187:Src/stm32f4xx_it.c **** /**
+ 188:Src/stm32f4xx_it.c ****   * @brief This function handles System tick timer.
+ 189:Src/stm32f4xx_it.c ****   */
+ 190:Src/stm32f4xx_it.c **** void SysTick_Handler(void)
+ 191:Src/stm32f4xx_it.c **** {
+ 199              		.loc 1 191 0
+ 200              		.cfi_startproc
+ 201              		@ args = 0, pretend = 0, frame = 0
+ 202              		@ frame_needed = 0, uses_anonymous_args = 0
+ 203 0000 08B5     		push	{r3, lr}
+ 204              	.LCFI1:
+ 205              		.cfi_def_cfa_offset 8
+ 206              		.cfi_offset 3, -8
+ 207              		.cfi_offset 14, -4
+ 192:Src/stm32f4xx_it.c ****   /* USER CODE BEGIN SysTick_IRQn 0 */
+ 193:Src/stm32f4xx_it.c **** 
+ 194:Src/stm32f4xx_it.c ****   /* USER CODE END SysTick_IRQn 0 */
+ 195:Src/stm32f4xx_it.c ****   HAL_IncTick();
+ 208              		.loc 1 195 0
+ 209 0002 FFF7FEFF 		bl	HAL_IncTick
+ 210              	.LVL1:
+ 196:Src/stm32f4xx_it.c ****   /* USER CODE BEGIN SysTick_IRQn 1 */
+ 197:Src/stm32f4xx_it.c **** 
+ 198:Src/stm32f4xx_it.c ****   /* USER CODE END SysTick_IRQn 1 */
+ 199:Src/stm32f4xx_it.c **** }
+ 211              		.loc 1 199 0
+ 212 0006 08BD     		pop	{r3, pc}
+ 213              		.cfi_endproc
+ 214              	.LFE138:
+ 216              		.section	.text.ADC_IRQHandler,"ax",%progbits
+ 217              		.align	1
+ 218              		.global	ADC_IRQHandler
+ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccd53k3H.s 			page 8
+
+
+ 219              		.syntax unified
+ 220              		.thumb
+ 221              		.thumb_func
+ 222              		.fpu fpv4-sp-d16
+ 224              	ADC_IRQHandler:
+ 225              	.LFB139:
+ 200:Src/stm32f4xx_it.c **** 
+ 201:Src/stm32f4xx_it.c **** /******************************************************************************/
+ 202:Src/stm32f4xx_it.c **** /* STM32F4xx Peripheral Interrupt Handlers                                    */
+ 203:Src/stm32f4xx_it.c **** /* Add here the Interrupt Handlers for the used peripherals.                  */
+ 204:Src/stm32f4xx_it.c **** /* For the available peripheral interrupt handler names,                      */
+ 205:Src/stm32f4xx_it.c **** /* please refer to the startup file (startup_stm32f4xx.s).                    */
+ 206:Src/stm32f4xx_it.c **** /******************************************************************************/
+ 207:Src/stm32f4xx_it.c **** 
+ 208:Src/stm32f4xx_it.c **** /**
+ 209:Src/stm32f4xx_it.c ****   * @brief This function handles ADC1, ADC2 and ADC3 global interrupts.
+ 210:Src/stm32f4xx_it.c ****   */
+ 211:Src/stm32f4xx_it.c **** void ADC_IRQHandler(void)
+ 212:Src/stm32f4xx_it.c **** {
+ 226              		.loc 1 212 0
+ 227              		.cfi_startproc
+ 228              		@ args = 0, pretend = 0, frame = 0
+ 229              		@ frame_needed = 0, uses_anonymous_args = 0
+ 230 0000 08B5     		push	{r3, lr}
+ 231              	.LCFI2:
+ 232              		.cfi_def_cfa_offset 8
+ 233              		.cfi_offset 3, -8
+ 234              		.cfi_offset 14, -4
+ 213:Src/stm32f4xx_it.c ****   /* USER CODE BEGIN ADC_IRQn 0 */
+ 214:Src/stm32f4xx_it.c **** 
+ 215:Src/stm32f4xx_it.c ****   /* USER CODE END ADC_IRQn 0 */
+ 216:Src/stm32f4xx_it.c ****   HAL_ADC_IRQHandler(&hadc1);
+ 235              		.loc 1 216 0
+ 236 0002 0248     		ldr	r0, .L18
+ 237 0004 FFF7FEFF 		bl	HAL_ADC_IRQHandler
+ 238              	.LVL2:
+ 217:Src/stm32f4xx_it.c ****   /* USER CODE BEGIN ADC_IRQn 1 */
+ 218:Src/stm32f4xx_it.c **** 
+ 219:Src/stm32f4xx_it.c ****   /* USER CODE END ADC_IRQn 1 */
+ 220:Src/stm32f4xx_it.c **** }
+ 239              		.loc 1 220 0
+ 240 0008 08BD     		pop	{r3, pc}
+ 241              	.L19:
+ 242 000a 00BF     		.align	2
+ 243              	.L18:
+ 244 000c 00000000 		.word	hadc1
+ 245              		.cfi_endproc
+ 246              	.LFE139:
+ 248              		.section	.text.TIM1_UP_TIM10_IRQHandler,"ax",%progbits
+ 249              		.align	1
+ 250              		.global	TIM1_UP_TIM10_IRQHandler
+ 251              		.syntax unified
+ 252              		.thumb
+ 253              		.thumb_func
+ 254              		.fpu fpv4-sp-d16
+ 256              	TIM1_UP_TIM10_IRQHandler:
+ 257              	.LFB140:
+ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccd53k3H.s 			page 9
+
+
+ 221:Src/stm32f4xx_it.c **** 
+ 222:Src/stm32f4xx_it.c **** /**
+ 223:Src/stm32f4xx_it.c ****   * @brief This function handles TIM1 update interrupt and TIM10 global interrupt.
+ 224:Src/stm32f4xx_it.c ****   */
+ 225:Src/stm32f4xx_it.c **** void TIM1_UP_TIM10_IRQHandler(void)
+ 226:Src/stm32f4xx_it.c **** {
+ 258              		.loc 1 226 0
+ 259              		.cfi_startproc
+ 260              		@ args = 0, pretend = 0, frame = 0
+ 261              		@ frame_needed = 0, uses_anonymous_args = 0
+ 262 0000 08B5     		push	{r3, lr}
+ 263              	.LCFI3:
+ 264              		.cfi_def_cfa_offset 8
+ 265              		.cfi_offset 3, -8
+ 266              		.cfi_offset 14, -4
+ 227:Src/stm32f4xx_it.c ****   /* USER CODE BEGIN TIM1_UP_TIM10_IRQn 0 */
+ 228:Src/stm32f4xx_it.c **** 
+ 229:Src/stm32f4xx_it.c ****   /* USER CODE END TIM1_UP_TIM10_IRQn 0 */
+ 230:Src/stm32f4xx_it.c ****   HAL_TIM_IRQHandler(&htim1);
+ 267              		.loc 1 230 0
+ 268 0002 0248     		ldr	r0, .L22
+ 269 0004 FFF7FEFF 		bl	HAL_TIM_IRQHandler
+ 270              	.LVL3:
+ 231:Src/stm32f4xx_it.c ****   /* USER CODE BEGIN TIM1_UP_TIM10_IRQn 1 */
+ 232:Src/stm32f4xx_it.c **** 
+ 233:Src/stm32f4xx_it.c ****   /* USER CODE END TIM1_UP_TIM10_IRQn 1 */
+ 234:Src/stm32f4xx_it.c **** }
+ 271              		.loc 1 234 0
+ 272 0008 08BD     		pop	{r3, pc}
+ 273              	.L23:
+ 274 000a 00BF     		.align	2
+ 275              	.L22:
+ 276 000c 00000000 		.word	htim1
+ 277              		.cfi_endproc
+ 278              	.LFE140:
+ 280              		.section	.text.DMA2_Stream0_IRQHandler,"ax",%progbits
+ 281              		.align	1
+ 282              		.global	DMA2_Stream0_IRQHandler
+ 283              		.syntax unified
+ 284              		.thumb
+ 285              		.thumb_func
+ 286              		.fpu fpv4-sp-d16
+ 288              	DMA2_Stream0_IRQHandler:
+ 289              	.LFB141:
+ 235:Src/stm32f4xx_it.c **** 
+ 236:Src/stm32f4xx_it.c **** /**
+ 237:Src/stm32f4xx_it.c ****   * @brief This function handles DMA2 stream0 global interrupt.
+ 238:Src/stm32f4xx_it.c ****   */
+ 239:Src/stm32f4xx_it.c **** void DMA2_Stream0_IRQHandler(void)
+ 240:Src/stm32f4xx_it.c **** {
+ 290              		.loc 1 240 0
+ 291              		.cfi_startproc
+ 292              		@ args = 0, pretend = 0, frame = 0
+ 293              		@ frame_needed = 0, uses_anonymous_args = 0
+ 294 0000 08B5     		push	{r3, lr}
+ 295              	.LCFI4:
+ 296              		.cfi_def_cfa_offset 8
+ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccd53k3H.s 			page 10
+
+
+ 297              		.cfi_offset 3, -8
+ 298              		.cfi_offset 14, -4
+ 241:Src/stm32f4xx_it.c ****   /* USER CODE BEGIN DMA2_Stream0_IRQn 0 */
+ 242:Src/stm32f4xx_it.c **** 
+ 243:Src/stm32f4xx_it.c ****   /* USER CODE END DMA2_Stream0_IRQn 0 */
+ 244:Src/stm32f4xx_it.c ****   HAL_DMA_IRQHandler(&hdma_adc1);
+ 299              		.loc 1 244 0
+ 300 0002 0248     		ldr	r0, .L26
+ 301 0004 FFF7FEFF 		bl	HAL_DMA_IRQHandler
+ 302              	.LVL4:
+ 245:Src/stm32f4xx_it.c ****   /* USER CODE BEGIN DMA2_Stream0_IRQn 1 */
+ 246:Src/stm32f4xx_it.c **** 
+ 247:Src/stm32f4xx_it.c ****   /* USER CODE END DMA2_Stream0_IRQn 1 */
+ 248:Src/stm32f4xx_it.c **** }
+ 303              		.loc 1 248 0
+ 304 0008 08BD     		pop	{r3, pc}
+ 305              	.L27:
+ 306 000a 00BF     		.align	2
+ 307              	.L26:
+ 308 000c 00000000 		.word	hdma_adc1
+ 309              		.cfi_endproc
+ 310              	.LFE141:
+ 312              		.section	.text.HAL_TIM_PeriodElapsedCallback,"ax",%progbits
+ 313              		.align	1
+ 314              		.global	HAL_TIM_PeriodElapsedCallback
+ 315              		.syntax unified
+ 316              		.thumb
+ 317              		.thumb_func
+ 318              		.fpu fpv4-sp-d16
+ 320              	HAL_TIM_PeriodElapsedCallback:
+ 321              	.LFB142:
+ 249:Src/stm32f4xx_it.c **** 
+ 250:Src/stm32f4xx_it.c **** /* USER CODE BEGIN 1 */
+ 251:Src/stm32f4xx_it.c **** void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
+ 252:Src/stm32f4xx_it.c **** {
+ 322              		.loc 1 252 0
+ 323              		.cfi_startproc
+ 324              		@ args = 0, pretend = 0, frame = 0
+ 325              		@ frame_needed = 0, uses_anonymous_args = 0
+ 326              	.LVL5:
+ 327 0000 08B5     		push	{r3, lr}
+ 328              	.LCFI5:
+ 329              		.cfi_def_cfa_offset 8
+ 330              		.cfi_offset 3, -8
+ 331              		.cfi_offset 14, -4
+ 253:Src/stm32f4xx_it.c ****   if(htim == &htim1)
+ 332              		.loc 1 253 0
+ 333 0002 C24B     		ldr	r3, .L80
+ 334 0004 8342     		cmp	r3, r0
+ 335 0006 00D0     		beq	.L75
+ 336              	.LVL6:
+ 337              	.L28:
+ 254:Src/stm32f4xx_it.c ****   {
+ 255:Src/stm32f4xx_it.c ****     HALL_ADCSample();
+ 256:Src/stm32f4xx_it.c ****     hallSwitch();
+ 257:Src/stm32f4xx_it.c ****     if(stateContr.controlMode == 1) //open loop
+ 258:Src/stm32f4xx_it.c ****     {
+ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccd53k3H.s 			page 11
+
+
+ 259:Src/stm32f4xx_it.c ****       stateContr.duty = stateContr.aimDuty;
+ 260:Src/stm32f4xx_it.c ****     }
+ 261:Src/stm32f4xx_it.c ****     else if(stateContr.controlMode == 2)
+ 262:Src/stm32f4xx_it.c ****     {
+ 263:Src/stm32f4xx_it.c ****       stateContr.speedCount++;
+ 264:Src/stm32f4xx_it.c ****       if(stateContr.speedCount > 2)
+ 265:Src/stm32f4xx_it.c ****       {
+ 266:Src/stm32f4xx_it.c ****         piSpd.fdb = hallTree.speedRPMF;
+ 267:Src/stm32f4xx_it.c ****         //PID_CALC(piSpd);
+ 268:Src/stm32f4xx_it.c ****         PID_CALC(piSpd);
+ 269:Src/stm32f4xx_it.c ****         FIRSTORDER_LPF_CACL(piSpd.out,piSpd.outF,0.08379f);
+ 270:Src/stm32f4xx_it.c ****         stateContr.speedCount = 0;
+ 271:Src/stm32f4xx_it.c ****         stateContr.duty = piSpd.outF;
+ 272:Src/stm32f4xx_it.c ****       }
+ 273:Src/stm32f4xx_it.c ****     }
+ 274:Src/stm32f4xx_it.c ****     else if(stateContr.controlMode == 3)
+ 275:Src/stm32f4xx_it.c ****     {
+ 276:Src/stm32f4xx_it.c ****       stateContr.speedCount++;
+ 277:Src/stm32f4xx_it.c ****       stateContr.currentCount++;
+ 278:Src/stm32f4xx_it.c ****       if(stateContr.speedCount > 2)
+ 279:Src/stm32f4xx_it.c ****       {
+ 280:Src/stm32f4xx_it.c ****         piSpd.fdb = hallTree.speedRPMF;
+ 281:Src/stm32f4xx_it.c ****         PID_CALC(piSpd);
+ 282:Src/stm32f4xx_it.c ****         FIRSTORDER_LPF_CACL(piSpd.out,piSpd.outF,0.08379f);
+ 283:Src/stm32f4xx_it.c ****         stateContr.speedCount = 0;
+ 284:Src/stm32f4xx_it.c ****       }   
+ 285:Src/stm32f4xx_it.c ****       if(stateContr.currentCount > 1)
+ 286:Src/stm32f4xx_it.c ****       {
+ 287:Src/stm32f4xx_it.c ****         piICurr.ref = TORQUE;
+ 288:Src/stm32f4xx_it.c ****         piICurr.fdb = ADCSampPare.busCurr;
+ 289:Src/stm32f4xx_it.c ****         PID_CALC(piICurr);
+ 290:Src/stm32f4xx_it.c ****         FIRSTORDER_LPF_CACL(piICurr.out,piICurr.outF,0.08379f);
+ 291:Src/stm32f4xx_it.c ****         stateContr.currentCount = 0;
+ 292:Src/stm32f4xx_it.c ****       }
+ 293:Src/stm32f4xx_it.c ****       if(piICurr.outF > piSpd.outF)
+ 294:Src/stm32f4xx_it.c ****       {
+ 295:Src/stm32f4xx_it.c ****         stateContr.duty = piSpd.outF;
+ 296:Src/stm32f4xx_it.c ****         piICurr.ui = piSpd.ui;
+ 297:Src/stm32f4xx_it.c ****       }
+ 298:Src/stm32f4xx_it.c ****       else
+ 299:Src/stm32f4xx_it.c ****       {
+ 300:Src/stm32f4xx_it.c ****         stateContr.duty = piICurr.outF;
+ 301:Src/stm32f4xx_it.c ****         piSpd.ui = piICurr.ui;
+ 302:Src/stm32f4xx_it.c ****       }
+ 303:Src/stm32f4xx_it.c ****     }
+ 304:Src/stm32f4xx_it.c ****   }
+ 305:Src/stm32f4xx_it.c **** }
+ 338              		.loc 1 305 0
+ 339 0008 08BD     		pop	{r3, pc}
+ 340              	.LVL7:
+ 341              	.L75:
+ 255:Src/stm32f4xx_it.c ****     hallSwitch();
+ 342              		.loc 1 255 0
+ 343 000a FFF7FEFF 		bl	HALL_ADCSample
+ 344              	.LVL8:
+ 256:Src/stm32f4xx_it.c ****     if(stateContr.controlMode == 1) //open loop
+ 345              		.loc 1 256 0
+ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccd53k3H.s 			page 12
+
+
+ 346 000e FFF7FEFF 		bl	hallSwitch
+ 347              	.LVL9:
+ 257:Src/stm32f4xx_it.c ****     {
+ 348              		.loc 1 257 0
+ 349 0012 BF4B     		ldr	r3, .L80+4
+ 350 0014 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 351 0016 012B     		cmp	r3, #1
+ 352 0018 00F0F480 		beq	.L76
+ 261:Src/stm32f4xx_it.c ****     {
+ 353              		.loc 1 261 0
+ 354 001c 022B     		cmp	r3, #2
+ 355 001e 00F0F580 		beq	.L77
+ 274:Src/stm32f4xx_it.c ****     {
+ 356              		.loc 1 274 0
+ 357 0022 032B     		cmp	r3, #3
+ 358 0024 F0D1     		bne	.L28
+ 276:Src/stm32f4xx_it.c ****       stateContr.currentCount++;
+ 359              		.loc 1 276 0
+ 360 0026 BA49     		ldr	r1, .L80+4
+ 361 0028 8A89     		ldrh	r2, [r1, #12]
+ 362 002a 0132     		adds	r2, r2, #1
+ 363 002c 92B2     		uxth	r2, r2
+ 364 002e 8A81     		strh	r2, [r1, #12]	@ movhi
+ 277:Src/stm32f4xx_it.c ****       if(stateContr.speedCount > 2)
+ 365              		.loc 1 277 0
+ 366 0030 CB89     		ldrh	r3, [r1, #14]
+ 367 0032 0133     		adds	r3, r3, #1
+ 368 0034 9BB2     		uxth	r3, r3
+ 369 0036 CB81     		strh	r3, [r1, #14]	@ movhi
+ 278:Src/stm32f4xx_it.c ****       {
+ 370              		.loc 1 278 0
+ 371 0038 022A     		cmp	r2, #2
+ 372 003a 64D9     		bls	.L40
+ 280:Src/stm32f4xx_it.c ****         PID_CALC(piSpd);
+ 373              		.loc 1 280 0
+ 374 003c B54A     		ldr	r2, .L80+8
+ 375 003e 528C     		ldrh	r2, [r2, #34]
+ 376 0040 07EE102A 		vmov	s14, r2	@ int
+ 377 0044 F8EE477A 		vcvt.f32.u32	s15, s14
+ 378 0048 B34A     		ldr	r2, .L80+12
+ 379 004a C2ED017A 		vstr.32	s15, [r2, #4]
+ 281:Src/stm32f4xx_it.c ****         FIRSTORDER_LPF_CACL(piSpd.out,piSpd.outF,0.08379f);
+ 380              		.loc 1 281 0
+ 381 004e 92ED007A 		vldr.32	s14, [r2]
+ 382 0052 37EE677A 		vsub.f32	s14, s14, s15
+ 383 0056 82ED027A 		vstr.32	s14, [r2, #8]
+ 384 005a D2ED037A 		vldr.32	s15, [r2, #12]
+ 385 005e 27EE277A 		vmul.f32	s14, s14, s15
+ 386 0062 82ED047A 		vstr.32	s14, [r2, #16]
+ 387 0066 D2ED056A 		vldr.32	s13, [r2, #20]
+ 388 006a D2ED0C7A 		vldr.32	s15, [r2, #48]
+ 389 006e 67EE277A 		vmul.f32	s15, s14, s15
+ 390 0072 76EEA76A 		vadd.f32	s13, s13, s15
+ 391 0076 92ED085A 		vldr.32	s10, [r2, #32]
+ 392 007a F4EEC56A 		vcmpe.f32	s13, s10
+ 393 007e F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 394 0082 01DD     		ble	.L41
+ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccd53k3H.s 			page 13
+
+
+ 395 0084 F0EE456A 		vmov.f32	s13, s10
+ 396              	.L41:
+ 281:Src/stm32f4xx_it.c ****         FIRSTORDER_LPF_CACL(piSpd.out,piSpd.outF,0.08379f);
+ 397              		.loc 1 281 0 is_stmt 0 discriminator 4
+ 398 0088 A34A     		ldr	r2, .L80+12
+ 399 008a D2ED095A 		vldr.32	s11, [r2, #36]
+ 400 008e F4EEE65A 		vcmpe.f32	s11, s13
+ 401 0092 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 402 0096 01DD     		ble	.L43
+ 281:Src/stm32f4xx_it.c ****         FIRSTORDER_LPF_CACL(piSpd.out,piSpd.outF,0.08379f);
+ 403              		.loc 1 281 0
+ 404 0098 F0EE656A 		vmov.f32	s13, s11
+ 405              	.L43:
+ 281:Src/stm32f4xx_it.c ****         FIRSTORDER_LPF_CACL(piSpd.out,piSpd.outF,0.08379f);
+ 406              		.loc 1 281 0 discriminator 8
+ 407 009c 9E4A     		ldr	r2, .L80+12
+ 408 009e C2ED056A 		vstr.32	s13, [r2, #20]
+ 409 00a2 D2ED0E7A 		vldr.32	s15, [r2, #56]
+ 410 00a6 92ED0F6A 		vldr.32	s12, [r2, #60]
+ 411 00aa 37EE466A 		vsub.f32	s12, s14, s12
+ 412 00ae 67EE867A 		vmul.f32	s15, s15, s12
+ 413 00b2 C2ED067A 		vstr.32	s15, [r2, #24]
+ 414 00b6 77EE266A 		vadd.f32	s13, s14, s13
+ 415 00ba 77EEA67A 		vadd.f32	s15, s15, s13
+ 416 00be B4EEE75A 		vcmpe.f32	s10, s15
+ 417 00c2 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 418 00c6 01D5     		bpl	.L45
+ 281:Src/stm32f4xx_it.c ****         FIRSTORDER_LPF_CACL(piSpd.out,piSpd.outF,0.08379f);
+ 419              		.loc 1 281 0
+ 420 00c8 F0EE457A 		vmov.f32	s15, s10
+ 421              	.L45:
+ 281:Src/stm32f4xx_it.c ****         FIRSTORDER_LPF_CACL(piSpd.out,piSpd.outF,0.08379f);
+ 422              		.loc 1 281 0 discriminator 12
+ 423 00cc F4EEE75A 		vcmpe.f32	s11, s15
+ 424 00d0 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 425 00d4 01DD     		ble	.L47
+ 281:Src/stm32f4xx_it.c ****         FIRSTORDER_LPF_CACL(piSpd.out,piSpd.outF,0.08379f);
+ 426              		.loc 1 281 0
+ 427 00d6 F0EE657A 		vmov.f32	s15, s11
+ 428              	.L47:
+ 281:Src/stm32f4xx_it.c ****         FIRSTORDER_LPF_CACL(piSpd.out,piSpd.outF,0.08379f);
+ 429              		.loc 1 281 0 discriminator 16
+ 430 00da 8F4A     		ldr	r2, .L80+12
+ 431 00dc C2ED0A7A 		vstr.32	s15, [r2, #40]
+ 432 00e0 82ED0F7A 		vstr.32	s14, [r2, #60]
+ 282:Src/stm32f4xx_it.c ****         stateContr.speedCount = 0;
+ 433              		.loc 1 282 0 is_stmt 1 discriminator 16
+ 434 00e4 92ED117A 		vldr.32	s14, [r2, #68]
+ 435 00e8 DFED8C6A 		vldr.32	s13, .L80+16
+ 436 00ec 27EE267A 		vmul.f32	s14, s14, s13
+ 437 00f0 DFED8B6A 		vldr.32	s13, .L80+20
+ 438 00f4 67EEA67A 		vmul.f32	s15, s15, s13
+ 439 00f8 77EE277A 		vadd.f32	s15, s14, s15
+ 440 00fc C2ED117A 		vstr.32	s15, [r2, #68]
+ 283:Src/stm32f4xx_it.c ****       }   
+ 441              		.loc 1 283 0 discriminator 16
+ 442 0100 834A     		ldr	r2, .L80+4
+ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccd53k3H.s 			page 14
+
+
+ 443 0102 0021     		movs	r1, #0
+ 444 0104 9181     		strh	r1, [r2, #12]	@ movhi
+ 445              	.L40:
+ 285:Src/stm32f4xx_it.c ****       {
+ 446              		.loc 1 285 0
+ 447 0106 012B     		cmp	r3, #1
+ 448 0108 65D9     		bls	.L49
+ 287:Src/stm32f4xx_it.c ****         piICurr.fdb = ADCSampPare.busCurr;
+ 449              		.loc 1 287 0
+ 450 010a 864B     		ldr	r3, .L80+24
+ 451 010c DFED867A 		vldr.32	s15, .L80+28
+ 452 0110 C3ED007A 		vstr.32	s15, [r3]
+ 288:Src/stm32f4xx_it.c ****         PID_CALC(piICurr);
+ 453              		.loc 1 288 0
+ 454 0114 854A     		ldr	r2, .L80+32
+ 455 0116 92ED017A 		vldr.32	s14, [r2, #4]	@ int
+ 456 011a B8EEC77A 		vcvt.f32.s32	s14, s14
+ 457 011e 83ED017A 		vstr.32	s14, [r3, #4]
+ 289:Src/stm32f4xx_it.c ****         FIRSTORDER_LPF_CACL(piICurr.out,piICurr.outF,0.08379f);
+ 458              		.loc 1 289 0
+ 459 0122 37EEC77A 		vsub.f32	s14, s15, s14
+ 460 0126 83ED027A 		vstr.32	s14, [r3, #8]
+ 461 012a D3ED037A 		vldr.32	s15, [r3, #12]
+ 462 012e 27EE277A 		vmul.f32	s14, s14, s15
+ 463 0132 83ED047A 		vstr.32	s14, [r3, #16]
+ 464 0136 D3ED056A 		vldr.32	s13, [r3, #20]
+ 465 013a D3ED0C7A 		vldr.32	s15, [r3, #48]
+ 466 013e 67EE277A 		vmul.f32	s15, s14, s15
+ 467 0142 76EEA76A 		vadd.f32	s13, s13, s15
+ 468 0146 D3ED085A 		vldr.32	s11, [r3, #32]
+ 469 014a F4EEE56A 		vcmpe.f32	s13, s11
+ 470 014e F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 471 0152 01DD     		ble	.L50
+ 472 0154 F0EE656A 		vmov.f32	s13, s11
+ 473              	.L50:
+ 289:Src/stm32f4xx_it.c ****         FIRSTORDER_LPF_CACL(piICurr.out,piICurr.outF,0.08379f);
+ 474              		.loc 1 289 0 is_stmt 0 discriminator 4
+ 475 0158 724B     		ldr	r3, .L80+24
+ 476 015a 93ED096A 		vldr.32	s12, [r3, #36]
+ 477 015e B4EEE66A 		vcmpe.f32	s12, s13
+ 478 0162 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 479 0166 01DD     		ble	.L52
+ 289:Src/stm32f4xx_it.c ****         FIRSTORDER_LPF_CACL(piICurr.out,piICurr.outF,0.08379f);
+ 480              		.loc 1 289 0
+ 481 0168 F0EE466A 		vmov.f32	s13, s12
+ 482              	.L52:
+ 289:Src/stm32f4xx_it.c ****         FIRSTORDER_LPF_CACL(piICurr.out,piICurr.outF,0.08379f);
+ 483              		.loc 1 289 0 discriminator 8
+ 484 016c 6D4B     		ldr	r3, .L80+24
+ 485 016e C3ED056A 		vstr.32	s13, [r3, #20]
+ 486 0172 D3ED0E7A 		vldr.32	s15, [r3, #56]
+ 487 0176 93ED0F5A 		vldr.32	s10, [r3, #60]
+ 488 017a 37EE455A 		vsub.f32	s10, s14, s10
+ 489 017e 67EE857A 		vmul.f32	s15, s15, s10
+ 490 0182 C3ED067A 		vstr.32	s15, [r3, #24]
+ 491 0186 77EE266A 		vadd.f32	s13, s14, s13
+ 492 018a 77EEA67A 		vadd.f32	s15, s15, s13
+ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccd53k3H.s 			page 15
+
+
+ 493 018e F4EEE75A 		vcmpe.f32	s11, s15
+ 494 0192 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 495 0196 01D5     		bpl	.L54
+ 289:Src/stm32f4xx_it.c ****         FIRSTORDER_LPF_CACL(piICurr.out,piICurr.outF,0.08379f);
+ 496              		.loc 1 289 0
+ 497 0198 F0EE657A 		vmov.f32	s15, s11
+ 498              	.L54:
+ 289:Src/stm32f4xx_it.c ****         FIRSTORDER_LPF_CACL(piICurr.out,piICurr.outF,0.08379f);
+ 499              		.loc 1 289 0 discriminator 12
+ 500 019c B4EEE76A 		vcmpe.f32	s12, s15
+ 501 01a0 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 502 01a4 01DD     		ble	.L56
+ 289:Src/stm32f4xx_it.c ****         FIRSTORDER_LPF_CACL(piICurr.out,piICurr.outF,0.08379f);
+ 503              		.loc 1 289 0
+ 504 01a6 F0EE467A 		vmov.f32	s15, s12
+ 505              	.L56:
+ 289:Src/stm32f4xx_it.c ****         FIRSTORDER_LPF_CACL(piICurr.out,piICurr.outF,0.08379f);
+ 506              		.loc 1 289 0 discriminator 16
+ 507 01aa 5E4B     		ldr	r3, .L80+24
+ 508 01ac C3ED0A7A 		vstr.32	s15, [r3, #40]
+ 509 01b0 83ED0F7A 		vstr.32	s14, [r3, #60]
+ 290:Src/stm32f4xx_it.c ****         stateContr.currentCount = 0;
+ 510              		.loc 1 290 0 is_stmt 1 discriminator 16
+ 511 01b4 93ED117A 		vldr.32	s14, [r3, #68]
+ 512 01b8 DFED586A 		vldr.32	s13, .L80+16
+ 513 01bc 27EE267A 		vmul.f32	s14, s14, s13
+ 514 01c0 DFED576A 		vldr.32	s13, .L80+20
+ 515 01c4 67EEA67A 		vmul.f32	s15, s15, s13
+ 516 01c8 77EE277A 		vadd.f32	s15, s14, s15
+ 517 01cc C3ED117A 		vstr.32	s15, [r3, #68]
+ 291:Src/stm32f4xx_it.c ****       }
+ 518              		.loc 1 291 0 discriminator 16
+ 519 01d0 4F4B     		ldr	r3, .L80+4
+ 520 01d2 0022     		movs	r2, #0
+ 521 01d4 DA81     		strh	r2, [r3, #14]	@ movhi
+ 522              	.L49:
+ 293:Src/stm32f4xx_it.c ****       {
+ 523              		.loc 1 293 0
+ 524 01d6 534B     		ldr	r3, .L80+24
+ 525 01d8 D3ED117A 		vldr.32	s15, [r3, #68]
+ 526 01dc 4E4B     		ldr	r3, .L80+12
+ 527 01de 93ED117A 		vldr.32	s14, [r3, #68]
+ 528 01e2 F4EEC77A 		vcmpe.f32	s15, s14
+ 529 01e6 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 530 01ea 00F38380 		bgt	.L78
+ 300:Src/stm32f4xx_it.c ****         piSpd.ui = piICurr.ui;
+ 531              		.loc 1 300 0
+ 532 01ee FCEEE77A 		vcvt.u32.f32	s15, s15
+ 533 01f2 474B     		ldr	r3, .L80+4
+ 534 01f4 17EE902A 		vmov	r2, s15	@ int
+ 535 01f8 5A81     		strh	r2, [r3, #10]	@ movhi
+ 301:Src/stm32f4xx_it.c ****       }
+ 536              		.loc 1 301 0
+ 537 01fa 4A4B     		ldr	r3, .L80+24
+ 538 01fc 5A69     		ldr	r2, [r3, #20]	@ float
+ 539 01fe 464B     		ldr	r3, .L80+12
+ 540 0200 5A61     		str	r2, [r3, #20]	@ float
+ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccd53k3H.s 			page 16
+
+
+ 541              		.loc 1 305 0
+ 542 0202 01E7     		b	.L28
+ 543              	.L76:
+ 259:Src/stm32f4xx_it.c ****     }
+ 544              		.loc 1 259 0
+ 545 0204 424B     		ldr	r3, .L80+4
+ 546 0206 5A69     		ldr	r2, [r3, #20]
+ 547 0208 5A81     		strh	r2, [r3, #10]	@ movhi
+ 548 020a FDE6     		b	.L28
+ 549              	.L77:
+ 263:Src/stm32f4xx_it.c ****       if(stateContr.speedCount > 2)
+ 550              		.loc 1 263 0
+ 551 020c 404A     		ldr	r2, .L80+4
+ 552 020e 9389     		ldrh	r3, [r2, #12]
+ 553 0210 0133     		adds	r3, r3, #1
+ 554 0212 9BB2     		uxth	r3, r3
+ 555 0214 9381     		strh	r3, [r2, #12]	@ movhi
+ 264:Src/stm32f4xx_it.c ****       {
+ 556              		.loc 1 264 0
+ 557 0216 022B     		cmp	r3, #2
+ 558 0218 7FF6F6AE 		bls	.L28
+ 266:Src/stm32f4xx_it.c ****         //PID_CALC(piSpd);
+ 559              		.loc 1 266 0
+ 560 021c 3D4B     		ldr	r3, .L80+8
+ 561 021e 5B8C     		ldrh	r3, [r3, #34]
+ 562 0220 07EE103A 		vmov	s14, r3	@ int
+ 563 0224 F8EE477A 		vcvt.f32.u32	s15, s14
+ 564 0228 3B4B     		ldr	r3, .L80+12
+ 565 022a C3ED017A 		vstr.32	s15, [r3, #4]
+ 268:Src/stm32f4xx_it.c ****         FIRSTORDER_LPF_CACL(piSpd.out,piSpd.outF,0.08379f);
+ 566              		.loc 1 268 0
+ 567 022e 93ED007A 		vldr.32	s14, [r3]
+ 568 0232 37EE677A 		vsub.f32	s14, s14, s15
+ 569 0236 83ED027A 		vstr.32	s14, [r3, #8]
+ 570 023a D3ED037A 		vldr.32	s15, [r3, #12]
+ 571 023e 27EE277A 		vmul.f32	s14, s14, s15
+ 572 0242 83ED047A 		vstr.32	s14, [r3, #16]
+ 573 0246 D3ED056A 		vldr.32	s13, [r3, #20]
+ 574 024a D3ED0C7A 		vldr.32	s15, [r3, #48]
+ 575 024e 67EE277A 		vmul.f32	s15, s14, s15
+ 576 0252 76EEA76A 		vadd.f32	s13, s13, s15
+ 577 0256 D3ED085A 		vldr.32	s11, [r3, #32]
+ 578 025a F4EEE56A 		vcmpe.f32	s13, s11
+ 579 025e F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 580 0262 01DD     		ble	.L32
+ 581 0264 F0EE656A 		vmov.f32	s13, s11
+ 582              	.L32:
+ 268:Src/stm32f4xx_it.c ****         FIRSTORDER_LPF_CACL(piSpd.out,piSpd.outF,0.08379f);
+ 583              		.loc 1 268 0 is_stmt 0 discriminator 4
+ 584 0268 2B4B     		ldr	r3, .L80+12
+ 585 026a 93ED095A 		vldr.32	s10, [r3, #36]
+ 586 026e B4EEE65A 		vcmpe.f32	s10, s13
+ 587 0272 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 588 0276 01DD     		ble	.L34
+ 268:Src/stm32f4xx_it.c ****         FIRSTORDER_LPF_CACL(piSpd.out,piSpd.outF,0.08379f);
+ 589              		.loc 1 268 0
+ 590 0278 F0EE456A 		vmov.f32	s13, s10
+ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccd53k3H.s 			page 17
+
+
+ 591              	.L34:
+ 268:Src/stm32f4xx_it.c ****         FIRSTORDER_LPF_CACL(piSpd.out,piSpd.outF,0.08379f);
+ 592              		.loc 1 268 0 discriminator 8
+ 593 027c 264B     		ldr	r3, .L80+12
+ 594 027e C3ED056A 		vstr.32	s13, [r3, #20]
+ 595 0282 D3ED0E7A 		vldr.32	s15, [r3, #56]
+ 596 0286 93ED0F6A 		vldr.32	s12, [r3, #60]
+ 597 028a 37EE466A 		vsub.f32	s12, s14, s12
+ 598 028e 67EE867A 		vmul.f32	s15, s15, s12
+ 599 0292 C3ED067A 		vstr.32	s15, [r3, #24]
+ 600 0296 77EE266A 		vadd.f32	s13, s14, s13
+ 601 029a 77EEA67A 		vadd.f32	s15, s15, s13
+ 602 029e F4EEE75A 		vcmpe.f32	s11, s15
+ 603 02a2 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 604 02a6 01D5     		bpl	.L36
+ 268:Src/stm32f4xx_it.c ****         FIRSTORDER_LPF_CACL(piSpd.out,piSpd.outF,0.08379f);
+ 605              		.loc 1 268 0
+ 606 02a8 F0EE657A 		vmov.f32	s15, s11
+ 607              	.L36:
+ 268:Src/stm32f4xx_it.c ****         FIRSTORDER_LPF_CACL(piSpd.out,piSpd.outF,0.08379f);
+ 608              		.loc 1 268 0 discriminator 12
+ 609 02ac B4EEE75A 		vcmpe.f32	s10, s15
+ 610 02b0 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 611 02b4 1BDC     		bgt	.L79
+ 612              	.L38:
+ 268:Src/stm32f4xx_it.c ****         FIRSTORDER_LPF_CACL(piSpd.out,piSpd.outF,0.08379f);
+ 613              		.loc 1 268 0 discriminator 16
+ 614 02b6 184B     		ldr	r3, .L80+12
+ 615 02b8 C3ED0A7A 		vstr.32	s15, [r3, #40]
+ 616 02bc 83ED0F7A 		vstr.32	s14, [r3, #60]
+ 269:Src/stm32f4xx_it.c ****         stateContr.speedCount = 0;
+ 617              		.loc 1 269 0 is_stmt 1 discriminator 16
+ 618 02c0 93ED117A 		vldr.32	s14, [r3, #68]
+ 619 02c4 DFED156A 		vldr.32	s13, .L80+16
+ 620 02c8 27EE267A 		vmul.f32	s14, s14, s13
+ 621 02cc DFED146A 		vldr.32	s13, .L80+20
+ 622 02d0 67EEA67A 		vmul.f32	s15, s15, s13
+ 623 02d4 77EE277A 		vadd.f32	s15, s14, s15
+ 624 02d8 C3ED117A 		vstr.32	s15, [r3, #68]
+ 270:Src/stm32f4xx_it.c ****         stateContr.duty = piSpd.outF;
+ 625              		.loc 1 270 0 discriminator 16
+ 626 02dc 0C4B     		ldr	r3, .L80+4
+ 627 02de 0022     		movs	r2, #0
+ 628 02e0 9A81     		strh	r2, [r3, #12]	@ movhi
+ 271:Src/stm32f4xx_it.c ****       }
+ 629              		.loc 1 271 0 discriminator 16
+ 630 02e2 FCEEE77A 		vcvt.u32.f32	s15, s15
+ 631 02e6 17EE902A 		vmov	r2, s15	@ int
+ 632 02ea 5A81     		strh	r2, [r3, #10]	@ movhi
+ 633 02ec 8CE6     		b	.L28
+ 634              	.L79:
+ 268:Src/stm32f4xx_it.c ****         FIRSTORDER_LPF_CACL(piSpd.out,piSpd.outF,0.08379f);
+ 635              		.loc 1 268 0
+ 636 02ee F0EE457A 		vmov.f32	s15, s10
+ 637 02f2 E0E7     		b	.L38
+ 638              	.L78:
+ 295:Src/stm32f4xx_it.c ****         piICurr.ui = piSpd.ui;
+ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccd53k3H.s 			page 18
+
+
+ 639              		.loc 1 295 0
+ 640 02f4 BCEEC77A 		vcvt.u32.f32	s14, s14
+ 641 02f8 054B     		ldr	r3, .L80+4
+ 642 02fa 17EE102A 		vmov	r2, s14	@ int
+ 643 02fe 5A81     		strh	r2, [r3, #10]	@ movhi
+ 296:Src/stm32f4xx_it.c ****       }
+ 644              		.loc 1 296 0
+ 645 0300 054B     		ldr	r3, .L80+12
+ 646 0302 5A69     		ldr	r2, [r3, #20]	@ float
+ 647 0304 074B     		ldr	r3, .L80+24
+ 648 0306 5A61     		str	r2, [r3, #20]	@ float
+ 649 0308 7EE6     		b	.L28
+ 650              	.L81:
+ 651 030a 00BF     		.align	2
+ 652              	.L80:
+ 653 030c 00000000 		.word	htim1
+ 654 0310 00000000 		.word	stateContr
+ 655 0314 00000000 		.word	hallTree
+ 656 0318 00000000 		.word	piSpd
+ 657 031c BD8C6A3F 		.word	1063947453
+ 658 0320 179AAB3D 		.word	1034656279
+ 659 0324 00000000 		.word	piICurr
+ 660 0328 00007F43 		.word	1132396544
+ 661 032c 00000000 		.word	ADCSampPare
+ 662              		.cfi_endproc
+ 663              	.LFE142:
+ 665              		.text
+ 666              	.Letext0:
+ 667              		.file 2 "c:\\program files (x86)\\gnu tools arm embedded\\7 2018-q2-update\\arm-none-eabi\\include
+ 668              		.file 3 "c:\\program files (x86)\\gnu tools arm embedded\\7 2018-q2-update\\arm-none-eabi\\include
+ 669              		.file 4 "Drivers/CMSIS/Include/core_cm4.h"
+ 670              		.file 5 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/system_stm32f4xx.h"
+ 671              		.file 6 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f405xx.h"
+ 672              		.file 7 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h"
+ 673              		.file 8 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h"
+ 674              		.file 9 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h"
+ 675              		.file 10 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc.h"
+ 676              		.file 11 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h"
+ 677              		.file 12 "Inc/tim.h"
+ 678              		.file 13 "Inc/adc.h"
+ 679              		.file 14 "Inc/bldc.h"
+ 680              		.file 15 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h"
+ 681              		.file 16 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h"
+ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccd53k3H.s 			page 19
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 stm32f4xx_it.c
+C:\Users\Cairne\AppData\Local\Temp\ccd53k3H.s:18     .text.NMI_Handler:00000000 $t
+C:\Users\Cairne\AppData\Local\Temp\ccd53k3H.s:25     .text.NMI_Handler:00000000 NMI_Handler
+C:\Users\Cairne\AppData\Local\Temp\ccd53k3H.s:46     .text.HardFault_Handler:00000000 $t
+C:\Users\Cairne\AppData\Local\Temp\ccd53k3H.s:53     .text.HardFault_Handler:00000000 HardFault_Handler
+C:\Users\Cairne\AppData\Local\Temp\ccd53k3H.s:67     .text.MemManage_Handler:00000000 $t
+C:\Users\Cairne\AppData\Local\Temp\ccd53k3H.s:74     .text.MemManage_Handler:00000000 MemManage_Handler
+C:\Users\Cairne\AppData\Local\Temp\ccd53k3H.s:88     .text.BusFault_Handler:00000000 $t
+C:\Users\Cairne\AppData\Local\Temp\ccd53k3H.s:95     .text.BusFault_Handler:00000000 BusFault_Handler
+C:\Users\Cairne\AppData\Local\Temp\ccd53k3H.s:109    .text.UsageFault_Handler:00000000 $t
+C:\Users\Cairne\AppData\Local\Temp\ccd53k3H.s:116    .text.UsageFault_Handler:00000000 UsageFault_Handler
+C:\Users\Cairne\AppData\Local\Temp\ccd53k3H.s:130    .text.SVC_Handler:00000000 $t
+C:\Users\Cairne\AppData\Local\Temp\ccd53k3H.s:137    .text.SVC_Handler:00000000 SVC_Handler
+C:\Users\Cairne\AppData\Local\Temp\ccd53k3H.s:150    .text.DebugMon_Handler:00000000 $t
+C:\Users\Cairne\AppData\Local\Temp\ccd53k3H.s:157    .text.DebugMon_Handler:00000000 DebugMon_Handler
+C:\Users\Cairne\AppData\Local\Temp\ccd53k3H.s:170    .text.PendSV_Handler:00000000 $t
+C:\Users\Cairne\AppData\Local\Temp\ccd53k3H.s:177    .text.PendSV_Handler:00000000 PendSV_Handler
+C:\Users\Cairne\AppData\Local\Temp\ccd53k3H.s:190    .text.SysTick_Handler:00000000 $t
+C:\Users\Cairne\AppData\Local\Temp\ccd53k3H.s:197    .text.SysTick_Handler:00000000 SysTick_Handler
+C:\Users\Cairne\AppData\Local\Temp\ccd53k3H.s:217    .text.ADC_IRQHandler:00000000 $t
+C:\Users\Cairne\AppData\Local\Temp\ccd53k3H.s:224    .text.ADC_IRQHandler:00000000 ADC_IRQHandler
+C:\Users\Cairne\AppData\Local\Temp\ccd53k3H.s:244    .text.ADC_IRQHandler:0000000c $d
+C:\Users\Cairne\AppData\Local\Temp\ccd53k3H.s:249    .text.TIM1_UP_TIM10_IRQHandler:00000000 $t
+C:\Users\Cairne\AppData\Local\Temp\ccd53k3H.s:256    .text.TIM1_UP_TIM10_IRQHandler:00000000 TIM1_UP_TIM10_IRQHandler
+C:\Users\Cairne\AppData\Local\Temp\ccd53k3H.s:276    .text.TIM1_UP_TIM10_IRQHandler:0000000c $d
+C:\Users\Cairne\AppData\Local\Temp\ccd53k3H.s:281    .text.DMA2_Stream0_IRQHandler:00000000 $t
+C:\Users\Cairne\AppData\Local\Temp\ccd53k3H.s:288    .text.DMA2_Stream0_IRQHandler:00000000 DMA2_Stream0_IRQHandler
+C:\Users\Cairne\AppData\Local\Temp\ccd53k3H.s:308    .text.DMA2_Stream0_IRQHandler:0000000c $d
+C:\Users\Cairne\AppData\Local\Temp\ccd53k3H.s:313    .text.HAL_TIM_PeriodElapsedCallback:00000000 $t
+C:\Users\Cairne\AppData\Local\Temp\ccd53k3H.s:320    .text.HAL_TIM_PeriodElapsedCallback:00000000 HAL_TIM_PeriodElapsedCallback
+C:\Users\Cairne\AppData\Local\Temp\ccd53k3H.s:653    .text.HAL_TIM_PeriodElapsedCallback:0000030c $d
+
+UNDEFINED SYMBOLS
+HAL_RCC_NMI_IRQHandler
+HAL_IncTick
+HAL_ADC_IRQHandler
+hadc1
+HAL_TIM_IRQHandler
+htim1
+HAL_DMA_IRQHandler
+hdma_adc1
+HALL_ADCSample
+hallSwitch
+stateContr
+hallTree
+piSpd
+piICurr
+ADCSampPare
