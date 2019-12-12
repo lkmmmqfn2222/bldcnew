@@ -54,7 +54,9 @@ extern HALL hallTree;
 extern STATE stateContr;
 extern PIDREG_T piSpd;
 extern PIDREG_T piICurr;
+extern ADCSamp ADCSampPare;
 extern volatile uint16_t ADC_DualConvertValTab[5];
+uint16_t tempTIMValue = 0;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -104,50 +106,8 @@ int main(void)
   HAL_TIM_PWM_MspInit(&htim1);
   PID_Init();
   threeHallPara_Init();
-  uint32_t ad1, ad2, ad3, ad4, ad5;
-  if (HAL_ADC_Start_DMA(&hadc1, (uint32_t *)&ADC_DualConvertValTab, 5) != HAL_OK)
-  {
-    while (1)
-    {
-      myPrint("error code:hall_dma_error!\r\n");
-    }
-    HAL_NVIC_DisableIRQ(DMA2_Stream0_IRQn);
-  }
-  if (HAL_TIM_Base_Start_IT(&htim1) != HAL_OK)//start it will cause motor en
-  {
-    while (1)
-    {
-      myPrint("error code:hall_base_start_it_error!\r\n ");
-    }
-  }
-  HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_1);
-  HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_2);
-  HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_3);
-  __HAL_TIM_SetCompare(&htim1, TIM_CHANNEL_1, 499);
-  __HAL_TIM_SetCompare(&htim1, TIM_CHANNEL_2, 499);
-  __HAL_TIM_SetCompare(&htim1, TIM_CHANNEL_3, 499);
-  stateContr.controlMode = LOOP;
-  switch (stateContr.controlMode)
-  {
-  case 0x1:
-  {
-    stateContr.aimSpeed = 100;
-    stateContr.aimDuty = 1000 * stateContr.aimSpeed / 100;
-  }
-  break;
-  case 0x2:
-  {
-    piSpd.ref = 500;
-  }
-  break;
-  case 0x3:
-  {
-    piSpd.ref = 500;
-  }
-  break;
-  }
+  BLDCInit();
   /* USER CODE END 2 */
-
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
   while (1)
@@ -157,22 +117,11 @@ int main(void)
     /* USER CODE BEGIN 3 */
   #if 1
     HAL_Delay(20);
-    ad1 = ADC_DualConvertValTab[0];
-    ad2 = ADC_DualConvertValTab[1];
-    ad3 = ADC_DualConvertValTab[2];
-    ad4 = ADC_DualConvertValTab[3];
-    ad5 = ADC_DualConvertValTab[4];
-    //__HAL_TIM_SetCompare(&htim1,TIM_CHANNEL_1,ad1);
-    //__HAL_TIM_SetCompare(&htim1,TIM_CHANNEL_2,ad2);
-    myPrint("ADC VALUE IS: %d mV| %d mV| %d mV| %d mV| %d mV TIM1 CCR IS: %d %d %d hallstate is: %d controlmode is: %d \r\n",\
-            ad1 * 3300 / 4096, ad2 * 3300 / 4096, ad3 * 3300 / 4096, ad4 * 3300 / 4096, ad5 * 3300 / 4096,\
-            TIM1->CCR1, TIM1->CCR2, TIM1->CCR3,\
-            hallTree.hallState,stateContr.controlMode);
+    myPrint("IBUS:%d %f %f %f\r\n",ADCSampPare.busCurr,piICurr.outF,piSpd.outF,piICurr.ref);
+    //tempTIMValue = (TIM1->CCR1 > 5) ? TIM1->CCR1 : tempTIMValue;
+    //myPrint("CURRENT UVW IS :%d %d %d\r\n",ADCSampPare.phaseUCurr,ADCSampPare.phaseVCurr,ADCSampPare.phaseWCurr);
     keyScan();
 #endif
-  //motorTestProgram();
-  // myPrint("HALL TABLE IS %d %d %d \r\n",HALL_U_STATUS,HALL_V_STATUS,HALL_W_STATUS);
-  // HAL_Delay(20);
   }
   /* USER CODE END 3 */
 }

@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccN0d84j.s 			page 1
+ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccJVw3Rp.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccN0d84j.s 			page 1
   29:Src/stm32f4xx_it.c **** /* Private typedef -----------------------------------------------------------*/
   30:Src/stm32f4xx_it.c **** /* USER CODE BEGIN TD */
   31:Src/stm32f4xx_it.c **** 
-ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccN0d84j.s 			page 2
+ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccJVw3Rp.s 			page 2
 
 
   32:Src/stm32f4xx_it.c **** /* USER CODE END TD */
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccN0d84j.s 			page 1
   35              		.cfi_offset 3, -8
   36              		.cfi_offset 14, -4
   79:Src/stm32f4xx_it.c ****   /* USER CODE BEGIN NonMaskableInt_IRQn 0 */
-ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccN0d84j.s 			page 3
+ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccJVw3Rp.s 			page 3
 
 
   80:Src/stm32f4xx_it.c **** 
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccN0d84j.s 			page 1
   99:Src/stm32f4xx_it.c ****     /* USER CODE END W1_HardFault_IRQn 0 */
  100:Src/stm32f4xx_it.c ****   }
  101:Src/stm32f4xx_it.c **** }
-ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccN0d84j.s 			page 4
+ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccJVw3Rp.s 			page 4
 
 
  102:Src/stm32f4xx_it.c **** 
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccN0d84j.s 			page 1
  112              		.thumb
  113              		.thumb_func
  114              		.fpu fpv4-sp-d16
-ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccN0d84j.s 			page 5
+ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccJVw3Rp.s 			page 5
 
 
  116              	UsageFault_Handler:
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccN0d84j.s 			page 1
  142              		@ frame_needed = 0, uses_anonymous_args = 0
  143              		@ link register save eliminated.
  153:Src/stm32f4xx_it.c ****   /* USER CODE BEGIN SVCall_IRQn 0 */
-ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccN0d84j.s 			page 6
+ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccJVw3Rp.s 			page 6
 
 
  154:Src/stm32f4xx_it.c **** 
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccN0d84j.s 			page 1
  177:Src/stm32f4xx_it.c **** void PendSV_Handler(void)
  178:Src/stm32f4xx_it.c **** {
  179              		.loc 1 178 0
-ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccN0d84j.s 			page 7
+ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccJVw3Rp.s 			page 7
 
 
  180              		.cfi_startproc
@@ -418,7 +418,7 @@ ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccN0d84j.s 			page 1
  216              		.section	.text.ADC_IRQHandler,"ax",%progbits
  217              		.align	1
  218              		.global	ADC_IRQHandler
-ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccN0d84j.s 			page 8
+ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccJVw3Rp.s 			page 8
 
 
  219              		.syntax unified
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccN0d84j.s 			page 1
  254              		.fpu fpv4-sp-d16
  256              	TIM1_UP_TIM10_IRQHandler:
  257              	.LFB140:
-ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccN0d84j.s 			page 9
+ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccJVw3Rp.s 			page 9
 
 
  221:Src/stm32f4xx_it.c **** 
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccN0d84j.s 			page 1
  294 0000 08B5     		push	{r3, lr}
  295              	.LCFI4:
  296              		.cfi_def_cfa_offset 8
-ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccN0d84j.s 			page 10
+ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccJVw3Rp.s 			page 10
 
 
  297              		.cfi_offset 3, -8
@@ -588,517 +588,516 @@ ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccN0d84j.s 			page 1
  331              		.cfi_offset 14, -4
  253:Src/stm32f4xx_it.c ****   if(htim == &htim1)
  332              		.loc 1 253 0
- 333 0002 C24B     		ldr	r3, .L80
+ 333 0002 BC4B     		ldr	r3, .L80
  334 0004 8342     		cmp	r3, r0
  335 0006 00D0     		beq	.L75
  336              	.LVL6:
  337              	.L28:
  254:Src/stm32f4xx_it.c ****   {
- 255:Src/stm32f4xx_it.c ****     HALL_ADCSample();
- 256:Src/stm32f4xx_it.c ****     hallSwitch();
- 257:Src/stm32f4xx_it.c ****     if(stateContr.controlMode == 1) //open loop
- 258:Src/stm32f4xx_it.c ****     {
-ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccN0d84j.s 			page 11
+ 255:Src/stm32f4xx_it.c ****     offsetCurrentRead();
+ 256:Src/stm32f4xx_it.c ****     HALL_ADCSample();
+ 257:Src/stm32f4xx_it.c ****     hallSwitch();
+ 258:Src/stm32f4xx_it.c ****     if(stateContr.controlMode == 1) //open loop
+ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccJVw3Rp.s 			page 11
 
 
- 259:Src/stm32f4xx_it.c ****       stateContr.duty = stateContr.aimDuty;
- 260:Src/stm32f4xx_it.c ****     }
- 261:Src/stm32f4xx_it.c ****     else if(stateContr.controlMode == 2)
- 262:Src/stm32f4xx_it.c ****     {
- 263:Src/stm32f4xx_it.c ****       stateContr.speedCount++;
- 264:Src/stm32f4xx_it.c ****       if(stateContr.speedCount > 2)
- 265:Src/stm32f4xx_it.c ****       {
- 266:Src/stm32f4xx_it.c ****         piSpd.fdb = hallTree.speedRPMF;
- 267:Src/stm32f4xx_it.c ****         //PID_CALC(piSpd);
+ 259:Src/stm32f4xx_it.c ****     {
+ 260:Src/stm32f4xx_it.c ****       stateContr.duty = stateContr.aimDuty;
+ 261:Src/stm32f4xx_it.c ****     }
+ 262:Src/stm32f4xx_it.c ****     else if(stateContr.controlMode == 2)
+ 263:Src/stm32f4xx_it.c ****     {
+ 264:Src/stm32f4xx_it.c ****       stateContr.speedCount++;
+ 265:Src/stm32f4xx_it.c ****       if(stateContr.speedCount > 2)
+ 266:Src/stm32f4xx_it.c ****       {
+ 267:Src/stm32f4xx_it.c ****         piSpd.fdb = hallTree.speedRPMF;
  268:Src/stm32f4xx_it.c ****         PID_CALC(piSpd);
  269:Src/stm32f4xx_it.c ****         FIRSTORDER_LPF_CACL(piSpd.out,piSpd.outF,0.08379f);
- 270:Src/stm32f4xx_it.c ****         stateContr.speedCount = 0;
- 271:Src/stm32f4xx_it.c ****         stateContr.duty = piSpd.outF;
- 272:Src/stm32f4xx_it.c ****       }
- 273:Src/stm32f4xx_it.c ****     }
- 274:Src/stm32f4xx_it.c ****     else if(stateContr.controlMode == 3)
- 275:Src/stm32f4xx_it.c ****     {
- 276:Src/stm32f4xx_it.c ****       stateContr.speedCount++;
- 277:Src/stm32f4xx_it.c ****       stateContr.currentCount++;
- 278:Src/stm32f4xx_it.c ****       if(stateContr.speedCount > 2)
- 279:Src/stm32f4xx_it.c ****       {
- 280:Src/stm32f4xx_it.c ****         piSpd.fdb = hallTree.speedRPMF;
- 281:Src/stm32f4xx_it.c ****         PID_CALC(piSpd);
- 282:Src/stm32f4xx_it.c ****         FIRSTORDER_LPF_CACL(piSpd.out,piSpd.outF,0.08379f);
- 283:Src/stm32f4xx_it.c ****         stateContr.speedCount = 0;
- 284:Src/stm32f4xx_it.c ****       }   
- 285:Src/stm32f4xx_it.c ****       if(stateContr.currentCount > 1)
- 286:Src/stm32f4xx_it.c ****       {
- 287:Src/stm32f4xx_it.c ****         piICurr.ref = TORQUE;
- 288:Src/stm32f4xx_it.c ****         piICurr.fdb = ADCSampPare.busCurr;
- 289:Src/stm32f4xx_it.c ****         PID_CALC(piICurr);
- 290:Src/stm32f4xx_it.c ****         FIRSTORDER_LPF_CACL(piICurr.out,piICurr.outF,0.08379f);
- 291:Src/stm32f4xx_it.c ****         stateContr.currentCount = 0;
- 292:Src/stm32f4xx_it.c ****       }
- 293:Src/stm32f4xx_it.c ****       if(piICurr.outF > piSpd.outF)
- 294:Src/stm32f4xx_it.c ****       {
- 295:Src/stm32f4xx_it.c ****         stateContr.duty = piSpd.outF;
- 296:Src/stm32f4xx_it.c ****         piICurr.ui = piSpd.ui;
- 297:Src/stm32f4xx_it.c ****       }
- 298:Src/stm32f4xx_it.c ****       else
- 299:Src/stm32f4xx_it.c ****       {
- 300:Src/stm32f4xx_it.c ****         stateContr.duty = piICurr.outF;
- 301:Src/stm32f4xx_it.c ****         piSpd.ui = piICurr.ui;
- 302:Src/stm32f4xx_it.c ****       }
- 303:Src/stm32f4xx_it.c ****     }
- 304:Src/stm32f4xx_it.c ****   }
- 305:Src/stm32f4xx_it.c **** }
- 338              		.loc 1 305 0
+ 270:Src/stm32f4xx_it.c ****         piSpd.outF = piSpd.out;
+ 271:Src/stm32f4xx_it.c ****         stateContr.speedCount = 0;
+ 272:Src/stm32f4xx_it.c ****         stateContr.duty = piSpd.outF;
+ 273:Src/stm32f4xx_it.c ****       }
+ 274:Src/stm32f4xx_it.c ****     }
+ 275:Src/stm32f4xx_it.c ****     else if(stateContr.controlMode == 3)
+ 276:Src/stm32f4xx_it.c ****     {
+ 277:Src/stm32f4xx_it.c ****       stateContr.speedCount++;
+ 278:Src/stm32f4xx_it.c ****       stateContr.currentCount++;
+ 279:Src/stm32f4xx_it.c ****       if(stateContr.speedCount > 2)
+ 280:Src/stm32f4xx_it.c ****       {
+ 281:Src/stm32f4xx_it.c ****         piSpd.fdb = hallTree.speedRPMF;
+ 282:Src/stm32f4xx_it.c ****         PID_CALC(piSpd);
+ 283:Src/stm32f4xx_it.c ****         FIRSTORDER_LPF_CACL(piSpd.out,piSpd.outF,0.08379f);
+ 284:Src/stm32f4xx_it.c ****         stateContr.speedCount = 0;
+ 285:Src/stm32f4xx_it.c ****       }   
+ 286:Src/stm32f4xx_it.c ****       if(stateContr.currentCount > 1)
+ 287:Src/stm32f4xx_it.c ****       {
+ 288:Src/stm32f4xx_it.c ****         piICurr.ref = TORQUE;
+ 289:Src/stm32f4xx_it.c ****         piICurr.fdb = ADCSampPare.busCurr;
+ 290:Src/stm32f4xx_it.c ****         PID_CALC(piICurr);
+ 291:Src/stm32f4xx_it.c ****         FIRSTORDER_LPF_CACL(piICurr.out,piICurr.outF,0.08379f);
+ 292:Src/stm32f4xx_it.c ****         stateContr.currentCount = 0;
+ 293:Src/stm32f4xx_it.c ****       }
+ 294:Src/stm32f4xx_it.c ****       if(piICurr.outF > piSpd.outF)
+ 295:Src/stm32f4xx_it.c ****       {
+ 296:Src/stm32f4xx_it.c ****         stateContr.duty = piSpd.outF;
+ 297:Src/stm32f4xx_it.c ****         piICurr.ui = piSpd.ui;
+ 298:Src/stm32f4xx_it.c ****       }
+ 299:Src/stm32f4xx_it.c ****       else
+ 300:Src/stm32f4xx_it.c ****       {
+ 301:Src/stm32f4xx_it.c ****         stateContr.duty = piICurr.outF;
+ 302:Src/stm32f4xx_it.c ****         piSpd.ui = piICurr.ui;
+ 303:Src/stm32f4xx_it.c ****       }
+ 304:Src/stm32f4xx_it.c ****     }
+ 305:Src/stm32f4xx_it.c ****   }
+ 306:Src/stm32f4xx_it.c **** }
+ 338              		.loc 1 306 0
  339 0008 08BD     		pop	{r3, pc}
  340              	.LVL7:
  341              	.L75:
- 255:Src/stm32f4xx_it.c ****     hallSwitch();
+ 255:Src/stm32f4xx_it.c ****     HALL_ADCSample();
  342              		.loc 1 255 0
- 343 000a FFF7FEFF 		bl	HALL_ADCSample
+ 343 000a FFF7FEFF 		bl	offsetCurrentRead
  344              	.LVL8:
- 256:Src/stm32f4xx_it.c ****     if(stateContr.controlMode == 1) //open loop
+ 256:Src/stm32f4xx_it.c ****     hallSwitch();
+ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccJVw3Rp.s 			page 12
+
+
  345              		.loc 1 256 0
-ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccN0d84j.s 			page 12
-
-
- 346 000e FFF7FEFF 		bl	hallSwitch
+ 346 000e FFF7FEFF 		bl	HALL_ADCSample
  347              	.LVL9:
- 257:Src/stm32f4xx_it.c ****     {
+ 257:Src/stm32f4xx_it.c ****     if(stateContr.controlMode == 1) //open loop
  348              		.loc 1 257 0
- 349 0012 BF4B     		ldr	r3, .L80+4
- 350 0014 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
- 351 0016 012B     		cmp	r3, #1
- 352 0018 00F0F480 		beq	.L76
- 261:Src/stm32f4xx_it.c ****     {
- 353              		.loc 1 261 0
- 354 001c 022B     		cmp	r3, #2
- 355 001e 00F0F580 		beq	.L77
- 274:Src/stm32f4xx_it.c ****     {
- 356              		.loc 1 274 0
- 357 0022 032B     		cmp	r3, #3
- 358 0024 F0D1     		bne	.L28
- 276:Src/stm32f4xx_it.c ****       stateContr.currentCount++;
- 359              		.loc 1 276 0
- 360 0026 BA49     		ldr	r1, .L80+4
- 361 0028 8A89     		ldrh	r2, [r1, #12]
- 362 002a 0132     		adds	r2, r2, #1
- 363 002c 92B2     		uxth	r2, r2
- 364 002e 8A81     		strh	r2, [r1, #12]	@ movhi
- 277:Src/stm32f4xx_it.c ****       if(stateContr.speedCount > 2)
- 365              		.loc 1 277 0
- 366 0030 CB89     		ldrh	r3, [r1, #14]
- 367 0032 0133     		adds	r3, r3, #1
- 368 0034 9BB2     		uxth	r3, r3
- 369 0036 CB81     		strh	r3, [r1, #14]	@ movhi
- 278:Src/stm32f4xx_it.c ****       {
- 370              		.loc 1 278 0
- 371 0038 022A     		cmp	r2, #2
- 372 003a 64D9     		bls	.L40
- 280:Src/stm32f4xx_it.c ****         PID_CALC(piSpd);
- 373              		.loc 1 280 0
- 374 003c B54A     		ldr	r2, .L80+8
- 375 003e 528C     		ldrh	r2, [r2, #34]
- 376 0040 07EE102A 		vmov	s14, r2	@ int
- 377 0044 F8EE477A 		vcvt.f32.u32	s15, s14
- 378 0048 B34A     		ldr	r2, .L80+12
- 379 004a C2ED017A 		vstr.32	s15, [r2, #4]
- 281:Src/stm32f4xx_it.c ****         FIRSTORDER_LPF_CACL(piSpd.out,piSpd.outF,0.08379f);
- 380              		.loc 1 281 0
- 381 004e 92ED007A 		vldr.32	s14, [r2]
- 382 0052 37EE677A 		vsub.f32	s14, s14, s15
- 383 0056 82ED027A 		vstr.32	s14, [r2, #8]
- 384 005a D2ED037A 		vldr.32	s15, [r2, #12]
- 385 005e 27EE277A 		vmul.f32	s14, s14, s15
- 386 0062 82ED047A 		vstr.32	s14, [r2, #16]
- 387 0066 D2ED056A 		vldr.32	s13, [r2, #20]
- 388 006a D2ED0C7A 		vldr.32	s15, [r2, #48]
- 389 006e 67EE277A 		vmul.f32	s15, s14, s15
- 390 0072 76EEA76A 		vadd.f32	s13, s13, s15
- 391 0076 92ED085A 		vldr.32	s10, [r2, #32]
- 392 007a F4EEC56A 		vcmpe.f32	s13, s10
- 393 007e F1EE10FA 		vmrs	APSR_nzcv, FPSCR
- 394 0082 01DD     		ble	.L41
-ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccN0d84j.s 			page 13
+ 349 0012 FFF7FEFF 		bl	hallSwitch
+ 350              	.LVL10:
+ 258:Src/stm32f4xx_it.c ****     {
+ 351              		.loc 1 258 0
+ 352 0016 B84B     		ldr	r3, .L80+4
+ 353 0018 1B78     		ldrb	r3, [r3]	@ zero_extendqisi2
+ 354 001a 012B     		cmp	r3, #1
+ 355 001c 00F0F380 		beq	.L76
+ 262:Src/stm32f4xx_it.c ****     {
+ 356              		.loc 1 262 0
+ 357 0020 022B     		cmp	r3, #2
+ 358 0022 00F0F480 		beq	.L77
+ 275:Src/stm32f4xx_it.c ****     {
+ 359              		.loc 1 275 0
+ 360 0026 032B     		cmp	r3, #3
+ 361 0028 EED1     		bne	.L28
+ 277:Src/stm32f4xx_it.c ****       stateContr.currentCount++;
+ 362              		.loc 1 277 0
+ 363 002a B349     		ldr	r1, .L80+4
+ 364 002c 8A89     		ldrh	r2, [r1, #12]
+ 365 002e 0132     		adds	r2, r2, #1
+ 366 0030 92B2     		uxth	r2, r2
+ 367 0032 8A81     		strh	r2, [r1, #12]	@ movhi
+ 278:Src/stm32f4xx_it.c ****       if(stateContr.speedCount > 2)
+ 368              		.loc 1 278 0
+ 369 0034 CB89     		ldrh	r3, [r1, #14]
+ 370 0036 0133     		adds	r3, r3, #1
+ 371 0038 9BB2     		uxth	r3, r3
+ 372 003a CB81     		strh	r3, [r1, #14]	@ movhi
+ 279:Src/stm32f4xx_it.c ****       {
+ 373              		.loc 1 279 0
+ 374 003c 022A     		cmp	r2, #2
+ 375 003e 64D9     		bls	.L40
+ 281:Src/stm32f4xx_it.c ****         PID_CALC(piSpd);
+ 376              		.loc 1 281 0
+ 377 0040 AE4A     		ldr	r2, .L80+8
+ 378 0042 528C     		ldrh	r2, [r2, #34]
+ 379 0044 07EE102A 		vmov	s14, r2	@ int
+ 380 0048 F8EE477A 		vcvt.f32.u32	s15, s14
+ 381 004c AC4A     		ldr	r2, .L80+12
+ 382 004e C2ED017A 		vstr.32	s15, [r2, #4]
+ 282:Src/stm32f4xx_it.c ****         FIRSTORDER_LPF_CACL(piSpd.out,piSpd.outF,0.08379f);
+ 383              		.loc 1 282 0
+ 384 0052 92ED007A 		vldr.32	s14, [r2]
+ 385 0056 37EE677A 		vsub.f32	s14, s14, s15
+ 386 005a 82ED027A 		vstr.32	s14, [r2, #8]
+ 387 005e D2ED037A 		vldr.32	s15, [r2, #12]
+ 388 0062 27EE277A 		vmul.f32	s14, s14, s15
+ 389 0066 82ED047A 		vstr.32	s14, [r2, #16]
+ 390 006a D2ED056A 		vldr.32	s13, [r2, #20]
+ 391 006e D2ED0C7A 		vldr.32	s15, [r2, #48]
+ 392 0072 67EE277A 		vmul.f32	s15, s14, s15
+ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccJVw3Rp.s 			page 13
 
 
- 395 0084 F0EE456A 		vmov.f32	s13, s10
- 396              	.L41:
- 281:Src/stm32f4xx_it.c ****         FIRSTORDER_LPF_CACL(piSpd.out,piSpd.outF,0.08379f);
- 397              		.loc 1 281 0 is_stmt 0 discriminator 4
- 398 0088 A34A     		ldr	r2, .L80+12
- 399 008a D2ED095A 		vldr.32	s11, [r2, #36]
- 400 008e F4EEE65A 		vcmpe.f32	s11, s13
- 401 0092 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
- 402 0096 01DD     		ble	.L43
- 281:Src/stm32f4xx_it.c ****         FIRSTORDER_LPF_CACL(piSpd.out,piSpd.outF,0.08379f);
- 403              		.loc 1 281 0
- 404 0098 F0EE656A 		vmov.f32	s13, s11
- 405              	.L43:
- 281:Src/stm32f4xx_it.c ****         FIRSTORDER_LPF_CACL(piSpd.out,piSpd.outF,0.08379f);
- 406              		.loc 1 281 0 discriminator 8
- 407 009c 9E4A     		ldr	r2, .L80+12
- 408 009e C2ED056A 		vstr.32	s13, [r2, #20]
- 409 00a2 D2ED0E7A 		vldr.32	s15, [r2, #56]
- 410 00a6 92ED0F6A 		vldr.32	s12, [r2, #60]
- 411 00aa 37EE466A 		vsub.f32	s12, s14, s12
- 412 00ae 67EE867A 		vmul.f32	s15, s15, s12
- 413 00b2 C2ED067A 		vstr.32	s15, [r2, #24]
- 414 00b6 77EE266A 		vadd.f32	s13, s14, s13
- 415 00ba 77EEA67A 		vadd.f32	s15, s15, s13
- 416 00be B4EEE75A 		vcmpe.f32	s10, s15
- 417 00c2 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
- 418 00c6 01D5     		bpl	.L45
- 281:Src/stm32f4xx_it.c ****         FIRSTORDER_LPF_CACL(piSpd.out,piSpd.outF,0.08379f);
- 419              		.loc 1 281 0
- 420 00c8 F0EE457A 		vmov.f32	s15, s10
- 421              	.L45:
- 281:Src/stm32f4xx_it.c ****         FIRSTORDER_LPF_CACL(piSpd.out,piSpd.outF,0.08379f);
- 422              		.loc 1 281 0 discriminator 12
- 423 00cc F4EEE75A 		vcmpe.f32	s11, s15
- 424 00d0 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
- 425 00d4 01DD     		ble	.L47
- 281:Src/stm32f4xx_it.c ****         FIRSTORDER_LPF_CACL(piSpd.out,piSpd.outF,0.08379f);
- 426              		.loc 1 281 0
- 427 00d6 F0EE657A 		vmov.f32	s15, s11
- 428              	.L47:
- 281:Src/stm32f4xx_it.c ****         FIRSTORDER_LPF_CACL(piSpd.out,piSpd.outF,0.08379f);
- 429              		.loc 1 281 0 discriminator 16
- 430 00da 8F4A     		ldr	r2, .L80+12
- 431 00dc C2ED0A7A 		vstr.32	s15, [r2, #40]
- 432 00e0 82ED0F7A 		vstr.32	s14, [r2, #60]
- 282:Src/stm32f4xx_it.c ****         stateContr.speedCount = 0;
- 433              		.loc 1 282 0 is_stmt 1 discriminator 16
- 434 00e4 92ED117A 		vldr.32	s14, [r2, #68]
- 435 00e8 DFED8C6A 		vldr.32	s13, .L80+16
- 436 00ec 27EE267A 		vmul.f32	s14, s14, s13
- 437 00f0 DFED8B6A 		vldr.32	s13, .L80+20
- 438 00f4 67EEA67A 		vmul.f32	s15, s15, s13
- 439 00f8 77EE277A 		vadd.f32	s15, s14, s15
- 440 00fc C2ED117A 		vstr.32	s15, [r2, #68]
- 283:Src/stm32f4xx_it.c ****       }   
- 441              		.loc 1 283 0 discriminator 16
- 442 0100 834A     		ldr	r2, .L80+4
-ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccN0d84j.s 			page 14
+ 393 0076 76EEA76A 		vadd.f32	s13, s13, s15
+ 394 007a 92ED085A 		vldr.32	s10, [r2, #32]
+ 395 007e F4EEC56A 		vcmpe.f32	s13, s10
+ 396 0082 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 397 0086 01DD     		ble	.L41
+ 398 0088 F0EE456A 		vmov.f32	s13, s10
+ 399              	.L41:
+ 282:Src/stm32f4xx_it.c ****         FIRSTORDER_LPF_CACL(piSpd.out,piSpd.outF,0.08379f);
+ 400              		.loc 1 282 0 is_stmt 0 discriminator 4
+ 401 008c 9C4A     		ldr	r2, .L80+12
+ 402 008e D2ED095A 		vldr.32	s11, [r2, #36]
+ 403 0092 F4EEE65A 		vcmpe.f32	s11, s13
+ 404 0096 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 405 009a 01DD     		ble	.L43
+ 282:Src/stm32f4xx_it.c ****         FIRSTORDER_LPF_CACL(piSpd.out,piSpd.outF,0.08379f);
+ 406              		.loc 1 282 0
+ 407 009c F0EE656A 		vmov.f32	s13, s11
+ 408              	.L43:
+ 282:Src/stm32f4xx_it.c ****         FIRSTORDER_LPF_CACL(piSpd.out,piSpd.outF,0.08379f);
+ 409              		.loc 1 282 0 discriminator 8
+ 410 00a0 974A     		ldr	r2, .L80+12
+ 411 00a2 C2ED056A 		vstr.32	s13, [r2, #20]
+ 412 00a6 D2ED0E7A 		vldr.32	s15, [r2, #56]
+ 413 00aa 92ED0F6A 		vldr.32	s12, [r2, #60]
+ 414 00ae 37EE466A 		vsub.f32	s12, s14, s12
+ 415 00b2 67EE867A 		vmul.f32	s15, s15, s12
+ 416 00b6 C2ED067A 		vstr.32	s15, [r2, #24]
+ 417 00ba 77EE266A 		vadd.f32	s13, s14, s13
+ 418 00be 77EEA67A 		vadd.f32	s15, s15, s13
+ 419 00c2 B4EEE75A 		vcmpe.f32	s10, s15
+ 420 00c6 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 421 00ca 01D5     		bpl	.L45
+ 282:Src/stm32f4xx_it.c ****         FIRSTORDER_LPF_CACL(piSpd.out,piSpd.outF,0.08379f);
+ 422              		.loc 1 282 0
+ 423 00cc F0EE457A 		vmov.f32	s15, s10
+ 424              	.L45:
+ 282:Src/stm32f4xx_it.c ****         FIRSTORDER_LPF_CACL(piSpd.out,piSpd.outF,0.08379f);
+ 425              		.loc 1 282 0 discriminator 12
+ 426 00d0 F4EEE75A 		vcmpe.f32	s11, s15
+ 427 00d4 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 428 00d8 01DD     		ble	.L47
+ 282:Src/stm32f4xx_it.c ****         FIRSTORDER_LPF_CACL(piSpd.out,piSpd.outF,0.08379f);
+ 429              		.loc 1 282 0
+ 430 00da F0EE657A 		vmov.f32	s15, s11
+ 431              	.L47:
+ 282:Src/stm32f4xx_it.c ****         FIRSTORDER_LPF_CACL(piSpd.out,piSpd.outF,0.08379f);
+ 432              		.loc 1 282 0 discriminator 16
+ 433 00de 884A     		ldr	r2, .L80+12
+ 434 00e0 C2ED0A7A 		vstr.32	s15, [r2, #40]
+ 435 00e4 82ED0F7A 		vstr.32	s14, [r2, #60]
+ 283:Src/stm32f4xx_it.c ****         stateContr.speedCount = 0;
+ 436              		.loc 1 283 0 is_stmt 1 discriminator 16
+ 437 00e8 92ED117A 		vldr.32	s14, [r2, #68]
+ 438 00ec DFED856A 		vldr.32	s13, .L80+16
+ 439 00f0 27EE267A 		vmul.f32	s14, s14, s13
+ 440 00f4 DFED846A 		vldr.32	s13, .L80+20
+ 441 00f8 67EEA67A 		vmul.f32	s15, s15, s13
+ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccJVw3Rp.s 			page 14
 
 
- 443 0102 0021     		movs	r1, #0
- 444 0104 9181     		strh	r1, [r2, #12]	@ movhi
- 445              	.L40:
- 285:Src/stm32f4xx_it.c ****       {
- 446              		.loc 1 285 0
- 447 0106 012B     		cmp	r3, #1
- 448 0108 65D9     		bls	.L49
- 287:Src/stm32f4xx_it.c ****         piICurr.fdb = ADCSampPare.busCurr;
- 449              		.loc 1 287 0
- 450 010a 864B     		ldr	r3, .L80+24
- 451 010c DFED867A 		vldr.32	s15, .L80+28
- 452 0110 C3ED007A 		vstr.32	s15, [r3]
- 288:Src/stm32f4xx_it.c ****         PID_CALC(piICurr);
- 453              		.loc 1 288 0
- 454 0114 854A     		ldr	r2, .L80+32
- 455 0116 92ED017A 		vldr.32	s14, [r2, #4]	@ int
- 456 011a B8EEC77A 		vcvt.f32.s32	s14, s14
- 457 011e 83ED017A 		vstr.32	s14, [r3, #4]
- 289:Src/stm32f4xx_it.c ****         FIRSTORDER_LPF_CACL(piICurr.out,piICurr.outF,0.08379f);
- 458              		.loc 1 289 0
- 459 0122 37EEC77A 		vsub.f32	s14, s15, s14
- 460 0126 83ED027A 		vstr.32	s14, [r3, #8]
- 461 012a D3ED037A 		vldr.32	s15, [r3, #12]
- 462 012e 27EE277A 		vmul.f32	s14, s14, s15
- 463 0132 83ED047A 		vstr.32	s14, [r3, #16]
- 464 0136 D3ED056A 		vldr.32	s13, [r3, #20]
- 465 013a D3ED0C7A 		vldr.32	s15, [r3, #48]
- 466 013e 67EE277A 		vmul.f32	s15, s14, s15
- 467 0142 76EEA76A 		vadd.f32	s13, s13, s15
- 468 0146 D3ED085A 		vldr.32	s11, [r3, #32]
- 469 014a F4EEE56A 		vcmpe.f32	s13, s11
- 470 014e F1EE10FA 		vmrs	APSR_nzcv, FPSCR
- 471 0152 01DD     		ble	.L50
- 472 0154 F0EE656A 		vmov.f32	s13, s11
- 473              	.L50:
- 289:Src/stm32f4xx_it.c ****         FIRSTORDER_LPF_CACL(piICurr.out,piICurr.outF,0.08379f);
- 474              		.loc 1 289 0 is_stmt 0 discriminator 4
- 475 0158 724B     		ldr	r3, .L80+24
- 476 015a 93ED096A 		vldr.32	s12, [r3, #36]
- 477 015e B4EEE66A 		vcmpe.f32	s12, s13
- 478 0162 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
- 479 0166 01DD     		ble	.L52
- 289:Src/stm32f4xx_it.c ****         FIRSTORDER_LPF_CACL(piICurr.out,piICurr.outF,0.08379f);
- 480              		.loc 1 289 0
- 481 0168 F0EE466A 		vmov.f32	s13, s12
- 482              	.L52:
- 289:Src/stm32f4xx_it.c ****         FIRSTORDER_LPF_CACL(piICurr.out,piICurr.outF,0.08379f);
- 483              		.loc 1 289 0 discriminator 8
- 484 016c 6D4B     		ldr	r3, .L80+24
- 485 016e C3ED056A 		vstr.32	s13, [r3, #20]
- 486 0172 D3ED0E7A 		vldr.32	s15, [r3, #56]
- 487 0176 93ED0F5A 		vldr.32	s10, [r3, #60]
- 488 017a 37EE455A 		vsub.f32	s10, s14, s10
- 489 017e 67EE857A 		vmul.f32	s15, s15, s10
- 490 0182 C3ED067A 		vstr.32	s15, [r3, #24]
- 491 0186 77EE266A 		vadd.f32	s13, s14, s13
- 492 018a 77EEA67A 		vadd.f32	s15, s15, s13
-ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccN0d84j.s 			page 15
+ 442 00fc 77EE277A 		vadd.f32	s15, s14, s15
+ 443 0100 C2ED117A 		vstr.32	s15, [r2, #68]
+ 284:Src/stm32f4xx_it.c ****       }   
+ 444              		.loc 1 284 0 discriminator 16
+ 445 0104 7C4A     		ldr	r2, .L80+4
+ 446 0106 0021     		movs	r1, #0
+ 447 0108 9181     		strh	r1, [r2, #12]	@ movhi
+ 448              	.L40:
+ 286:Src/stm32f4xx_it.c ****       {
+ 449              		.loc 1 286 0
+ 450 010a 012B     		cmp	r3, #1
+ 451 010c 65D9     		bls	.L49
+ 288:Src/stm32f4xx_it.c ****         piICurr.fdb = ADCSampPare.busCurr;
+ 452              		.loc 1 288 0
+ 453 010e 7F4B     		ldr	r3, .L80+24
+ 454 0110 DFED7F7A 		vldr.32	s15, .L80+28
+ 455 0114 C3ED007A 		vstr.32	s15, [r3]
+ 289:Src/stm32f4xx_it.c ****         PID_CALC(piICurr);
+ 456              		.loc 1 289 0
+ 457 0118 7E4A     		ldr	r2, .L80+32
+ 458 011a 92ED017A 		vldr.32	s14, [r2, #4]	@ int
+ 459 011e B8EEC77A 		vcvt.f32.s32	s14, s14
+ 460 0122 83ED017A 		vstr.32	s14, [r3, #4]
+ 290:Src/stm32f4xx_it.c ****         FIRSTORDER_LPF_CACL(piICurr.out,piICurr.outF,0.08379f);
+ 461              		.loc 1 290 0
+ 462 0126 37EEC77A 		vsub.f32	s14, s15, s14
+ 463 012a 83ED027A 		vstr.32	s14, [r3, #8]
+ 464 012e D3ED037A 		vldr.32	s15, [r3, #12]
+ 465 0132 27EE277A 		vmul.f32	s14, s14, s15
+ 466 0136 83ED047A 		vstr.32	s14, [r3, #16]
+ 467 013a D3ED056A 		vldr.32	s13, [r3, #20]
+ 468 013e D3ED0C7A 		vldr.32	s15, [r3, #48]
+ 469 0142 67EE277A 		vmul.f32	s15, s14, s15
+ 470 0146 76EEA76A 		vadd.f32	s13, s13, s15
+ 471 014a D3ED085A 		vldr.32	s11, [r3, #32]
+ 472 014e F4EEE56A 		vcmpe.f32	s13, s11
+ 473 0152 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 474 0156 01DD     		ble	.L50
+ 475 0158 F0EE656A 		vmov.f32	s13, s11
+ 476              	.L50:
+ 290:Src/stm32f4xx_it.c ****         FIRSTORDER_LPF_CACL(piICurr.out,piICurr.outF,0.08379f);
+ 477              		.loc 1 290 0 is_stmt 0 discriminator 4
+ 478 015c 6B4B     		ldr	r3, .L80+24
+ 479 015e 93ED096A 		vldr.32	s12, [r3, #36]
+ 480 0162 B4EEE66A 		vcmpe.f32	s12, s13
+ 481 0166 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 482 016a 01DD     		ble	.L52
+ 290:Src/stm32f4xx_it.c ****         FIRSTORDER_LPF_CACL(piICurr.out,piICurr.outF,0.08379f);
+ 483              		.loc 1 290 0
+ 484 016c F0EE466A 		vmov.f32	s13, s12
+ 485              	.L52:
+ 290:Src/stm32f4xx_it.c ****         FIRSTORDER_LPF_CACL(piICurr.out,piICurr.outF,0.08379f);
+ 486              		.loc 1 290 0 discriminator 8
+ 487 0170 664B     		ldr	r3, .L80+24
+ 488 0172 C3ED056A 		vstr.32	s13, [r3, #20]
+ 489 0176 D3ED0E7A 		vldr.32	s15, [r3, #56]
+ 490 017a 93ED0F5A 		vldr.32	s10, [r3, #60]
+ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccJVw3Rp.s 			page 15
 
 
- 493 018e F4EEE75A 		vcmpe.f32	s11, s15
- 494 0192 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
- 495 0196 01D5     		bpl	.L54
- 289:Src/stm32f4xx_it.c ****         FIRSTORDER_LPF_CACL(piICurr.out,piICurr.outF,0.08379f);
- 496              		.loc 1 289 0
- 497 0198 F0EE657A 		vmov.f32	s15, s11
- 498              	.L54:
- 289:Src/stm32f4xx_it.c ****         FIRSTORDER_LPF_CACL(piICurr.out,piICurr.outF,0.08379f);
- 499              		.loc 1 289 0 discriminator 12
- 500 019c B4EEE76A 		vcmpe.f32	s12, s15
- 501 01a0 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
- 502 01a4 01DD     		ble	.L56
- 289:Src/stm32f4xx_it.c ****         FIRSTORDER_LPF_CACL(piICurr.out,piICurr.outF,0.08379f);
- 503              		.loc 1 289 0
- 504 01a6 F0EE467A 		vmov.f32	s15, s12
- 505              	.L56:
- 289:Src/stm32f4xx_it.c ****         FIRSTORDER_LPF_CACL(piICurr.out,piICurr.outF,0.08379f);
- 506              		.loc 1 289 0 discriminator 16
- 507 01aa 5E4B     		ldr	r3, .L80+24
- 508 01ac C3ED0A7A 		vstr.32	s15, [r3, #40]
- 509 01b0 83ED0F7A 		vstr.32	s14, [r3, #60]
- 290:Src/stm32f4xx_it.c ****         stateContr.currentCount = 0;
- 510              		.loc 1 290 0 is_stmt 1 discriminator 16
- 511 01b4 93ED117A 		vldr.32	s14, [r3, #68]
- 512 01b8 DFED586A 		vldr.32	s13, .L80+16
- 513 01bc 27EE267A 		vmul.f32	s14, s14, s13
- 514 01c0 DFED576A 		vldr.32	s13, .L80+20
- 515 01c4 67EEA67A 		vmul.f32	s15, s15, s13
- 516 01c8 77EE277A 		vadd.f32	s15, s14, s15
- 517 01cc C3ED117A 		vstr.32	s15, [r3, #68]
- 291:Src/stm32f4xx_it.c ****       }
- 518              		.loc 1 291 0 discriminator 16
- 519 01d0 4F4B     		ldr	r3, .L80+4
- 520 01d2 0022     		movs	r2, #0
- 521 01d4 DA81     		strh	r2, [r3, #14]	@ movhi
- 522              	.L49:
- 293:Src/stm32f4xx_it.c ****       {
- 523              		.loc 1 293 0
- 524 01d6 534B     		ldr	r3, .L80+24
- 525 01d8 D3ED117A 		vldr.32	s15, [r3, #68]
- 526 01dc 4E4B     		ldr	r3, .L80+12
- 527 01de 93ED117A 		vldr.32	s14, [r3, #68]
- 528 01e2 F4EEC77A 		vcmpe.f32	s15, s14
- 529 01e6 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
- 530 01ea 00F38380 		bgt	.L78
- 300:Src/stm32f4xx_it.c ****         piSpd.ui = piICurr.ui;
- 531              		.loc 1 300 0
- 532 01ee FCEEE77A 		vcvt.u32.f32	s15, s15
- 533 01f2 474B     		ldr	r3, .L80+4
- 534 01f4 17EE902A 		vmov	r2, s15	@ int
- 535 01f8 5A81     		strh	r2, [r3, #10]	@ movhi
- 301:Src/stm32f4xx_it.c ****       }
- 536              		.loc 1 301 0
- 537 01fa 4A4B     		ldr	r3, .L80+24
- 538 01fc 5A69     		ldr	r2, [r3, #20]	@ float
- 539 01fe 464B     		ldr	r3, .L80+12
- 540 0200 5A61     		str	r2, [r3, #20]	@ float
-ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccN0d84j.s 			page 16
+ 491 017e 37EE455A 		vsub.f32	s10, s14, s10
+ 492 0182 67EE857A 		vmul.f32	s15, s15, s10
+ 493 0186 C3ED067A 		vstr.32	s15, [r3, #24]
+ 494 018a 77EE266A 		vadd.f32	s13, s14, s13
+ 495 018e 77EEA67A 		vadd.f32	s15, s15, s13
+ 496 0192 F4EEE75A 		vcmpe.f32	s11, s15
+ 497 0196 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 498 019a 01D5     		bpl	.L54
+ 290:Src/stm32f4xx_it.c ****         FIRSTORDER_LPF_CACL(piICurr.out,piICurr.outF,0.08379f);
+ 499              		.loc 1 290 0
+ 500 019c F0EE657A 		vmov.f32	s15, s11
+ 501              	.L54:
+ 290:Src/stm32f4xx_it.c ****         FIRSTORDER_LPF_CACL(piICurr.out,piICurr.outF,0.08379f);
+ 502              		.loc 1 290 0 discriminator 12
+ 503 01a0 B4EEE76A 		vcmpe.f32	s12, s15
+ 504 01a4 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 505 01a8 01DD     		ble	.L56
+ 290:Src/stm32f4xx_it.c ****         FIRSTORDER_LPF_CACL(piICurr.out,piICurr.outF,0.08379f);
+ 506              		.loc 1 290 0
+ 507 01aa F0EE467A 		vmov.f32	s15, s12
+ 508              	.L56:
+ 290:Src/stm32f4xx_it.c ****         FIRSTORDER_LPF_CACL(piICurr.out,piICurr.outF,0.08379f);
+ 509              		.loc 1 290 0 discriminator 16
+ 510 01ae 574B     		ldr	r3, .L80+24
+ 511 01b0 C3ED0A7A 		vstr.32	s15, [r3, #40]
+ 512 01b4 83ED0F7A 		vstr.32	s14, [r3, #60]
+ 291:Src/stm32f4xx_it.c ****         stateContr.currentCount = 0;
+ 513              		.loc 1 291 0 is_stmt 1 discriminator 16
+ 514 01b8 93ED117A 		vldr.32	s14, [r3, #68]
+ 515 01bc DFED516A 		vldr.32	s13, .L80+16
+ 516 01c0 27EE267A 		vmul.f32	s14, s14, s13
+ 517 01c4 DFED506A 		vldr.32	s13, .L80+20
+ 518 01c8 67EEA67A 		vmul.f32	s15, s15, s13
+ 519 01cc 77EE277A 		vadd.f32	s15, s14, s15
+ 520 01d0 C3ED117A 		vstr.32	s15, [r3, #68]
+ 292:Src/stm32f4xx_it.c ****       }
+ 521              		.loc 1 292 0 discriminator 16
+ 522 01d4 484B     		ldr	r3, .L80+4
+ 523 01d6 0022     		movs	r2, #0
+ 524 01d8 DA81     		strh	r2, [r3, #14]	@ movhi
+ 525              	.L49:
+ 294:Src/stm32f4xx_it.c ****       {
+ 526              		.loc 1 294 0
+ 527 01da 4C4B     		ldr	r3, .L80+24
+ 528 01dc D3ED117A 		vldr.32	s15, [r3, #68]
+ 529 01e0 474B     		ldr	r3, .L80+12
+ 530 01e2 93ED117A 		vldr.32	s14, [r3, #68]
+ 531 01e6 F4EEC77A 		vcmpe.f32	s15, s14
+ 532 01ea F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 533 01ee 76DC     		bgt	.L78
+ 301:Src/stm32f4xx_it.c ****         piSpd.ui = piICurr.ui;
+ 534              		.loc 1 301 0
+ 535 01f0 FCEEE77A 		vcvt.u32.f32	s15, s15
+ 536 01f4 404B     		ldr	r3, .L80+4
+ 537 01f6 17EE902A 		vmov	r2, s15	@ int
+ 538 01fa 5A81     		strh	r2, [r3, #10]	@ movhi
+ 302:Src/stm32f4xx_it.c ****       }
+ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccJVw3Rp.s 			page 16
 
 
- 541              		.loc 1 305 0
- 542 0202 01E7     		b	.L28
- 543              	.L76:
- 259:Src/stm32f4xx_it.c ****     }
- 544              		.loc 1 259 0
- 545 0204 424B     		ldr	r3, .L80+4
- 546 0206 5A69     		ldr	r2, [r3, #20]
- 547 0208 5A81     		strh	r2, [r3, #10]	@ movhi
- 548 020a FDE6     		b	.L28
- 549              	.L77:
- 263:Src/stm32f4xx_it.c ****       if(stateContr.speedCount > 2)
- 550              		.loc 1 263 0
- 551 020c 404A     		ldr	r2, .L80+4
- 552 020e 9389     		ldrh	r3, [r2, #12]
- 553 0210 0133     		adds	r3, r3, #1
- 554 0212 9BB2     		uxth	r3, r3
- 555 0214 9381     		strh	r3, [r2, #12]	@ movhi
- 264:Src/stm32f4xx_it.c ****       {
- 556              		.loc 1 264 0
- 557 0216 022B     		cmp	r3, #2
- 558 0218 7FF6F6AE 		bls	.L28
- 266:Src/stm32f4xx_it.c ****         //PID_CALC(piSpd);
- 559              		.loc 1 266 0
- 560 021c 3D4B     		ldr	r3, .L80+8
- 561 021e 5B8C     		ldrh	r3, [r3, #34]
- 562 0220 07EE103A 		vmov	s14, r3	@ int
- 563 0224 F8EE477A 		vcvt.f32.u32	s15, s14
- 564 0228 3B4B     		ldr	r3, .L80+12
- 565 022a C3ED017A 		vstr.32	s15, [r3, #4]
+ 539              		.loc 1 302 0
+ 540 01fc 434B     		ldr	r3, .L80+24
+ 541 01fe 5A69     		ldr	r2, [r3, #20]	@ float
+ 542 0200 3F4B     		ldr	r3, .L80+12
+ 543 0202 5A61     		str	r2, [r3, #20]	@ float
+ 544              		.loc 1 306 0
+ 545 0204 00E7     		b	.L28
+ 546              	.L76:
+ 260:Src/stm32f4xx_it.c ****     }
+ 547              		.loc 1 260 0
+ 548 0206 3C4B     		ldr	r3, .L80+4
+ 549 0208 5A69     		ldr	r2, [r3, #20]
+ 550 020a 5A81     		strh	r2, [r3, #10]	@ movhi
+ 551 020c FCE6     		b	.L28
+ 552              	.L77:
+ 264:Src/stm32f4xx_it.c ****       if(stateContr.speedCount > 2)
+ 553              		.loc 1 264 0
+ 554 020e 3A4A     		ldr	r2, .L80+4
+ 555 0210 9389     		ldrh	r3, [r2, #12]
+ 556 0212 0133     		adds	r3, r3, #1
+ 557 0214 9BB2     		uxth	r3, r3
+ 558 0216 9381     		strh	r3, [r2, #12]	@ movhi
+ 265:Src/stm32f4xx_it.c ****       {
+ 559              		.loc 1 265 0
+ 560 0218 022B     		cmp	r3, #2
+ 561 021a 7FF6F5AE 		bls	.L28
+ 267:Src/stm32f4xx_it.c ****         PID_CALC(piSpd);
+ 562              		.loc 1 267 0
+ 563 021e 374B     		ldr	r3, .L80+8
+ 564 0220 5B8C     		ldrh	r3, [r3, #34]
+ 565 0222 07EE103A 		vmov	s14, r3	@ int
+ 566 0226 F8EE477A 		vcvt.f32.u32	s15, s14
+ 567 022a 354B     		ldr	r3, .L80+12
+ 568 022c C3ED017A 		vstr.32	s15, [r3, #4]
  268:Src/stm32f4xx_it.c ****         FIRSTORDER_LPF_CACL(piSpd.out,piSpd.outF,0.08379f);
- 566              		.loc 1 268 0
- 567 022e 93ED007A 		vldr.32	s14, [r3]
- 568 0232 37EE677A 		vsub.f32	s14, s14, s15
- 569 0236 83ED027A 		vstr.32	s14, [r3, #8]
- 570 023a D3ED037A 		vldr.32	s15, [r3, #12]
- 571 023e 27EE277A 		vmul.f32	s14, s14, s15
- 572 0242 83ED047A 		vstr.32	s14, [r3, #16]
- 573 0246 D3ED056A 		vldr.32	s13, [r3, #20]
- 574 024a D3ED0C7A 		vldr.32	s15, [r3, #48]
- 575 024e 67EE277A 		vmul.f32	s15, s14, s15
- 576 0252 76EEA76A 		vadd.f32	s13, s13, s15
- 577 0256 D3ED085A 		vldr.32	s11, [r3, #32]
- 578 025a F4EEE56A 		vcmpe.f32	s13, s11
- 579 025e F1EE10FA 		vmrs	APSR_nzcv, FPSCR
- 580 0262 01DD     		ble	.L32
- 581 0264 F0EE656A 		vmov.f32	s13, s11
- 582              	.L32:
+ 569              		.loc 1 268 0
+ 570 0230 93ED007A 		vldr.32	s14, [r3]
+ 571 0234 37EE677A 		vsub.f32	s14, s14, s15
+ 572 0238 83ED027A 		vstr.32	s14, [r3, #8]
+ 573 023c D3ED037A 		vldr.32	s15, [r3, #12]
+ 574 0240 27EE277A 		vmul.f32	s14, s14, s15
+ 575 0244 83ED047A 		vstr.32	s14, [r3, #16]
+ 576 0248 D3ED056A 		vldr.32	s13, [r3, #20]
+ 577 024c D3ED0C7A 		vldr.32	s15, [r3, #48]
+ 578 0250 67EE277A 		vmul.f32	s15, s14, s15
+ 579 0254 76EEA76A 		vadd.f32	s13, s13, s15
+ 580 0258 D3ED085A 		vldr.32	s11, [r3, #32]
+ 581 025c F4EEE56A 		vcmpe.f32	s13, s11
+ 582 0260 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 583 0264 01DD     		ble	.L32
+ 584 0266 F0EE656A 		vmov.f32	s13, s11
+ 585              	.L32:
  268:Src/stm32f4xx_it.c ****         FIRSTORDER_LPF_CACL(piSpd.out,piSpd.outF,0.08379f);
- 583              		.loc 1 268 0 is_stmt 0 discriminator 4
- 584 0268 2B4B     		ldr	r3, .L80+12
- 585 026a 93ED095A 		vldr.32	s10, [r3, #36]
- 586 026e B4EEE65A 		vcmpe.f32	s10, s13
- 587 0272 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
- 588 0276 01DD     		ble	.L34
- 268:Src/stm32f4xx_it.c ****         FIRSTORDER_LPF_CACL(piSpd.out,piSpd.outF,0.08379f);
- 589              		.loc 1 268 0
- 590 0278 F0EE456A 		vmov.f32	s13, s10
-ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccN0d84j.s 			page 17
+ 586              		.loc 1 268 0 is_stmt 0 discriminator 4
+ 587 026a 254B     		ldr	r3, .L80+12
+ 588 026c 93ED095A 		vldr.32	s10, [r3, #36]
+ 589 0270 B4EEE65A 		vcmpe.f32	s10, s13
+ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccJVw3Rp.s 			page 17
 
 
- 591              	.L34:
+ 590 0274 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 591 0278 01DD     		ble	.L34
  268:Src/stm32f4xx_it.c ****         FIRSTORDER_LPF_CACL(piSpd.out,piSpd.outF,0.08379f);
- 592              		.loc 1 268 0 discriminator 8
- 593 027c 264B     		ldr	r3, .L80+12
- 594 027e C3ED056A 		vstr.32	s13, [r3, #20]
- 595 0282 D3ED0E7A 		vldr.32	s15, [r3, #56]
- 596 0286 93ED0F6A 		vldr.32	s12, [r3, #60]
- 597 028a 37EE466A 		vsub.f32	s12, s14, s12
- 598 028e 67EE867A 		vmul.f32	s15, s15, s12
- 599 0292 C3ED067A 		vstr.32	s15, [r3, #24]
- 600 0296 77EE266A 		vadd.f32	s13, s14, s13
- 601 029a 77EEA67A 		vadd.f32	s15, s15, s13
- 602 029e F4EEE75A 		vcmpe.f32	s11, s15
- 603 02a2 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
- 604 02a6 01D5     		bpl	.L36
+ 592              		.loc 1 268 0
+ 593 027a F0EE456A 		vmov.f32	s13, s10
+ 594              	.L34:
  268:Src/stm32f4xx_it.c ****         FIRSTORDER_LPF_CACL(piSpd.out,piSpd.outF,0.08379f);
- 605              		.loc 1 268 0
- 606 02a8 F0EE657A 		vmov.f32	s15, s11
- 607              	.L36:
+ 595              		.loc 1 268 0 discriminator 8
+ 596 027e 204B     		ldr	r3, .L80+12
+ 597 0280 C3ED056A 		vstr.32	s13, [r3, #20]
+ 598 0284 D3ED0E7A 		vldr.32	s15, [r3, #56]
+ 599 0288 93ED0F6A 		vldr.32	s12, [r3, #60]
+ 600 028c 37EE466A 		vsub.f32	s12, s14, s12
+ 601 0290 67EE867A 		vmul.f32	s15, s15, s12
+ 602 0294 C3ED067A 		vstr.32	s15, [r3, #24]
+ 603 0298 77EE266A 		vadd.f32	s13, s14, s13
+ 604 029c 77EEA67A 		vadd.f32	s15, s15, s13
+ 605 02a0 F4EEE75A 		vcmpe.f32	s11, s15
+ 606 02a4 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 607 02a8 01D5     		bpl	.L36
  268:Src/stm32f4xx_it.c ****         FIRSTORDER_LPF_CACL(piSpd.out,piSpd.outF,0.08379f);
- 608              		.loc 1 268 0 discriminator 12
- 609 02ac B4EEE75A 		vcmpe.f32	s10, s15
- 610 02b0 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
- 611 02b4 1BDC     		bgt	.L79
- 612              	.L38:
+ 608              		.loc 1 268 0
+ 609 02aa F0EE657A 		vmov.f32	s15, s11
+ 610              	.L36:
  268:Src/stm32f4xx_it.c ****         FIRSTORDER_LPF_CACL(piSpd.out,piSpd.outF,0.08379f);
- 613              		.loc 1 268 0 discriminator 16
- 614 02b6 184B     		ldr	r3, .L80+12
- 615 02b8 C3ED0A7A 		vstr.32	s15, [r3, #40]
- 616 02bc 83ED0F7A 		vstr.32	s14, [r3, #60]
- 269:Src/stm32f4xx_it.c ****         stateContr.speedCount = 0;
- 617              		.loc 1 269 0 is_stmt 1 discriminator 16
- 618 02c0 93ED117A 		vldr.32	s14, [r3, #68]
- 619 02c4 DFED156A 		vldr.32	s13, .L80+16
- 620 02c8 27EE267A 		vmul.f32	s14, s14, s13
- 621 02cc DFED146A 		vldr.32	s13, .L80+20
- 622 02d0 67EEA67A 		vmul.f32	s15, s15, s13
- 623 02d4 77EE277A 		vadd.f32	s15, s14, s15
- 624 02d8 C3ED117A 		vstr.32	s15, [r3, #68]
- 270:Src/stm32f4xx_it.c ****         stateContr.duty = piSpd.outF;
- 625              		.loc 1 270 0 discriminator 16
- 626 02dc 0C4B     		ldr	r3, .L80+4
- 627 02de 0022     		movs	r2, #0
- 628 02e0 9A81     		strh	r2, [r3, #12]	@ movhi
- 271:Src/stm32f4xx_it.c ****       }
- 629              		.loc 1 271 0 discriminator 16
- 630 02e2 FCEEE77A 		vcvt.u32.f32	s15, s15
- 631 02e6 17EE902A 		vmov	r2, s15	@ int
- 632 02ea 5A81     		strh	r2, [r3, #10]	@ movhi
- 633 02ec 8CE6     		b	.L28
- 634              	.L79:
+ 611              		.loc 1 268 0 discriminator 12
+ 612 02ae B4EEE75A 		vcmpe.f32	s10, s15
+ 613 02b2 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 614 02b6 0FDC     		bgt	.L79
+ 615              	.L38:
  268:Src/stm32f4xx_it.c ****         FIRSTORDER_LPF_CACL(piSpd.out,piSpd.outF,0.08379f);
- 635              		.loc 1 268 0
- 636 02ee F0EE457A 		vmov.f32	s15, s10
- 637 02f2 E0E7     		b	.L38
- 638              	.L78:
- 295:Src/stm32f4xx_it.c ****         piICurr.ui = piSpd.ui;
-ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccN0d84j.s 			page 18
+ 616              		.loc 1 268 0 discriminator 16
+ 617 02b8 114B     		ldr	r3, .L80+12
+ 618 02ba C3ED0A7A 		vstr.32	s15, [r3, #40]
+ 619 02be 83ED0F7A 		vstr.32	s14, [r3, #60]
+ 270:Src/stm32f4xx_it.c ****         stateContr.speedCount = 0;
+ 620              		.loc 1 270 0 is_stmt 1 discriminator 16
+ 621 02c2 C3ED117A 		vstr.32	s15, [r3, #68]
+ 271:Src/stm32f4xx_it.c ****         stateContr.duty = piSpd.outF;
+ 622              		.loc 1 271 0 discriminator 16
+ 623 02c6 0C4B     		ldr	r3, .L80+4
+ 624 02c8 0022     		movs	r2, #0
+ 625 02ca 9A81     		strh	r2, [r3, #12]	@ movhi
+ 272:Src/stm32f4xx_it.c ****       }
+ 626              		.loc 1 272 0 discriminator 16
+ 627 02cc FCEEE77A 		vcvt.u32.f32	s15, s15
+ 628 02d0 17EE902A 		vmov	r2, s15	@ int
+ 629 02d4 5A81     		strh	r2, [r3, #10]	@ movhi
+ 630 02d6 97E6     		b	.L28
+ 631              	.L79:
+ 268:Src/stm32f4xx_it.c ****         FIRSTORDER_LPF_CACL(piSpd.out,piSpd.outF,0.08379f);
+ 632              		.loc 1 268 0
+ 633 02d8 F0EE457A 		vmov.f32	s15, s10
+ 634 02dc ECE7     		b	.L38
+ 635              	.L78:
+ 296:Src/stm32f4xx_it.c ****         piICurr.ui = piSpd.ui;
+ 636              		.loc 1 296 0
+ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccJVw3Rp.s 			page 18
 
 
- 639              		.loc 1 295 0
- 640 02f4 BCEEC77A 		vcvt.u32.f32	s14, s14
- 641 02f8 054B     		ldr	r3, .L80+4
- 642 02fa 17EE102A 		vmov	r2, s14	@ int
- 643 02fe 5A81     		strh	r2, [r3, #10]	@ movhi
- 296:Src/stm32f4xx_it.c ****       }
- 644              		.loc 1 296 0
- 645 0300 054B     		ldr	r3, .L80+12
- 646 0302 5A69     		ldr	r2, [r3, #20]	@ float
- 647 0304 074B     		ldr	r3, .L80+24
- 648 0306 5A61     		str	r2, [r3, #20]	@ float
- 649 0308 7EE6     		b	.L28
- 650              	.L81:
- 651 030a 00BF     		.align	2
- 652              	.L80:
- 653 030c 00000000 		.word	htim1
- 654 0310 00000000 		.word	stateContr
- 655 0314 00000000 		.word	hallTree
- 656 0318 00000000 		.word	piSpd
- 657 031c BD8C6A3F 		.word	1063947453
- 658 0320 179AAB3D 		.word	1034656279
- 659 0324 00000000 		.word	piICurr
- 660 0328 00007F43 		.word	1132396544
- 661 032c 00000000 		.word	ADCSampPare
- 662              		.cfi_endproc
- 663              	.LFE142:
- 665              		.text
- 666              	.Letext0:
- 667              		.file 2 "c:\\program files (x86)\\gnu tools arm embedded\\7 2018-q2-update\\arm-none-eabi\\include
- 668              		.file 3 "c:\\program files (x86)\\gnu tools arm embedded\\7 2018-q2-update\\arm-none-eabi\\include
- 669              		.file 4 "Drivers/CMSIS/Include/core_cm4.h"
- 670              		.file 5 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/system_stm32f4xx.h"
- 671              		.file 6 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f405xx.h"
- 672              		.file 7 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h"
- 673              		.file 8 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h"
- 674              		.file 9 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h"
- 675              		.file 10 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc.h"
- 676              		.file 11 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h"
- 677              		.file 12 "Inc/tim.h"
- 678              		.file 13 "Inc/adc.h"
- 679              		.file 14 "Inc/bldc.h"
- 680              		.file 15 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h"
- 681              		.file 16 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h"
-ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccN0d84j.s 			page 19
+ 637 02de BCEEC77A 		vcvt.u32.f32	s14, s14
+ 638 02e2 054B     		ldr	r3, .L80+4
+ 639 02e4 17EE102A 		vmov	r2, s14	@ int
+ 640 02e8 5A81     		strh	r2, [r3, #10]	@ movhi
+ 297:Src/stm32f4xx_it.c ****       }
+ 641              		.loc 1 297 0
+ 642 02ea 054B     		ldr	r3, .L80+12
+ 643 02ec 5A69     		ldr	r2, [r3, #20]	@ float
+ 644 02ee 074B     		ldr	r3, .L80+24
+ 645 02f0 5A61     		str	r2, [r3, #20]	@ float
+ 646 02f2 89E6     		b	.L28
+ 647              	.L81:
+ 648              		.align	2
+ 649              	.L80:
+ 650 02f4 00000000 		.word	htim1
+ 651 02f8 00000000 		.word	stateContr
+ 652 02fc 00000000 		.word	hallTree
+ 653 0300 00000000 		.word	piSpd
+ 654 0304 BD8C6A3F 		.word	1063947453
+ 655 0308 179AAB3D 		.word	1034656279
+ 656 030c 00000000 		.word	piICurr
+ 657 0310 00C07F44 		.word	1149222912
+ 658 0314 00000000 		.word	ADCSampPare
+ 659              		.cfi_endproc
+ 660              	.LFE142:
+ 662              		.text
+ 663              	.Letext0:
+ 664              		.file 2 "c:\\program files (x86)\\gnu tools arm embedded\\7 2018-q2-update\\arm-none-eabi\\include
+ 665              		.file 3 "c:\\program files (x86)\\gnu tools arm embedded\\7 2018-q2-update\\arm-none-eabi\\include
+ 666              		.file 4 "Drivers/CMSIS/Include/core_cm4.h"
+ 667              		.file 5 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/system_stm32f4xx.h"
+ 668              		.file 6 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f405xx.h"
+ 669              		.file 7 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f4xx.h"
+ 670              		.file 8 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h"
+ 671              		.file 9 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h"
+ 672              		.file 10 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_adc.h"
+ 673              		.file 11 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h"
+ 674              		.file 12 "Inc/tim.h"
+ 675              		.file 13 "Inc/adc.h"
+ 676              		.file 14 "Inc/bldc.h"
+ 677              		.file 15 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h"
+ 678              		.file 16 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h"
+ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccJVw3Rp.s 			page 19
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 stm32f4xx_it.c
-C:\Users\Cairne\AppData\Local\Temp\ccN0d84j.s:18     .text.NMI_Handler:00000000 $t
-C:\Users\Cairne\AppData\Local\Temp\ccN0d84j.s:25     .text.NMI_Handler:00000000 NMI_Handler
-C:\Users\Cairne\AppData\Local\Temp\ccN0d84j.s:46     .text.HardFault_Handler:00000000 $t
-C:\Users\Cairne\AppData\Local\Temp\ccN0d84j.s:53     .text.HardFault_Handler:00000000 HardFault_Handler
-C:\Users\Cairne\AppData\Local\Temp\ccN0d84j.s:67     .text.MemManage_Handler:00000000 $t
-C:\Users\Cairne\AppData\Local\Temp\ccN0d84j.s:74     .text.MemManage_Handler:00000000 MemManage_Handler
-C:\Users\Cairne\AppData\Local\Temp\ccN0d84j.s:88     .text.BusFault_Handler:00000000 $t
-C:\Users\Cairne\AppData\Local\Temp\ccN0d84j.s:95     .text.BusFault_Handler:00000000 BusFault_Handler
-C:\Users\Cairne\AppData\Local\Temp\ccN0d84j.s:109    .text.UsageFault_Handler:00000000 $t
-C:\Users\Cairne\AppData\Local\Temp\ccN0d84j.s:116    .text.UsageFault_Handler:00000000 UsageFault_Handler
-C:\Users\Cairne\AppData\Local\Temp\ccN0d84j.s:130    .text.SVC_Handler:00000000 $t
-C:\Users\Cairne\AppData\Local\Temp\ccN0d84j.s:137    .text.SVC_Handler:00000000 SVC_Handler
-C:\Users\Cairne\AppData\Local\Temp\ccN0d84j.s:150    .text.DebugMon_Handler:00000000 $t
-C:\Users\Cairne\AppData\Local\Temp\ccN0d84j.s:157    .text.DebugMon_Handler:00000000 DebugMon_Handler
-C:\Users\Cairne\AppData\Local\Temp\ccN0d84j.s:170    .text.PendSV_Handler:00000000 $t
-C:\Users\Cairne\AppData\Local\Temp\ccN0d84j.s:177    .text.PendSV_Handler:00000000 PendSV_Handler
-C:\Users\Cairne\AppData\Local\Temp\ccN0d84j.s:190    .text.SysTick_Handler:00000000 $t
-C:\Users\Cairne\AppData\Local\Temp\ccN0d84j.s:197    .text.SysTick_Handler:00000000 SysTick_Handler
-C:\Users\Cairne\AppData\Local\Temp\ccN0d84j.s:217    .text.ADC_IRQHandler:00000000 $t
-C:\Users\Cairne\AppData\Local\Temp\ccN0d84j.s:224    .text.ADC_IRQHandler:00000000 ADC_IRQHandler
-C:\Users\Cairne\AppData\Local\Temp\ccN0d84j.s:244    .text.ADC_IRQHandler:0000000c $d
-C:\Users\Cairne\AppData\Local\Temp\ccN0d84j.s:249    .text.TIM1_UP_TIM10_IRQHandler:00000000 $t
-C:\Users\Cairne\AppData\Local\Temp\ccN0d84j.s:256    .text.TIM1_UP_TIM10_IRQHandler:00000000 TIM1_UP_TIM10_IRQHandler
-C:\Users\Cairne\AppData\Local\Temp\ccN0d84j.s:276    .text.TIM1_UP_TIM10_IRQHandler:0000000c $d
-C:\Users\Cairne\AppData\Local\Temp\ccN0d84j.s:281    .text.DMA2_Stream0_IRQHandler:00000000 $t
-C:\Users\Cairne\AppData\Local\Temp\ccN0d84j.s:288    .text.DMA2_Stream0_IRQHandler:00000000 DMA2_Stream0_IRQHandler
-C:\Users\Cairne\AppData\Local\Temp\ccN0d84j.s:308    .text.DMA2_Stream0_IRQHandler:0000000c $d
-C:\Users\Cairne\AppData\Local\Temp\ccN0d84j.s:313    .text.HAL_TIM_PeriodElapsedCallback:00000000 $t
-C:\Users\Cairne\AppData\Local\Temp\ccN0d84j.s:320    .text.HAL_TIM_PeriodElapsedCallback:00000000 HAL_TIM_PeriodElapsedCallback
-C:\Users\Cairne\AppData\Local\Temp\ccN0d84j.s:653    .text.HAL_TIM_PeriodElapsedCallback:0000030c $d
+C:\Users\Cairne\AppData\Local\Temp\ccJVw3Rp.s:18     .text.NMI_Handler:00000000 $t
+C:\Users\Cairne\AppData\Local\Temp\ccJVw3Rp.s:25     .text.NMI_Handler:00000000 NMI_Handler
+C:\Users\Cairne\AppData\Local\Temp\ccJVw3Rp.s:46     .text.HardFault_Handler:00000000 $t
+C:\Users\Cairne\AppData\Local\Temp\ccJVw3Rp.s:53     .text.HardFault_Handler:00000000 HardFault_Handler
+C:\Users\Cairne\AppData\Local\Temp\ccJVw3Rp.s:67     .text.MemManage_Handler:00000000 $t
+C:\Users\Cairne\AppData\Local\Temp\ccJVw3Rp.s:74     .text.MemManage_Handler:00000000 MemManage_Handler
+C:\Users\Cairne\AppData\Local\Temp\ccJVw3Rp.s:88     .text.BusFault_Handler:00000000 $t
+C:\Users\Cairne\AppData\Local\Temp\ccJVw3Rp.s:95     .text.BusFault_Handler:00000000 BusFault_Handler
+C:\Users\Cairne\AppData\Local\Temp\ccJVw3Rp.s:109    .text.UsageFault_Handler:00000000 $t
+C:\Users\Cairne\AppData\Local\Temp\ccJVw3Rp.s:116    .text.UsageFault_Handler:00000000 UsageFault_Handler
+C:\Users\Cairne\AppData\Local\Temp\ccJVw3Rp.s:130    .text.SVC_Handler:00000000 $t
+C:\Users\Cairne\AppData\Local\Temp\ccJVw3Rp.s:137    .text.SVC_Handler:00000000 SVC_Handler
+C:\Users\Cairne\AppData\Local\Temp\ccJVw3Rp.s:150    .text.DebugMon_Handler:00000000 $t
+C:\Users\Cairne\AppData\Local\Temp\ccJVw3Rp.s:157    .text.DebugMon_Handler:00000000 DebugMon_Handler
+C:\Users\Cairne\AppData\Local\Temp\ccJVw3Rp.s:170    .text.PendSV_Handler:00000000 $t
+C:\Users\Cairne\AppData\Local\Temp\ccJVw3Rp.s:177    .text.PendSV_Handler:00000000 PendSV_Handler
+C:\Users\Cairne\AppData\Local\Temp\ccJVw3Rp.s:190    .text.SysTick_Handler:00000000 $t
+C:\Users\Cairne\AppData\Local\Temp\ccJVw3Rp.s:197    .text.SysTick_Handler:00000000 SysTick_Handler
+C:\Users\Cairne\AppData\Local\Temp\ccJVw3Rp.s:217    .text.ADC_IRQHandler:00000000 $t
+C:\Users\Cairne\AppData\Local\Temp\ccJVw3Rp.s:224    .text.ADC_IRQHandler:00000000 ADC_IRQHandler
+C:\Users\Cairne\AppData\Local\Temp\ccJVw3Rp.s:244    .text.ADC_IRQHandler:0000000c $d
+C:\Users\Cairne\AppData\Local\Temp\ccJVw3Rp.s:249    .text.TIM1_UP_TIM10_IRQHandler:00000000 $t
+C:\Users\Cairne\AppData\Local\Temp\ccJVw3Rp.s:256    .text.TIM1_UP_TIM10_IRQHandler:00000000 TIM1_UP_TIM10_IRQHandler
+C:\Users\Cairne\AppData\Local\Temp\ccJVw3Rp.s:276    .text.TIM1_UP_TIM10_IRQHandler:0000000c $d
+C:\Users\Cairne\AppData\Local\Temp\ccJVw3Rp.s:281    .text.DMA2_Stream0_IRQHandler:00000000 $t
+C:\Users\Cairne\AppData\Local\Temp\ccJVw3Rp.s:288    .text.DMA2_Stream0_IRQHandler:00000000 DMA2_Stream0_IRQHandler
+C:\Users\Cairne\AppData\Local\Temp\ccJVw3Rp.s:308    .text.DMA2_Stream0_IRQHandler:0000000c $d
+C:\Users\Cairne\AppData\Local\Temp\ccJVw3Rp.s:313    .text.HAL_TIM_PeriodElapsedCallback:00000000 $t
+C:\Users\Cairne\AppData\Local\Temp\ccJVw3Rp.s:320    .text.HAL_TIM_PeriodElapsedCallback:00000000 HAL_TIM_PeriodElapsedCallback
+C:\Users\Cairne\AppData\Local\Temp\ccJVw3Rp.s:650    .text.HAL_TIM_PeriodElapsedCallback:000002f4 $d
 
 UNDEFINED SYMBOLS
 HAL_RCC_NMI_IRQHandler
@@ -1109,6 +1108,7 @@ HAL_TIM_IRQHandler
 htim1
 HAL_DMA_IRQHandler
 hdma_adc1
+offsetCurrentRead
 HALL_ADCSample
 hallSwitch
 stateContr

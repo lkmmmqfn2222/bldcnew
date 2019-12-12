@@ -116,7 +116,7 @@ void printFlt(double flt)
 	printDec(tmpint);
 	printCh('.');
 	flt = flt - tmpint;
-	tmpint = (int)(flt * 1000000);
+	tmpint = (int)(flt * 100000);
 	printDec(tmpint);
 }
 

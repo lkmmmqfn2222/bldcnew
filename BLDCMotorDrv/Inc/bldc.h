@@ -219,10 +219,10 @@ typedef struct
 #define TEST_MANUELL 0
 #define LOOP 3                          //1:open loop 2:speed loop 3:speed and current loop
 #define PWM_FREQ ((uint16_t)18)
-#define TORQUE 0x00ff
+#define TORQUE 0x03ff
 #define FILTER_LONG 0xffff
-#define SPEED_KP 0.05
-#define SPEED_KI 0.01
+#define SPEED_KP 0.1
+#define SPEED_KI 0.03
 #define SPEED_KC 0.01
 #define CURRENT_KP 2
 #define CURRENT_KI 0.2
@@ -235,5 +235,6 @@ void hallSwitch(void);
 void offsetCurrentRead(void);
 void HALL_ADCSample(void);
 void motorTestProgram(void);
+void BLDCInit(void);
 
 #endif

@@ -16,7 +16,7 @@ void run(void)
     }
     if (stateContr.controlMode == 2 || stateContr.controlMode == 3)
     {
-        piSpd.ref = 500;
+        piSpd.ref = 50;
     }
 }
 
@@ -89,9 +89,9 @@ void down(void)
     {
         stateContr.aimSpeed = 10;
     }
-    if (piSpd.ref < 300)
+    if (piSpd.ref < 30)
     {
-        piSpd.ref = 300;
+        piSpd.ref = 30;
     }
 }
 
@@ -114,31 +114,26 @@ void keyScan(void)
     static uint16_t count = 0;
     if (RUN_STATUS == 0 && (count == 0))
     {
-        myPrint("run**************************!\r\n");
         run();
         count = 20;
     }
     if (STOP_STATUS == 0 && (count == 0))
     {
-        myPrint("stop!!!!!!!!!!!!!!!!!!!!!!!!!!!\r\n");
         stop();
         count = 20;
     }
     if (UP_STATUS == 0 && (count == 0))
     {
-        myPrint("up!+++++++++++++++++++++++++++\r\n");
         up();
         count = 20;
     }
     if (DOWN_STATUS == 0 && (count == 0))
     {
-        myPrint("down!---------------------------\r\n");
         down();
         count = 20;
     }
     if (DIR_STATUS == 0 && (count == 0))
     {
-        myPrint("dir!|||||||||||||||||||||||||||||||\r\n");
         stop();
         dir();
         count = 20;

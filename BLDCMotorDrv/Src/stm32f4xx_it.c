@@ -252,6 +252,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
   if(htim == &htim1)
   {
+    offsetCurrentRead();
     HALL_ADCSample();
     hallSwitch();
     if(stateContr.controlMode == 1) //open loop
@@ -264,9 +265,9 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
       if(stateContr.speedCount > 2)
       {
         piSpd.fdb = hallTree.speedRPMF;
-        //PID_CALC(piSpd);
         PID_CALC(piSpd);
         FIRSTORDER_LPF_CACL(piSpd.out,piSpd.outF,0.08379f);
+        piSpd.outF = piSpd.out;
         stateContr.speedCount = 0;
         stateContr.duty = piSpd.outF;
       }

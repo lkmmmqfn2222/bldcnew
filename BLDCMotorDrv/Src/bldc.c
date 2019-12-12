@@ -14,14 +14,14 @@ void PID_Init(void)
     piSpd.kp = SPEED_KP;
     piSpd.ki = SPEED_KI;
     piSpd.kc = SPEED_KC;
-    piSpd.outMax = 10000;
-    piSpd.outMin = 1000;
+    piSpd.outMax = 3000;
+    piSpd.outMin = 30;
     piSpd.ref = 0;
     piICurr.kp = CURRENT_KP;
     piICurr.ki = CURRENT_KI;
     piICurr.kc = CURRENT_KC;
-    piICurr.outMin = 1000;
-    piICurr.outMax = 10000;
+    piICurr.outMin = 30;
+    piICurr.outMax = 3000;
     piICurr.ref = 0;
 }
 
@@ -167,7 +167,7 @@ void offsetCurrentRead(void)
     static uint16_t ADC_PhaseU_Curr[64];
     static uint16_t ADC_PhaseV_Curr[64];
     static uint16_t ADC_PhaseW_Curr[64];
-    uint8_t i = 0;
+    static uint8_t i = 0;
 
     ADC_PhaseU_Curr[i] = ADC_DualConvertValTab[0];
     ADC_PhaseV_Curr[i] = ADC_DualConvertValTab[1];
@@ -183,11 +183,12 @@ void offsetCurrentRead(void)
         uint32_t sum_U = 0;
         uint32_t sum_V = 0;
         uint32_t sum_W = 0;
-        for (i = 0; i < 64; i++)
+        uint8_t j;
+        for (j = 0; j < 64; j++)
         {
-            sum_U += ADC_PhaseU_Curr[i];
-            sum_V += ADC_PhaseV_Curr[i];
-            sum_W += ADC_PhaseW_Curr[i];
+            sum_U += ADC_PhaseU_Curr[j];
+            sum_V += ADC_PhaseV_Curr[j];
+            sum_W += ADC_PhaseW_Curr[j];
         }
         ADCSampPare.offsetPhaseU_Curr = sum_U / 64;
         ADCSampPare.offsetPhaseV_Curr = sum_V / 64;
@@ -199,23 +200,23 @@ void HALL_ADCSample(void)
 {
     ADCSampPare.phaseUCurr = ADC_DualConvertValTab[0] - ADCSampPare.offsetPhaseU_Curr;
     ADCSampPare.phaseVCurr = ADC_DualConvertValTab[1] - ADCSampPare.offsetPhaseV_Curr;
-    ADCSampPare.phaseWCurr = ADC_DualConvertValTab[2] - ADCSampPare.offsetPhaseW_Curr;
+    ADCSampPare.phaseWCurr = ADC_DualConvertValTab[4] - ADCSampPare.offsetPhaseW_Curr;
     ADCSampPare.busVoltage = ADC_DualConvertValTab[3];
     switch (hallTree.hallState)
     {
     case 0x05:
     {
-        ADCSampPare.busCurr = ADCSampPare.phaseVCurr + ADCSampPare.phaseWCurr;
+        ADCSampPare.busCurr = ADCSampPare.phaseVCurr + ADCSampPare.phaseUCurr;
     }
     break;
     case 0x01:
     {
-        ADCSampPare.busCurr = ADCSampPare.phaseUCurr + ADCSampPare.phaseWCurr;
+        ADCSampPare.busCurr = ADCSampPare.phaseVCurr + ADCSampPare.phaseWCurr;
     }
     break;
     case 0x03:
     {
-        ADCSampPare.busCurr = ADCSampPare.phaseVCurr + ADCSampPare.phaseWCurr;
+        ADCSampPare.busCurr = ADCSampPare.phaseUCurr + ADCSampPare.phaseWCurr;
     }
     break;
     case 0x02:
@@ -225,12 +226,12 @@ void HALL_ADCSample(void)
     break;
     case 0x06:
     {
-        ADCSampPare.busCurr = ADCSampPare.phaseUCurr + ADCSampPare.phaseVCurr;
+        ADCSampPare.busCurr = ADCSampPare.phaseWCurr + ADCSampPare.phaseVCurr;
     }
     break;
     case 0x04:
     {
-        ADCSampPare.busCurr = ADCSampPare.phaseWCurr + ADCSampPare.phaseVCurr;
+        ADCSampPare.busCurr = ADCSampPare.phaseWCurr + ADCSampPare.phaseUCurr;
     }
     break;
     default:
@@ -268,4 +269,47 @@ void motorTestProgram(void)
     MOS_Q41PWM;
     HAL_Delay(300);
     myPrint("Q41PWM HALL TABLE IS %d %d %d \r\n",HALL_U_STATUS,HALL_V_STATUS,HALL_W_STATUS);
+}
+
+void BLDCInit(void)
+{
+    if (HAL_ADC_Start_DMA(&hadc1, (uint32_t *)&ADC_DualConvertValTab, 5) != HAL_OK)
+    {
+        while (1)
+        {
+            myPrint("error code:hall_dma_error!\r\n");
+        }
+        HAL_NVIC_DisableIRQ(DMA2_Stream0_IRQn);
+    }
+    if (HAL_TIM_Base_Start_IT(&htim1) != HAL_OK) //start it will cause motor en
+    {
+        while (1)
+        {
+            myPrint("error code:hall_base_start_it_error!\r\n ");
+        }
+    }
+    HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_1);
+    HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_2);
+    HAL_TIM_PWM_Start(&htim1, TIM_CHANNEL_3);
+    stateContr.controlMode = LOOP;
+    switch (stateContr.controlMode)
+    {
+    case 0x1:
+    {
+        stateContr.aimSpeed = 100;
+        stateContr.aimDuty = 1000 * stateContr.aimSpeed / 100;
+    }
+    break;
+    case 0x2:
+    {
+        piSpd.ref = 50;
+    }
+    break;
+    case 0x3:
+    {
+        piSpd.ref = 50;
+        stateContr.driveCar = 0;
+    }
+    break;
+    }
 }

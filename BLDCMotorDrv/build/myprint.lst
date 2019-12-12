@@ -1,4 +1,4 @@
-ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccNr5cNc.s 			page 1
+ARM GAS  C:\Users\Cairne\AppData\Local\Temp\cc0EcRmh.s 			page 1
 
 
    1              		.cpu cortex-m4
@@ -58,7 +58,7 @@ ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccNr5cNc.s 			page 1
   29:Src/myprint.c **** 				break;
   30:Src/myprint.c **** 			case 'd':
   31:Src/myprint.c **** 			case 'i':
-ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccNr5cNc.s 			page 2
+ARM GAS  C:\Users\Cairne\AppData\Local\Temp\cc0EcRmh.s 			page 2
 
 
   32:Src/myprint.c **** 				vargint = va_arg(vp, int);
@@ -118,7 +118,7 @@ ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccNr5cNc.s 			page 1
   41 0006 01F8010D 		strb	r0, [r1, #-1]!
   73:Src/myprint.c **** 	//	return;
   74:Src/myprint.c **** 	//USART_ClearFlag(USART1, USART_FLAG_TC);
-ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccNr5cNc.s 			page 3
+ARM GAS  C:\Users\Cairne\AppData\Local\Temp\cc0EcRmh.s 			page 3
 
 
   75:Src/myprint.c ****     HAL_UART_Transmit(&huart1,(__uint8_t*)&ch,1,0x0ff);
@@ -178,7 +178,7 @@ ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccNr5cNc.s 			page 1
   87              		.loc 1 85 0
   88 0006 0028     		cmp	r0, #0
   89 0008 06DB     		blt	.L17
-ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccNr5cNc.s 			page 4
+ARM GAS  C:\Users\Cairne\AppData\Local\Temp\cc0EcRmh.s 			page 4
 
 
   90              	.LVL4:
@@ -238,7 +238,7 @@ ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccNr5cNc.s 			page 1
  117 0020 F3E7     		b	.L8
  118              	.LVL11:
  119              	.L10:
-ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccNr5cNc.s 			page 5
+ARM GAS  C:\Users\Cairne\AppData\Local\Temp\cc0EcRmh.s 			page 5
 
 
   95:Src/myprint.c **** 		tmp /= 10;
@@ -298,7 +298,7 @@ ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccNr5cNc.s 			page 1
  166 005c 3030     		adds	r0, r0, #48
  167              	.LVL21:
  168 005e C0B2     		uxtb	r0, r0
-ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccNr5cNc.s 			page 6
+ARM GAS  C:\Users\Cairne\AppData\Local\Temp\cc0EcRmh.s 			page 6
 
 
  169              	.LVL22:
@@ -358,7 +358,7 @@ ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccNr5cNc.s 			page 1
  218              		.cfi_def_cfa_offset 16
  219              		.cfi_offset 4, -16
  220              		.cfi_offset 5, -12
-ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccNr5cNc.s 			page 7
+ARM GAS  C:\Users\Cairne\AppData\Local\Temp\cc0EcRmh.s 			page 7
 
 
  221              		.cfi_offset 6, -8
@@ -396,7 +396,7 @@ ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccNr5cNc.s 			page 1
  246 0028 2946     		mov	r1, r5
  247 002a FFF7FEFF 		bl	__aeabi_dsub
  248              	.LVL32:
- 119:Src/myprint.c **** 	tmpint = (int)(flt * 1000000);
+ 119:Src/myprint.c **** 	tmpint = (int)(flt * 100000);
  249              		.loc 1 119 0
  250 002e 06A3     		adr	r3, .L22
  251 0030 D3E90023 		ldrd	r2, [r3]
@@ -416,9 +416,9 @@ ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccNr5cNc.s 			page 1
  262      0080
  263              	.L22:
  264 0048 00000000 		.word	0
- 265 004c 80842E41 		.word	1093567616
+ 265 004c 006AF840 		.word	1090021888
  266              		.cfi_endproc
-ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccNr5cNc.s 			page 8
+ARM GAS  C:\Users\Cairne\AppData\Local\Temp\cc0EcRmh.s 			page 8
 
 
  267              	.LFE136:
@@ -478,7 +478,7 @@ ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccNr5cNc.s 			page 1
  315              		.fpu fpv4-sp-d16
  317              	printBin:
  318              	.LFB138:
-ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccNr5cNc.s 			page 9
+ARM GAS  C:\Users\Cairne\AppData\Local\Temp\cc0EcRmh.s 			page 9
 
 
  130:Src/myprint.c **** 
@@ -538,7 +538,7 @@ ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccNr5cNc.s 			page 1
  360 002e 00BF     		.align	2
  361              	.L32:
  362 0030 00000000 		.word	.LC0
-ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccNr5cNc.s 			page 10
+ARM GAS  C:\Users\Cairne\AppData\Local\Temp\cc0EcRmh.s 			page 10
 
 
  363              		.cfi_endproc
@@ -598,7 +598,7 @@ ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccNr5cNc.s 			page 1
  400 000e 0028     		cmp	r0, #0
  401 0010 10DB     		blt	.L40
  402              	.LVL52:
-ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccNr5cNc.s 			page 11
+ARM GAS  C:\Users\Cairne\AppData\Local\Temp\cc0EcRmh.s 			page 11
 
 
  403              	.L37:
@@ -658,7 +658,7 @@ ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccNr5cNc.s 			page 1
  454              		.fpu fpv4-sp-d16
  456              	myPrint:
  457              	.LFB133:
-ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccNr5cNc.s 			page 12
+ARM GAS  C:\Users\Cairne\AppData\Local\Temp\cc0EcRmh.s 			page 12
 
 
    6:Src/myprint.c **** 	double vargflt = 0;
@@ -718,7 +718,7 @@ ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccNr5cNc.s 			page 1
  505 0022 00F0E380 		beq	.L59
   19:Src/myprint.c **** 		{
  506              		.loc 1 19 0
-ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccNr5cNc.s 			page 13
+ARM GAS  C:\Users\Cairne\AppData\Local\Temp\cc0EcRmh.s 			page 13
 
 
  507 0026 2528     		cmp	r0, #37
@@ -778,7 +778,7 @@ ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccNr5cNc.s 			page 1
  560 00e0 1D000000 		.word	.L47+1
  561 00e4 1D000000 		.word	.L47+1
  562 00e8 1D000000 		.word	.L47+1
-ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccNr5cNc.s 			page 14
+ARM GAS  C:\Users\Cairne\AppData\Local\Temp\cc0EcRmh.s 			page 14
 
 
  563 00ec 1D000000 		.word	.L47+1
@@ -838,7 +838,7 @@ ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccNr5cNc.s 			page 1
  614 0198 40E7     		b	.L47
  615              	.L54:
   36:Src/myprint.c **** 				/*    va_arg(ap, type), if type is narrow type (char, short, float) an error is given in strict
-ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccNr5cNc.s 			page 15
+ARM GAS  C:\Users\Cairne\AppData\Local\Temp\cc0EcRmh.s 			page 15
 
 
  616              		.loc 1 36 0
@@ -898,7 +898,7 @@ ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccNr5cNc.s 			page 1
  659              		.loc 1 54 0
  660 01da 1FE7     		b	.L47
  661              	.L48:
-ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccNr5cNc.s 			page 16
+ARM GAS  C:\Users\Cairne\AppData\Local\Temp\cc0EcRmh.s 			page 16
 
 
   56:Src/myprint.c **** 				break;
@@ -958,7 +958,7 @@ ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccNr5cNc.s 			page 1
  713              		.file 5 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/system_stm32f4xx.h"
  714              		.file 6 "Drivers/CMSIS/Device/ST/STM32F4xx/Include/stm32f405xx.h"
  715              		.file 7 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h"
-ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccNr5cNc.s 			page 17
+ARM GAS  C:\Users\Cairne\AppData\Local\Temp\cc0EcRmh.s 			page 17
 
 
  716              		.file 8 "Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_dma.h"
@@ -971,35 +971,35 @@ ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccNr5cNc.s 			page 1
  723              		.file 15 "c:\\program files (x86)\\gnu tools arm embedded\\7 2018-q2-update\\arm-none-eabi\\includ
  724              		.file 16 "c:\\program files (x86)\\gnu tools arm embedded\\7 2018-q2-update\\lib\\gcc\\arm-none-ea
  725              		.file 17 "c:\\program files (x86)\\gnu tools arm embedded\\7 2018-q2-update\\arm-none-eabi\\includ
-ARM GAS  C:\Users\Cairne\AppData\Local\Temp\ccNr5cNc.s 			page 18
+ARM GAS  C:\Users\Cairne\AppData\Local\Temp\cc0EcRmh.s 			page 18
 
 
 DEFINED SYMBOLS
                             *ABS*:00000000 myprint.c
-C:\Users\Cairne\AppData\Local\Temp\ccNr5cNc.s:18     .text.printCh:00000000 $t
-C:\Users\Cairne\AppData\Local\Temp\ccNr5cNc.s:25     .text.printCh:00000000 printCh
-C:\Users\Cairne\AppData\Local\Temp\ccNr5cNc.s:58     .text.printCh:0000001c $d
+C:\Users\Cairne\AppData\Local\Temp\cc0EcRmh.s:18     .text.printCh:00000000 $t
+C:\Users\Cairne\AppData\Local\Temp\cc0EcRmh.s:25     .text.printCh:00000000 printCh
+C:\Users\Cairne\AppData\Local\Temp\cc0EcRmh.s:58     .text.printCh:0000001c $d
                             *COM*:00000040 huart1
-C:\Users\Cairne\AppData\Local\Temp\ccNr5cNc.s:63     .text.printDec:00000000 $t
-C:\Users\Cairne\AppData\Local\Temp\ccNr5cNc.s:70     .text.printDec:00000000 printDec
-C:\Users\Cairne\AppData\Local\Temp\ccNr5cNc.s:190    .text.printDec:00000070 $d
-C:\Users\Cairne\AppData\Local\Temp\ccNr5cNc.s:202    .text.printFlt:00000000 $t
-C:\Users\Cairne\AppData\Local\Temp\ccNr5cNc.s:209    .text.printFlt:00000000 printFlt
-C:\Users\Cairne\AppData\Local\Temp\ccNr5cNc.s:264    .text.printFlt:00000048 $d
-C:\Users\Cairne\AppData\Local\Temp\ccNr5cNc.s:270    .text.printStr:00000000 $t
-C:\Users\Cairne\AppData\Local\Temp\ccNr5cNc.s:277    .text.printStr:00000000 printStr
-C:\Users\Cairne\AppData\Local\Temp\ccNr5cNc.s:310    .text.printBin:00000000 $t
-C:\Users\Cairne\AppData\Local\Temp\ccNr5cNc.s:317    .text.printBin:00000000 printBin
-C:\Users\Cairne\AppData\Local\Temp\ccNr5cNc.s:362    .text.printBin:00000030 $d
-C:\Users\Cairne\AppData\Local\Temp\ccNr5cNc.s:367    .text.printHex:00000000 $t
-C:\Users\Cairne\AppData\Local\Temp\ccNr5cNc.s:374    .text.printHex:00000000 printHex
-C:\Users\Cairne\AppData\Local\Temp\ccNr5cNc.s:444    .text.printHex:00000050 $d
-C:\Users\Cairne\AppData\Local\Temp\ccNr5cNc.s:449    .text.myPrint:00000000 $t
-C:\Users\Cairne\AppData\Local\Temp\ccNr5cNc.s:456    .text.myPrint:00000000 myPrint
-C:\Users\Cairne\AppData\Local\Temp\ccNr5cNc.s:519    .text.myPrint:0000003c $d
-C:\Users\Cairne\AppData\Local\Temp\ccNr5cNc.s:603    .text.myPrint:0000018c $t
-C:\Users\Cairne\AppData\Local\Temp\ccNr5cNc.s:701    .rodata.printBin.str1.4:00000000 $d
-C:\Users\Cairne\AppData\Local\Temp\ccNr5cNc.s:705    .rodata.printHex.str1.4:00000000 $d
+C:\Users\Cairne\AppData\Local\Temp\cc0EcRmh.s:63     .text.printDec:00000000 $t
+C:\Users\Cairne\AppData\Local\Temp\cc0EcRmh.s:70     .text.printDec:00000000 printDec
+C:\Users\Cairne\AppData\Local\Temp\cc0EcRmh.s:190    .text.printDec:00000070 $d
+C:\Users\Cairne\AppData\Local\Temp\cc0EcRmh.s:202    .text.printFlt:00000000 $t
+C:\Users\Cairne\AppData\Local\Temp\cc0EcRmh.s:209    .text.printFlt:00000000 printFlt
+C:\Users\Cairne\AppData\Local\Temp\cc0EcRmh.s:264    .text.printFlt:00000048 $d
+C:\Users\Cairne\AppData\Local\Temp\cc0EcRmh.s:270    .text.printStr:00000000 $t
+C:\Users\Cairne\AppData\Local\Temp\cc0EcRmh.s:277    .text.printStr:00000000 printStr
+C:\Users\Cairne\AppData\Local\Temp\cc0EcRmh.s:310    .text.printBin:00000000 $t
+C:\Users\Cairne\AppData\Local\Temp\cc0EcRmh.s:317    .text.printBin:00000000 printBin
+C:\Users\Cairne\AppData\Local\Temp\cc0EcRmh.s:362    .text.printBin:00000030 $d
+C:\Users\Cairne\AppData\Local\Temp\cc0EcRmh.s:367    .text.printHex:00000000 $t
+C:\Users\Cairne\AppData\Local\Temp\cc0EcRmh.s:374    .text.printHex:00000000 printHex
+C:\Users\Cairne\AppData\Local\Temp\cc0EcRmh.s:444    .text.printHex:00000050 $d
+C:\Users\Cairne\AppData\Local\Temp\cc0EcRmh.s:449    .text.myPrint:00000000 $t
+C:\Users\Cairne\AppData\Local\Temp\cc0EcRmh.s:456    .text.myPrint:00000000 myPrint
+C:\Users\Cairne\AppData\Local\Temp\cc0EcRmh.s:519    .text.myPrint:0000003c $d
+C:\Users\Cairne\AppData\Local\Temp\cc0EcRmh.s:603    .text.myPrint:0000018c $t
+C:\Users\Cairne\AppData\Local\Temp\cc0EcRmh.s:701    .rodata.printBin.str1.4:00000000 $d
+C:\Users\Cairne\AppData\Local\Temp\cc0EcRmh.s:705    .rodata.printHex.str1.4:00000000 $d
 
 UNDEFINED SYMBOLS
 HAL_UART_Transmit
